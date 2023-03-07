@@ -1,8 +1,13 @@
-# Edit following two lines to set component requirements (see docs)
-set(COMPONENT_REQUIRES )
-set(COMPONENT_PRIV_REQUIRES )
+set(srcs "main.c")
 
-set(COMPONENT_SRCS "main.c")
-set(COMPONENT_ADD_INCLUDEDIRS "")
+set(requires "bluepad32")
 
-register_component()
+# See: https://gitlab.com/ricardoquesada/bluepad32/-/issues/9
+if(DEFINED ENV{BLUEPAD32_ARDUINO})
+    list(APPEND srcs "arduino_main.cpp")
+    list(APPEND requires "bluepad32_arduino" "arduino")
+endif()
+
+idf_component_register(SRCS "${srcs}"
+                    INCLUDE_DIRS "."
+                    REQUIRES "${requires}")

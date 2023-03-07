@@ -1,0 +1,24 @@
+{
+    "cmake.configureOnOpen": false,
+    "idf.espIdfPath": "/home/eddieliao/esp/esp-idf",
+    "idf.pythonBinPath": "/home/eddieliao/.espressif/python_env/idf4.4_py3.10_env/bin/python",
+    "idf.toolsPath": "/home/eddieliao/.espressif",
+    "idf.customExtraPaths": "/home/eddieliao/.espressif/tools/xtensa-esp-elf-gdb/11.2_20220823/xtensa-esp-elf-gdb/bin:/home/eddieliao/.espressif/tools/riscv32-esp-elf-gdb/11.2_20220823/riscv32-esp-elf-gdb/bin:/home/eddieliao/.espressif/tools/xtensa-esp32-elf/esp-2021r2-patch5-8.4.0/xtensa-esp32-elf/bin:/home/eddieliao/.espressif/tools/xtensa-esp32s2-elf/esp-2021r2-patch5-8.4.0/xtensa-esp32s2-elf/bin:/home/eddieliao/.espressif/tools/xtensa-esp32s3-elf/esp-2021r2-patch5-8.4.0/xtensa-esp32s3-elf/bin:/home/eddieliao/.espressif/tools/riscv32-esp-elf/esp-2021r2-patch5-8.4.0/riscv32-esp-elf/bin:/home/eddieliao/.espressif/tools/esp32ulp-elf/2.35_20220830/esp32ulp-elf/bin:/home/eddieliao/.espressif/tools/openocd-esp32/v0.11.0-esp32-20221026/openocd-esp32/bin",
+    "idf.customExtraVars": {
+        "OPENOCD_SCRIPTS": "/home/eddieliao/.espressif/tools/openocd-esp32/v0.11.0-esp32-20221026/openocd-esp32/share/openocd/scripts"
+    },
+    "idf.gitPath": "git",
+    "idf.adapterTargetName": "esp32",
+    "idf.openOcdConfigs": [
+        "board/esp32-bridge.cfg"
+    ],
+    "idf.flashType": "UART",
+    "files.associations": {
+        "sdkconfig.h": "c",
+        "esp_arduino_version.h": "c",
+        "esp_chip_info.h": "c",
+        "esp_idf_version.h": "c",
+        "uni_platform_arduino.h": "c"
+    },
+    "idf.port": "/dev/ttyUSB0"
+}
