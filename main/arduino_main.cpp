@@ -1,6 +1,4 @@
 /****************************************************************************
-http://retro.moe/unijoysticle2
-
 Copyright 2021 Ricardo Quesada
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,6 +20,7 @@ limitations under the License.
 #endif  // !CONFIG_BLUEPAD32_PLATFORM_ARDUINO
 
 #include <Arduino.h>
+#include <ESP32Servo.h>
 #include <Bluepad32.h>
 
 //
@@ -79,6 +78,7 @@ void onDisconnectedGamepad(GamepadPtr gp) {
     }
 }
 
+Servo servo;
 // Arduino setup function. Runs in CPU 1
 void setup() {
     Console.printf("Firmware: %s\n", BP32.firmwareVersion());
@@ -92,6 +92,13 @@ void setup() {
     // Forgetting Bluetooth keys prevents "paired" gamepads to reconnect.
     // But might also fix some connection / re-connection issues.
     BP32.forgetBluetoothKeys();
+
+    ESP32PWM::allocateTimer(0);
+	ESP32PWM::allocateTimer(1);
+	ESP32PWM::allocateTimer(2);
+	ESP32PWM::allocateTimer(3);
+    servo.setPeriodHertz(50);
+    servo.attach(12, 1000, 2000);
 }
 
 // Arduino loop function. Runs in CPU 1
@@ -108,49 +115,8 @@ void loop() {
         GamepadPtr myGamepad = myGamepads[i];
 
         if (myGamepad && myGamepad->isConnected()) {
-            // There are different ways to query whether a button is pressed.
-            // By query each button individually:
-            //  a(), b(), x(), y(), l1(), etc...
-            if (myGamepad->a()) {
-                static int colorIdx = 0;
-                // Some gamepads like DS4 and DualSense support changing the color LED.
-                // It is possible to change it by calling:
-                switch (colorIdx % 3) {
-                    case 0:
-                        // Red
-                        myGamepad->setColorLED(255, 0, 0);
-                        break;
-                    case 1:
-                        // Green
-                        myGamepad->setColorLED(0, 255, 0);
-                        break;
-                    case 2:
-                        // Blue
-                        myGamepad->setColorLED(0, 0, 255);
-                        break;
-                }
-                colorIdx++;
-            }
 
-            if (myGamepad->b()) {
-                // Turn on the 4 LED. Each bit represents one LED.
-                static int led = 0;
-                led++;
-                // Some gamepads like the DS3, DualSense, Nintendo Wii, Nintendo Switch
-                // support changing the "Player LEDs": those 4 LEDs that usually indicate
-                // the "gamepad seat".
-                // It is possible to change them by calling:
-                myGamepad->setPlayerLEDs(led & 0x0f);
-            }
-
-            if (myGamepad->x()) {
-                // Duration: 255 is ~2 seconds
-                // force: intensity
-                // Some gamepads like DS3, DS4, DualSense, Switch, Xbox One S support
-                // rumble.
-                // It is possible to set it by calling:
-                myGamepad->setRumble(0xc0 /* force */, 0xc0 /* duration */);
-            }
+            servo.write( ((((float) myGamepad->axisY()) / 512.0f) * 500) + 1500 );
 
             // Another way to query the buttons, is by calling buttons(), or
             // miscButtons() which return a bitmask.
@@ -174,6 +140,4 @@ void loop() {
             // For all the available functions.
         }
     }
-
-    delay(150);
 }

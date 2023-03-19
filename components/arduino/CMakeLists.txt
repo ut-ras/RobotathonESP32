@@ -73,6 +73,8 @@ set(CORE_SRCS
 
 set(LIBRARY_SRCS
   libraries/APDS9960/src/Arduino_APDS9960.cpp
+  libraries/ESP32Servo/src/ESP32PWM.cpp
+  libraries/ESP32Servo/src/ESP32Servo.cpp
   libraries/QTRSensors/src/QTRSensors.cpp
   libraries/SharpIR/src/SharpIR.cpp
   # libraries/ArduinoOTA/src/ArduinoOTA.cpp
@@ -175,6 +177,7 @@ set(includedirs
   variants/${CONFIG_ARDUINO_VARIANT}/
   cores/esp32/
   libraries/APDS9960/src
+  libraries/ESP32Servo/src
   libraries/QTRSensors/src
   libraries/SharpIR/src
   # libraries/ArduinoOTA/src
