@@ -73,10 +73,10 @@ set(CORE_SRCS
 
 set(LIBRARY_SRCS
   libraries/APDS9960/src/Arduino_APDS9960.cpp
+  libraries/ESP32-SharpIR/src/ESP32SharpIR.cpp
   libraries/ESP32Servo/src/ESP32PWM.cpp
   libraries/ESP32Servo/src/ESP32Servo.cpp
   libraries/QTRSensors/src/QTRSensors.cpp
-  libraries/SharpIR/src/SharpIR.cpp
   # libraries/ArduinoOTA/src/ArduinoOTA.cpp
   # libraries/AsyncUDP/src/AsyncUDP.cpp
   # libraries/BluetoothSerial/src/BluetoothSerial.cpp
@@ -178,8 +178,8 @@ set(includedirs
   cores/esp32/
   libraries/APDS9960/src
   libraries/ESP32Servo/src
+  libraries/ESP32-SharpIR/src
   libraries/QTRSensors/src
-  libraries/SharpIR/src
   # libraries/ArduinoOTA/src
   # libraries/AsyncUDP/src
   # libraries/BLE/src
