@@ -1,11 +1,41 @@
-ESP-IDF template app
+RobotathonESP32
 ====================
 
-This is a template application to be used with [Espressif IoT Development Framework](https://github.com/espressif/esp-idf).
+This is the repository that utilizes the ESP32 to control robots for the Robtathon competition. It uses the following components:
+* [Arduino Core for ESP32](https://github.com/espressif/arduino-esp32)
+* [ESP-IDF Extension for VSCode](https://github.com/espressif/vscode-esp-idf-extension)
+* [Bluepad32](https://github.com/ricardoquesada/bluepad32/tree/main)
 
-Please check [ESP-IDF docs](https://docs.espressif.com/projects/esp-idf/en/latest/get-started/index.html) for getting started instructions.
+Getting Started
+===================
 
-*Code in this repository is in the Public Domain (or CC0 licensed, at your option.)
-Unless required by applicable law or agreed to in writing, this
-software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-CONDITIONS OF ANY KIND, either express or implied.*
+## 1. VSCode
+This project was built and tested using VSCode. Although any IDE should work in theory, you will not get the features provided by the ESP-IDF extension and will likely need to work through the command line. As such, using VSCode is highly recommended.
+
+VSCode can be installed [from here](https://code.visualstudio.com/).
+
+## 2. Cloning the Repo
+Clone this repo to a location using the method of your choice. I prefer to use the command line, although any method will do.
+```sh
+git clone https://github.com/eddieliao/RobotathonESP32.git
+```
+## 3. Install the ESP-IDF Extension
+The [ESP-IDF](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/) is a developement framework that is used to build and flash for the ESP32. While it can be [installed manually](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/windows-setup.html), we highly recommend that you install it using the VSCode extension.
+
+To install the ESP-IDF Extension, simply go click on the Extension icon in the right taskbar in VSCode and search for "Espressif IDF". Click install.
+
+Full installation and setup instructions be [found here](https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/tutorial/install.md).
+
+## 4. Setting up ESP-IDF
+After installation, a setup wizard will appear. It can also be opened by searching for **ESP-IDF: Configure ESP-IDF extension** in the Command Palette (accessible through the top search bar).
+
+Choose the "Express" option. When prompted to do so, select **ESP-IDF version v4.4**. You can leave everything else default. Wait until the setup wizard displays a message stating that settings have been configured.
+
+## 5. Using the repo
+The Arduino Core means that code can be written for the ESP32 just like you would for any Arduino board. To do this, use the `setup()` and `loop()` methods found in `arduino_main.cpp`.
+
+To build for the ESP32, click the "Build Project" button (cylinder) in the bottom taskbar.
+
+To flash onto an ESP32, click the "Flash Project" button (lightning bolt) in the bottom taskbar.
+
+To read serial output coming from the ESP32, click the "Monitor Device" button (monitor) in the bottom taskbar.
