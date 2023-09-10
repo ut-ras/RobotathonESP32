@@ -15,7 +15,11 @@ This project was built and tested using VSCode. Although any IDE should work in 
 VSCode can be installed [from here](https://code.visualstudio.com/).
 
 ## 2. Using this Template
-This repo is a template repository, meaning you can use it in your own team's repository. To use this template, go to the main page of our repo and press ```Use this Template``` and then ```Create a new repository```. Enter in the repository name and press ```Create Repository```. Once your repository is created add your teammates by going to Settings->Collaborators->Manage Access then put in their github usernames.
+This repo is a template repository, meaning you can use it in your own team's repository.  
+
+To use this template, go to the main page of our repo and press ```Use this Template``` and then ```Create a new repository```.  Enter in the repository name and press ```Create Repository```.
+
+Once your repository is created add your teammates by going to ```Settings```->```Collaborators```->```Manage Access``` then put in their github usernames.
 ## 3. Forking the Repo
 Clone this repo to a location using the method of your choice. I prefer to use the command line, although any method will do. If you do not have a terminal environment set up then I recommend [Git Bash](https://git-scm.com/downloads)
 ```sh
