@@ -45,3 +45,27 @@ To build for the ESP32, click the "Build Project" button (cylinder) in the botto
 To flash onto an ESP32, click the "Flash Project" button (lightning bolt) in the bottom taskbar.
 
 To read serial output coming from the ESP32, click the "Monitor Device" button (monitor) in the bottom taskbar.
+
+## 7. What to do if your stuff don't work
+
+* Make sure your extension is on version **Version 1.6.1**
+* Go to esp/esp-idf location (in windows terminal), run 
+```sh
+.\install.bat
+```
+after that run 
+```sh
+.\export.bat
+```
+You may be required to install [Python](https://www.python.org/downloads/) **make sure you click add to path** or [Git](https://git-scm.com/downloads)
+
+* If your extension installed but doesn't build due to a linker issue, Go to .espressif\python_env\idf4.4_py3.8_env\Scripts and run
+```sh
+pip uninstall pyparsing
+```
+```sh
+pip uninstall pyparsing
+```
+```sh
+pip install pyparsing==2.2.0
+```
