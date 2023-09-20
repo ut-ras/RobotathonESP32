@@ -33,6 +33,7 @@ To install the ESP-IDF Extension, simply go click on the Extension icon in the r
 Full installation and setup instructions be [found here](https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/tutorial/install.md).
 
 ## 5. Setting up ESP-IDF
+Once in the extensions section, press the settings wheel (the one in the side menu), select ```Install Another Version``` and pick **1.6.1**
 After installation, a setup wizard will appear. It can also be opened by searching for **ESP-IDF: Configure ESP-IDF extension** in the Command Palette (accessible through the top search bar).
 
 Choose the "Express" option. When prompted to do so, select **ESP-IDF version v4.4**. You can leave everything else default. Wait until the setup wizard displays a message stating that settings have been configured.
