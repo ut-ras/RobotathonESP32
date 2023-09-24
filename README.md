@@ -66,8 +66,5 @@ You may be required to install [Python](https://www.python.org/downloads/) **mak
 pip uninstall pyparsing
 ```
 ```sh
-pip uninstall pyparsing
-```
-```sh
 pip install pyparsing==2.2.0
 ```
