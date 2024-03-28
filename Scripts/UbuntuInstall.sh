@@ -23,6 +23,9 @@ setup_tools() {
 
     # Run install script for ESP32
     ./install.sh esp32
+
+     # Run export script
+    . ./export.sh
 }
 
 # Main function
