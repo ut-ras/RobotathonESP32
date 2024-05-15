@@ -1,14 +1,5 @@
 # Sample workflow for building and deploying a Jekyll site to GitHub Pages
-<<<<<<< Updated upstream
-name: Deploy Jekyll site to Pages
-
-defaults:
-  run:
-    # Specifies where all site materials are located for the job
-    working-directory: ./docs
-=======
 name: Deploy Jekyll with GitHub Pages dependencies preinstalled
->>>>>>> Stashed changes
 
 on:
   # Runs on pushes targeting the default branch
