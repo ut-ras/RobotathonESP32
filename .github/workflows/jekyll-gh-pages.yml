@@ -9,7 +9,7 @@ name: Deploy Jekyll site to Pages
 defaults:
   run:
     # Specifies where all site materials are located for the job
-    working-directory: "docs/"
+    working-directory: ./docs
 
 on:
   # Runs on pushes targeting the default branch
