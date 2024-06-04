@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Robotathon Newbie Guide 
+title: Robotathon 
 email: ut.ieee.ras@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
@@ -49,3 +49,36 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+
+# Include files despite having a preceding underscore in directory name
+include:
+  # - _assets # Example of including _assets directory
+
+# Collections for website data
+collections_dir: _sections
+collections:
+  guide-general:
+    permalink: "/:path"
+    output: true
+    sort: nav-order
+  guide-primaries:
+    permalink: "/:path"
+    output: true
+    sort_by: order
+  guide-supplementals:
+    permalink: "/:path"
+    output: true
+    sort_by: order
+
+# Define which collections are used in just-the-docs
+just_the_docs:
+  collections:
+    guide-general:
+      name: ""
+      nav_fold: false
+    guide-primaries:
+      name: Newbie Guide
+      nav_fold: true
+    guide-supplementals:
+      name: Resources
+      nav_fold: true
