@@ -4,3 +4,5 @@ sdkconfig.old
 
 dependencies.lock
 sdkconfig
+
+.DS_Store
