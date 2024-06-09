@@ -1,8 +1,8 @@
 ---
-layout: page
+layout: default
 title: Welcome
-nav-include: true
-nav-order: 5
+nav_include: true
+nav_order: 1
 ---
 
 TBD

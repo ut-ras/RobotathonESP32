@@ -60,21 +60,19 @@ collections:
   guide-general:
     permalink: "/:path"
     output: true
-    sort: nav-order
+    sort: nav_order
   guide-primaries:
     permalink: "/:path"
     output: true
-    sort_by: order
   guide-supplementals:
     permalink: "/:path"
     output: true
-    sort_by: order
 
 # Define which collections are used in just-the-docs
 just_the_docs:
   collections:
     guide-general:
-      name: ""
+      name: "Home"
       nav_fold: false
     guide-primaries:
       name: Newbie Guide
@@ -82,3 +80,6 @@ just_the_docs:
     guide-supplementals:
       name: Resources
       nav_fold: true
+
+# Define default color scheme
+color_scheme: custom-light

@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Rulebook
-nav-include: true
-nav-order: 4
+nav_include: true
+nav_order: 3
 ---
 
 TBD

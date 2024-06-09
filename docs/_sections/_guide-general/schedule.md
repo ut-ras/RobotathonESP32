@@ -1,8 +1,8 @@
 ---
-layout: page
-title: Checkpoint & Workshop Schedule
-nav-include: true
-nav-order: 2
+layout: default
+title: Competition Schedule
+nav_include: true
+nav_order: 2
 ---
 
 TBD
