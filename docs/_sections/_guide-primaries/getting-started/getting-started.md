@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Line Sensor
+title: Getting Started
 nav_include: true
-parent: Sensors and Actuators
+has_children: true
 nav_order: 1
 ---

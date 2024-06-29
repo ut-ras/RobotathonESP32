@@ -24,7 +24,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
-baseurl: "/RobotathonESP32" # the subpath of your site, e.g. /blog
+baseurl: "/docs" # the subpath of your site, e.g. /blog
 url: "https://ut.ieee.ras.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
@@ -52,7 +52,7 @@ exclude:
 
 # Include files despite having a preceding underscore in directory name
 include:
-  # - _assets # Example of including _assets directory
+  - _assets # Example of including _assets directory
 
 # Collections for website data
 collections_dir: _sections

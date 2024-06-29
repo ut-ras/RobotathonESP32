@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Environment Setup
+title: Scopes
 nav_include: true
-parent: Getting Started
+# parent: Resources
 nav_order: 1
 ---

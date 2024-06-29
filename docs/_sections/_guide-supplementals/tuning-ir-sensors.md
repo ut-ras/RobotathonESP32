@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Environment Setup
+title: Tuning IR Sensors
 nav_include: true
-parent: Getting Started
+# parent: Resources
 nav_order: 1
 ---
