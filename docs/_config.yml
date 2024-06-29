@@ -28,6 +28,8 @@ url: "https://ut.ieee.ras.github.io" # the base hostname & protocol for your sit
 # Build settings
 theme: just-the-docs
 
+search_enabled: true
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
@@ -81,6 +83,3 @@ just_the_docs:
 
 # Define default color scheme
 color_scheme: custom-light
-
-# Website Icon
-# favicon.ico: "_assets/images/favicon.ico" #idk why this doesnt work lol
