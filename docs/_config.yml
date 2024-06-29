@@ -82,4 +82,6 @@ just_the_docs:
       nav_fold: false
 
 # Define default color scheme
+
 color_scheme: custom-light
+
