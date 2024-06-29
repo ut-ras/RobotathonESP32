@@ -5,4 +5,4 @@ nav_order: 0
 ---
 
 
-ooga booga
+can we kill this file/merge it to Getting Started
