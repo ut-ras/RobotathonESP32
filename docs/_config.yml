@@ -28,6 +28,7 @@ url: "https://ut.ieee.ras.github.io" # the base hostname & protocol for your sit
 # Build settings
 theme: just-the-docs
 
+livereload: true
 search_enabled: true
 
 # Exclude from processing.
