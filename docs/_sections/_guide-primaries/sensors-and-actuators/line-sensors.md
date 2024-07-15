@@ -5,3 +5,27 @@ nav_include: true
 parent: Sensors and Actuators
 nav_order: 1
 ---
+
+# Line Sensor (UNEDTIED)
+A necessary component for any challenge that requires your robot to follow a line. This one is the QTR-8A Reflectance Sensor Array and uses IR transmitters and receivers on it to detect lines.
+
+## How it Works
+The line sensor is made up of an array of 8 IR LED/phototransistor pairs, each take an analog reflectance reading by timing how long it takes the output voltage to decay due to the phototransistor..
+
+## Interfacing 
+Alongside connecting Vcc and ground to the main board (Like for the IR sensor), there are 8 sensors that you can use to collect data by connecting to the analog input pins on the main board. Choose the ones you want to use wisely since the board has limited input pins.
+
+## Programming
+The following program will allow you to continuously read a general position value of the sensor across a line. After you build and flash the program, you should see the values in the UART change as you shift the line across the 
+different sensors.
+
+TIP: always run the calibrate function (i.e. hold a line of the color you’re sensing under all the sensors during set up) to ensure consistent and accurate results.
+
+## Extensions
+You received values from the sensor, but do they mean anything? 
+How does the position value change as you place your line beneath different sensors, and how can you control that? 
+Is there an easier way to quantify the “change” when the car is veering off the line?
+What do you do with your robot when that happens? I.e. adjusting movement
+Consistency in data collection is key for calibration
+
+
