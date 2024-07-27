@@ -11,7 +11,7 @@ The internet! Textbooks! How-to guides! Datasheets are yet another form of refer
 
 Datasheets help you understand the component better- whether it’s increasing accuracy or troubleshooting mistakes. For now, don’t worry if you can’t understand everything written in those pages. The topics addressed on this page are the most relevant for Robotathon. 
 
-[Here is a link](https://www.infineon.com/dgdl/Infineon-IPP055N03L-DS-v01_03-en.pdf?fileId=db3a30431441fb5d01148d01ee1c0e91) to the datasheet this page references below. This component is **not** used in Robotathon, but it makes a good dissection example.
+[Here is a link](https://www.infineon.com/dgdl/Infineon-IPP055N03L-DS-v01_03-en.pdf?fileId=db3a30431441fb5d01148d01ee1c0e91) to the datasheet this page references below. This component is **not** used in Robotathon, but it makes for a good example to dissect.
 
 <div style="text-align: center;">
     <img src="{{ '/_assets/images/datasheet.png' | prepend: site.baseurl }}" alt="datasheet">
@@ -26,7 +26,6 @@ Typically, the first page is pretty meta. Areas of interest include:
 ## <span style="background-color: #f9cb9c;">Specifications</span>
 * Numbers that describe what a part needs and can do
 
-**Check the Table of Contents (TOC) for or skim the pages for the following topics!**
 ## <span style="background-color: #ffe599;">Connection Diagrams</span>
 * A pinout lists the part’s pins, where they’re physically located, and their functions. 
 

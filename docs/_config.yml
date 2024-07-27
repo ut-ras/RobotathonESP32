@@ -28,6 +28,8 @@ url: "https://ut.ieee.ras.github.io" # the base hostname & protocol for your sit
 # Build settings
 theme: just-the-docs
 
+favicon_ico: "/_assets/images/favicon.ico"
+
 livereload: true
 search_enabled: true
 
