@@ -84,7 +84,11 @@ just_the_docs:
       name: Resources
       nav_fold: false
 
+# Define sass
+sass:
+  load_paths:
+    - _sass/
+    - node_modules/@catppuccin/palette/scss/
+
 # Define default color scheme
-
-color_scheme: custom-light
-
+color_scheme: catppuccin_latte

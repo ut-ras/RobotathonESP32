@@ -5,7 +5,7 @@ if [ -f Gemfile.lock ] && grep "BUNDLED WITH" Gemfile.lock > /dev/null; then
     cat Gemfile.lock | tail -n 2 | grep -C2 "BUNDLED WITH" | tail -n 1 | xargs gem install bundler -v
 fi
 
-# Enter directory where website/ Gemfile is stored 
+# Enter directory where website/ Gemfile is stored.
 cd docs
 
 # If there's a Gemfile, then run `bundle install`
@@ -14,5 +14,5 @@ if [ -f Gemfile ]; then
     bundle install
 fi
 
-# Return (not necessary)
-cd ..
+# Install Catpuccin themes locally.
+npm install @catppuccin/palette
