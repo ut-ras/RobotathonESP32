@@ -8,7 +8,11 @@ nav_order: 4
 
 # Chassis Construction
 
-Now that you have some idea of your drive system layout, let’s look at how to build a base for your bot. While you can use a Poptart box to house everything (yes, it’s been done), we highly encourage you to use one of following methods.
+Now that you have some idea of your drive system layout, let’s look at how to build a base for your bot. While you can use a Poptart box to house everything (yes, it’s been done), we highly encourage you to use one of following methods using the tools found at TIW.
+
+{: .highlight}
+Note that you will have to be trained by TIW staff to use their equipment. Their Canvas page for training can be [accessed here!](https://inventionworks.engr.utexas.edu/training)
+{: .callout-toby}
 
 ## Subtractive Manufacturing (SM)
 SM, like laser cutting or mills/lathes, removes material from a product to achieve an end result. The laser cutters in the Makerspace can cut things like wood or acrylic sheets.

@@ -22,9 +22,6 @@ As you can see, the wheel positions will immensely affect the design of your mec
 
 After you’ve decided upon your wheels placement, how you drive your wheels (software) can also result in different movements. See the below two diagrams and observe their center of movement (the white circle). You can drive both sides at once, or a single side. You can drive them in opposite directions, and you can drive them at different rates. There are so many options!
 
-
 <img src="{{ '/_assets/images/chassis_rotation.png' | prepend: site.baseurl }}" alt="chassis rotation">
-
-
 
 Remember, you aren’t limited to any configuration. In fact, we recommend you try them all out! 
