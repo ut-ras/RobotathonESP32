@@ -23,6 +23,8 @@ nav_order: 6
 
 **Chassis:**A chassis is a framework or structure that provides support and holds together various components of a larger system or device. It serves as a foundation or base on which other parts are mounted or attached.
 
+**CLI:** Stands for "Command Line Interface". A user can interact with the computer through typing commands into a terminal (which is a CLI)
+
 **Compile:**the process of converting source code written in a high-level programming language into a lower-level language or machine code that can be understood and executed by a computer.
 
 **Continuity Mode:**"Continuity mode" is a feature available on many multimeters, which is used to test for electrical continuity in a circuit. Continuity refers to the presence of a complete path for electric current to flow through a circuit without any breaks or interruptions.
@@ -60,4 +62,3 @@ nav_order: 6
 **Short:** A short circuit occurs when a low-resistance path is unintentionally created between two points in an electri that are supposed to have different potentials (voltages).
 
 **SOLIDWORKS:** A computer-aided design (CAD) software package that is widely used for 3D modeling, simulation, and design documentation. It is developed by Dassault Systèmes and is renowned for its powerful capabilities and user-friendly interface.
-

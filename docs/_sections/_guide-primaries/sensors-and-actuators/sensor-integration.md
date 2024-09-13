@@ -6,7 +6,7 @@ parent: Sensors and Actuators
 nav_order: 1
 ---
 
-# Sensor Integration
+# Sensor Integration (picture todo)
 
 Help! How do we put everything together?
 Now that you’ve completed several checkpoints and have probably gone through the interfacing tutorials, you and your team are probably wondering how to put all these various parts together. How do we merge RGB sensor data with motor movement? What happens when you encounter a nonexistent wall with your line sensors?

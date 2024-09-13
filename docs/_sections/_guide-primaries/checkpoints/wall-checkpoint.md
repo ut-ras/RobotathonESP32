@@ -10,8 +10,6 @@ nav_order: 2
 
 Below is the premise for this checkpoint:
 Checkpoint 4: I’m Dumb, Not Stupid (Wall Following)
-Have your robot stop for walls that are placed in front of it
-OR have your robot go around obstacles in its way (optional)
 
 Some things you should look out for:
 IR sensor placement

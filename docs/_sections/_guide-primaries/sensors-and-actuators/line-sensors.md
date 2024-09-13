@@ -10,10 +10,13 @@ nav_order: 1
 A necessary component for any challenge that requires your robot to follow a line. This one is the QTR-8A Reflectance Sensor Array and uses IR transmitters and receivers on it to detect lines.
 
 ## How it Works
-The line sensor is made up of an array of 8 IR LED/phototransistor pairs, each take an analog reflectance reading by timing how long it takes the output voltage to decay due to the phototransistor..
+The line sensor is made up of an array of 8 IR LED/phototransistor pairs, each take an analog reflectance reading by timing how long it takes the output voltage to decay due to the phototransistor. By pointing the line sensor IR LEDs/phototransistors at the line, the robot is able to tell where the dark line of tape is by reading the output voltage of each phototransistor
 
-## Interfacing 
-Alongside connecting Vcc and ground to the main board (Like for the IR sensor), there are 8 sensors that you can use to collect data by connecting to the analog input pins on the main board. Choose the ones you want to use wisely since the board has limited input pins.
+<img src="{{ '/_assets/images/line_sensor_diodes.png' | prepend: site.baseurl }}" alt="line_sensor_diodes.png">
+
+{: .highlight}
+Note that you do NOT have to use all 8 of the LED/phototransistor pairs — You can leave the ones you do not want to use disconnected from the MCU.
+{: .callout-toby}
 
 ## Programming
 The following program will allow you to continuously read a general position value of the sensor across a line. After you build and flash the program, you should see the values in the UART change as you shift the line across the 
@@ -29,3 +32,4 @@ What do you do with your robot when that happens? I.e. adjusting movement
 Consistency in data collection is key for calibration
 
 
+<img src="{{ '/_assets/images/line_sensor_wiring.png' | prepend: site.baseurl }}" alt="line_sensor_wiring.png">

@@ -5,7 +5,7 @@ nav_include: true
 parent: Checkpoints
 nav_order: 4
 ---
-# Mechanical Checkpoint
+# Mechanical Checkpoint (content unedited)
 Your team has to come up with a mechanical design that translates individual robot components into how you envision your robot completing particular tasks. 
 A lil intro to engineering projects! Along with your team, these are the bare bones of what it takes to create a project (ahem ahem like a robot?? ahem ahem) from start to finish. For more elaboration on these key steps, I recommend checking out our tutorial on the Engineering Design Process here. 
 

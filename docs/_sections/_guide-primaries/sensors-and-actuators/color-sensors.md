@@ -27,3 +27,8 @@ Try to threshold a level of error for your sensor and think about the following 
 * Different distances? 
 * What about various shades of red? Is red one specific RGB value?
 If you have a moving base, try to drive in a certain direction based on color. How about going right on a red tile?
+
+<img src="{{ '/_assets/images/color_sensor_wiring.png' | prepend: site.baseurl }}" alt="color_sensor_wiring.png">
+<img src="{{ '/_assets/images/color_sensor.jpg' | prepend: site.baseurl }}" alt="color_sensor.jpg">
+
+todo make the color sensor picture a lot smaller lol
