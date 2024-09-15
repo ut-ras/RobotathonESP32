@@ -8,9 +8,7 @@ nav_order: 5
 
 # Actuators
 
-Actuators in our case is just a fancy word for motors, and they will be the key to your robot's motion! You will deal with two types of motors in this competition: DC motors and servo motors.
-
-
+The word "actuators" is just a fancy word for "devices that create motion," which can include anything ranging from hydraulic pistons to motors. In our case, electric motors will be the key to your robot's motion! You will deal with two types electrical actuators in this competition: DC motors and servo motors.
 
 # DC Motors
 <img src="{{ '/_assets/images/dc_motor.jpg' | prepend: site.baseurl }}" alt="dc_motor.jpg" width="200" height="300">
@@ -39,7 +37,7 @@ Control Pins: Connect the control pins (e.g., IN1, IN2, ENA) on the motor contro
 | Red           | OUT1                      |
 | Black          | OUT2       |
 
-|  Motor Controller Terminal          | ESP32 Pin          |
+|  Motor Controller Terminal   | ESP32 Pin          |
 |:-------------|:------------------|
 | +5V           | 5V                      |
 | IN1          | GPIO      |
@@ -47,7 +45,7 @@ Control Pins: Connect the control pins (e.g., IN1, IN2, ENA) on the motor contro
 | ENA          | GPIO      |
 
 The following is an example of configuring and running the motor in software:
-```c
+```cpp
 #define IN1  27  // Control pin 1
 #define IN2  26  // Control pin 2
 #define ENA  25  // PWM pin
@@ -100,7 +98,7 @@ If you're not sure which ESP32 pins are PWM capable, then check out the diagram 
 
 In this competition, we will be using the Arduino servo library to control the servos. The following is an example of how to configure the servo:
 
-```c
+```cpp
 #include <Servo.h>
 
 Servo myservo;

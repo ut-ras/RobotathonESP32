@@ -15,7 +15,7 @@ The line sensor is made up of an array of 8 IR LED/phototransistor pairs, each t
 <img src="{{ '/_assets/images/line_sensor_diodes.png' | prepend: site.baseurl }}" alt="line_sensor_diodes.png">
 
 {: .highlight}
-Note that you do NOT have to use all 8 of the LED/phototransistor pairs — You can leave the ones you do not want to use disconnected from the MCU.
+Note: you do NOT have to use all of the LED/phototransistor pairs — You can leave the ones you do not want to use disconnected from the ESP32.
 {: .callout-toby}
 
 ## Programming
@@ -25,11 +25,12 @@ different sensors.
 TIP: always run the calibrate function (i.e. hold a line of the color you’re sensing under all the sensors during set up) to ensure consistent and accurate results.
 
 ## Extensions
-You received values from the sensor, but do they mean anything? 
-How does the position value change as you place your line beneath different sensors, and how can you control that? 
-Is there an easier way to quantify the “change” when the car is veering off the line?
-What do you do with your robot when that happens? I.e. adjusting movement
-Consistency in data collection is key for calibration
+* You received values from the sensor, but what do they mean? 
+* How does the position value change as you place your line beneath different sensors, and how can you control that? 
+* Is there an easier way to quantify the “change” when the car is veering off the line?
+* What do you do with your robot when that happens? I.e. adjusting movement
+* Consistency in data collection is key for calibration
+ * Can you automate the calibration process?
 
 
 <img src="{{ '/_assets/images/line_sensor_wiring.png' | prepend: site.baseurl }}" alt="line_sensor_wiring.png">

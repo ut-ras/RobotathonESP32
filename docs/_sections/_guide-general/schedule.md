@@ -6,6 +6,8 @@ nav_order: 2
 ---
 
 # Competition Schedule
+
+This calendar will have the most up to date version of the competition timeline!
 <iframe src="https://calendar.google.com/calendar/embed?src=1e8b00794a07180514fdc54c5b78dca70637bc1a8a72076e64dc787ebe2a71cb%40group.calendar.google.com&ctz=America%2FChicago" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
 {: .highlight}
@@ -26,7 +28,7 @@ Tip: You can add this calendar to your personal Google calendar by clicking the 
 **Breadboarding Workshop** - Oct 14<br>
 **Line/Wall/Color Checkpoint** - Oct 20<br>
 **Color Sensor Workshop** - Oct 21<br>
-**Line/Wall Follow Workshop** - Oct 28<br>
+**Line/Wall/Color Follow Workshop** - Oct 28<br>
 **Mechanical Design Checkpoint** - Nov 3<br>
 **Line/Wall/Color Checkpoint** - Nov 10<br>
 **Competition Day** - Nov 16<br>
