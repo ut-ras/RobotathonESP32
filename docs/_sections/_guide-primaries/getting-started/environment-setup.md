@@ -21,16 +21,15 @@ Note: While it is good coding practice to leave comments in your code to make it
 int LED_BUILTIN = 2; // defines the word "LED_BUILTIN" as the number 2 for ease of use when defining and using the pin later
 
 void setup() {
-pinMode (LED_BUILTIN, OUTPUT); // configures pin 2 to be a GPIO output pin 
+    pinMode(LED_BUILTIN, OUTPUT); // configures pin 2 to be a GPIO output pin 
 }
 
 void loop() {
-digitalWrite(LED_BUILTIN, HIGH); // writes a digital high to pin 2
-delay(1000); // waits for 1000 milliseconds (1 second)
-digitalWrite(LED_BUILTIN, LOW); // writes a digital low to pin 2
-delay(1000);
+    digitalWrite(LED_BUILTIN, HIGH); // writes a digital high to pin 2
+    delay(1000); // waits for 1000 milliseconds (1 second)
+    digitalWrite(LED_BUILTIN, LOW); // writes a digital low to pin 2
+    delay(1000);
 }
-
 ```
 
 

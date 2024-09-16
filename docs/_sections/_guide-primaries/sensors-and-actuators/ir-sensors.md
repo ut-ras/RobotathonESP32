@@ -39,7 +39,18 @@ If you're not sure which ESP32 pins are ADC (Analog to Digital Converter) capabl
 The following program will allow you to read values from the IR sensor in a loop. After you build and flash the program, you should see the values in your terminal output change as you move it towards and away from an object.
 
 ```cpp
-todo
+#include <ESP32SharpIR.h>
+
+void setup() {
+    Serial.begin(115200);
+    ESP32SharpIR IRSensorName(ESP32SharpIR::GP2Y0A21YKOF, 27);
+    IRSensorName.setFilterRate(0.1f);
+}
+    
+void loop() {
+    Serial.println(IRSensorName.getDistanceFloat()); 
+    delay(500);
+}
 ```
 
 

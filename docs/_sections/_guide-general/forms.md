@@ -5,7 +5,7 @@ nav_include: true
 nav_order: 4
 ---
 
-# Forms and Links
+# Links and Forms
 
 This page contains direct links and forms that you might need for Robotathon!
 

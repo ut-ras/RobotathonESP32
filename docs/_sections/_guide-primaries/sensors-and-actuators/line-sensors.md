@@ -23,7 +23,30 @@ The following program will allow you to continuously read a general position val
 different sensors.
 
 ```cpp
-todo
+#include <QTRSensors.h>
+
+QTRSensors qtr;
+
+void setup {
+    // set up Serial Communication and sensor pins
+    Serial.begin(115200);
+    qtr.setTypeAnalog(); // or setTypeAnalog()
+    qtr.setSensorPins((const uint8_t[]) {5, 17, 16}, 3); // pin numbers go in the curly brackets {}, and number of pins goes after
+
+    // calibration sequence
+    for (uint8_t i = 0; i < 250; i++) { 
+        Serial.println("calibrating");
+        qtr.calibrate(); 
+        delay(20);
+    }
+}
+
+void loop() {
+    uint16_t sensors [3];
+    // Get calibrated sensor values returned in the sensors array, along with the // line position, which will range from 0 to 2000, with 1000 corresponding to // a position under the middle sensor.
+    int16_t position = qtr.readLineBlack (sensors);
+}
+
 ```
 
 TIP: always run the calibrate function (i.e. hold a line of the color you’re sensing under all the sensors during set up) to ensure consistent and accurate results.
