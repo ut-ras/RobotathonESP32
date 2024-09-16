@@ -6,7 +6,7 @@ nav_include: true
 nav_order: 1
 ---
 
-# How to (not) Explode Your Microcontroller like the Rest of Us (copy pasted minimal content editing)
+# How to (not) Explode Your Microcontroller like the Rest of Us
 
 ## What is a short circuit?
 
