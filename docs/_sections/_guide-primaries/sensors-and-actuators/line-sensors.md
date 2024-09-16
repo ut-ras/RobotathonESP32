@@ -22,6 +22,10 @@ Note: you do NOT have to use all of the LED/phototransistor pairs — You can le
 The following program will allow you to continuously read a general position value of the sensor across a line. After you build and flash the program, you should see the values in the UART change as you shift the line across the 
 different sensors.
 
+```cpp
+todo
+```
+
 TIP: always run the calibrate function (i.e. hold a line of the color you’re sensing under all the sensors during set up) to ensure consistent and accurate results.
 
 ## Extensions

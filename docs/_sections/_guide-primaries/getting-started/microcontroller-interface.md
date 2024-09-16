@@ -13,8 +13,8 @@ Microcontrollers are cool and all, but they’re a lot more interesting when you
 
 We are only concerned with pins that are power, ground, GPIO, and ADC enabled, so don't worry about all the extra abilities. 
 
-* Power - 3V3 and 5V pins labeled with red. These pins will always be outputting their respective voltage levels (3.3V and 5V) as long as the ESP32 is powered
-* Ground - pins labeled as GND. These pins are 0V and serve as the return path in your circuits.
+* Power - 3V3 and 5V pins labeled with red. These pins will always be outputting their respective voltage levels (3.3V and 5V) as long as the ESP32 is powered.
+* Ground - pins labeled as GND. These pins serve as the current's return path in your circuits.
 * GPIO (General Purpose Input/Output) - virtually every pin. These pins can be configured to read or output digital high and low signals.
 * ADC (Analog to Digital Converter) - only some pins. These pins can read analog values instead of just high or low. 
 

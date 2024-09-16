@@ -13,24 +13,3 @@ This calendar will have the most up to date version of the competition timeline!
 {: .highlight}
 Tip: You can add this calendar to your personal Google calendar by clicking the plus button above^^
 {: .callout-toby}
-
-## Dates List:
-
-**Kickoff** - Sept 17th<br>
-**Team Assembly Checkpoint** - Sept 17th (at kickoff)<br>
-**Design Checkpoint** - Sept 22nd<br>
-**Programming Workshop I** - Sept 23<br>
-**LED Blink Checkpoint** - Sept 29<br>
-**Programming Workshop II** - Sept 30<br>
-**Moving Base Checkpoint** - Oct 6<br>
-**Solidworks Workshop** - Oct 7<br>
-**Line/Wall/Color Checkpoint** - Oct 13<br>
-**Breadboarding Workshop** - Oct 14<br>
-**Line/Wall/Color Checkpoint** - Oct 20<br>
-**Color Sensor Workshop** - Oct 21<br>
-**Line/Wall/Color Follow Workshop** - Oct 28<br>
-**Mechanical Design Checkpoint** - Nov 3<br>
-**Line/Wall/Color Checkpoint** - Nov 10<br>
-**Competition Day** - Nov 16<br>
-
-Note: Line/Wall/Color means your team has a choice between the three different sensors to demo for the checkpoint
