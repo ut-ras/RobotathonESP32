@@ -1,7 +1,2 @@
 # Ignore build and task configuration files
-build/
-sdkconfig.old
 .vscode/
-
-dependencies.lock
-sdkconfig
