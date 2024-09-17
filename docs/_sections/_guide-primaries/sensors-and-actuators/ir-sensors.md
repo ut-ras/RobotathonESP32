@@ -39,6 +39,12 @@ If you're not sure which ESP32 pins are ADC (Analog to Digital Converter) capabl
 The following program will allow you to read values from the IR sensor in a loop. After you build and flash the program, you should see the values in your terminal output change as you move it towards and away from an object.
 
 ```cpp
+#include "sdkconfig.h"
+#ifndef CONFIG_BLUEPAD32_PLATFORM_ARDUINO
+#error "Must only be compiled when using Bluepad32 Arduino platform"
+#endif  // !CONFIG_BLUEPAD32_PLATFORM_ARDUINO
+#include <Arduino.h>
+
 #include <ESP32SharpIR.h>
 
 void setup() {

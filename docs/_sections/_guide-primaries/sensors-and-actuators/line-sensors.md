@@ -23,11 +23,17 @@ The following program will allow you to continuously read a general position val
 different sensors.
 
 ```cpp
+#include "sdkconfig.h"
+#ifndef CONFIG_BLUEPAD32_PLATFORM_ARDUINO
+#error "Must only be compiled when using Bluepad32 Arduino platform"
+#endif  // !CONFIG_BLUEPAD32_PLATFORM_ARDUINO
+#include <Arduino.h>
+
 #include <QTRSensors.h>
 
 QTRSensors qtr;
 
-void setup {
+void setup() {
     // set up Serial Communication and sensor pins
     Serial.begin(115200);
     qtr.setTypeAnalog(); // or setTypeAnalog()

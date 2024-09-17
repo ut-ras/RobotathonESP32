@@ -46,6 +46,12 @@ Control Pins: Connect the control pins (e.g., IN1, IN2, ENA) on the motor contro
 
 The following is an example of configuring and running the motor in software:
 ```cpp
+#include "sdkconfig.h"
+#ifndef CONFIG_BLUEPAD32_PLATFORM_ARDUINO
+#error "Must only be compiled when using Bluepad32 Arduino platform"
+#endif  // !CONFIG_BLUEPAD32_PLATFORM_ARDUINO
+#include <Arduino.h>
+
 #define IN1  27  // Control pin 1
 #define IN2  26  // Control pin 2
 #define ENA  25  // PWM pin
@@ -99,7 +105,13 @@ If you're not sure which ESP32 pins are PWM capable, then check out the diagram 
 In this competition, we will be using the Arduino servo library to control the servos. The following is an example of how to configure the servo:
 
 ```cpp
-#include <Servo.h>
+#include "sdkconfig.h"
+#ifndef CONFIG_BLUEPAD32_PLATFORM_ARDUINO
+#error "Must only be compiled when using Bluepad32 Arduino platform"
+#endif  // !CONFIG_BLUEPAD32_PLATFORM_ARDUINO
+#include <Arduino.h>
+
+#include <ESP32Servo.h>
 
 Servo myservo;
 

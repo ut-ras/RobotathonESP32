@@ -27,24 +27,31 @@ If you want more details on how the color sensor works, check out [this link!](h
 For this tutorial, we’re only going to be reading the RGB sensor values from the TCS34725. Make sure that your pins are correctly connected or otherwise you won’t receive the data!
 
 ```cpp
-//Color Sensor headers
+#include "sdkconfig.h"
+#ifndef CONFIG_BLUEPAD32_PLATFORM_ARDUINO
+#error "Must only be compiled when using Bluepad32 Arduino platform"
+#endif  // !CONFIG_BLUEPAD32_PLATFORM_ARDUINO
+#include <Arduino.h>
+
+
 #include <Wire.h>
-#include <Arduino APDS9960.h>
+#include <Arduino_APDS9960.h>
 #include <bits/stdc++.h>
-//Color sensor definitions
-#define APDS9960 INT 2
-#define 120 SDA 21
-#define 12C SCL 22
-#define I2C FREQ 100000
-//Color Sensor unit & 12C unit 
-Twowire I2C_0 = TwoWire(0); 
-APDS9960 apds = APDS9960(12C_0, APDS9960_INT);
+
+#define APDS9960_INT 2
+#define I2C_SDA 21
+#define I2C_SCL 22
+#define I2C_FREQ 100000
+
+TwoWire I2C_0 = TwoWire(0);
+APDS9960 apds = APDS9960(I2C_0, APDS9960_INT);
 
 void setup() {
-    //Sets up I2C protocol
+    //sets up I2C protocol
     I2C_0.begin(I2C_SDA, I2C_SCL, I2C_FREQ);
-    // Set up color sensor
-    apds.setInterruptPin (APDS9960_INT);
+
+    //sets up color sensor
+    apds.setInterruptPin(APDS9960_INT);
     apds.begin();
     Serial.begin(115200);
 }
