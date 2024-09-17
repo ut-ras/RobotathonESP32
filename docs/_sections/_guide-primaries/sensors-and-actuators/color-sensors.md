@@ -27,12 +27,9 @@ If you want more details on how the color sensor works, check out [this link!](h
 For this tutorial, we’re only going to be reading the RGB sensor values from the TCS34725. Make sure that your pins are correctly connected or otherwise you won’t receive the data!
 
 ```cpp
-#include "sdkconfig.h"
-#ifndef CONFIG_BLUEPAD32_PLATFORM_ARDUINO
-#error "Must only be compiled when using Bluepad32 Arduino platform"
-#endif  // !CONFIG_BLUEPAD32_PLATFORM_ARDUINO
-#include <Arduino.h>
 
+#include "sdkconfig.h"
+#include <Arduino.h>
 
 #include <Wire.h>
 #include <Arduino_APDS9960.h>
@@ -60,6 +57,7 @@ void loop() {
     int r, g, b, a;
     // Wait until color is read from the sensor 
     while (!apds.colorAvailable()) { delay(5); }
+    apds.readColor(r, g, b, a);
     // Read color from sensor apds.readColor(r, g, b, a);
     // Print color in decimal 
     Serial.print("RED: ");
@@ -70,6 +68,7 @@ void loop() {
     Serial.print(b);
     Serial.print(" AMBIENT: ");
     Serial.println(a);
+    delay(100);
 }
 ```
 

@@ -47,15 +47,16 @@ The following program will allow you to read values from the IR sensor in a loop
 
 #include <ESP32SharpIR.h>
 
+ESP32SharpIR IRSensorName(ESP32SharpIR::GP2Y0A21YK0F, 27);
+
 void setup() {
     Serial.begin(115200);
-    ESP32SharpIR IRSensorName(ESP32SharpIR::GP2Y0A21YKOF, 27);
-    IRSensorName.setFilterRate(0.1f);
+    IRSensorName.setFilterRate(1.0f);
 }
     
 void loop() {
     Serial.println(IRSensorName.getDistanceFloat()); 
-    delay(500);
+    delay(100);
 }
 ```
 

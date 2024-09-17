@@ -23,6 +23,7 @@ The following program will allow you to continuously read a general position val
 different sensors.
 
 ```cpp
+
 #include "sdkconfig.h"
 #ifndef CONFIG_BLUEPAD32_PLATFORM_ARDUINO
 #error "Must only be compiled when using Bluepad32 Arduino platform"
@@ -32,12 +33,13 @@ different sensors.
 #include <QTRSensors.h>
 
 QTRSensors qtr;
+uint16_t sensors[3];
 
 void setup() {
     // set up Serial Communication and sensor pins
     Serial.begin(115200);
     qtr.setTypeAnalog(); // or setTypeAnalog()
-    qtr.setSensorPins((const uint8_t[]) {5, 17, 16}, 3); // pin numbers go in the curly brackets {}, and number of pins goes after
+    qtr.setSensorPins((const uint8_t[]) {36, 39, 34}, 3); // pin numbers go in the curly brackets {}, and number of pins goes after
 
     // calibration sequence
     for (uint8_t i = 0; i < 250; i++) { 
@@ -48,9 +50,16 @@ void setup() {
 }
 
 void loop() {
-    uint16_t sensors [3];
-    // Get calibrated sensor values returned in the sensors array, along with the // line position, which will range from 0 to 2000, with 1000 corresponding to // a position under the middle sensor.
-    int16_t position = qtr.readLineBlack (sensors);
+    // Get calibrated sensor values returned in the sensors array, along with the 
+    // line position, which will range from 0 to 2000, with 1000 corresponding to
+    // a position under the middle sensor.
+    qtr.readLineBlack(sensors);
+    Serial.print(sensors[0]);
+    Serial.print(" ");
+    Serial.print(sensors[1]);
+    Serial.print(" ");
+    Serial.println(sensors[2]);
+    delay(250);
 }
 
 ```
