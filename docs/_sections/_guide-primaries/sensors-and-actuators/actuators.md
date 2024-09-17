@@ -57,6 +57,7 @@ The following is an example of configuring and running the motor in software:
 #define ENA  25  // PWM pin
 
 void setup() {
+  Serial.begin(115200);
   pinMode(IN1, OUTPUT);
   pinMode(IN2, OUTPUT);
   pinMode(ENA, OUTPUT);
@@ -66,7 +67,7 @@ void loop() {
   // Move motor forward
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
-  analogWrite(ENA, 128);  // Set speed (0-255)
+//   analogWrite(ENA, 128);  // Set speed (0-255)
 
   delay(2000);  // Run for 2 seconds
 
@@ -76,6 +77,11 @@ void loop() {
   analogWrite(ENA, 0);
 
   delay(2000);
+
+  // Move motor backward
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+//   analogWrite(ENA, 128);  // Set speed (0-255)
 }
 ```
 More detailed information about the L298N motor controllers can be [found here!](https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tutorial/)
