@@ -92,7 +92,7 @@ More detailed information about the L298N motor controllers can be [found here!]
 
 ## What Are Servos?
 
-Servos are motors that are designed for precise position control. Instead of rotating arbitrarily when powered, servos listen to a control signal (usually [PWM](https://learn.sparkfun.com/tutorials/pulse-width-modulation/all)) to determine where to rotate. Some servos offer limited rotation, while others can rotate continuously (like ours).More advanced servos have other ways to be even more precise such as a feedback system on top of the control signal, but that is not necessary for this competition.
+Servos are motors that are designed for precise position control. Instead of freely rotating when powered, servos listen to a control signal (usually [PWM](https://learn.sparkfun.com/tutorials/pulse-width-modulation/all)) to determine where to rotate. Some servos offer limited rotation, while others can rotate continuously (like ours).More advanced servos have other ways to be even more precise such as a feedback system on top of the control signal, but that is not necessary for this competition.
 
 ## How to Use Servos?
 
@@ -105,7 +105,7 @@ For the servos in our competition, you can use it to precisely control your mech
 | White        |  Any PWM capable pin          |
 
 {: .highlight}
-If you're not sure which ESP32 pins are PWM capable, then check out the diagram in [this page!](https://ut-ras.github.io/RobotathonESP32/getting-started/microcontroller-interface)
+If you're not sure which ESP32 pins are hardware PWM capable, then check out the diagram in [this page!](https://ut-ras.github.io/RobotathonESP32/getting-started/microcontroller-interface)
 {: .callout-toby}
 
 In this competition, we will be using the Arduino servo library to control the servos. The following is an example of how to configure the servo:

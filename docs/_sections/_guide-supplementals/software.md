@@ -1,9 +1,13 @@
-<!-- ---
+---
 layout: default
-title: Software
+title: Basic Software Guide
 nav_include: true
 # parent: Resources
 nav_order: 1
---- -->
+--- 
 
-<!-- TBD -->
+
+variables
+if statements
+for loops
+while loops

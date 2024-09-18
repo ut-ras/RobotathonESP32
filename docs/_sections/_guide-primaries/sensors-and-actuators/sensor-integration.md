@@ -31,7 +31,7 @@ Building and acting upon your model of the world can be hard. To help, we’ve p
 We leave the implementation of the example as an exercise for the reader.
 Finally, we would also like to emphasize writing clean and readable code. Clean code helps both your team and the mentors by making it easier to debug.
 
-A convention guide can be found at http://www.cs.umd.edu/~nelson/classes/resources/cstyleguide/.
+A coding convention guide can be found (here!)[http://www.cs.umd.edu/~nelson/classes/resources/cstyleguide/]
 
 # Extensions
 * How will your robot cope with multiple challenges?

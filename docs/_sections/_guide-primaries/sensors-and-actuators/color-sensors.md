@@ -23,6 +23,10 @@ If you want more details on how the color sensor works, check out [this link!](h
 | SDA       |  GPIO21   |
 | SCL     |  GPIO22    |
 
+{: .highlight}
+Make sure to connect the color sensor's power pin to 3.3V! A 5V connection will fry the sensor.
+{: .callout-toby}
+
 ## Programming
 For this tutorial, we’re only going to be reading the RGB sensor values from the TCS34725. Make sure that your pins are correctly connected or otherwise you won’t receive the data!
 

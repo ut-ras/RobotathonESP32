@@ -18,6 +18,9 @@ Note: While it is good coding practice to leave comments in your code to make it
 {: .callout-toby}
 
 ```cpp
+#include "sdkconfig.h"
+#include <Arduino.h>
+
 int LED_BUILTIN = 2; // defines the word "LED_BUILTIN" as the number 2 for ease of use when defining and using the pin later
 
 void setup() {
