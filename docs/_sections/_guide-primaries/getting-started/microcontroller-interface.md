@@ -26,7 +26,7 @@ For this competition, you will be able to control your robot with a wireless gam
 
 It would be impractical to power your ESP32 through your laptop with a super long cable, so you will use a battery pack feeding through a buck converter to power the 5V pin of the ESP32.
 
-<img src="{{ '/_assets/images/buck_converter.png' | prepend: site.baseurl }}" alt="buck_converter.png">
+<img src="{{ '/_assets/images/buck_converter.png' | prepend: site.baseurl }}" alt="buck_converter.png" width=400 height=400>
 
 You will use this buck converter to reduce the voltage of the battery pack down to a level the ESP32 can tolerate (5V). Here are the steps to interface the battery pack to the ESP32 (assumes ESP32 is seated in breadboard):
 

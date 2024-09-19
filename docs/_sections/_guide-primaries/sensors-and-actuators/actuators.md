@@ -40,16 +40,13 @@ Control Pins: Connect the control pins (e.g., IN1, IN2, ENA) on the motor contro
 |  Motor Controller Terminal   | ESP32 Pin          |
 |:-------------|:------------------|
 | +5V           | 5V                      |
-| IN1          | GPIO      |
-| IN2          | GPIO     |
-| ENA          | GPIO      |
+| IN1          | Any GPIO      |
+| IN2          | Any GPIO     |
+| ENA          | Any GPIO      |
 
 The following is an example of configuring and running the motor in software:
 ```cpp
 #include "sdkconfig.h"
-#ifndef CONFIG_BLUEPAD32_PLATFORM_ARDUINO
-#error "Must only be compiled when using Bluepad32 Arduino platform"
-#endif  // !CONFIG_BLUEPAD32_PLATFORM_ARDUINO
 #include <Arduino.h>
 
 #define IN1  27  // Control pin 1
@@ -112,9 +109,6 @@ In this competition, we will be using the Arduino servo library to control the s
 
 ```cpp
 #include "sdkconfig.h"
-#ifndef CONFIG_BLUEPAD32_PLATFORM_ARDUINO
-#error "Must only be compiled when using Bluepad32 Arduino platform"
-#endif  // !CONFIG_BLUEPAD32_PLATFORM_ARDUINO
 #include <Arduino.h>
 
 #include <ESP32Servo.h>
