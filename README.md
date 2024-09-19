@@ -35,7 +35,7 @@ Full installation and setup instructions be [found here](https://github.com/espr
 ## 5. Setting up ESP-IDF
 After installation, a setup wizard will appear. It can also be opened by searching for **ESP-IDF: Configure ESP-IDF extension** in the Command Palette (accessible through the top search bar).
 
-Choose the "Express" option. You can leave everything default. Wait until the setup wizard displays a message stating that settings have been configured.
+Choose the "Express" option. Enable the "Show all ESP-IDF tags" and select "v4.4.8 (release version)" from the dropdown. Feel free to leave everything else default. Wait until the setup wizard displays a message stating that settings have been configured.
 
 ## 6. Using the Project
 The Arduino Core means that code can be written for the ESP32 just like you would for any Arduino board. To do this, use the `setup()` and `loop()` methods found in `arduino_main.cpp`.
