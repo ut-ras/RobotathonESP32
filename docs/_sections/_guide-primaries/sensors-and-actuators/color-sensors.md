@@ -12,7 +12,7 @@ The TCS34725 from Adafruit will allow you to complete the Color Challenge.
 <img src="{{ '/_assets/images/color_sensor.jpg' | prepend: site.baseurl }}" alt="color_sensor.jpg" width=300 height=300>
 
 ## How it Works
-The RGB sensor uses the RGB color space to represent the color that it sees through photodiodes. It provides the data in integer values of 0-255, represented in 8 binary bits. We will grab that data using a communication protocol called I2C, which is used in many electrical devices. Implementing I2C is out of the scope of this competition, but you can find more information about it [here.](https://learn.sparkfun.com/tutorials/i2c/all)
+The RGB sensor uses the RGB color space to represent the color that it receives through photodiodes. It provides the R G and B data in integer values of 0-255 (8 bit representation). We will grab that data using a communication protocol called I2C, which is used in many electrical devices. Implementing I2C is out of the scope of this competition, but you can find more information about it [here.](https://learn.sparkfun.com/tutorials/i2c/all)
 
 If you want more details on how the color sensor works, check out [this link!](https://www.utmel.com/components/everything-you-know-about-tcs34725-color-sensors-faq?id=1986)
 
@@ -26,6 +26,8 @@ If you want more details on how the color sensor works, check out [this link!](h
 {: .highlight}
 Make sure to connect the color sensor's power pin to 3.3V! A 5V connection will fry the sensor.
 {: .callout-toby}
+
+insert wiring diagram here
 
 ## Programming
 For this tutorial, we’re only going to be reading the RGB sensor values from the TCS34725. Make sure that your pins are correctly connected or otherwise you won’t receive the data!

@@ -23,14 +23,17 @@ A motor controller, such as the L298N, acts as an intermediary between the micro
 * PWM (Pulse Width Modulation) Control: This enables speed control by varying the duty cycle of the PWM signal.
 * Power Supply Terminals: These provide the necessary power to the motor.
 
+The following information is an adapted version of [this guide.](https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tutorial/)
+
 # How to Use Motor and Controller?
 To control a DC motor using an ESP32 and a motor controller, you need to directly connect the power source and ESP32 to the motor controller as shown below:
 <br>
 <img src="{{ '/_assets/images/l298n_driver_pinout.png' | prepend: site.baseurl }}" alt="l298n_driver_pinout.png" width="300" height="400">
 
-Power: Connect the motor controller's 12V terminal to a power source less than 12V
-<br>
+Motor Controller Power: Connect the motor controller's 12V terminal to a power source less than 12V
+Motor Power: Connect the motor leads into the terminals with 2 slots. Polarity (order of red and black wires) do not matter because DC motors are designed to run either direction based on the current direction running through them.
 Control Pins: Connect the control pins (e.g., IN1, IN2, ENA) on the motor controller to the GPIO pins on the ESP32.
+<br>
 
 | Motor Wire        | Motor Controller Terminal          |
 |:-------------|:------------------|
@@ -42,10 +45,11 @@ Control Pins: Connect the control pins (e.g., IN1, IN2, ENA) on the motor contro
 | +5V           | 5V                      |
 | IN1          | Any GPIO      |
 | IN2          | Any GPIO     |
-| ENA          | Any GPIO      |
+| ENA          | Any PWM enabled pin      |
 
 The following is an example of configuring and running the motor in software:
 ```cpp
+
 #include "sdkconfig.h"
 #include <Arduino.h>
 
@@ -61,24 +65,18 @@ void setup() {
 }
 
 void loop() {
-  // Move motor forward
+  // Spin motor
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
-//   analogWrite(ENA, 128);  // Set speed (0-255)
+  analogWrite(ENA, 255);
 
-  delay(2000);  // Run for 2 seconds
+  delay(1000);  // Run for 1 second
 
   // Stop motor
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, LOW);
-  analogWrite(ENA, 0);
 
-  delay(2000);
-
-  // Move motor backward
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, HIGH);
-//   analogWrite(ENA, 128);  // Set speed (0-255)
+  delay(1000); // Stop for 1 second
 }
 ```
 More detailed information about the L298N motor controllers can be [found here!](https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tutorial/)
@@ -105,7 +103,7 @@ For the servos in our competition, you can use it to precisely control your mech
 If you're not sure which ESP32 pins are hardware PWM capable, then check out the diagram in [this page!](https://ut-ras.github.io/RobotathonESP32/getting-started/microcontroller-interface)
 {: .callout-toby}
 
-In this competition, we will be using the Arduino servo library to control the servos. The following is an example of how to configure the servo:
+In this competition, we will be using the Arduino servo library to control the servos. The following is an example of how to spin a servo using the ESP32's pin 2 as the PWM output.
 
 ```cpp
 #include "sdkconfig.h"
@@ -113,14 +111,16 @@ In this competition, we will be using the Arduino servo library to control the s
 
 #include <ESP32Servo.h>
 
-Servo myservo;
+Servo myServo;
 
 void setup() {
-  myservo.attach(9);
-  myservo.writeMicroseconds(1500);  // set servo to mid-point
+  myServo.attach(2);
+  myServo.write(1750);
 }
 
-void loop() {}
+void loop() {
+
+}
 ```
 
-Simply input a different value in the ```writeMicroseconds()``` function to change how the servo behaves!
+Simply input a different value in the ```write()``` function to change how the servo behaves! See [this official Arduino guide for more info](https://www.arduino.cc/reference/en/libraries/servo/write/)
