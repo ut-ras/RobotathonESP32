@@ -44,7 +44,6 @@ Typically, the first page is pretty meta. Areas of interest include:
 Note: manufacturers might use different wording to describe what was mentioned above (i.e. pinout = connection diagram). 
 {: .callout-toby}
 
-
 Just like a Wikipedia page, datasheets tell you a lot of information that may or may not pertain to what you’re looking for. By knowing generally where to look and what you’re interested in, it’s faster for you to find the details you need!
 
 

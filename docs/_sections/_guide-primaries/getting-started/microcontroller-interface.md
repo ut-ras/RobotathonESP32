@@ -21,27 +21,22 @@ We are only concerned with pins that are power, ground, GPIO, and ADC enabled, s
 * ADC (Analog to Digital Converter) - only some pins. These pins can read analog values instead of just high or low. 
 
 {: .highlight}
-Note: Do NOT short (connect) a power pin directly to a ground pin. This will likely fry your ESP32 and more by causing a huge surge of current. 
+Warning: Be careful to not short (connect) a power pin directly to a ground pin. This will fry your ESP32 and more by causing a huge surge of current. 
 {: .callout-toby}
 
-You can power your ESP32 by 2 methods: USB connection to laptop or external battery pack.
+## Powering the ESP32
+You can power your ESP32 by 2 methods: USB connection or external battery pack.
+
+The USB connection to your computer is necessary for uploading and debugging your code through the serial monitor. It would be easiest to keep using the USB connection until later in the competition when testing the entire system.
 
 {: .highlight}
-Note: Do NOT power your ESP32 through its 5V pin using the battery pack while simultaneously connecting it to your computer!! This may damage your devices (please only do one at a time).
+Note: Do NOT power your ESP32 through its 5V pin with the battery pack while simultaneously connecting it to your computer! This may irreversibly damage your devices (only do one at a time).
 {: .callout-toby}
 
-The USB connection is necessary for uploading and debugging your code through the serial monitor. 
-
-For this competition, you will be able to control your robot with a wireless game controller to navigate around the field (sensor challenges should be completed autonomously). It would be impractical to power your ESP32 through your laptop with a super long cable all the time, so you will use an external battery pack feeding through a buck converter to power the 5V pin of the ESP32.
-
-<img src="{{ '/_assets/images/buck_converter.png' | prepend: site.baseurl }}" alt="buck_converter.png" width=400 height=400>
-
-You will use this buck converter to reduce the voltage of the battery pack down to a level the ESP32 can safely use (5V). Here are the steps to interface the battery pack to the ESP32 (assumes ESP32 is seated in breadboard):
-
- (((insert picture of wire diagram here)))
-
+Using the external battery pack is detailed in the [Actuators page](https://ut-ras.github.io/RobotathonESP32/sensors-and-actuators/actuators) because we will be using the motor driver's 5V output to power the ESP32.
 
 If you want to know more about any features, feel free to ask a mentor or Google for more information :) 
+
 
 
 

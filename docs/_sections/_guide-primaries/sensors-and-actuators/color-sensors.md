@@ -16,6 +16,10 @@ The RGB sensor uses the RGB color space to represent the color that it receives 
 
 If you want more details on how the color sensor works, check out [this link!](https://www.utmel.com/components/everything-you-know-about-tcs34725-color-sensors-faq?id=1986)
 
+Here is a wiring diagram:
+
+<img src="{{ '/_assets/images/color_sensor_wiring.png' | prepend: site.baseurl }}" alt="color_sensor_wiring.png">
+
 |  Color Sensor Pin   | ESP32 Pin          |
 |:-------------|:------------------|
 | VIN          | 3.3V                      |
@@ -27,7 +31,7 @@ If you want more details on how the color sensor works, check out [this link!](h
 Make sure to connect the color sensor's power pin to 3.3V! A 5V connection will fry the sensor.
 {: .callout-toby}
 
-insert wiring diagram here
+The SDA and SCL on the color sensor MUST be connected to the specified GPIO pins on the ESP32. This is because they are the dedicated pins for I2C commmunication.
 
 ## Programming
 For this tutorial, we’re only going to be reading the RGB sensor values from the TCS34725. Make sure that your pins are correctly connected or otherwise you won’t receive the data!

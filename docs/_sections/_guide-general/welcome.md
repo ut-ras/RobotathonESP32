@@ -12,7 +12,7 @@ nav_order: 1
 
 This guide aims to provide you with helpful information and direction throughout your robot building process. While this guide is broad, it stays mostly within the realm of setup and basic tips since we encourage you to discover your own solutions.
 
-If you have any technical questions or don’t understand a topic, ask the mentors or during office hours, which can be found [here (soon™️)](link)! We can help to resolve your problems, or point you to the right person who can. Mentors, office hours, and other teammates are valuable resources to turn to if you are stuck.
+If you have any technical questions or don’t understand a topic, ask the mentors or during [office hours here](https://docs.google.com/spreadsheets/d/1MNuk1WAB5ZmVcOo-_wdnVN3yREhI9oH90169OuW2QAc/edit?gid=1317822740#gid=1317822740)! We can help to resolve your problems, or point you to the right person who can. Mentors, office hours, and other teammates are valuable resources to turn to if you are stuck.
 
 ## Overview
 

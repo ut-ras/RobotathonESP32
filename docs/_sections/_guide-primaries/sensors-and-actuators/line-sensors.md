@@ -3,7 +3,7 @@ layout: default
 title: Line Sensor
 nav_include: true
 parent: Sensors and Actuators
-nav_order: 1
+nav_order: 3
 ---
 
 # Line Sensor
@@ -12,20 +12,19 @@ A necessary component for any challenge that requires your robot to follow a lin
 ## How it Works
 The line sensor is made up of an array of 8 IR LED/phototransistor pairs, each take an analog reflectance reading by timing how long it takes the output voltage to decay due to the phototransistor. By pointing the line sensor IR LEDs/phototransistors at the line, the robot is able to tell where the dark line of tape is by reading the output voltage of each phototransistor
 
+This side of the sensor will be facing the floor to detect the line:
 <img src="{{ '/_assets/images/line_sensor_diodes.png' | prepend: site.baseurl }}" alt="line_sensor_diodes.png">
 
 {: .highlight}
-Note: you do NOT have to use all of the LED/phototransistor pairs — You can leave the ones you do not want to use disconnected from the ESP32.
+Note: You do NOT have to use all 8 of the LED/phototransistor pairs — You can leave the ones you do not want to use disconnected from the ESP32.
 {: .callout-toby}
 
-
-<img src="{{ '/_assets/images/line_sensor_wiring.png' | prepend: site.baseurl }}" alt="line_sensor_wiring.png">
-
-((something something wiring))
+<img src="{{ '/_assets/images/line_sensor_wire_diagram.png' | prepend: site.baseurl }}" alt="line_sensor_wire_diagram.png">
 
 ## Programming
-The following program will allow you to continuously read a general position value of the sensor across a line. After you build and flash the program, you should see the values in the UART change as you shift the line across the 
-different sensors.
+The following program will allow you to continuously read the sensor data from 2 of the photodiode sensors. You will have to calibrate the sensors by positioning the ones you want to use directly over  the black electrical tape. If you need to use more than 2 sensors, then you can also move the line sensor back and forth over the black electrical tape to calibrate it.
+
+After the calibration process, you should see the values in the terminal change as you shift the sensors over the black tape.
 
 ```cpp
 
@@ -41,7 +40,7 @@ void setup() {
     // set up Serial Communication and sensor pins
     Serial.begin(115200);
     qtr.setTypeAnalog(); // or setTypeAnalog()
-    qtr.setSensorPins((const uint8_t[]) {36, 39, 34}, 3); // pin numbers go in the curly brackets {}, and number of pins goes after
+    qtr.setSensorPins((const uint8_t[]) {8, 9}, 2); // pin numbers go in the curly brackets {}, and number of pins goes after
 
     // calibration sequence
     for (uint8_t i = 0; i < 250; i++) { 
@@ -63,7 +62,7 @@ void loop() {
 
 ```
 
-TIP: always run the calibrate function (i.e. hold a line of the color you’re sensing under all the sensors during set up) to ensure consistent and accurate results.
+TIP: Always calibrate your line sensor to ensure consistent and accurate results.
 
 ## Extensions
 * You received values from the sensor, but what do they mean? 

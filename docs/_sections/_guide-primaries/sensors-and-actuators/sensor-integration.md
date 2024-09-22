@@ -3,13 +3,14 @@ layout: default
 title: Sensor Integration
 nav_include: true
 parent: Sensors and Actuators
-nav_order: 1
+nav_order: 5
 ---
 
-# Sensor Integration (picture todo)
+# Sensor Integration
 
 Help! How do we put everything together?
-Now that you’ve completed several checkpoints and have probably gone through the interfacing tutorials, you and your team are probably wondering how to put all these various parts together. How do we merge RGB sensor data with motor movement? What happens when you encounter a nonexistent wall with your line sensors?
+Now that you’ve completed several checkpoints and have probably gone through the interfacing tutorials, you and your team are probably wondering how to put all these various parts together. How do we merge RGB sensor data with motor movement? What happens when you encounter a nonexistent wall with your distance sensors?
+
 Unfortunately, there are no easy answers to these questions. Your best bet is to experiment with your intuitions. An example is moving along a curved line. A starting series of intuitions could be:
 
 * I want to keep my robot centered on the line.
@@ -20,9 +21,9 @@ Unfortunately, there are no easy answers to these questions. Your best bet is to
  * Stopping and rotating the robot until I find the line again.
  * Etcetera …
 
-Test each intuition to see if it makes sense! Eventually, your intuitions will build a representative model of the world and how to traverse it.  This is important because a great deal of robotics revolves around this concept. Think about  autonomous cars. They need to build an internal world, replete with virtual pedestrians, vehicles, stop signs, and more, as well as make decisions based on encountering them.
+Test each intuition to see if it makes sense! Eventually, your intuitions will build a representative model of the world and how to traverse it.  This is important because a great deal of robotics revolves around this concept. Think about autonomous cars. They need to build an internal world replete with virtual pedestrians, vehicles, stop signs, and more, as well as make decisions based on encountering them.
 
-Building and acting upon your model of the world can be hard. To help, we’ve provided a handy diagram on the right that you can use to structure your program. Within the loop is the important part. We encourage partitioning your code into three states or events. A simple example is provided below.
+Building and acting upon your model of the world can be hard. We encourage partitioning your code into three states or events. A simple example is provided below.
 
 1. The IR sensors says that there is a wall to your front and left.
 1. Update the robot’s memory of the maze with these newfound walls.
