@@ -5,18 +5,16 @@ nav_include: true
 # parent: Resources
 nav_order: 1
 ---
-
+<!-- tbh how relevant is oscilloscopes for robotathon lol -->
 # To Debug or not to Debug? Debugging with Oscilloscopes and Other Tools
 Effective debugging is an important skill when working with electronic circuits, whether on a breadboard, PCB, or in a system. One of best tools for debugging is the oscilloscope, aka scope, which allows us to visualize transient behavior of electrical signals. Additionally, multimeters, logic analyzers, and signal generators play crucial roles in the debugging process.
 
 <img src="{{ '/_assets/images/oscilloscope.jpg' | prepend: site.baseurl }}" alt="oscilloscope.jpg" width=300 height=300>
 
-{: .highlight}
-If you do not have an oscilloscope available to you, check out a **multimeter**, they do about the same thing and are much easier to use, just connect the positive/ negative terminal across the component you want to measure!  
+If you do not have an oscilloscope available to you, check out a **multimeter**. They do about the same thing and are much easier to use but provide less data. If you want to measure voltage, set the multimeter into voltimeter mode and connect the positive/negative leads across the component you want to measure! Measuring current is a different process because you will need to put the multimeter into ammeter mode and put it in series with the component you want to test. 
 <img src="{{ '/_assets/images/multimeter.jpg' | prepend: site.baseurl }}" alt="multimeter.jpg" width=150 height=150>
 
-[How to Use an Multimeter](https://www.electronicshub.org/how-to-use-a-multimeter/)
-{: .callout-toby}
+[How to Use a Multimeter](https://www.electronicshub.org/how-to-use-a-multimeter/)
 
 # Using an Oscilloscope to Debug Circuits
 To effectively debug with a scope, follow these steps. For more details, check out Sparkfun's in-depth tutorial on using the oscilloscope!  
@@ -31,7 +29,7 @@ To effectively debug with a scope, follow these steps. For more details, check o
 Attach the oscilloscope probes to important points in the circuit, such as input and output pins of the ESP32 microcontroller. Make sure to connect GND to the circuit’s GND to prevent floating measurements. (Floating measurements are unreliable or inaccurate readings due to improper voltage referencing.)
 
 <img src="{{ '/_assets/images/debug_circuit.png' | prepend: site.baseurl }}" alt="debug_circuit.png" width=200 height=200>  
-*For example, if I want to measure the output of the circuit, attach the short lead (REF) to GND and the probe tip at the output. See the image above  for the the short lead and probe tip.*
+*For example, if I want to measure the output of the circuit, attach the short lead (REF) to GND and the probe tip at the output. See the image above for the the short lead and probe tip.*
 
 ### Step 2: Examine Waveforms
 Observe the waveforms at different points to verify that the signals are as expected.

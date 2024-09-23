@@ -1,4 +1,4 @@
----
+<!-- ---
 layout: default
 title: Basic Software Guide
 nav_include: true
@@ -10,4 +10,6 @@ nav_order: 1
 variables
 if statements
 for loops
-while loops
+while loops -->
+
+ 

@@ -7,9 +7,6 @@ nav_order: 2
 ---
 
 # Drive System
-We’ve provided the following components to your parts kit:
-(((list provided components)))
-
 Remember, you have an external budget that you can use to buy more servos and casters if you wish. Additionally, you have access to the TIW makerspace 3D printers and laser cutters (free training required) to design and print your own wheels and hubs.
 
 Now let’s look at the drive system. In this article, we’ll be looking specifically at two wheeled drive. With two wheels, you’re pretty limited in how you can drive. Typically, a robot with two wheels has the wheels on the sides, like below. The red regions are where you can put the wheel axles.
