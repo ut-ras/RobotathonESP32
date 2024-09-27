@@ -78,6 +78,4 @@ void loop() {
     }
 
     // TODO: Write your periodic code here
-
-    vTaskDelay(1);
 }
