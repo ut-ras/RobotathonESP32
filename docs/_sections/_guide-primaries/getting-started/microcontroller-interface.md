@@ -27,13 +27,23 @@ Warning: Be careful to not short (connect) a power pin directly to a ground pin.
 ## Powering the ESP32
 You can power your ESP32 by 2 methods: USB connection or external battery pack.
 
-The USB connection to your computer is necessary for uploading and debugging your code through the serial monitor. It would be easiest to keep using the USB connection until later in the competition when testing the entire system.
+The USB connection to your computer is necessary for uploading and debugging your code through the serial monitor. It would be easiest to keep using the USB connection until later in the competition when testing the full system.
 
 {: .highlight}
-Note: Do NOT power your ESP32 through its 5V pin with the battery pack while simultaneously connecting it to your computer! This may irreversibly damage your devices (only do one at a time).
+Note: Do NOT power your ESP32 through its 5V pin with the battery pack while simultaneously connecting it to your computer! This may irreversibly damage your devices (only do one power connection at a time).
 {: .callout-toby}
 
-Using the external battery pack is detailed in the [Actuators page](https://ut-ras.github.io/RobotathonESP32/sensors-and-actuators/actuators) because we will be using the motor driver's 5V output to power the ESP32.
+<!-- Using the external battery pack is detailed in the [Actuators page](https://ut-ras.github.io/RobotathonESP32/sensors-and-actuators/actuators) because we will be using the motor driver's 5V output to power the ESP32. -->
+
+<img src="{{ '/_assets/images/buck_converter_power.png' | prepend: site.baseurl }}" alt="buck_converter_power.png">
+
+First we will go over using an external power source for the ESP32. For this competition, you will be able to control your robot with a wireless game controller to navigate around the field (sensor challenges should be completed autonomously). It would be impractical to power your ESP32 through USB-laptop connection on the field, so you will need a battery pack. We need to reduce the voltage of the battery pack down to a level the ESP32 can safely use through the buck converter.
+
+If you want to power your ESP32 and motors while using a USB connection, simply **securely** place one of the battery leads to an unused row in your breadboard (like picture below).
+
+<img src="{{ '/_assets/images/buck_converter_disable.png' | prepend: site.baseurl }}" alt="buck_converter_disable.png">
+
+You should now be able use your USB connection safely!
 
 If you want to know more about any features, feel free to ask a mentor or Google for more information :) 
 

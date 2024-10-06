@@ -8,8 +8,10 @@ nav_order: 4
 
 # Actuators
 
-The word "actuators" is just a fancy word for "devices that create motion," which can include anything ranging from hydraulic pistons to motors. In our case, electric motors will be the key to your robot's motion! You will deal with two types electrical actuators in this competition: DC motors and servo motors.
+The word "actuators" is just a fancy word for "devices that create motion," which can include anything ranging from hydraulic pistons to motors. In our case, electric motors will be the key to your robot's motion! In this competition, you will be dealing with servo motors.
 
+<!-- below text is now irrelevant because we are moving away from DC motors lol -->
+<!-- 
 # DC Motors
 <img src="{{ '/_assets/images/dc_motor.jpg' | prepend: site.baseurl }}" alt="dc_motor.jpg" width="200" height="300">
 
@@ -93,7 +95,7 @@ void loop() {
   delay(1000); // Stop for 1 second
 }
 ```
-Again, more detailed information about the L298N motor controllers can be [found here!](https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tutorial/)
+Again, more detailed information about the L298N motor controllers can be [found here!](https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tutorial/) -->
 
 # Servo Motors
 

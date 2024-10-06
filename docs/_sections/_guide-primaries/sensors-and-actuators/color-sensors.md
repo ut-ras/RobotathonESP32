@@ -20,6 +20,8 @@ Here is a wiring diagram:
 
 <img src="{{ '/_assets/images/color_sensor_wiring.png' | prepend: site.baseurl }}" alt="color_sensor_wiring.png">
 
+The color sensor layout does not exactly match the sensor you have, but all the pin names should be the same (see table below)
+
 |  Color Sensor Pin   | ESP32 Pin          |
 |:-------------|:------------------|
 | VIN          | 3.3V                      |
