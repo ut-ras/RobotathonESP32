@@ -146,4 +146,4 @@ void loop() {
 }
 ```
 
-Simply input a different value in the ```write()``` function to change how the servo behaves! See [this official Arduino guide for more info](https://www.arduino.cc/reference/en/libraries/servo/write/)
+Simply input a different value in the ```write()``` function to change how the servo behaves!
