@@ -10,8 +10,7 @@ nav_order: 4
 
 The word "actuators" is just a fancy word for "devices that create motion," which can include anything ranging from hydraulic pistons to motors. In our case, electric motors will be the key to your robot's motion! In this competition, you will be dealing with servo motors.
 
-<!-- below text is now irrelevant because we are moving away from DC motors lol -->
-<!-- 
+
 # DC Motors
 <img src="{{ '/_assets/images/dc_motor.jpg' | prepend: site.baseurl }}" alt="dc_motor.jpg" width="200" height="300">
 
@@ -30,20 +29,27 @@ A motor controller, such as the L298N, acts as an intermediary between the micro
 The following information is an adapted version of [this guide.](https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tutorial/)
 
 # How to Use Motor and Motor Controller?
+
+# Battery Pack Power
 First we will go over using an external power source for the ESP32. For this competition, you will be able to control your robot with a wireless game controller to navigate around the field (sensor challenges should be completed autonomously). It would be impractical to power your ESP32 through USB on the field, so you will use a battery pack. We need to reduce the voltage of the battery pack down to a level the ESP32 can safely use through the motor controller's 5V voltage regulator.
 
-Here is a diagram of how your circuit should look when using the battery pack (voltage regulator jumper needs to be in place to enable the motor controller's 5V output to the ESP32):
+Here is a diagram of how your circuit should look when using the battery pack:
 
 <img src="{{ '/_assets/images/external_ESP32_power.png' | prepend: site.baseurl }}" alt="external_ESP32_power.png">
-<img src="{{ '/_assets/images/motor_controller_jumper.png' | prepend: site.baseurl }}" alt="motor_controller_jumper.png" width=400 height=400>
+* Notice how the blue lines are shared between all components so that they have a common ground
 
-If you want to power your ESP32 and motors while using a USB connection, simply remove one battery from the battery pack (creates open circuit) and take out the voltage regulator jumper on the motor controller (will make 5V terminal receive input). You should now be able use your USB connection safely!
+However, if you want to be able to use your motors and plug your ESP32 into your laptop to use the serial monitor for debugging, then you'll have to change the wiring (or else you will fry your equipment!):
+
+<img src="{{ '/_assets/images/motor_controller_with_usb.png' | prepend: site.baseurl }}" alt="motor_controller_with_usb.png">
+* Note how the line from the motor controller's 5V line is now gone! 
+
+You should now be able use your USB connection safely!
 
 {: .highlight}
 Do NOT power your ESP32 through its 5V pin with the battery pack while simultaneously connecting it to your computer through USB! This may irreversibly damage your devices (only do one at a time).
 {: .callout-toby}
 
-To control a DC motor using the ESP32, a motor controller, and AA battery pack, you can connect them together as shown below:
+To control a DC motor using the ESP32, a motor controller, and battery pack (**WITH USB CONNECTION**), you can connect them together as shown below:
 
 <img src="{{ '/_assets/images/motor_with_external_power.png' | prepend: site.baseurl }}" alt="motor_with_external_power.png">
 
@@ -95,7 +101,7 @@ void loop() {
   delay(1000); // Stop for 1 second
 }
 ```
-Again, more detailed information about the L298N motor controllers can be [found here!](https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tutorial/) -->
+Again, more detailed information about the L298N motor controllers can be [found here!](https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tutorial/)
 
 # Servo Motors
 
@@ -140,4 +146,4 @@ void loop() {
 }
 ```
 
-Simply input a different value in the ```write()``` function to change how the servo behaves! See [this official Arduino guide for more info](https://www.arduino.cc/reference/en/libraries/servo/write/)
+Simply input a different value in the ```write()``` function to change how the servo behaves!

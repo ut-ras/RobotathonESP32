@@ -25,41 +25,18 @@ Warning: Be careful to not short (connect) a power pin directly to a ground pin.
 {: .callout-toby}
 
 ## Powering the ESP32
-You can power your ESP32 by 2 methods: battery pack or USB connection.
+You can power your ESP32 by 2 methods: battery pack or laptop USB connection.
 
 {: .highlight}
 Note: Do NOT power your ESP32 through its 5V pin with the battery pack while simultaneously connecting it to your computer! This may irreversibly damage your devices (only do one power connection at a time).
 {: .callout-toby}
 
-<!-- Using the external battery pack is detailed in the [Actuators page](https://ut-ras.github.io/RobotathonESP32/sensors-and-actuators/actuators) because we will be using the motor driver's 5V output to power the ESP32. -->
+### USB Connection Power
+The USB connection to your computer is necessary for uploading and debugging your code through the serial monitor. It would be easiest to keep using the USB connection until later in the competition when testing the entire system.
 
 ### External Power Source
 
-First we will go over using an external power source for the ESP32. For this competition, you will be able to control your robot with a wireless game controller to navigate around the field (sensor challenges should be completed autonomously). It would be impractical to power your ESP32 through USB-laptop connection on the field, so you will need a battery pack. We need to reduce the voltage of the battery pack (9V) down to a level the ESP32 can safely use (5V) through the buck converter.
-
-Below are the steps to interface the buck converter to your microcontroller:
-
-1.) Connect the red wire from the battery pack to the IN+ on the buck converter and the black wire from the battery pack to the IN- on the buck converter (convention dictates that red = hot wire and black = ground)
-
-<img src="{{ '/_assets/images/buck_converter_part1.png' | prepend: site.baseurl }}" alt="buck_converter_part1.png">
-
-2.) Grab a multimeter, put it into voltage reading mode, and attach the leads to OUT+ and OUT-. Adjust the small yellow screw on the buck converter until the multimeter reads a voltage of 5V.
-
-<img src="{{ '/_assets/images/buck_converter_multimeter.png' | prepend: site.baseurl }}" alt="buck_converter_multimeter.png">
-
-3.) Remove the multimeter leads and attach a red wire from the buck converter's OUT+ terminal to the ESP32's 5V pin. Attach a black wire from the buck converter's OUT- terminal to the ESP32's GND pin.
-
-<img src="{{ '/_assets/images/buck_converter_power.png' | prepend: site.baseurl }}" alt="buck_converter_power.png">
-
-### USB Connection 
-
-The USB connection to your computer is necessary for uploading and debugging your code through the serial monitor. It would be easiest to keep using the USB connection until later in the competition when testing the full system.
-
-If you want to power your ESP32 while using a USB connection, **securely** place one of the battery leads to an unused row in your breadboard (like picture below).
-
-<img src="{{ '/_assets/images/buck_converter_disable.png' | prepend: site.baseurl }}" alt="buck_converter_disable.png">
-
-You should now be able use your USB connection safely!
+Using the external battery pack is detailed in the [Actuators page](https://ut-ras.github.io/RobotathonESP32/sensors-and-actuators/actuators) because we will be using the motor driver's 5V output to power the ESP32.
 
 If you want to know more about any features, feel free to ask a mentor or Google for more information :) 
 
