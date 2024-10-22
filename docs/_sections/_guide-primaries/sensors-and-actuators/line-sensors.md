@@ -40,7 +40,7 @@ void setup() {
     // set up Serial Communication and sensor pins
     Serial.begin(115200);
     qtr.setTypeAnalog(); // or setTypeAnalog()
-    qtr.setSensorPins((const uint8_t[]) {8, 9}, 2); // pin numbers go in the curly brackets {}, and number of pins goes after
+    qtr.setSensorPins((const uint8_t[]) {33, 25}, 2); // pin numbers go in the curly brackets {}, and number of pins goes after
 
     // calibration sequence
     for (uint8_t i = 0; i < 250; i++) { 
@@ -55,8 +55,6 @@ void loop() {
     Serial.print(sensors[0]);
     Serial.print(" ");
     Serial.print(sensors[1]);
-    Serial.print(" ");
-    Serial.println(sensors[2]);
     delay(250);
 }
 
