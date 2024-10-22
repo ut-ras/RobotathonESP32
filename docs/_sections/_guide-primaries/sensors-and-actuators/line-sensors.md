@@ -34,7 +34,7 @@ After the calibration process, you should see the values in the terminal change 
 #include <QTRSensors.h>
 
 QTRSensors qtr;
-uint16_t sensors[3];
+uint16_t sensors[2];
 
 void setup() {
     // set up Serial Communication and sensor pins
