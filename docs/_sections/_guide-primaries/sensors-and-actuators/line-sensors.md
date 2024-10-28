@@ -21,6 +21,13 @@ Note: You do NOT have to use all 8 of the LED/phototransistor pairs — You can 
 
 <img src="{{ '/_assets/images/line_sensor_wire_diagram.png' | prepend: site.baseurl }}" alt="line_sensor_wire_diagram.png">
 
+| Line Sensor Pin   | ESP32 Pin          |
+|:-------------|:------------------|
+| 5V | 5V                      |
+| GND         | GND      |
+| Signal      |  Any ADC Capable Pin (i.e. GPIO32)    |
+| Signal      |  Any ADC Capable Pin (i.e. GPIO33)    |
+
 ## Programming
 The following program will allow you to continuously read the sensor data from 2 of the photodiode sensors. You will have to calibrate the sensors by positioning the ones you want to use directly over  the black electrical tape. If you need to use more than 2 sensors, then you can also move the line sensor back and forth over the black electrical tape to calibrate it.
 

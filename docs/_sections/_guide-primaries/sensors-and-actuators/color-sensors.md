@@ -7,7 +7,7 @@ nav_order: 1
 ---
 
 # Color Sensor
-The TCS34725 from Adafruit will allow you to complete the Color Challenge.
+The APDS-9960 Color Sensor will allow you to complete the Color Challenge.
 
 <img src="{{ '/_assets/images/color_sensor.jpg' | prepend: site.baseurl }}" alt="color_sensor.jpg" width=300 height=300>
 
@@ -19,8 +19,6 @@ If you want more details on how the color sensor works, check out [this link!](h
 Here is a wiring diagram:
 
 <img src="{{ '/_assets/images/color_sensor_wiring.png' | prepend: site.baseurl }}" alt="color_sensor_wiring.png">
-
-The color sensor layout does not exactly match the sensor you have, but all the pin names should be the same (see table below)
 
 |  Color Sensor Pin   | ESP32 Pin          |
 |:-------------|:------------------|
