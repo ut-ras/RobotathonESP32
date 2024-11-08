@@ -25,7 +25,7 @@ There are 3 pins (red, black, white) to the device as seen in the picture, assoc
 
 <!-- <img src="{{ '/_assets/images/ir_sensor_wiring.png' | prepend: site.baseurl }}" alt="ir_sensor_wiring.png"> -->
 <!-- decided not to include the above picture because it might be confusing with the adapter being the wrong colors lol -->
-<img src="{{ '/_assets/images/ir_sensor_wiring_diagram_no_color.png' | prepend: site.baseurl }}" alt="ir_sensor_wiring.png">
+<img src="{{ '/_assets/images/ir_sensor_wiring_switched.png' | prepend: site.baseurl }}" alt="ir_sensor_wiring.png">
 
 
 {: .highlight}
