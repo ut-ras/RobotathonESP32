@@ -33,6 +33,10 @@ Make sure to connect the color sensor's power pin to 3.3V! A 5V connection will 
 
 The SDA and SCL on the color sensor MUST be connected to the specified GPIO pins on the ESP32. This is because they are the dedicated pins for I2C commmunication.
 
+If you're not sure about the ESP32 pinout, then check out the diagram in [this page!](https://ut-ras.github.io/RobotathonESP32/getting-started/microcontroller-interface)
+
+
+
 ## Programming
 For this tutorial, we’re only going to be reading the RGB sensor values from the TCS34725. Make sure that your pins are correctly connected or otherwise you won’t receive the data!
 

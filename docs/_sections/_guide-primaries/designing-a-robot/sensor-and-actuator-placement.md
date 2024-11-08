@@ -18,7 +18,7 @@ Remember that the GP2Y0A21YK0F IR sensors have a specific range [(link to datash
 {: .callout-toby}
 
 Below are some different ideas of placement:
-<img src="{{ '/_assets/images/IR_sensors.png' | prepend: site.baseurl }}" alt="IR_sensors.png :(">
+<img src="{{ '/_assets/images/ir_sensors.png' | prepend: site.baseurl }}" alt="ir_sensors.png :(">
 
 ## Line Sensor and Color Sensor
 These two sensors will have similar placement! The line sensor and color sensor will be used to to detect what is right underneath the robot so these two will be placed on the bottom of your robot. Make sure your sensors are very close to the ground in order for them to function properly!
