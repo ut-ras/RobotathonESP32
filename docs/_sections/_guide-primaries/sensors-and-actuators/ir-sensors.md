@@ -15,8 +15,8 @@ A necessary component for any challenge that utilizes walls, analog IR sensors a
 ## How it Works
 IR distance sensors emit bursts of infrared light towards a surface. The light bounces off objects it hits, and then enters a proximity sensor. The output is then transformed into a voltage (see graph below) that can be read by the ESP32. See [this link for more information.](https://www.pololu.com/product/136)
 
-<img src="{{ '/_assets/images/ir-sensor-functionality.png' | prepend: site.baseurl }}" alt="ir-sensor-functionality.png">
-<img src="{{ '/_assets/images/ir-sensor-graph.png' | prepend: site.baseurl }}" alt="ir-sensor-graph.png">
+<img src="{{ '/_assets/images/ir_sensor_functionality.png' | prepend: site.baseurl }}" alt="ir_sensor_functionality.png">
+<img src="{{ '/_assets/images/ir_sensor_graph.png' | prepend: site.baseurl }}" alt="ir_sensor_graph.png">
 
 Notice that the sensor will output garbage if the sensor is too close to an object.
 
@@ -25,7 +25,7 @@ There are 3 pins (red, black, white) to the device as seen in the picture, assoc
 
 <!-- <img src="{{ '/_assets/images/ir_sensor_wiring.png' | prepend: site.baseurl }}" alt="ir_sensor_wiring.png"> -->
 <!-- decided not to include the above picture because it might be confusing with the adapter being the wrong colors lol -->
-<img src="{{ '/_assets/images/ir_sensor_wiring_with_swap.png' | prepend: site.baseurl }}" alt="ir_sensor_wiring.png">
+<img src="{{ '/_assets/images/ir_sensor_wiring_diagram_with_swap.png' | prepend: site.baseurl }}" alt="ir_sensor_wiring.png">
 
 
 {: .highlight}
