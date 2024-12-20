@@ -5,6 +5,9 @@
 
 #include <uni.h>
 
+#include "driver/gpio.h"
+
+
 // Custom "instance"
 typedef struct my_platform_instance_s {
     uni_gamepad_seat_t gamepad_seat;  // which "seat" is being used
@@ -96,6 +99,12 @@ static void my_platform_on_controller_data(uni_hid_device_t* d, uni_controller_t
     static uint8_t enabled = true;
     static uni_controller_t prev = {0};
     uni_gamepad_t* gp;
+
+
+    // TEST TEST TEST LOL
+    gpio_set_direction(GPIO_NUM_2, GPIO_MODE_OUTPUT);
+    gpio_set_level(GPIO_NUM_2, 1);
+
 
     // Optimization to avoid processing the previous data so that the console
     // does not get spammed with a lot of logs, but remove it from your project.
