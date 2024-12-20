@@ -810,13 +810,6 @@ C:/Users/tobya/Desktop/RobotathonESP32/build/esp-idf/wifi_provisioning/CMakeFile
 C:/Users/tobya/Desktop/RobotathonESP32/build/esp-idf/wifi_provisioning/CMakeFiles/install.dir
 C:/Users/tobya/Desktop/RobotathonESP32/build/esp-idf/wifi_provisioning/CMakeFiles/install/local.dir
 C:/Users/tobya/Desktop/RobotathonESP32/build/esp-idf/wifi_provisioning/CMakeFiles/install/strip.dir
-C:/Users/tobya/Desktop/RobotathonESP32/build/esp-idf/espressif__servo/CMakeFiles/__idf_espressif__servo.dir
-C:/Users/tobya/Desktop/RobotathonESP32/build/esp-idf/espressif__servo/CMakeFiles/edit_cache.dir
-C:/Users/tobya/Desktop/RobotathonESP32/build/esp-idf/espressif__servo/CMakeFiles/rebuild_cache.dir
-C:/Users/tobya/Desktop/RobotathonESP32/build/esp-idf/espressif__servo/CMakeFiles/list_install_components.dir
-C:/Users/tobya/Desktop/RobotathonESP32/build/esp-idf/espressif__servo/CMakeFiles/install.dir
-C:/Users/tobya/Desktop/RobotathonESP32/build/esp-idf/espressif__servo/CMakeFiles/install/local.dir
-C:/Users/tobya/Desktop/RobotathonESP32/build/esp-idf/espressif__servo/CMakeFiles/install/strip.dir
 C:/Users/tobya/Desktop/RobotathonESP32/build/esp-idf/main/CMakeFiles/__idf_main.dir
 C:/Users/tobya/Desktop/RobotathonESP32/build/esp-idf/main/CMakeFiles/edit_cache.dir
 C:/Users/tobya/Desktop/RobotathonESP32/build/esp-idf/main/CMakeFiles/rebuild_cache.dir
