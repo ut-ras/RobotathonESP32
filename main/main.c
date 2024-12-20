@@ -39,6 +39,11 @@ int app_main(void) {
     // Init Bluepad32.
     uni_init(0 /* argc */, NULL /* argv */);
 
+    // enable whitelisted connections only
+    bd_addr_t addr = {0x98, 0xb6, 0x0F, 0x36, 0x36, 0x21};
+    uni_bt_allowlist_add_addr(addr);
+    uni_bt_allowlist_set_enabled(true);
+
     // Does not return.
     btstack_run_loop_execute();
 

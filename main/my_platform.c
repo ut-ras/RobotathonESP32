@@ -100,12 +100,6 @@ static void my_platform_on_controller_data(uni_hid_device_t* d, uni_controller_t
     static uni_controller_t prev = {0};
     uni_gamepad_t* gp;
 
-
-    // TEST TEST TEST LOL
-    gpio_set_direction(GPIO_NUM_2, GPIO_MODE_OUTPUT);
-    gpio_set_level(GPIO_NUM_2, 1);
-
-
     // Optimization to avoid processing the previous data so that the console
     // does not get spammed with a lot of logs, but remove it from your project.
     if (memcmp(&prev, ctl, sizeof(*ctl)) == 0) {
@@ -122,6 +116,14 @@ static void my_platform_on_controller_data(uni_hid_device_t* d, uni_controller_t
         case UNI_CONTROLLER_CLASS_GAMEPAD:
             gp = &ctl->gamepad;
 
+                // TEST TEST TEST LOL
+    if(gp->buttons & BUTTON_B) {
+        gpio_set_direction(GPIO_NUM_2, GPIO_MODE_OUTPUT);
+        gpio_set_level(GPIO_NUM_2, 1);
+    }
+    else {
+        gpio_set_level(GPIO_NUM_2, 0);
+    }
             // Debugging
             // Axis ry: control rumble
             if ((gp->buttons & BUTTON_A) && d->report_parser.play_dual_rumble != NULL) {
