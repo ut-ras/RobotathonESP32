@@ -1,8 +1,0 @@
-CMake Error at C:/Users/tobya/esp/v5.3.2/esp-idf/tools/cmake/project.cmake:465 (message):
-  Directory specified in EXTRA_COMPONENT_DIRS doesn't exist:
-  C:/Users/tobya/Desktop/robotathonbp32test/src/components
-Call Stack (most recent call first):
-  C:/Users/tobya/esp/v5.3.2/esp-idf/tools/cmake/project.cmake:549 (__project_init)
-  CMakeLists.txt:13 (project)
-
-
