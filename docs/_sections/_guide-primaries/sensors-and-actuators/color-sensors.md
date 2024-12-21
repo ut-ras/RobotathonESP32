@@ -11,6 +11,20 @@ The APDS-9960 Color Sensor will allow you to complete the Color Challenge.
 
 <img src="{{ '/_assets/images/color_sensor.jpg' | prepend: site.baseurl }}" alt="color_sensor.jpg" width=300 height=300>
 
+
+## Workshop Slides
+<iframe src="https://docs.google.com/presentation/d/1h5p9pCGCKSqfrkFSnQQ6bxtwjZGJe90FrfASYaGZwRY/embed?start=true&loop=true&delayms=5000" 
+        frameborder="0" 
+        width="960" 
+        height="569" 
+        allowfullscreen="true" 
+        mozallowfullscreen="true" 
+        webkitallowfullscreen="true">
+</iframe>
+
+
+
+
 ## How it Works
 The RGB sensor uses the RGB color space to represent the color that it receives through photodiodes. It provides the R G and B data in integer values of 0-255 (8 bit representation). We will grab that data using a communication protocol called I2C, which is used in many electrical devices. Implementing I2C is out of the scope of this competition, but you can find more information about it [here.](https://learn.sparkfun.com/tutorials/i2c/all)
 
