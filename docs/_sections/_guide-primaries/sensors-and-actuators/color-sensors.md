@@ -13,7 +13,7 @@ The APDS-9960 Color Sensor will allow you to complete the Color Challenge.
 
 
 ## Workshop Slides
-<iframe src="https://docs.google.com/presentation/d/1h5p9pCGCKSqfrkFSnQQ6bxtwjZGJe90FrfASYaGZwRY/embed?start=true&loop=true&delayms=5000" 
+<iframe src="https://docs.google.com/presentation/d/1h5p9pCGCKSqfrkFSnQQ6bxtwjZGJe90FrfASYaGZwRY/embed?start=false" 
         frameborder="0" 
         width="960" 
         height="569" 

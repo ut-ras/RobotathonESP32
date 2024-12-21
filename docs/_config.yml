@@ -60,11 +60,14 @@ include:
 # Collections for website data
 collections_dir: _sections
 collections:
-  guide-general:
+  guide-home:
     permalink: "/:path"
     output: true
     sort: nav_order
   guide-primaries:
+    permalink: "/:path"
+    output: true
+  guide-checkpoints:
     permalink: "/:path"
     output: true
   guide-supplementals:
@@ -74,11 +77,14 @@ collections:
 # Define which collections are used in just-the-docs
 just_the_docs:
   collections:
-    guide-top:
+    guide-home:
       name: Home
       nav_fold: false
     guide-primaries:
       name: Newbie Guide
+      nav_fold: false
+    guide-checkpoints:
+      name: Checkpoints
       nav_fold: false
     guide-supplementals:
       name: Resources

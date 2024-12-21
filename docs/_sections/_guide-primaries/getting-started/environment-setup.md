@@ -8,6 +8,18 @@ nav_order: 5
 
 Please reference the setup guide found in the [Robotathon Repo's readme!](https://github.com/ut-ras/RobotathonESP32)
 
+<iframe src="https://docs.google.com/presentation/d/1sghRclMBX0BC2kSrbPlTDvD2zlOXcmhyA2V0Fdr2gAc/embed?start=false" 
+        frameborder="0" 
+        width="960" 
+        height="569" 
+        allowfullscreen="true" 
+        mozallowfullscreen="true" 
+        webkitallowfullscreen="true">
+</iframe>
+
+
+
+
 ## Programming goal
 For this tutorial, we will control the onboard microcontroller by toggling it on and off periodically. This will serve as the goal for the Blink Checkpoint and demonstrates that you can flash your own program to the ESP32. If you are having trouble configuring your development environment, reference the setup guide on our [Github (scroll down)](https://github.com/ut-ras/RobotathonESP32) or ask a mentor for help!
 
