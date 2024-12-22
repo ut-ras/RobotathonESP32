@@ -18,6 +18,14 @@
 // Defined in my_platform.c
 struct uni_platform* get_my_platform(void);
 
+void testlogi(const char *format, ...) {
+    va_list args;
+    va_start(args, format);
+    vfprintf(stdout, format, args); // Write formatted output to stdout
+    va_end(args);
+    fflush(stdout); // Ensure immediate output
+}
+
 int app_main(void) {
     // hci_dump_open(NULL, HCI_DUMP_STDOUT);
 
@@ -43,9 +51,14 @@ int app_main(void) {
     bd_addr_t addr = {0x98, 0xb6, 0x0F, 0x36, 0x36, 0x21};
     uni_bt_allowlist_add_addr(addr);
     uni_bt_allowlist_set_enabled(true);
-
+    int i = 0;
+    while(1) {
+        i++;
+        testlogi("Hello, World! %d\n", i);
+    }
     // Does not return.
     btstack_run_loop_execute();
 
     return 0;
 }
+
