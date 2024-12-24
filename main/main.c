@@ -8,6 +8,7 @@
 #include <btstack_stdio_esp32.h>
 #include <uni.h>
 #include "sdkconfig.h"
+#include "apds9960.h"
 
 // Sanity check
 #ifndef CONFIG_BLUEPAD32_PLATFORM_CUSTOM
@@ -70,22 +71,6 @@ void serialPrint(const char *format, ...){ // implementation is probably bad lol
     fflush(stdout); // Ensure immediate output
 }
 
-void digitalWrite(int pin, int value) {
-    return;
-}
-
-void analogWrite(int pin, int value) {
-    return;
-}
-
-int digitalRead(int pin) {
-    return 1;
-}
-
-int analogRead(int pin) {
-    return 1;
-}
-
 void delay(int ms) {
     vTaskDelay(ms / portTICK_PERIOD_MS);
 }
@@ -121,6 +106,7 @@ int app_main(void) {
     uni_bt_allowlist_set_enabled(true);
     int i = 0;
     while(1) {
+        func();
         i++;
         serialPrint("Hello, World! %d\n", i);
         logi("fuck"); // not sure how the buffers of logi is interacting with my serialPrint
@@ -130,4 +116,3 @@ int app_main(void) {
 
     return 0;
 }
-

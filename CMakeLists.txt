@@ -4,11 +4,11 @@ cmake_minimum_required(VERSION 3.13)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
-set(BLUEPAD32_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
-set(BTSTACK_ROOT ${BLUEPAD32_ROOT}/components/bluepad32/external/btstack)
+set(PROJECT_ROOT ${CMAKE_CURRENT_SOURCE_DIR}) 
+set(BTSTACK_ROOT ${PROJECT_ROOT}/components/bluepad32/external/btstack)
 
-# this might break lol
-set(EXTRA_COMPONENT_DIRS ${BLUEPAD32_ROOT}/components/bluepad32/src/components)
+# component dir is already in path by default
+set(EXTRA_COMPONENT_DIRS ${PROJECT_ROOT}/components/bluepad32/src/components) #special bp32 thing idk
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 project(bluepad32_esp32_example_app)
