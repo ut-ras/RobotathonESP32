@@ -8,7 +8,9 @@ set(PROJECT_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
 set(BTSTACK_ROOT ${PROJECT_ROOT}/components/bluepad32/external/btstack)
 
 # component dir is already in path by default
-set(EXTRA_COMPONENT_DIRS ${PROJECT_ROOT}/components/bluepad32/src/components) #special bp32 thing idk
+set(EXTRA_COMPONENT_DIRS ${PROJECT_ROOT}/components/bluepad32/src/components ${PROJECT_ROOT}/components/bluepad32/external/btstack/platform/embedded) #special bp32 thing idk
+
+
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 project(bluepad32_esp32_example_app)

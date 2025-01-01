@@ -6,7 +6,13 @@
 #include <uni.h>
 
 #include "driver/gpio.h"
+#include "freertos/FreeRTOS.h"
 
+
+#define DEFAULT_STACKSIZE UINT32_C(1000)
+#define DEFAULT_PRIORITY 1
+
+static TaskHandle_t taskHandle = NULL; // globally accessible
 
 // Custom "instance"
 typedef struct my_platform_instance_s {
@@ -45,14 +51,38 @@ static void my_platform_init(int argc, const char** argv) {
     //    uni_bt_service_set_enabled(true);
 }
 
+void myTaskFunction() {
+    uint32_t i = 0;
+    while(1) {
+        i++;
+        vTaskDelay(10);
+        printf("%lu\n", i);
+        // vTaskDelay(1000); // suspend task for 1 second
+        // vTaskDelay(1);
+        // printf("Task fired\n\r");
+    }
+}
+
+void createNewTask(void) {
+    logi("New task created\n");
+    xTaskCreate(
+        myTaskFunction,                 // function that implements the task
+        (char * const) "myTask", // a name for the task
+        DEFAULT_STACKSIZE,              // depth of the task stack
+        NULL,                           // parameters passed to the function
+        5,               // task priority
+        &taskHandle                     // pointer to a task handle for late reference
+    );
+}
+
 static void my_platform_on_init_complete(void) {
     logi("custom: on_init_complete()\n");
 
+    createNewTask();
     // Safe to call "unsafe" functions since they are called from BT thread
 
     // Start scanning
     uni_bt_enable_new_connections_unsafe(true);
-
     // Based on runtime condition, you can delete or list the stored BT keys.
     if (1)
         uni_bt_del_keys_unsafe();
