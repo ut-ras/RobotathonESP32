@@ -1,5 +1,7 @@
-Code in this repository is in the Public Domain (or CC0 licensed, at your option.)
+LICENSES
 
-Unless required by applicable law or agreed to in writing, this
-software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-CONDITIONS OF ANY KIND, either express or implied.
+* Template code: Apache-2.0
+* bluepad32: Apache-2.0
+* bluepad32_arduino: Apache-2.0 and LGPL-2.1-or-later
+* btstack: https://github.com/bluekitchen/btstack/blob/master/LICENSE
+

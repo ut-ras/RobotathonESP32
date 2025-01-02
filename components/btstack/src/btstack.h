@@ -115,11 +115,13 @@
 #include "classic/avrcp_browsing_controller.h"
 #include "classic/avrcp_browsing_target.h"
 #include "classic/avrcp_controller.h"
+#include "classic/avrcp_cover_art_client.h"
 #include "classic/avrcp_media_item_iterator.h"
 #include "classic/avrcp_target.h"
 #include "classic/bnep.h"
 #include "classic/btstack_link_key_db.h"
 #include "classic/btstack_sbc.h"
+#include "classic/btstack_sbc_bluedroid.h"
 #include "classic/device_id_server.h"
 #include "classic/gatt_sdp.h"
 #include "classic/goep_client.h"
@@ -145,13 +147,8 @@
 
 #include "le-audio/le_audio.h"
 #include "le-audio/le_audio_util.h"
-#include "le-audio/gatt-service/audio_input_control_service_server.h"
 #include "le-audio/gatt-service/broadcast_audio_scan_service_client.h"
 #include "le-audio/gatt-service/broadcast_audio_scan_service_server.h"
-#include "le-audio/gatt-service/microphone_control_service_client.h"
-#include "le-audio/gatt-service/microphone_control_service_server.h"
-#include "le-audio/gatt-service/volume_control_service_server.h"
-#include "le-audio/gatt-service/volume_offset_control_service_server.h"
 
 #ifdef ENABLE_MESH
 #include "mesh/adv_bearer.h"

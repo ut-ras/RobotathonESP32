@@ -45,6 +45,7 @@
 
 #include <stdint.h>
 
+#include "btstack_bool.h"
 #include "btstack_run_loop.h"
 #include "btstack_linked_list.h"
 #include "l2cap.h"
@@ -356,9 +357,9 @@ typedef enum {
 
 typedef enum {
     AVCTP_CONNECTION_IDLE,
-    AVCTP_CONNECTION_W2_SEND_SDP_QUERY,
     AVCTP_CONNECTION_W4_SDP_QUERY_COMPLETE,
     AVCTP_CONNECTION_W4_ERTM_CONFIGURATION,
+    AVCTP_CONNECTION_W2_L2CAP_CONNECT,
     AVCTP_CONNECTION_W4_L2CAP_CONNECTED,
     AVCTP_CONNECTION_W2_L2CAP_RETRY,
     AVCTP_CONNECTION_OPENED,
@@ -369,6 +370,7 @@ typedef enum {
     AVCTP_W2_SEND_RESPONSE,
     AVCTP_W2_RECEIVE_PRESS_RESPONSE,
     AVCTP_W2_RECEIVE_RESPONSE,
+    AVCTP_W2_SEND_GET_ELEMENT_ATTRIBUTES_REQUEST,
     //AVCTP_W2_SEND_AVCTP_FRAGMENTED_MESSAGE
 } avctp_connection_state_t;
 
@@ -510,17 +512,24 @@ typedef struct {
     
     avrcp_role_t role;
     bd_addr_t remote_addr;
-    uint16_t avrcp_l2cap_psm;
+    hci_con_handle_t con_handle;
+
     uint16_t l2cap_signaling_cid;
     uint16_t l2cap_mtu;
     uint16_t avrcp_cid;
-    hci_con_handle_t con_handle;
-    
+    uint16_t avrcp_browsing_cid;
+
     bool incoming_declined;
 
-    uint16_t avrcp_browsing_cid;
+    bool    trigger_sdp_query;
+
+    // SDP results
+    uint16_t avrcp_l2cap_psm;
     uint16_t browsing_l2cap_psm;
     uint16_t browsing_version;
+#ifdef ENABLE_AVRCP_COVER_ART
+    uint16_t cover_art_psm;
+#endif
 
     avrcp_browsing_connection_t * browsing_connection;
 
@@ -589,6 +598,9 @@ typedef struct {
     uint16_t controller_notifications_to_register;
     uint16_t controller_notifications_to_deregister;
 
+    // used for avrcp_controller_get_element_attributes
+    uint16_t controller_element_attributes;
+
     // PTS requires definition of max num fragments
     uint8_t controller_max_num_fragments;
     uint8_t controller_num_received_fragments;
@@ -638,7 +650,6 @@ typedef struct {
     uint32_t target_total_tracks;
     uint32_t target_track_nr;
 
-
 #ifdef ENABLE_AVCTP_FRAGMENTATION
     uint16_t avctp_reassembly_size;
     uint8_t  avctp_reassembly_buffer[200];
@@ -666,7 +677,7 @@ const char * avrcp_play_status2str(uint8_t index);
 const char * avrcp_ctype2str(uint8_t index);
 const char * avrcp_repeat2str(uint8_t index);
 const char * avrcp_shuffle2str(uint8_t index);
-
+const char * avrcp_notification2str(avrcp_notification_event_id_t index);
 
 avctp_packet_type_t avctp_get_packet_type(avrcp_connection_t * connection, uint16_t * max_payload_size);
 avrcp_packet_type_t avrcp_get_packet_type(avrcp_connection_t * connection);
@@ -675,6 +686,9 @@ uint16_t avrcp_get_num_bytes_for_header(avrcp_command_opcode_t command_opcode, a
 
 void avrcp_register_controller_packet_handler(btstack_packet_handler_t avrcp_controller_packet_handler);
 void avrcp_register_target_packet_handler(btstack_packet_handler_t avrcp_target_packet_handler);
+
+void avrcp_register_browsing_sdp_query_complete_handler(void (*callback)(avrcp_connection_t * connection, uint8_t status));
+void avrcp_register_cover_art_sdp_query_complete_handler(void (*callback)(avrcp_connection_t * connection, uint8_t status));
 
 uint8_t avrcp_cmd_opcode(uint8_t *packet, uint16_t size);
 
@@ -696,7 +710,8 @@ avrcp_connection_t * get_avrcp_connection_for_browsing_cid_for_role(avrcp_role_t
 avrcp_connection_t * get_avrcp_connection_for_browsing_l2cap_cid_for_role(avrcp_role_t role, uint16_t browsing_l2cap_cid);
 avrcp_browsing_connection_t * get_avrcp_browsing_connection_for_l2cap_cid_for_role(avrcp_role_t role, uint16_t l2cap_cid);
 // SDP query
-void    avrcp_create_sdp_record(uint8_t controller, uint8_t * service, uint32_t service_record_handle, uint8_t browsing, uint16_t supported_features, const char * service_name, const char * service_provider_name);
+void    avrcp_create_sdp_record(bool controller, uint8_t * service, uint32_t service_record_handle, uint8_t browsing, uint16_t supported_features, const char * service_name, const char * service_provider_name);
+void avrcp_trigger_sdp_query(avrcp_connection_t *connection_controller, avrcp_connection_t *connection_target);
 
 
 /* API_START */

@@ -59,8 +59,8 @@ extern "C" {
  * @param service
  * @param service_record_handle
  * @param supported_features 16-bit bitmap, see AVDTP_SINK_SF_* values in avdtp.h
- * @param service_name
- * @param service_provider_name
+ * @param service_name or NULL for default value. Provide "" (empty string) to skip attribute
+ * @param service_provider_name or NULL for default value. Provide "" (empty string) to skip attribute
  */
 void a2dp_sink_create_sdp_record(uint8_t * service, uint32_t service_record_handle, uint16_t supported_features, const char * service_name, const char * service_provider_name);
 
@@ -116,10 +116,9 @@ void a2dp_sink_register_media_handler(void (*callback)(uint8_t local_seid, uint8
 /**
  * @brief Establish stream.
  * @param remote
- * @param local_seid  		ID of a local stream endpoint.
- * @param out_a2dp_cid 		Assigned A2DP channel identifier used for furhter A2DP commands.   
+ * @param out_a2dp_cid 		Assigned A2DP channel identifier used for furhter A2DP commands.
  */
-uint8_t a2dp_sink_establish_stream(bd_addr_t remote, uint8_t local_seid, uint16_t * out_a2dp_cid);
+uint8_t a2dp_sink_establish_stream(bd_addr_t remote, uint16_t * out_a2dp_cid);
 
 #ifdef ENABLE_AVDTP_ACCEPTOR_EXPLICIT_START_STREAM_CONFIRMATION
 /**

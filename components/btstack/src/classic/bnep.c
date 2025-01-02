@@ -126,7 +126,7 @@ static void bnep_emit_open_channel_complete(bnep_channel_t *channel, uint8_t sta
     little_endian_store_16(event, 9, channel->max_frame_size);
     reverse_bd_addr(channel->remote_addr, &event[11]);
     little_endian_store_16(event, 17, channel->con_handle);
-    hci_dump_packet( HCI_EVENT_PACKET, 1, event, sizeof(event));
+    hci_dump_btstack_event( event, sizeof(event));
 	(*channel->packet_handler)(HCI_EVENT_PACKET, 0, (uint8_t *) event, sizeof(event));
 }
 
@@ -143,7 +143,7 @@ static void bnep_emit_channel_timeout(bnep_channel_t *channel)
     little_endian_store_16(event, 6, channel->uuid_dest);
     reverse_bd_addr(channel->remote_addr, &event[8]);
     event[14] = channel->state; 
-    hci_dump_packet( HCI_EVENT_PACKET, 1, event, sizeof(event));
+    hci_dump_btstack_event( event, sizeof(event));
 	(*channel->packet_handler)(HCI_EVENT_PACKET, 0, (uint8_t *) event, sizeof(event));
 }
 
@@ -159,7 +159,7 @@ static void bnep_emit_channel_closed(bnep_channel_t *channel)
     little_endian_store_16(event, 4, channel->uuid_source);
     little_endian_store_16(event, 6, channel->uuid_dest);
     reverse_bd_addr(channel->remote_addr, &event[8]);
-    hci_dump_packet( HCI_EVENT_PACKET, 1, event, sizeof(event));
+    hci_dump_btstack_event( event, sizeof(event));
 	(*channel->packet_handler)(HCI_EVENT_PACKET, 0, (uint8_t *) event, sizeof(event));
 }
 
@@ -171,7 +171,7 @@ static void bnep_emit_ready_to_send(bnep_channel_t *channel)
     event[0] = BNEP_EVENT_CAN_SEND_NOW;
     event[1] = sizeof(event) - 2;
     little_endian_store_16(event, 2, channel->l2cap_cid);
-    hci_dump_packet( HCI_EVENT_PACKET, 1, event, sizeof(event));
+    hci_dump_btstack_event( event, sizeof(event));
 	(*channel->packet_handler)(HCI_EVENT_PACKET, 0, (uint8_t *) event, sizeof(event));
 }
 
@@ -850,6 +850,28 @@ static int bnep_handle_connection_request(bnep_channel_t *channel, uint8_t *pack
             log_error("BNEP_CONNECTION_REQUEST: Invalid UUID size %d, l2cap_cid: %d!", channel->state, channel->l2cap_cid);
             response_code = BNEP_RESP_SETUP_INVALID_SERVICE_UUID_SIZE;
             break;
+    }
+
+    /* Check bits 16-31 of UUID */
+    if (uuid_size > 2){
+        uint16_t dest_prefix = big_endian_read_16(packet, 2);
+        if (dest_prefix != 0){
+            response_code = BNEP_RESP_SETUP_INVALID_DEST_UUID;
+        }
+        uint16_t src_prefix = big_endian_read_16(packet, 2 + uuid_size);
+        if (src_prefix != 0){
+            response_code = BNEP_RESP_SETUP_INVALID_SOURCE_UUID;
+        }
+    }
+
+    /* check bits 32-127 of UUID */
+    if (uuid_size == 16){
+        if (uuid_has_bluetooth_prefix(&packet[2]) == false){
+            response_code = BNEP_RESP_SETUP_INVALID_DEST_UUID;
+        }
+        if (uuid_has_bluetooth_prefix(&packet[2+16]) == false){
+            response_code = BNEP_RESP_SETUP_INVALID_SOURCE_UUID;
+        }
     }
 
     /* Check source and destination UUIDs for valid combinations */

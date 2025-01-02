@@ -119,7 +119,7 @@ unsigned long long operator"" _GB(unsigned long long x)
 
 EspClass ESP;
 
-void EspClass::deepSleep(uint32_t time_us)
+void EspClass::deepSleep(uint64_t time_us)
 {
     esp_deep_sleep(time_us);
 }
@@ -240,6 +240,10 @@ String EspClass::getSketchMD5()
         md5.add(buf.get(), readBytes);
         lengthLeft -= readBytes;
         offset += readBytes;
+
+        #if CONFIG_FREERTOS_UNICORE
+        delay(1);  // Fix solo WDT
+        #endif
     }
     md5.calculate();
     result = md5.toString();
@@ -269,17 +273,25 @@ const char * EspClass::getChipModel(void)
     uint32_t pkg_ver = chip_ver & 0x7;
     switch (pkg_ver) {
         case EFUSE_RD_CHIP_VER_PKG_ESP32D0WDQ6 :
-            return "ESP32-D0WDQ6";
+            if (getChipRevision() == 3)
+                return "ESP32-D0WDQ6-V3";  
+            else
+                return "ESP32-D0WDQ6";
         case EFUSE_RD_CHIP_VER_PKG_ESP32D0WDQ5 :
-            return "ESP32-D0WDQ5";
+            if (getChipRevision() == 3)
+                return "ESP32-D0WD-V3";  
+            else
+                return "ESP32-D0WD";
         case EFUSE_RD_CHIP_VER_PKG_ESP32D2WDQ5 :
-            return "ESP32-D2WDQ5";
+            return "ESP32-D2WD";
         case EFUSE_RD_CHIP_VER_PKG_ESP32PICOD2 :
             return "ESP32-PICO-D2";
         case EFUSE_RD_CHIP_VER_PKG_ESP32PICOD4 :
             return "ESP32-PICO-D4";
         case EFUSE_RD_CHIP_VER_PKG_ESP32PICOV302 :
             return "ESP32-PICO-V3-02";
+        case EFUSE_RD_CHIP_VER_PKG_ESP32D0WDR2V3 :
+            return "ESP32-D0WDR2-V3";
         default:
             return "Unknown";
     }

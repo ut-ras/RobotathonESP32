@@ -45,6 +45,7 @@
 
 #include "btstack_config.h"
 
+#include "btstack_bool.h"
 #include "btstack_chipset.h"
 #include "btstack_control.h"
 #include "btstack_linked_list.h"
@@ -270,7 +271,8 @@ enum {
     BONDING_SEND_ENCRYPTION_REQUEST           =  0x2000,
     BONDING_SEND_READ_ENCRYPTION_KEY_SIZE     =  0x4000,
     BONDING_DEDICATED                         =  0x8000,
-    BONDING_EMIT_COMPLETE_ON_DISCONNECT       = 0x10000,
+    BONDING_DEDICATED_DEFER_DISCONNECT        = 0x10000,
+    BONDING_EMIT_COMPLETE_ON_DISCONNECT       = 0x20000,
 };
 
 typedef enum {
@@ -285,6 +287,13 @@ typedef enum {
     LE_CONNECTING_DIRECT,
     LE_CONNECTING_WHITELIST,
 } le_connecting_state_t;
+
+typedef enum {
+    ATT_BEARER_UNENHANCED_LE,
+    ATT_BEARER_UNENHANCED_CLASSIC,
+    ATT_BEARER_ENHANCED_LE,
+    ATT_BEARER_ENHANCED_CLASSIC
+} att_bearer_type_t;
 
 #ifdef ENABLE_BLE
 
@@ -409,6 +418,7 @@ typedef enum {
 
     // Classic
     SM_BR_EDR_W4_ENCRYPTION_COMPLETE,
+    SM_BR_EDR_INITIATOR_W4_FIXED_CHANNEL_MASK,
     SM_BR_EDR_INITIATOR_SEND_PAIRING_REQUEST,
     SM_BR_EDR_INITIATOR_W4_PAIRING_RESPONSE,
     SM_BR_EDR_RESPONDER_W4_PAIRING_REQUEST,
@@ -437,8 +447,8 @@ typedef struct sm_connection {
     hci_con_handle_t         sm_handle;
     uint16_t                 sm_cid;
     uint8_t                  sm_role;   // 0 - IamMaster, 1 = IamSlave
-    uint8_t                  sm_security_request_received;
-    uint8_t                  sm_pairing_requested;
+    bool                     sm_security_request_received;
+    bool                     sm_pairing_requested;
     uint8_t                  sm_peer_addr_type;
     bd_addr_t                sm_peer_address;
     uint8_t                  sm_own_addr_type;
@@ -446,9 +456,9 @@ typedef struct sm_connection {
     security_manager_state_t sm_engine_state;
     irk_lookup_state_t       sm_irk_lookup_state;
     uint8_t                  sm_pairing_failed_reason;
-    uint8_t                  sm_connection_encrypted;
+    uint8_t                  sm_connection_encrypted;       // [0..2]
     uint8_t                  sm_connection_authenticated;   // [0..1]
-    uint8_t                  sm_connection_sc;
+    bool                     sm_connection_sc;
     uint8_t                  sm_actual_encryption_key_size;
     sm_pairing_packet_t      sm_m_preq;  // only used during c1
     authorization_state_t    sm_connection_authorization_state;
@@ -482,9 +492,11 @@ typedef struct {
     uint8_t                 peer_addr_type;
     bd_addr_t               peer_address;
 
+    att_bearer_type_t       bearer_type;
+
     int                     ir_le_device_db_index;
-    uint8_t                 ir_lookup_active;
-    uint8_t                 pairing_active;
+    bool                    ir_lookup_active;
+    bool                    pairing_active;
 
     uint16_t                value_indication_handle;    
     btstack_timer_source_t  value_indication_timer;
@@ -492,8 +504,13 @@ typedef struct {
     btstack_linked_list_t   notification_requests;
     btstack_linked_list_t   indication_requests;
 
-#ifdef ENABLE_GATT_OVER_CLASSIC
+#if defined(ENABLE_GATT_OVER_CLASSIC) || defined(ENABLE_GATT_OVER_EATT)
+    // unified (client + server) att bearer
     uint16_t                l2cap_cid;
+    bool                    send_requests[2];
+    bool                    outgoing_connection_active;
+    bool                    incoming_connection_request;
+    bool                    eatt_outgoing_active;
 #endif
 
     uint16_t                request_size;
@@ -533,7 +550,7 @@ typedef struct {
     bd_addr_type_t address_type;
 
     // role: 0 - master, 1 - slave
-    uint8_t role;
+    hci_role_t role;
 
     // connection state
     CONNECTION_STATE state;
@@ -548,16 +565,20 @@ typedef struct {
     // requested security level
     gap_security_level_t requested_security_level;
     
-    // link key and its type
+    // link key and its type for Classic connections
+    // LTK and LTK valid flag for LE connections
     link_key_t      link_key;
     link_key_type_t link_key_type;
+
+#ifdef ENABLE_CLASSIC
+    // remote supported SCO packets based on remote supported features mask
+    uint16_t remote_supported_sco_packets;
 
     // remote supported features
     /* bit 0 - eSCO */
     /* bit 1 - extended features */
     uint8_t remote_supported_features[1];
 
-#ifdef ENABLE_CLASSIC
     // IO Capabilities Response
     uint8_t io_cap_response_auth_req;
     uint8_t io_cap_response_io;
@@ -588,12 +609,14 @@ typedef struct {
 
 #ifdef ENABLE_SCO_OVER_HCI
     // track SCO rx event
-    uint32_t sco_rx_ms;
-    uint8_t  sco_rx_count;
-    uint8_t  sco_rx_valid;
+    uint32_t sco_established_ms;
+    uint8_t  sco_tx_active;
 #endif
     // generate sco can send now based on received packets, using timeout below
     uint8_t  sco_tx_ready;
+
+    // SCO payload length
+    uint16_t sco_payload_length;
 
     // request role switch
     hci_role_t request_role;
@@ -657,6 +680,7 @@ typedef struct {
 
 #ifdef ENABLE_LE_PERIODIC_ADVERTISING
     hci_con_handle_t le_past_sync_handle;
+    uint8_t          le_past_advertising_handle;
     uint16_t         le_past_service_data;
 #endif
 
@@ -687,6 +711,7 @@ typedef enum {
 
 typedef enum{
     HCI_ISO_STREAM_STATE_IDLE,
+    HCI_ISO_STREAM_W4_USER,
     HCI_ISO_STREAM_W2_ACCEPT,
     HCI_ISO_STREAM_W2_REJECT,
     HCI_ISO_STREAM_STATE_REQUESTED,
@@ -696,31 +721,43 @@ typedef enum{
     HCI_ISO_STREAM_STATE_W4_ISO_SETUP_INPUT,
     HCI_ISO_STREAM_STATE_W2_SETUP_ISO_OUTPUT,
     HCI_ISO_STREAM_STATE_W4_ISO_SETUP_OUTPUT,
+    HCI_ISO_STREAM_STATE_W2_CLOSE,
+    HCI_ISO_STREAM_STATE_W4_DISCONNECTED,
 } hci_iso_stream_state_t;
 
 typedef struct {
     // linked list - assert: first field
     btstack_linked_item_t    item;
 
-    // iso type: bis or cis
-    hci_iso_type_t iso_type;
-
-    // group_id: big_handle or cis_id
-    uint8_t group_id;
-
     // state
     hci_iso_stream_state_t state;
 
-    // peer info
-    hci_con_handle_t con_handle;
+    // iso type: bis or cis
+    hci_iso_type_t iso_type;
+
+    // group_id: big_handle or cig_id
+    uint8_t group_id;
+
+    // stream_id: bis_index or cis_id
+    uint8_t stream_id;
+
+    // only valid for HCI_ISO_TYPE_CIS
+    hci_con_handle_t cis_handle;
+    hci_con_handle_t acl_handle;
 
     // connection info
+    uint8_t  number_of_subevents;
+    uint8_t  burst_number_c_to_p;
+    uint8_t  burst_number_p_to_c;
+    uint8_t  flush_timeout_c_to_p;
+    uint8_t  flush_timeout_p_to_c;
     uint16_t max_sdu_c_to_p;
     uint16_t max_sdu_p_to_c;
+    uint16_t iso_interval_1250us;
 
-    // re-assembly buffer
+    // re-assembly buffer (includes ISO packet header with timestamp)
     uint16_t reassembly_pos;
-    uint8_t  reassembly_buffer[HCI_ISO_PAYLOAD_SIZE];
+    uint8_t  reassembly_buffer[12 + HCI_ISO_PAYLOAD_SIZE];
 
     // number packets sent to controller
     uint8_t num_packets_sent;
@@ -738,7 +775,7 @@ typedef struct {
 #endif
 
 /**
- * HCI Inititizlization State Machine
+ * HCI Initialization State Machine
  */
 typedef enum hci_init_state{
     HCI_INIT_SEND_RESET = 0,
@@ -753,10 +790,16 @@ typedef enum hci_init_state{
     HCI_INIT_W4_SEND_BAUD_CHANGE,
     HCI_INIT_CUSTOM_INIT,
     HCI_INIT_W4_CUSTOM_INIT,
+
     HCI_INIT_SEND_RESET_CSR_WARM_BOOT,
     HCI_INIT_W4_CUSTOM_INIT_CSR_WARM_BOOT,
     HCI_INIT_W4_CUSTOM_INIT_CSR_WARM_BOOT_LINK_RESET,
+
     HCI_INIT_W4_CUSTOM_INIT_BCM_DELAY,
+
+    // Support for Pre-Init before HCI Reset
+    HCI_INIT_CUSTOM_PRE_INIT,
+    HCI_INIT_W4_CUSTOM_PRE_INIT,
 #endif
 
     HCI_INIT_READ_LOCAL_SUPPORTED_COMMANDS,
@@ -817,6 +860,12 @@ typedef enum hci_init_state{
 #ifdef ENABLE_SCO_OVER_PCM
     HCI_INIT_BCM_WRITE_I2SPCM_INTERFACE_PARAM,
     HCI_INIT_W4_BCM_WRITE_I2SPCM_INTERFACE_PARAM,
+    HCI_INIT_BCM_WRITE_PCM_DATA_FORMAT_PARAM,
+    HCI_INIT_W4_BCM_WRITE_PCM_DATA_FORMAT_PARAM,
+#ifdef HAVE_BCM_PCM2
+    HCI_INIT_BCM_PCM2_SETUP,
+    HCI_INIT_W4_BCM_PCM2_SETUP,
+#endif
 #endif
 #endif
 
@@ -870,25 +919,28 @@ typedef enum hci_init_state{
 
 } hci_substate_t;
 
-#define GAP_TASK_SET_LOCAL_NAME               0x01
-#define GAP_TASK_SET_EIR_DATA                 0x02
-#define GAP_TASK_SET_CLASS_OF_DEVICE          0x04
-#define GAP_TASK_SET_DEFAULT_LINK_POLICY      0x08
-#define GAP_TASK_WRITE_SCAN_ENABLE            0x10
-#define GAP_TASK_WRITE_PAGE_SCAN_ACTIVITY     0x20
-#define GAP_TASK_WRITE_PAGE_SCAN_TYPE         0x40
-#define GAP_TASK_WRITE_PAGE_TIMEOUT           0x80
-#define GAP_TASK_WRITE_INQUIRY_SCAN_ACTIVITY 0x100
+#define GAP_TASK_SET_LOCAL_NAME                 0x01
+#define GAP_TASK_SET_EIR_DATA                   0x02
+#define GAP_TASK_SET_CLASS_OF_DEVICE            0x04
+#define GAP_TASK_SET_DEFAULT_LINK_POLICY        0x08
+#define GAP_TASK_WRITE_SCAN_ENABLE              0x10
+#define GAP_TASK_WRITE_PAGE_SCAN_ACTIVITY       0x20
+#define GAP_TASK_WRITE_PAGE_SCAN_TYPE           0x40
+#define GAP_TASK_WRITE_PAGE_TIMEOUT             0x80
+#define GAP_TASK_WRITE_INQUIRY_SCAN_ACTIVITY   0x100
+#define GAP_TASK_WRITE_INQUIRY_TX_POWER_LEVEL  0x200
 
 enum {
     // Tasks
     LE_ADVERTISEMENT_TASKS_SET_ADV_DATA         = 1 << 0,
     LE_ADVERTISEMENT_TASKS_SET_SCAN_DATA        = 1 << 1,
     LE_ADVERTISEMENT_TASKS_SET_PARAMS           = 1 << 2,
-    LE_ADVERTISEMENT_TASKS_SET_ADDRESS          = 1 << 3,
-    LE_ADVERTISEMENT_TASKS_SET_PERIODIC_PARAMS  = 1 << 4,
-    LE_ADVERTISEMENT_TASKS_SET_PERIODIC_DATA    = 1 << 5,
-    LE_ADVERTISEMENT_TASKS_REMOVE_SET           = 1 << 6,
+    LE_ADVERTISEMENT_TASKS_SET_PERIODIC_PARAMS  = 1 << 3,
+    LE_ADVERTISEMENT_TASKS_SET_PERIODIC_DATA    = 1 << 4,
+    LE_ADVERTISEMENT_TASKS_REMOVE_SET           = 1 << 5,
+    LE_ADVERTISEMENT_TASKS_SET_ADDRESS          = 1 << 6,
+    LE_ADVERTISEMENT_TASKS_SET_ADDRESS_SET_0    = 1 << 7,
+    LE_ADVERTISEMENT_TASKS_PRIVACY_NOTIFY       = 1 << 8,
 };
 
 enum {
@@ -898,6 +950,7 @@ enum {
     LE_ADVERTISEMENT_STATE_ENABLED          = 1 << 2,
     LE_ADVERTISEMENT_STATE_PERIODIC_ACTIVE  = 1 << 3,
     LE_ADVERTISEMENT_STATE_PERIODIC_ENABLED = 1 << 4,
+    LE_ADVERTISEMENT_STATE_PRIVACY_PENDING  = 1 << 5,
 };
 
 enum {
@@ -932,6 +985,7 @@ typedef enum {
     LE_RESOLVING_LIST_SEND_ENABLE_ADDRESS_RESOLUTION,
     LE_RESOLVING_LIST_READ_SIZE,
     LE_RESOLVING_LIST_SEND_CLEAR,
+    LE_RESOLVING_LIST_SET_IRK,
 	LE_RESOLVING_LIST_UPDATES_ENTRIES,
     LE_RESOLVING_LIST_DONE
 } le_resolving_list_state_t;
@@ -946,6 +1000,9 @@ typedef struct {
     
     // chipset driver
     const btstack_chipset_t * chipset;
+
+    // chipset driver requires pre-init
+    bool chipset_pre_init;
 
     // hardware power controller
     const btstack_control_t * control;
@@ -1042,6 +1099,7 @@ typedef struct {
     uint32_t            inquiry_lap;      // GAP_IAC_GENERAL_INQUIRY or GAP_IAC_LIMITED_INQUIRY
     uint16_t            inquiry_scan_interval;
     uint16_t            inquiry_scan_window;
+    int8_t              inquiry_tx_power_level;
     
     bool                gap_secure_connections_only_mode;
 #endif
@@ -1081,10 +1139,15 @@ typedef struct {
     uint16_t manufacturer;
     // uint16_t lmp_subversion;
 
-    // usable packet types given acl_data_packet_length and HCI_ACL_BUFFER_SIZE
-    uint16_t packet_types;
-    
-    
+    // usable ACL packet types given HCI_ACL_BUFFER_SIZE and local supported features
+    uint16_t usable_packet_types_acl;
+
+    // enabled ACL packet types
+    uint16_t enabled_packet_types_acl;
+
+    // usable SCO packet types given local supported features
+    uint16_t usable_packet_types_sco;
+
     /* hci state machine */
     HCI_STATE      state;
     hci_substate_t substate;
@@ -1140,6 +1203,23 @@ typedef struct {
     // LE Whitelist Management
     uint8_t               le_whitelist_capacity;
     btstack_linked_list_t le_whitelist;
+
+    // Connection parameters
+    uint16_t le_connection_scan_interval;
+    uint16_t le_connection_scan_window;
+    uint16_t le_connection_interval_min;
+    uint16_t le_connection_interval_max;
+    uint16_t le_connection_latency;
+    uint16_t le_supervision_timeout;
+    uint16_t le_minimum_ce_length;
+    uint16_t le_maximum_ce_length;
+
+    // GAP Privacy
+    btstack_linked_list_t gap_privacy_clients;
+
+#ifdef ENABLE_HCI_COMMAND_STATUS_DISCARDED_FOR_FAILED_CONNECTIONS_WORKAROUND
+    hci_con_handle_t hci_command_con_handle;
+#endif
 #endif
 
 #ifdef ENABLE_LE_CENTRAL
@@ -1153,19 +1233,12 @@ typedef struct {
     uint8_t  le_scan_filter_duplicates;
     uint8_t  le_scan_type;
     uint8_t  le_scan_filter_policy;
+    uint8_t  le_scan_phys;
     uint16_t le_scan_interval;
     uint16_t le_scan_window;
 
-    // Connection parameters
-    uint16_t le_connection_interval_min;
-    uint16_t le_connection_interval_max;
-    uint16_t le_connection_latency;
-    uint16_t le_supervision_timeout;
-    uint16_t le_minimum_ce_length;
-    uint16_t le_maximum_ce_length;
-    uint16_t le_connection_scan_interval;
-    uint16_t le_connection_scan_window;
     uint8_t  le_connection_own_addr_type;
+    uint8_t  le_connection_phys;
     bd_addr_t le_connection_own_address;
 
 #ifdef ENABLE_LE_EXTENDED_ADVERTISING
@@ -1196,7 +1269,7 @@ typedef struct {
 
     // TODO: move LE_ADVERTISEMENT_TASKS_SET_ADDRESS flag which is used for both roles into
     //  some generic gap_le variable
-    uint8_t  le_advertisements_todo;
+    uint16_t  le_advertisements_todo;
 
 #ifdef ENABLE_LE_PERIPHERAL
     uint8_t  * le_advertisements_data;
@@ -1224,6 +1297,7 @@ typedef struct {
     btstack_linked_list_t le_advertising_sets;
     uint16_t le_maximum_advertising_data_length;
     uint8_t  le_advertising_set_in_current_command;
+    uint16_t le_resolvable_private_address_update_s;
 #endif
 #endif
 
@@ -1247,9 +1321,11 @@ typedef struct {
 
     // LE Resolving List
 #ifdef ENABLE_LE_PRIVACY_ADDRESS_RESOLUTION
+    le_privacy_mode_t         le_privacy_mode;
     le_resolving_list_state_t le_resolving_list_state;
     uint16_t                  le_resolving_list_size;
     uint8_t                   le_resolving_list_add_entries[(MAX_NUM_RESOLVING_LIST_ENTRIES + 7) / 8];
+    uint8_t                   le_resolving_list_set_privacy_mode[(MAX_NUM_RESOLVING_LIST_ENTRIES + 7) / 8];
 	uint8_t                   le_resolving_list_remove_entries[(MAX_NUM_RESOLVING_LIST_ENTRIES + 7) / 8];
 #endif
 
@@ -1279,6 +1355,11 @@ void hci_init(const hci_transport_t *transport, const void *config);
  * @brief Configure Bluetooth chipset driver. Has to be called before power on, or right after receiving the local version information.
  */
 void hci_set_chipset(const btstack_chipset_t *chipset_driver);
+
+/**
+ * @brief Enable custom init for chipset driver to send HCI commands before HCI Reset
+ */
+void hci_enable_custom_pre_init(void);
 
 /**
  * @brief Configure Bluetooth hardware control. Has to be called before power on.
@@ -1392,7 +1473,15 @@ uint8_t hci_send_cmd(const hci_cmd_t * cmd, ...);
 
 // Sending SCO Packets
 
-/** @brief Get SCO packet length for current SCO Voice setting
+/** @brief Get SCO payload length for existing SCO connection and current SCO Voice setting
+ *  @note  Using SCO packets of the exact length is required for USB transfer in general and some H4 controllers as well
+ *  @param sco_con_handle
+ *  @return Length of SCO payload in bytes (not audio frames) incl. 3 byte header
+ */
+uint16_t hci_get_sco_packet_length_for_connection(hci_con_handle_t sco_con_handle);
+
+/** @brief Get SCO packet length for one of the existing SCO connections and current SCO Voice setting
+ *  @deprecated Please use hci_get_sco_packet_length_for_connection instead
  *  @note  Using SCO packets of the exact length is required for USB transfer
  *  @return Length of SCO packets in bytes (not audio frames) incl. 3 byte header
  */
@@ -1445,9 +1534,10 @@ uint8_t hci_send_iso_packet_buffer(uint16_t size);
 
 /**
  * Reserves outgoing packet buffer.
- * @return true on success
+ * @note Must only be called after a 'can send now' check or event
+ * @note Asserts if packet buffer is already reserved
  */
-bool hci_reserve_packet_buffer(void);
+void hci_reserve_packet_buffer(void);
 
 /**
  * Get pointer for outgoing packet buffer
@@ -1456,7 +1546,7 @@ uint8_t* hci_get_outgoing_packet_buffer(void);
 
 /**
  * Release outgoing packet buffer\
- * @note only called instead of hci_send_preparared
+ * @note only called instead of hci_send_prepared
  */
 void hci_release_packet_buffer(void);
 
@@ -1465,6 +1555,38 @@ void hci_release_packet_buffer(void);
 * @param policy (0: attempt to become master, 1: let connecting device decide)
 */
 void hci_set_master_slave_policy(uint8_t policy);
+
+/**
+ * @brief Check if Controller supports BR/EDR (Bluetooth Classic)
+ * @return true if supported
+ * @note only valid in working state
+ */
+bool hci_classic_supported(void);
+
+/**
+ * @brief Check if Controller supports LE (Bluetooth Low Energy)
+ * @return true if supported
+ * @note only valid in working state
+ */
+bool hci_le_supported(void);
+
+/**
+ * @brief Check if LE Extended Advertising is supported
+ * @return true if supported
+ */
+bool hci_le_extended_advertising_supported(void);
+
+/** @brief Check if address type corresponds to LE connection
+ *  @bparam address_type
+ *  @erturn true if LE connection
+ */
+bool hci_is_le_connection_type(bd_addr_type_t address_type);
+
+/** @brief Check if address type corresponds to Identity Address
+ *  @bparam address_type
+ *  @erturn true if LE connection
+ */
+bool hci_is_le_identity_address_type(bd_addr_type_t address_type);
 
 /* API_END */
 
@@ -1538,9 +1660,20 @@ bool hci_authentication_active_for_handle(hci_con_handle_t handle);
 uint16_t hci_max_acl_data_packet_length(void);
 
 /**
- * Get supported packet types. Called by L2CAP
+ * Get supported ACL packet types. Already flipped for create connection. Called by L2CAP
  */
 uint16_t hci_usable_acl_packet_types(void);
+
+/**
+ * Set filter for set of ACL packet types returned by hci_usable_acl_packet_types
+ * @param packet_types see CL_PACKET_TYPES_* in bluetooth.h, default: ACL_PACKET_TYPES_ALL
+ */
+void hci_enable_acl_packet_types(uint16_t packet_types);
+
+/**
+ * Get supported SCO packet types. Not flipped. Called by HFP
+  */
+uint16_t hci_usable_sco_packet_types(void);
 
 /**
  * Check if ACL packets marked as non flushable can be sent. Called by L2CAP
@@ -1579,8 +1712,15 @@ void hci_disconnect_security_block(hci_con_handle_t con_handle);
 
 /**
  * Query if remote side supports eSCO
+ * @param con_handle
  */
 bool hci_remote_esco_supported(hci_con_handle_t con_handle);
+
+/**
+ * Query remote supported SCO packets based on remote supported features
+ * @param con_handle
+ */
+uint16_t hci_remote_sco_packet_types(hci_con_handle_t con_handle);
 
 /**
  * Emit current HCI state. Called by daemon
@@ -1696,17 +1836,10 @@ uint8_t gap_periodic_advertising_create_sync_cancel(void);
 uint8_t gap_periodic_advertising_terminate_sync(uint16_t sync_handle);
 
 /**
- * @brief Get Manufactured
- * @return manufacturer id
+ * @brief Get Controller Manufacturer
+ * @returns company_id - see bluetooth_company_id.h
  */
 uint16_t hci_get_manufacturer(void);
-
-// Only for PTS testing
-
-/** 
- * Disable automatic L2CAP disconnect if no L2CAP connection is established
- */
-void hci_disable_l2cap_timeout_check(void);
 
 /**
  *  Get Classic Allow Role Switch param
@@ -1722,6 +1855,14 @@ HCI_STATE hci_get_state(void);
  * @brief De-Init HCI
  */
 void hci_deinit(void);
+
+// defer disconnect on dedicated bonding complete, used internally for CTKD
+uint8_t hci_dedicated_bonding_defer_disconnect(hci_con_handle_t con_handle, bool defer);
+
+// Only for PTS testing
+
+// Disable automatic L2CAP disconnect if no L2CAP connection is established
+void hci_disable_l2cap_timeout_check(void);
 
 // setup test connections, used for fuzzing
 void hci_setup_test_connections_fuzz(void);

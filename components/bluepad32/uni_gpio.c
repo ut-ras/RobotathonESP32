@@ -1,26 +1,10 @@
-
-/****************************************************************************
-http://retro.moe/unijoysticle2
-
-Copyright 2022 Ricardo Quesada
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-****************************************************************************/
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2022 Ricardo Quesada
+// http://retro.moe/unijoysticle2
 
 #include "uni_gpio.h"
 
 #include <argtable3/argtable3.h>
-#include <driver/adc.h>
 #include <driver/gpio.h>
 #include <driver/ledc.h>
 #include <esp_console.h>
@@ -137,5 +121,5 @@ void uni_gpio_register_cmds(void) {
 esp_err_t uni_gpio_set_level(gpio_num_t gpio, int value) {
     if (gpio == -1)
         return ESP_OK;
-    return gpio_set_level(gpio, value);
+    return gpio_set_level(gpio, !!value);
 }

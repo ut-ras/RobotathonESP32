@@ -5,13 +5,8 @@
 #define BP32_ARDUINO_BLUEPAD32_H
 
 #include "sdkconfig.h"
-#ifndef CONFIG_BLUEPAD32_PLATFORM_ARDUINO
-#error "Must only be compiled when using Bluepad32 Arduino platform"
-#endif  // !CONFIG_BLUEPAD32_PLATFORM_ARDUINO
 
-#include <inttypes.h>
-#include <uni_platform_arduino.h>
-
+#include <cinttypes>
 #include <functional>
 
 #include "ArduinoController.h"
@@ -41,23 +36,42 @@ class Bluepad32 {
      * result: version as string with this format a.b.c
      */
     const char* firmwareVersion() const;
-    void setDebug(uint8_t on);
 
-    // Controller
-    void update();
+    // Request to update the controllers' data.
+    // Returns true if data was updated.
+    // False otherwise.
+    bool update();
 
     // When a controller is paired to the ESP32, the ESP32 stores keys to enable reconnection.
     // If you want to "forget" (delete) the keys from ESP32, you should call this
     // function.
     void forgetBluetoothKeys();
 
-    // Enable / Disable new Bluetooth connections.
+    // Enable new Bluetooth connections.
     // When enabled, the device is put in Discovery mode, and new pairs are accepted.
     // When disabled, only devices that have paired before can connect.
     // Established connections are not affected.
     void enableNewBluetoothConnections(bool enabled);
 
+    // Enables mouse / touchpad support for gamepads that support them.
+    // When enabled controllers like DualSense and DualShock4 generate two connected devices:
+    // - First one: the gamepad
+    // - Second one, which is a "virtual device", is a mouse,
+    // By default, it is disabled.
+    void enableVirtualDevice(bool enabled);
+
+    // Enables the BLE Service in Bluepad32.
+    // This service allows clients, like a mobile app, to setup and see the state of Bluepad32.
+    // By default, it is disabled.
+    void enableBLEService(bool enabled);
+
     void setup(const ControllerCallback& onConnect, const ControllerCallback& onDisconnect);
+
+    //
+    // Get the local Bluetooth Address.
+    // return: pointer to uint8_t array with length 6.
+    //
+    const uint8_t* localBdAddress();
 
    private:
     void checkProtocol();

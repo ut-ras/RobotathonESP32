@@ -288,6 +288,15 @@ uint16_t hci_cmd_create_from_template(uint8_t *hci_cmd_buffer, const hci_cmd_t *
     return pos;
 }
 
+
+uint16_t hci_cmd_create_from_template_with_vargs(uint8_t * hci_cmd_buffer, const hci_cmd_t * cmd, ...){
+    va_list argptr;
+    va_start(argptr, cmd);
+    uint16_t size = hci_cmd_create_from_template(hci_cmd_buffer, cmd, argptr);
+    va_end(argptr);
+    return size;
+}
+
 /**
  *  Link Control Commands 
  */
@@ -467,7 +476,14 @@ const hci_cmd_t hci_read_remote_version_information = {
     HCI_OPCODE_HCI_READ_REMOTE_VERSION_INFORMATION, "H"
 };
 
-/** 
+/**
+ * @param handle
+ */
+const hci_cmd_t hci_read_clock_offset = {
+        HCI_OPCODE_HCI_READ_CLOCK_OFFSET, "H"
+};
+
+/**
  * @param handle
  * @param transmit_bandwidth 8000(64kbps)
  * @param receive_bandwidth  8000(64kbps)
@@ -918,7 +934,7 @@ const hci_cmd_t hci_write_num_broadcast_retransmissions = {
  * @param type 0 = current transmit level, 1 = max transmit level
  */
 const hci_cmd_t hci_read_transmit_power_level = {
-    HCI_OPCODE_HCI_READ_TRANSMIT_POWER_LEVEL, "11"
+    HCI_OPCODE_HCI_READ_TRANSMIT_POWER_LEVEL, "H1"
 };
 
 /**
@@ -1030,6 +1046,20 @@ const hci_cmd_t hci_write_simple_pairing_mode = {
 const hci_cmd_t hci_read_local_oob_data = {
     HCI_OPCODE_HCI_READ_LOCAL_OOB_DATA, ""
     // return status, C, R
+};
+
+/**
+ */
+const hci_cmd_t hci_read_inquiry_response_transmit_power_level = {
+    HCI_OPCODE_HCI_READ_INQUIRY_RESPONSE_TRANSMIT_POWER_LEVEL, ""
+    // return status, pwr level
+};
+
+/**
+ */
+const hci_cmd_t hci_write_inquiry_transmit_power_level = {
+    HCI_OPCODE_HCI_WRITE_INQUIRY_TRANSMIT_POWER_LEVEL, "1"
+    // return status
 };
 
 /**
@@ -1203,14 +1233,43 @@ const hci_cmd_t hci_read_bd_addr = {
 };
 
 /**
- * Status Paramters
+ * Status Paramteers
  */
+
+/**
+ * @param handle
+ */
+const hci_cmd_t hci_read_failed_contact_counter = {
+    HCI_OPCODE_HCI_READ_FAILED_CONTACT_COUNTER, "H"
+};
+
+/**
+ * @param handle
+ */
+const hci_cmd_t hci_reset_failed_contact_counter = {
+    HCI_OPCODE_HCI_RESET_FAILED_CONTACT_COUNTER, "H"
+};
+
+/**
+ * @param handle
+ */
+const hci_cmd_t hci_read_link_quality = {
+    HCI_OPCODE_HCI_READ_LINK_QUALITY, "H"
+};
 
 /**
  * @param handle
  */
 const hci_cmd_t hci_read_rssi = {
     HCI_OPCODE_HCI_READ_RSSI, "H"
+};
+
+/**
+ * @param handle
+ * @param which_clock
+ */
+const hci_cmd_t hci_read_clock = {
+    HCI_OPCODE_HCI_READ_CLOCK, "H1"
 };
 
 /**
@@ -1645,7 +1704,7 @@ const hci_cmd_t hci_le_set_default_phy = {
  * @param phy_options
  */
 const hci_cmd_t hci_le_set_phy = {
-    HCI_OPCODE_HCI_LE_SET_PHY, "H1111"
+    HCI_OPCODE_HCI_LE_SET_PHY, "H1112"
 // LE PHY Update Complete is generated on completion
 };
 
@@ -2407,6 +2466,37 @@ const hci_cmd_t hci_bcm_enable_wbs = {
 };
 
 /**
+ * @brief Configure PCM2, see Cypress AN214937
+ * @param action
+ * @param test_options
+ * @param op_mode
+ * @param sync_and_clock_options
+ * @param pcm_clock_freq
+ * @param sync_signal_width
+ * @param slot_width
+ * @param number_of_slots
+ * @param bank_0_fill_mode
+ * @param bank_0_number_of_fill_bits
+ * @param bank_0_programmable_fill_data
+ * @param bank_1_fill_mode
+ * @param bank_1_number_of_fill_bits
+ * @param bank_1_programmable_fill_data
+ * @param data_justify_and_bit_order_options
+ * @param ch_0_slot_number
+ * @param ch_1_slot_number
+ * @param ch_2_slot_number
+ * @param ch_3_slot_number
+ * @param ch_4_slot_number
+ * @param ch_0_period
+ * @param ch_1_period
+ * @param ch_2_period
+*
+ */
+const hci_cmd_t hci_bcm_pcm2_setup = {
+        HCI_OPCODE_HCI_BCM_PCM2_SETUP, "11114111111111111111111"
+};
+
+/**
  * @brief Configure SCO Routing (BCM)
  * @param sco_routing is 0 for PCM, 1 for Transport, 2 for Codec and 3 for I2S
  * @param pcm_interface_rate is 0 for 128KBps, 1 for 256 KBps, 2 for 512KBps, 3 for 1024KBps, and 4 for 2048Kbps
@@ -2420,12 +2510,24 @@ const hci_cmd_t hci_bcm_write_sco_pcm_int = {
 };
 
 /**
+ * @brief Configure PCM Data Format (BCM)
+ * @param lsb_position 0x00 – LSB last/MSB first, 0x01 – LSB first/MSB last
+ * @param fill_bits_value three bit value defines the fill bits used by the PCM interface,only if fill_data_selection == programmable
+ * @param fill_data_selection 0x00 zeros, 0x01 ones, 0x02 sign bit, 0x03 programmable
+ * @param number_of_fill_bits 0..3
+ * @param right_left_justification 0x00 left justified, 0x01 right justified
+ */
+const hci_cmd_t hci_bcm_write_pcm_data_format_param = {
+        HCI_OPCODE_HCI_BCM_WRITE_PCM_DATA_FORMAT_PARAM, "11111"
+        // return: status
+};
+
+/**
  * @brief Configure the I2S/PCM interface (BCM)
  * @param i2s_enable is 0 for off, 1 for on
  * @param is_master is 0 for slave, is 1 for master
  * @param sample_rate is 0 for 8 kHz, 1 for 16 kHz, 2 for 4 kHz
  * @param clock_rate is 0 for 128 kz, 1 for 256 kHz, 2 for 512 khz, 3 for 1024 kHz, 4 for 2048 khz
- * @param clock_mode is 0 for slabe and 1 for master
  */
 const hci_cmd_t hci_bcm_write_i2spcm_interface_param = {
     HCI_OPCODE_HCI_BCM_WRITE_I2SPCM_INTERFACE_PARAM, "1111"
@@ -2608,5 +2710,66 @@ const hci_cmd_t hci_ti_write_hardware_register = {
  * @brief Configure SCO routing on Realtek Controllers
  */
 const hci_cmd_t hci_rtk_configure_sco_routing = {
-    HCI_OPCODE (0x3f, 0x93), "111111111"
+    HCI_OPCODE_HCI_RTK_CONFIGURE_SCO_ROUTING, "111111111"
+};
+
+/**
+* @brief Read Card Information
+*/
+const hci_cmd_t hci_rtk_read_card_info = {
+    HCI_OPCODE_HCI_RTK_READ_CARD_INFO, "11111"
+};
+
+
+/**
+ * @param voice_path 0x00 - transport, 0x01 - I2S/PCM
+ */
+const hci_cmd_t hci_nxp_set_sco_data_path = {
+        HCI_OPCODE_HCI_NXP_SET_SCO_DATA_PATH, "1"
+};
+
+/**
+ * @param settings bits 7-5: reserved, bit 4: pcm clock on, bit 3: reserved, bit 2: pcm sync source, bit 1: master/slave, bit 0: pcm direction
+ */
+const hci_cmd_t hci_nxp_write_pcm_i2s_settings = {
+        HCI_OPCODE_HCI_NXP_WRITE_PCM_I2S_SETTINGS, "1"
+};
+
+/**
+ * @param sync_settings_1 bits 7-2: reserved, bit 1: ISR, bit 0: ISR
+ * @param sync_settings_2 bits 15-11: reserved, bit 10: 16k synchronization, bit 9: clock setting, bit 8: main clock, bits 7-5: reserved, bit 4: i2s sent in right channel, bit 3: clock alignment DIN, bit 2: clock alignment DOUT, bits 1-0: mode
+ */
+const hci_cmd_t hci_nxp_write_pcm_i2s_sync_settings = {
+        HCI_OPCODE_HCI_NXP_WRITE_PCM_I2S_SYNC_SETTINGS, "12"
+};
+
+/**
+ * @param settings bits 15-14: reserved, bit 13-10: each bit == one PCM time slot,, bits 9-2: slot relative to PCM synchronization, bits 1-0: PCM slots to be used
+ */
+const hci_cmd_t hci_nxp_write_pcm_link_settings = {
+        HCI_OPCODE_HCI_NXP_WRITE_PCM_LINK_SETTINGS, "2"
+};
+
+/**
+ * @param next_connection_wbs 0: CVSD, 1: mSBC
+ */
+const hci_cmd_t hci_nxp_set_wbs_connection = {
+        HCI_OPCODE_HCI_NXP_SET_WBS_CONNECTION, "1"
+};
+
+/**
+ * @param action
+ * @param operation mode
+ * @param sco_handle_1
+ * @param sco_handle_2
+ */
+const hci_cmd_t hci_nxp_host_pcm_i2s_audio_config = {
+        HCI_OPCODE_HCI_NXP_HOST_PCM_I2S_AUDIO_CONFIG, "11HH"
+};
+
+/**
+ * @param action
+ */
+const hci_cmd_t hci_nxp_host_pcm_i2s_control_enable = {
+        HCI_OPCODE_HCI_NXP_HOST_PCM_I2S_CONTROL_ENABLE, "1"
 };

@@ -163,8 +163,9 @@ extern "C" {
 #define HFP_RING "RING"
 
 // Codecs 
-#define HFP_CODEC_CVSD 0x01
-#define HFP_CODEC_MSBC 0x02
+#define HFP_CODEC_CVSD    0x01
+#define HFP_CODEC_MSBC    0x02
+#define HFP_CODEC_LC3_SWB 0x03
 
 typedef enum {
     HFP_ROLE_INVALID = 0,
@@ -546,6 +547,7 @@ typedef struct hfp_connection {
     bd_addr_t remote_addr;
     hci_con_handle_t acl_handle;
     hci_con_handle_t sco_handle;
+    uint16_t packet_types;
     uint8_t rfcomm_channel_nr;
     uint16_t rfcomm_cid;
     uint16_t rfcomm_mtu;
@@ -639,6 +641,9 @@ typedef struct hfp_connection {
     // HF: AT Command, AG: Unsolicited Result Code
     const char * send_custom_message;
 
+    // HF:  Unsolicited Result Code, AG:  AT Command
+    uint16_t custom_at_command_id;
+
     bool emit_vra_enabled_after_audio_established;
     // AG only
     uint8_t change_in_band_ring_tone_setting;
@@ -655,6 +660,7 @@ typedef struct hfp_connection {
     uint8_t ag_call_hold_action;
     uint8_t ag_response_and_hold_action;
     uint8_t ag_dtmf_code;
+    bool    ag_in_band_ring_tone_active;
     bool    ag_send_no_carrier;
     bool    ag_vra_send_command;
     bool    ag_send_in_band_ring_tone_setting;
@@ -663,7 +669,6 @@ typedef struct hfp_connection {
 
     int send_status_of_current_calls;
     int next_call_index;
-    uint16_t ag_custom_at_command_id;
 
     // HF only
     // HF: track command for which ok/error response need to be received
@@ -739,6 +744,10 @@ typedef struct hfp_connection {
 #ifdef ENABLE_RTK_PCM_WBS
     bool rtk_send_sco_config;
 #endif
+#ifdef ENABLE_NXP_PCM_WBS
+    hci_con_handle_t nxp_start_audio_handle;
+    hci_con_handle_t nxp_stop_audio_handle;
+#endif
 } hfp_connection_t;
 
 /**
@@ -758,19 +767,51 @@ int get_bit(uint16_t bitmap, int position);
 int store_bit(uint32_t bitmap, int position, uint8_t value);
 // UTILS_END
 
+#define HFP_H2_SYNC_FRAME_SIZE 60
+// HFP H2 Synchronization
+typedef struct {
+    // callback returns true if data was valid
+    bool        (*callback)(bool bad_frame, const uint8_t * frame_data, uint16_t frame_len);
+    uint8_t     frame_data[HFP_H2_SYNC_FRAME_SIZE];
+    uint16_t    frame_len;
+    uint16_t    dropped_bytes;
+} hfp_h2_sync_t;
+
+/**
+ * @brief Init HFP H2 Sync state
+ * @param hfp_h2_sync
+ * @param callback
+ */
+void hfp_h2_sync_init(hfp_h2_sync_t * hfp_h2_sync,
+                      bool (*callback)(bool bad_frame, const uint8_t * frame_data, uint16_t frame_len));
+/**
+ * @brief Process H2 data and execute callback for frames with valid H2 header
+ * @param hfp_h2_sync
+ * @param bad_frame
+ * @param frame_data
+ * @param frame_len
+ */
+void hfp_h2_sync_process(hfp_h2_sync_t *hfp_h2_sync, bool bad_frame, const uint8_t *frame_data, uint16_t frame_len);
+
+
+// other
+
 void hfp_finalize_connection_context(hfp_connection_t * hfp_connection);
-void hfp_emit_sco_event(hfp_connection_t * hfp_connection, uint8_t status, hci_con_handle_t con_handle, bd_addr_t addr, uint8_t  negotiated_codec);
+void hfp_emit_sco_connection_established(hfp_connection_t *hfp_connection, uint8_t status, uint8_t negotiated_codec,
+                                         uint16_t rx_packet_length, uint16_t tx_packet_length);
 
 void hfp_set_ag_callback(btstack_packet_handler_t callback);
 void hfp_set_ag_rfcomm_packet_handler(btstack_packet_handler_t handler);
 
 void hfp_set_hf_callback(btstack_packet_handler_t callback);
 void hfp_set_hf_rfcomm_packet_handler(btstack_packet_handler_t handler);
+void hfp_set_hf_indicators(uint8_t indicators_nr, const uint8_t * indicators);
 
 void hfp_init(void);
 void hfp_deinit(void);
 
 void hfp_register_custom_ag_command(hfp_custom_at_command_t * at_command);
+void hfp_register_custom_hf_command(hfp_custom_at_command_t * at_command);
 
 void hfp_create_sdp_record(uint8_t * service, uint32_t service_record_handle, uint16_t service_uuid, int rfcomm_channel_nr, const char * name);
 void hfp_handle_hci_event(uint8_t packet_type, uint16_t channel, uint8_t *packet, uint16_t size, hfp_role_t local_role);
@@ -831,12 +872,19 @@ uint8_t hfp_trigger_release_audio_connection(hfp_connection_t * hfp_connection);
 
 void hfp_reset_context_flags(hfp_connection_t * hfp_connection);
 
+// @returns if an SCO setup is active in either role
+bool hfp_sco_setup_active(void);
+
 void hfp_setup_synchronous_connection(hfp_connection_t * hfp_connection);
 void hfp_accept_synchronous_connection(hfp_connection_t * hfp_connection, bool incoming_eSCO);
+
 int hfp_supports_codec(uint8_t codec, int codecs_nr, uint8_t * codecs);
 void hfp_hf_drop_mSBC_if_eSCO_not_supported(uint8_t * codecs, uint8_t * codecs_nr);
 void hfp_init_link_settings(hfp_connection_t * hfp_connection, uint8_t eSCO_S4_supported);
-hfp_link_settings_t hfp_next_link_setting(hfp_link_settings_t current_setting, bool local_eSCO_supported, bool remote_eSCO_supported, bool eSCO_s4_supported, uint8_t negotiated_codec);
+hfp_link_settings_t hfp_next_link_setting(hfp_link_settings_t current_setting, uint16_t local_sco_packet_types,
+                                          uint16_t remote_sco_packet_types, bool eSCO_s4_supported,
+                                          uint8_t negotiated_codec);
+hfp_link_settings_t hfp_safe_settings_for_context(bool use_eSCO, uint8_t negotiated_codec, bool secure_connection_in_use);
 
 const char * hfp_hf_feature(int index);
 const char * hfp_ag_feature(int index);
@@ -848,12 +896,14 @@ const char * hfp_enhanced_call_status2str(uint16_t index);
 const char * hfp_enhanced_call_mode2str(uint16_t index);
 const char * hfp_enhanced_call_mpty2str(uint16_t index);
 
-#ifdef ENABLE_CC256X_ASSISTED_HFP
-void hfp_cc256x_prepare_for_sco(hfp_connection_t * hfp_connection);
-void hfp_cc256x_write_codec_config(hfp_connection_t * hfp_connection);
-#endif
+/**
+ * @brief Prepare for immediate SCO connection.
+ *        Triggers sending of vendor-specific commands to enable mSBC Codec in Controller
+ * @param hfp_connection
+ */
+void hfp_prepare_for_sco(hfp_connection_t * hfp_connection);
+
 #ifdef ENABLE_BCM_PCM_WBS
-void hfp_bcm_prepare_for_sco(hfp_connection_t * hfp_connection);
 void hfp_bcm_write_i2spcm_interface_param (hfp_connection_t * hfp_connection);
 #endif
 

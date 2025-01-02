@@ -5,20 +5,27 @@
 #ifndef BP32_CONSOLE_H
 #define BP32_CONSOLE_H
 
-#include <stddef.h>
+#include <cstddef>
 
 // Arduino includes
 #include <WString.h>
 
 class Console {
    public:
+    void begin(int baud);
+
     void print(const String& str);
     void print(const char* str);
+    void print(int i);
 
+    void println();
     void println(const String& str);
     void println(const char* str);
+    void println(int i);
 
     void printf(const char* fmt, ...);
+
+    void write(char c);
 };
 
 extern Console Console;

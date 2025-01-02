@@ -97,6 +97,8 @@ static inline uint32_t periph_ll_get_rst_en_mask(periph_module_t periph, bool en
         return SYSTEM_RMT_RST;
     case PERIPH_LEDC_MODULE:
         return SYSTEM_LEDC_RST;
+    case PERIPH_WIFI_MODULE:
+        return SYSTEM_WIFIMAC_RST;
     case PERIPH_BT_MODULE:
         return  (SYSTEM_BTBB_RST | SYSTEM_BTBB_REG_RST | SYSTEM_RW_BTMAC_RST | SYSTEM_RW_BTLP_RST | SYSTEM_RW_BTMAC_REG_RST | SYSTEM_RW_BTLP_REG_RST);
     case PERIPH_UART0_MODULE:
@@ -214,16 +216,14 @@ static inline void periph_ll_disable_clk_set_rst(periph_module_t periph)
     DPORT_SET_PERI_REG_MASK(periph_ll_get_rst_en_reg(periph), periph_ll_get_rst_en_mask(periph, false));
 }
 
-static inline void IRAM_ATTR periph_ll_wifi_bt_module_enable_clk_clear_rst(void)
+static inline void IRAM_ATTR periph_ll_wifi_bt_module_enable_clk(void)
 {
     DPORT_SET_PERI_REG_MASK(SYSTEM_WIFI_CLK_EN_REG, SYSTEM_WIFI_CLK_WIFI_BT_COMMON_M);
-    DPORT_CLEAR_PERI_REG_MASK(SYSTEM_CORE_RST_EN_REG, 0);
 }
 
-static inline void IRAM_ATTR periph_ll_wifi_bt_module_disable_clk_set_rst(void)
+static inline void IRAM_ATTR periph_ll_wifi_bt_module_disable_clk(void)
 {
     DPORT_CLEAR_PERI_REG_MASK(SYSTEM_WIFI_CLK_EN_REG, SYSTEM_WIFI_CLK_WIFI_BT_COMMON_M);
-    DPORT_SET_PERI_REG_MASK(SYSTEM_CORE_RST_EN_REG, 0);
 }
 
 static inline void periph_ll_reset(periph_module_t periph)

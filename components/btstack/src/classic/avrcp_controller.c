@@ -50,6 +50,9 @@
 #include "btstack_util.h"
 #include "l2cap.h"
 
+static const char * avrcp_default_controller_service_name = "AVRCP Controller";
+static const char * avrcp_default_controller_service_provider_name = "BlueKitchen";
+
 // made public in avrcp_controller.h
 avrcp_context_t avrcp_controller_context;
 
@@ -418,6 +421,14 @@ static void avrcp_controller_emit_now_playing_info_event(btstack_packet_handler_
 			event[pos++] = (uint8_t) value_len;
             (void)memcpy(event + pos, value, value_len);
             break;
+#ifdef ENABLE_AVRCP_COVER_ART
+        case AVRCP_MEDIA_ATTR_DEFAULT_COVER_ART:
+            event[subevent_type_pos] = AVRCP_SUBEVENT_NOW_PLAYING_COVER_ART_INFO;
+            btstack_assert(value_len <= 255);
+            event[pos++] = (uint8_t) value_len;
+            (void)memcpy(event + pos, value, value_len);
+            break;
+#endif
         case AVRCP_MEDIA_ATTR_SONG_LENGTH_MS:
             event[subevent_type_pos] = AVRCP_SUBEVENT_NOW_PLAYING_SONG_LENGTH_MS_INFO;
             if (value){
@@ -1248,16 +1259,22 @@ static void avrcp_handle_l2cap_data_packet_for_signaling_connection(avrcp_connec
 }
 
 static void avrcp_controller_handle_can_send_now(avrcp_connection_t * connection){
+    // identifier (9) + num attributes (1) + attributes (4 * num attributes)
+    uint8_t get_element_attributes_command[9+8*((AVRCP_MEDIA_ATTR_RESERVED-AVRCP_MEDIA_ATTR_TITLE) + 1)];
+    uint16_t pos;
+    uint16_t num_attributes_index;
+    uint8_t i;
+
     switch (connection->state){
         case AVCTP_W2_SEND_PRESS_COMMAND:
             avrcp_send_cmd_with_avctp_fragmentation(connection);
             connection->state = AVCTP_W2_RECEIVE_PRESS_RESPONSE;
-            break;
+            return;
 
         case AVCTP_W2_SEND_RELEASE_COMMAND:
             avrcp_send_cmd_with_avctp_fragmentation(connection);
             connection->state = AVCTP_W2_RECEIVE_RESPONSE;
-            break;
+            return;
 
         case AVCTP_W2_SEND_COMMAND:
             avrcp_send_cmd_with_avctp_fragmentation(connection);
@@ -1268,11 +1285,42 @@ static void avrcp_controller_handle_can_send_now(avrcp_connection_t * connection
             }
             connection->state = AVCTP_W2_RECEIVE_RESPONSE;
             return;
+        case AVCTP_W2_SEND_GET_ELEMENT_ATTRIBUTES_REQUEST:
+            // build command in local buffer
+            pos = 0;
+            connection->data = get_element_attributes_command;
+            // write identifier
+            memset(connection->data, 0, 8);
+            pos += 8;
+            num_attributes_index = pos;
+            // If num_attributes is set to zero, all attribute information shall be returned,
+            // and the AttributeID field is omitted
+            connection->data[num_attributes_index] = 0;
+            pos++;
+            for (i = 0; i < AVRCP_MEDIA_ATTR_RESERVED-AVRCP_MEDIA_ATTR_TITLE; i++){
+                if ((connection->controller_element_attributes & (1<<i)) != 0){
+                    // every attribute is 4 bytes long
+                    big_endian_store_32(connection->data, pos, AVRCP_MEDIA_ATTR_TITLE + i);
+                    pos += 4;
+                    connection->data[num_attributes_index]++;
+                }
+            }
+
+            // Parameter Length
+            connection->data_len = pos;
+
+            log_info("AVCTP_W2_SEND_GET_ELEMENT_ATTRIBUTES_REQUEST, len %u", connection->data_len);
+
+            // send data - assume it will fit into one packet
+            avrcp_send_cmd_with_avctp_fragmentation(connection);
+            connection->state = AVCTP_W2_RECEIVE_RESPONSE;
+            return;
         default:
             break;
     }
     
-    // send register notification if queued
+    // send register notification if queued,
+    // avrcp_handle_l2cap_data_packet_for_signaling_connection will trigger next one
     if (connection->controller_notifications_to_register != 0){
         uint8_t event_id;
         for (event_id = (uint8_t)AVRCP_NOTIFICATION_EVENT_FIRST_INDEX; event_id < (uint8_t)AVRCP_NOTIFICATION_EVENT_LAST_INDEX; event_id++){
@@ -1309,7 +1357,13 @@ static void avrcp_controller_packet_handler(uint8_t packet_type, uint16_t channe
 }
 
 void avrcp_controller_create_sdp_record(uint8_t * service, uint32_t service_record_handle, uint16_t supported_features, const char * service_name, const char * service_provider_name){
-    avrcp_create_sdp_record(1, service, service_record_handle, avrcp_controller_supports_browsing(supported_features), supported_features, service_name, service_provider_name);
+    if (service_name == NULL){
+        service_name = avrcp_default_controller_service_name;
+    }
+    if (service_provider_name == NULL){
+        service_provider_name = avrcp_default_controller_service_provider_name;
+    }
+    avrcp_create_sdp_record(true, service, service_record_handle, avrcp_controller_supports_browsing(supported_features), supported_features, service_name, service_provider_name);
 }
 
 void avrcp_controller_init(void){
@@ -1586,33 +1640,19 @@ uint8_t avrcp_controller_get_element_attributes(uint16_t avrcp_cid, uint8_t num_
         return ERROR_CODE_INVALID_HCI_COMMAND_PARAMETERS;
     }
 
-    connection->state = AVCTP_W2_SEND_COMMAND;
+    connection->state = AVCTP_W2_SEND_GET_ELEMENT_ATTRIBUTES_REQUEST;
     avrcp_controller_vendor_dependent_command_data_init(connection, AVRCP_CTYPE_STATUS, AVRCP_PDU_ID_GET_ELEMENT_ATTRIBUTES, true);
 
-    uint8_t pos = 0;
-    // write 8 bytes value
-    memset(connection->data, pos, 8); // identifier: PLAYING
-    pos += 8;
-
-    uint8_t num_attributes_index = pos;
-    pos++;
-
-    // If num_attributes is set to zero, all attribute information shall be returned, 
-    // and the AttributeID field is omitted
-    connection->data[num_attributes_index] = 0;
+    // collect element attributes
     uint8_t i;
+    uint16_t attributes_set = 0;
     for (i = 0; i < num_attributes; i++){
         // ignore invalid attribute ID and "get all attributes"
         if (AVRCP_MEDIA_ATTR_ALL < attributes[i] && attributes[i] < AVRCP_MEDIA_ATTR_RESERVED){
-            // every attribute is 4 bytes long
-            big_endian_store_32(connection->data, pos, attributes[i]);
-            pos += 4;  
-            connection->data[num_attributes_index]++;
+            attributes_set |= 1 << (attributes[i] - AVRCP_MEDIA_ATTR_TITLE);
         }
     }
-
-    // Parameter Length
-    connection->data_len = pos;
+    connection->controller_element_attributes = attributes_set;
 
     avrcp_request_can_send_now(connection, connection->l2cap_signaling_cid);
     return ERROR_CODE_SUCCESS;

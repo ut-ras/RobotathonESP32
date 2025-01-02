@@ -166,11 +166,12 @@ typedef int (*att_write_callback_t)(hci_con_handle_t con_handle, uint16_t attrib
 // Read & Write Callbacks for handle range
 typedef struct att_service_handler {
     btstack_linked_item_t * item;
-    uint16_t start_handle;
-    uint16_t end_handle;
     att_read_callback_t read_callback;
     att_write_callback_t write_callback;
     btstack_packet_handler_t packet_handler;
+    uint16_t start_handle;
+    uint16_t end_handle;
+    uint8_t flags;
 } att_service_handler_t;
 
 // MARK: ATT Operations
@@ -224,6 +225,21 @@ uint16_t att_prepare_handle_value_notification(att_connection_t * att_connection
                                                const uint8_t *value,
                                                uint16_t value_len, 
                                                uint8_t * response_buffer);
+
+/**
+ * @brief setup value notification in response buffer for multiple handles and values
+ * @param att_connection
+ * @param attribute_handle
+ * @param value
+ * @param value_len
+ * @param response_buffer for notification
+ */
+uint16_t att_prepare_handle_value_multiple_notification(att_connection_t * att_connection,
+                                                        uint8_t num_attributes,
+                                                        const uint16_t * attribute_handles,
+                                                        const uint8_t ** values_data,
+                                                        const uint16_t * values_len,
+                                                        uint8_t * response_buffer);
 
 /**
  * @brief setup value indication in response buffer for a given handle and value
@@ -297,6 +313,15 @@ uint16_t att_read_callback_handle_byte(uint8_t value, uint16_t offset, uint8_t *
  * @return 0 if not found
  */
 uint16_t att_uuid_for_handle(uint16_t attribute_handle);
+
+/**
+ * @brief Get const value for handle
+ * @param attribute_handle
+ * @param out_value_len  output variable that hold value len
+ * @return value 
+ */
+
+const uint8_t * gatt_server_get_const_value_for_handle(uint16_t attribute_handle, uint16_t * out_value_len);
 
 // experimental GATT Server API
 

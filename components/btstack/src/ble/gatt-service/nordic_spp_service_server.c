@@ -40,30 +40,29 @@
 /**
  * Implementation of the Nordic SPP-like profile
  *
- * To use with your application, add '#import <nordic_spp_service.gatt' to your .gatt file
+ * To use with your application, add `#import <nordic_spp_service.gatt>` to your .gatt file
  * and call all functions below. All strings and blobs need to stay valid after calling the functions.
  */
 
 #include <stdint.h>
 #include <string.h>
 
-#include "btstack_defines.h"
 #include "ble/att_db.h"
 #include "ble/att_server.h"
-#include "btstack_util.h"
-#include "bluetooth_gatt.h"
 #include "btstack_debug.h"
+#include "btstack_event.h"
 
 #include "ble/gatt-service/nordic_spp_service_server.h"
 
-//
 static att_service_handler_t  nordic_spp_service;
 static btstack_packet_handler_t client_packet_handler;
+static btstack_packet_callback_registration_t nordic_spp_service_hci_event_callback_registration;
 
 static uint16_t nordic_spp_rx_value_handle;
 static uint16_t nordic_spp_tx_value_handle;
 static uint16_t nordic_spp_tx_client_configuration_handle;
 static uint16_t nordic_spp_tx_client_configuration_value;
+static hci_con_handle_t nordic_spp_con_handle;
 
 static void nordic_spp_service_emit_state(hci_con_handle_t con_handle, bool enabled){
     uint8_t event[5];
@@ -91,21 +90,49 @@ static uint16_t nordic_spp_service_read_callback(hci_con_handle_t con_handle, ui
 }
 
 static int nordic_spp_service_write_callback(hci_con_handle_t con_handle, uint16_t attribute_handle, uint16_t transaction_mode, uint16_t offset, uint8_t *buffer, uint16_t buffer_size){
-	UNUSED(transaction_mode);
 	UNUSED(offset);
 	UNUSED(buffer_size);
-	
-	if (attribute_handle == nordic_spp_rx_value_handle){
+
+    if (transaction_mode != ATT_TRANSACTION_MODE_NONE){
+        return 0;
+    }
+
+    if (attribute_handle == nordic_spp_rx_value_handle){
         (*client_packet_handler)(RFCOMM_DATA_PACKET, (uint16_t) con_handle, buffer, buffer_size);
 	}
 
 	if (attribute_handle == nordic_spp_tx_client_configuration_handle){
 		nordic_spp_tx_client_configuration_value = little_endian_read_16(buffer, 0);
 		bool enabled = (nordic_spp_tx_client_configuration_value != 0);
+        nordic_spp_con_handle = con_handle;
         nordic_spp_service_emit_state(con_handle, enabled);
 	}
 
 	return 0;
+}
+
+static void nordic_spp_service_hci_event_handler(uint8_t packet_type, uint16_t channel, uint8_t *packet, uint16_t size){
+    UNUSED(channel);
+    UNUSED(size);
+
+    if (packet_type != HCI_EVENT_PACKET) return;
+
+    hci_con_handle_t con_handle;
+
+    switch (hci_event_packet_get_type(packet)){
+        case HCI_EVENT_DISCONNECTION_COMPLETE:
+            con_handle = hci_event_disconnection_complete_get_connection_handle(packet);
+            if (con_handle == nordic_spp_con_handle){
+                nordic_spp_con_handle = HCI_CON_HANDLE_INVALID;
+                if (nordic_spp_tx_client_configuration_value > 0){
+                    nordic_spp_tx_client_configuration_value = 0;
+                    nordic_spp_service_emit_state(con_handle, false);
+                }
+            }
+            break;
+        default:
+            break;
+    }
 }
 
 /**
@@ -142,6 +169,13 @@ void nordic_spp_service_server_init(btstack_packet_handler_t packet_handler){
 	nordic_spp_service.read_callback  = &nordic_spp_service_read_callback;
 	nordic_spp_service.write_callback = &nordic_spp_service_write_callback;
 	att_server_register_service_handler(&nordic_spp_service);
+
+    // register HCI packet handler
+    nordic_spp_service_hci_event_callback_registration.callback = &nordic_spp_service_hci_event_handler;
+    hci_add_event_handler(&nordic_spp_service_hci_event_callback_registration);
+
+    // reset connection
+    nordic_spp_con_handle = HCI_CON_HANDLE_INVALID;
 }
 
 /** 

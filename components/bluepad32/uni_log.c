@@ -6,24 +6,14 @@
 
 #include <stdarg.h>
 
-#include "uni_config.h"
-
-#ifndef CONFIG_BLUEPAD32_PLATFORM_PC_DEBUG
-#include <esp_log.h>
-#endif  // !CONFIG_BLUEPAD32_PLATFORM_PC_DEBUG
-
-void uni_log(const char* format, ...) {
+__attribute__((weak)) void uni_log(const char* fmt, ...) {
     va_list args;
 
-    va_start(args, format);
-    uni_logv(format, args);
+    va_start(args, fmt);
+    uni_logv(fmt, args);
     va_end(args);
 }
 
-void uni_logv(const char* format, va_list args) {
-#ifdef CONFIG_BLUEPAD32_PLATFORM_PC_DEBUG
-    vfprintf(stderr, format, args);
-#else
-    esp_log_writev(ESP_LOG_WARN, "bp32", format, args);
-#endif  // ! UNI_PLATFORM_PC_DEBUG
+__attribute__((weak)) void uni_logv(const char* fmt, va_list args) {
+    vfprintf(stdout, fmt, args);
 }

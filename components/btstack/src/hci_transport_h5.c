@@ -35,7 +35,7 @@
  *
  */
 
-#define __BTSTACK_FILE__ "hci_transport_h5.c"
+#define BTSTACK_FILE__ "hci_transport_h5.c"
 
 /*
  *  hci_transport_h5.c
@@ -429,7 +429,7 @@ static void hci_transport_link_timeout_handler(btstack_timer_source_t * timer){
             if (link_peer_asleep){
                 hci_transport_link_actions |= HCI_TRANSPORT_LINK_SEND_WAKEUP;
                 hci_transport_link_set_timer(LINK_WAKEUP_MS);
-                return;
+                break;
             }
             // resend packet
             hci_transport_link_actions |= HCI_TRANSPORT_LINK_SEND_QUEUED_PACKET;
@@ -663,6 +663,7 @@ static void hci_transport_h5_process_frame(uint16_t frame_size){
                 case HCI_EVENT_PACKET:
                 case HCI_ACL_DATA_PACKET:
                 case HCI_SCO_DATA_PACKET:
+                case HCI_ISO_DATA_PACKET:
                     // seems like peer is awake
                     link_peer_asleep = 0;
                     // forward packet to stack
@@ -670,8 +671,10 @@ static void hci_transport_h5_process_frame(uint16_t frame_size){
                     // reset inactvitiy timer
                     hci_transport_inactivity_timer_set();
                     break;
+                default:
+                    // ignore unknown packet type
+                    break;
             }
-
             break;
         default:
             break;

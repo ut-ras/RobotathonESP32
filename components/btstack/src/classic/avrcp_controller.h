@@ -61,7 +61,10 @@ typedef enum {
     AVRCP_CONTROLLER_SUPPORTED_FEATURE_CATEGORY_MENU,
     AVRCP_CONTROLLER_SUPPORTED_FEATURE_RESERVED_4,
     AVRCP_CONTROLLER_SUPPORTED_FEATURE_RESERVED_5,
-    AVRCP_CONTROLLER_SUPPORTED_FEATURE_BROWSING
+    AVRCP_CONTROLLER_SUPPORTED_FEATURE_BROWSING,
+    AVRCP_CONTROLLER_SUPPORTED_FEATURE_COVER_ART_GET_IMAGE_PROPERTIES,
+    AVRCP_CONTROLLER_SUPPORTED_FEATURE_COVER_ART_GET_IMAGE,
+    AVRCP_CONTROLLER_SUPPORTED_FEATURE_COVER_ART_GET_LINKED_THUMBNAIL
 } avrcp_controller_supported_feature_t;
 
 /**
@@ -69,8 +72,8 @@ typedef enum {
  * @param service
  * @param service_record_handle
  * @param supported_features 16-bit bitmap, see AVRCP_FEATURE_MASK_* in avrcp.h
- * @param service_name
- * @param service_provider_name
+ * @param service_name or NULL for default value. Provide "" (empty string) to skip attribute
+ * @param service_provider_name or NULL for default value. Provide "" (empty string) to skip attribute
  */
 void avrcp_controller_create_sdp_record(uint8_t * service, uint32_t service_record_handle, uint16_t supported_features, const char * service_name, const char * service_provider_name);
 

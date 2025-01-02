@@ -5,17 +5,14 @@
 #define BP32_ARDUINO_CONTROLLER_H
 
 #include "sdkconfig.h"
-#ifndef CONFIG_BLUEPAD32_PLATFORM_ARDUINO
-#error "Must only be compiled when using Bluepad32 Arduino platform"
-#endif  // !CONFIG_BLUEPAD32_PLATFORM_ARDUINO
 
-#include <inttypes.h>
-#include <uni_platform_arduino.h>
+#include <cinttypes>
 
 #include <Arduino.h>
 
 #include "ArduinoControllerData.h"
 #include "ArduinoControllerProperties.h"
+#include "ArduinoKeyboardConstants.h"
 
 class Controller {
    public:
@@ -56,6 +53,8 @@ class Controller {
         CONTROLLER_TYPE_GenericController = 53,        // (Bluepad32)
         CONTROLLER_TYPE_NimbusController = 54,         // (Bluepad32)
         CONTROLLER_TYPE_OUYAController = 55,           // (Bluepad32)
+        CONTROLLER_TYPE_PSMoveController = 56,         // (Bluepad32)
+        CONTROLLER_TYPE_AtariJoystick = 57,            // (Bluepad32)
 
         CONTROLLER_TYPE_LastController,  // Don't add game controllers below this
                                          // enumeration - this enumeration can
@@ -84,6 +83,14 @@ class Controller {
     int32_t brake() const { return _data.gamepad.brake; }
     int32_t throttle() const { return _data.gamepad.throttle; }
 
+    // Gyro / Accel
+    int32_t gyroX() const { return _data.gamepad.gyro[0]; }
+    int32_t gyroY() const { return _data.gamepad.gyro[1]; }
+    int32_t gyroZ() const { return _data.gamepad.gyro[2]; }
+    int32_t accelX() const { return _data.gamepad.accel[0]; }
+    int32_t accelY() const { return _data.gamepad.accel[1]; }
+    int32_t accelZ() const { return _data.gamepad.accel[2]; }
+
     //
     // Shared between Mouse & Gamepad
     //
@@ -108,7 +115,7 @@ class Controller {
         return 0;
     }
 
-    // To test one button at the time.
+    // To test one button at a time.
     bool a() const { return buttons() & BUTTON_A; }
     bool b() const { return buttons() & BUTTON_B; }
     bool x() const { return buttons() & BUTTON_X; }
@@ -122,8 +129,13 @@ class Controller {
 
     // Misc buttons
     bool miscSystem() const { return miscButtons() & MISC_BUTTON_SYSTEM; }
-    bool miscBack() const { return miscButtons() & MISC_BUTTON_BACK; }
-    bool miscHome() const { return miscButtons() & MISC_BUTTON_HOME; }
+    bool miscSelect() const { return miscButtons() & MISC_BUTTON_SELECT; }
+    bool miscStart() const { return miscButtons() & MISC_BUTTON_START; }
+    bool miscCapture() const { return miscButtons() & MISC_BUTTON_CAPTURE; }
+
+    // Deprecated
+    bool miscBack() const { return miscSelect(); }
+    bool miscHome() const { return miscStart(); }
 
     //
     // Mouse related
@@ -142,6 +154,12 @@ class Controller {
     int temperature() const { return _data.balance_board.temperature; }
 
     //
+    // Keyboard related
+    //
+    bool isKeyPressed(KeyboardKey key) const;
+    bool isAnyKeyPressed() const;
+
+    //
     // Shared among all
     //
 
@@ -150,12 +168,17 @@ class Controller {
     // 255 = Battery full
     uint8_t battery() const { return _data.battery; }
 
+    // Returns whether the controller has received data since the last time BP32.updated() was called.
+    bool hasData() const { return _hasData; }
+
     bool isGamepad() const { return _data.klass == UNI_CONTROLLER_CLASS_GAMEPAD; }
     bool isMouse() const { return _data.klass == UNI_CONTROLLER_CLASS_MOUSE; }
     bool isBalanceBoard() const { return _data.klass == UNI_CONTROLLER_CLASS_BALANCE_BOARD; }
+    bool isKeyboard() const { return _data.klass == UNI_CONTROLLER_CLASS_KEYBOARD; }
     int8_t index() const { return _idx; }
 
     bool isConnected() const;
+    void disconnect();
 
     uni_controller_class_t getClass() const { return _data.klass; }
     // Returns the controller model.
@@ -164,19 +187,39 @@ class Controller {
     ControllerProperties getProperties() const { return _properties; }
 
     // "Output" functions.
+
+    // Bitmap for the LEDs to turn on / off.
     void setPlayerLEDs(uint8_t led) const;
+
+    // RGB for the lightbar in controllers like DualShock 4 and DualSense.
     void setColorLED(uint8_t red, uint8_t green, uint8_t blue) const;
-    void setRumble(uint8_t force, uint8_t duration) const;
+
+    // force: magnitude for both the weak and strong motors.
+    // duration: 1 unit is ~ 1/4 ms.
+    [[deprecated("Replaced by playDualRumble")]] void setRumble(uint8_t force, uint8_t duration) const {
+        playDualRumble(0, duration * 4, force, force);
+    }
+    // startDelayMs: a delayed start measured in milliseconds. Use 0 to start rumble immediately.
+    // durationMs: duration of rumble in milliseconds. The controller might limit the max duration.
+    // weakMagnitude: The magnitude for the "weak motor".
+    // strongMagnitude: The magnitude for the "strong motor".
+    // If the controller has only one motor, then the max value between "weak" and "strong" is used.
+    void playDualRumble(uint16_t delayedStartMs,
+                        uint16_t durationMs,
+                        uint8_t weakMagnitude,
+                        uint8_t strongMagnitude) const;
 
    private:
     void onConnected();
     void onDisconnected();
+    bool isModifierPressed(KeyboardKey key) const;
 
     bool _connected;
     // Controller index, from 0 to 3.
     int8_t _idx;
     ControllerData _data;
     ControllerProperties _properties;
+    bool _hasData;
 
     // Delete copy constructor to avoid copying the state by mistake. If so,
     // chances are that the controller won't get updated automatically.

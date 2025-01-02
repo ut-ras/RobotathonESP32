@@ -46,6 +46,7 @@
 #define BTSTACK_HID_PARSER_H
 
 #include <stdint.h>
+#include "btstack_bool.h"
 #include "btstack_hid.h"
 
 #if defined __cplusplus
@@ -137,10 +138,9 @@ typedef struct {
     uint32_t        usage_minimum;
     uint32_t        usage_maximum;
     uint16_t        available_usages;    
-    uint8_t         required_usages;
+    uint16_t        required_usages;
+    bool            usage_range;
     uint8_t         active_record;
-    uint8_t         have_usage_min;
-    uint8_t         have_usage_max;
 
     // global
     int32_t         global_logical_minimum;
@@ -168,7 +168,7 @@ void btstack_hid_parser_init(btstack_hid_parser_t * parser, const uint8_t * hid_
  * @brief Checks if more fields are available
  * @param parser
  */
-int  btstack_hid_parser_has_more(btstack_hid_parser_t * parser);
+bool btstack_hid_parser_has_more(btstack_hid_parser_t * parser);
 
 /**
  * @brief Get next field
@@ -184,8 +184,9 @@ void btstack_hid_parser_get_field(btstack_hid_parser_t * parser, uint16_t * usag
  * @param item
  * @param hid_descriptor
  * @param hid_descriptor_len
+ * @return true if item has been parsed successfully
  */
-void btstack_hid_parse_descriptor_item(hid_descriptor_item_t * item, const uint8_t * hid_descriptor, uint16_t hid_descriptor_len);
+bool btstack_hid_parse_descriptor_item(hid_descriptor_item_t * item, const uint8_t * hid_descriptor, uint16_t hid_descriptor_len);
 
 /**
  * @brief Parses descriptor and returns report size for given report ID and report type
@@ -193,23 +194,26 @@ void btstack_hid_parse_descriptor_item(hid_descriptor_item_t * item, const uint8
  * @param report_type
  * @param hid_descriptor_len
  * @param hid_descriptor
+ * @return report size in bytes or 0 on parsing error
  */
 int btstack_hid_get_report_size_for_id(int report_id, hid_report_type_t report_type, uint16_t hid_descriptor_len, const uint8_t * hid_descriptor);
 
 /**
- * @brief Parses descriptor and returns report size for given report ID and report type
+ * @brief Parses descriptor and returns status for given report ID
  * @param report_id
  * @param hid_descriptor_len
  * @param hid_descriptor
+ * @return status for report id
  */
 hid_report_id_status_t btstack_hid_id_valid(int report_id, uint16_t hid_descriptor_len, const uint8_t * hid_descriptor);
 
 /**
- * @brief Parses descriptor and returns 1 if report ID found
+ * @brief Parses descriptor and returns true if report ID found
  * @param hid_descriptor_len
  * @param hid_descriptor
+ * @return true if report ID declared in descriptor
  */
-int btstack_hid_report_id_declared(uint16_t hid_descriptor_len, const uint8_t * hid_descriptor);
+bool btstack_hid_report_id_declared(uint16_t hid_descriptor_len, const uint8_t * hid_descriptor);
 /* API_END */
 
 #if defined __cplusplus

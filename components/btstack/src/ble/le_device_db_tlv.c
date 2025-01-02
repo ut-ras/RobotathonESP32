@@ -208,7 +208,7 @@ int le_device_db_add(int addr_type, bd_addr_t addr, sm_key_t irk){
 	// find unused entry in the used list
     int i;
     for (i=0;i<NVM_NUM_DEVICE_DB_ENTRIES;i++){
-         if (entry_map[i]) {
+         if (entry_map[i] != 0u) {
             le_device_db_entry_t entry;
             le_device_db_tlv_fetch(i, &entry);
             // found addr?
@@ -309,8 +309,12 @@ void le_device_db_encryption_set(int index, uint16_t ediv, uint8_t rand[8], sm_k
     log_info("LE Device DB set encryption for %u, ediv x%04x, key size %u, authenticated %u, authorized %u, secure connection %u",
         index, ediv, key_size, authenticated, authorized, secure_connection);
     entry.ediv = ediv;
-    if (rand != 0) (void)memcpy(entry.rand, rand, 8);
-    if (ltk != 0) (void)memcpy(entry.ltk, ltk, 16);
+    if (rand != NULL){
+        (void)memcpy(entry.rand, rand, 8);
+    }
+    if (ltk != 0) {
+        (void)memcpy(entry.ltk, ltk, 16);
+    }
     entry.key_size = key_size;
     entry.authenticated = authenticated;
     entry.authorized = authorized;
@@ -463,6 +467,7 @@ void le_device_db_dump(void){
 		le_device_db_entry_t entry;
 		le_device_db_tlv_fetch(i, &entry);
         log_info("%u: %u %s", (unsigned int) i, entry.addr_type, bd_addr_to_str(entry.addr));
+        log_info_key("ltk", entry.ltk);
         log_info_key("irk", entry.irk);
 #ifdef ENABLE_LE_SIGNED_WRITE
         log_info_key("local csrk", entry.local_csrk);

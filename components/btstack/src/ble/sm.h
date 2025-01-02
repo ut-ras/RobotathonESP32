@@ -130,9 +130,10 @@ void sm_set_secure_connections_only_mode(bool enable);
 
 /**
  * @brief Let Peripheral request an encrypted connection right after connecting
+ * @param enable
  * @note Not used normally. Bonding is triggered by access to protected attributes in ATT Server
  */
-void sm_set_request_security(int enable);
+void sm_set_request_security(bool enable);
 
 /** 
  * @brief Trigger Security Request
@@ -235,6 +236,16 @@ irk_lookup_state_t sm_identity_resolving_state(hci_con_handle_t con_handle);
 int sm_le_device_index(hci_con_handle_t con_handle);
 
 /**
+ * @brief Get LTK for encrypted connection
+ * @param con_handle
+ * @param ltk buffer to store long term key
+ * @return ERROR_CODE_SUCCESS ok
+ *         ERROR_CODE_UNKNOWN_CONNECTION_IDENTIFIER if no connection for this con handle exists
+ *         ERROR_CODE_PIN_OR_KEY_MISSING if connection is not encrypted
+ */
+uint8_t sm_get_ltk(hci_con_handle_t con_handle, sm_key_t ltk);
+
+/**
  * @brief Use fixec passkey for Legacy and SC instead of generating a random number
  * @note Can be used to improve security over Just Works if no keyboard or displary are present and 
  *       individual random passkey can be printed on the device during production
@@ -281,9 +292,16 @@ void sm_register_ltk_callback( bool (*get_ltk_callback)(hci_con_handle_t con_han
  */
 void sm_deinit(void);
 
+/**
+ * @brief Use Debug Keys for LE Secure Connections for testing until restart
+ * @note Requires ENABLE_LE_SECURE_CONNECTIONS and ENABLE_LE_SECURE_CONNECTIONS_DEBUG_KEY
+ */
+void sm_test_enable_secure_connections_debug_keys(void);
+
 // PTS testing
 void sm_test_set_irk(sm_key_t irk);
 void sm_test_use_fixed_local_csrk(void);
+
 
 #ifdef ENABLE_TESTING_SUPPORT
 void sm_test_set_pairing_failure(int reason);

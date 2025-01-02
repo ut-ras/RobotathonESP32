@@ -177,6 +177,27 @@ Arduino-esp32 Preferences API
    
    **Note** 
       * A message providing the reason for a failed call is sent to the arduino-esp32 ``log_e`` facility.
+  
+  
+``isKey``
+*************
+
+   Check if a key-value pair from the currently open namespace exists.
+   
+   .. code-block:: arduino
+   
+       bool isKey(const char * key)
+   ..
+
+   **Parameters**
+      * ``key`` (Required)
+         -  the name of the key to be checked. 
+   
+   **Returns**
+      * ``true`` if key-value pair exists; ``false`` otherwise.
+   
+   **Note** 
+      * Attempting to check a key without a namespace being open will return false.
 
 
 ``putChar, putUChar``
@@ -578,7 +599,7 @@ Copy a series of bytes stored against a given key in the currently open namespac
          - the number of bytes to be written to the buffer pointed to by ``buf``
 
    **Returns**
-      * if successful, the number of bytes equal to ``len`` is written to buffer ``buf``, and the method returns ``1``.
+      * if successful, the number of bytes equal to ``len`` is written to buffer ``buf``, and the method returns ``len``.
       * if the method fails, nothing is written to the buffer and the method returns ``0``.
 
    **Notes**

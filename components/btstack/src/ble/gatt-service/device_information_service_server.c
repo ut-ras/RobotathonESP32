@@ -40,7 +40,7 @@
 /**
  * Implementation of the Device Information Service Server 
  *
- * To use with your application, add '#import <device_information_sevice.gatt' to your .gatt file
+ * To use with your application, add `#import <device_information_sevice.gatt>` to your .gatt file
  * and call all functions below. All strings and blobs need to stay valid after calling the functions.
  *
  * @note: instead of calling all setters, you can create a local copy of the .gatt file and remove
@@ -85,7 +85,7 @@ static uint8_t device_information_pnp_id[7];
 static att_service_handler_t       device_information_service;
 static void set_string(device_information_field_id_t field_id, const char * text){
 	device_information_fields[field_id].data = (uint8_t*) text;
-	device_information_fields[field_id].len  = (uint8_t) strlen(text);
+	device_information_fields[field_id].len  = text != NULL ? (uint8_t) strlen(text) : 0;
 }
 
 static uint16_t device_information_service_read_callback(hci_con_handle_t con_handle, uint16_t attribute_handle, uint16_t offset, uint8_t * buffer, uint16_t buffer_size){

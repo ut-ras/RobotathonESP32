@@ -58,9 +58,10 @@ typedef enum {
     AVRCP_TARGET_SUPPORTED_FEATURE_CATEGORY_TUNER,
     AVRCP_TARGET_SUPPORTED_FEATURE_CATEGORY_MENU,
     AVRCP_TARGET_SUPPORTED_FEATURE_PLAYER_APPLICATION_SETTINGS, // AVRCP_TARGET_SUPPORTED_FEATURE_CATEGORY_PLAYER_OR_RECORDER must be 1 for this feature to be set
-    AVRCP_TARGET_SUPPORTED_FEATURE_RESERVED_GROUP_NAVIGATION,   // AVRCP_TARGET_SUPPORTED_FEATURE_CATEGORY_PLAYER_OR_RECORDER must be 1 for this feature to be set
+    AVRCP_TARGET_SUPPORTED_FEATURE_GROUP_NAVIGATION,            // AVRCP_TARGET_SUPPORTED_FEATURE_CATEGORY_PLAYER_OR_RECORDER must be 1 for this feature to be set
     AVRCP_TARGET_SUPPORTED_FEATURE_BROWSING,
-    AVRCP_TARGET_SUPPORTED_FEATURE_MULTIPLE_MEDIA_PLAYE_APPLICATIONS
+    AVRCP_TARGET_SUPPORTED_FEATURE_MULTIPLE_MEDIA_PLAYER_APPLICATIONS,
+    AVRCP_TARGET_SUPPORTED_FEATURE_COVER_ART,
 } avrcp_target_supported_feature_t;
 
 /**
@@ -68,8 +69,8 @@ typedef enum {
  * @param service
  * @param service_record_handle
  * @param supported_features 16-bit bitmap, see AVRCP_FEATURE_MASK_* in avrcp.h
- * @param service_name
- * @param service_provider_name
+ * @param service_name or NULL for default value. Provide "" (empty string) to skip attribute
+ * @param service_provider_name or NULL for default value. Provide "" (empty string) to skip attribute
  */
 void    avrcp_target_create_sdp_record(uint8_t * service, uint32_t service_record_handle, uint16_t supported_features, const char * service_name, const char * service_provider_name);
 
