@@ -6,7 +6,16 @@
 
 #include <Arduino.h>
 #include <Bluepad32.h>
+#include <Arduino_APDS9960.h>
+#include <Wire.h>
 
+#define APDS9960_INT 2
+#define I2C_SDA 21
+#define I2C_SCL 22
+#define I2C_FREQ 100000
+
+TwoWire I2C_0 = TwoWire(0);
+APDS9960 apds = APDS9960(I2C_0, APDS9960_INT);
 //
 // README FIRST, README FIRST, README FIRST
 //
@@ -282,6 +291,12 @@ void setup() {
     // Forgetting Bluetooth keys prevents "paired" gamepads to reconnect.
     // But it might also fix some connection / re-connection issues.
     BP32.forgetBluetoothKeys();
+    I2C_0.begin(I2C_SDA, I2C_SCL, I2C_FREQ);
+
+    //sets up color sensor
+    apds.setInterruptPin(APDS9960_INT);
+    apds.begin();
+    
 
     // Enables mouse / touchpad support for gamepads that support them.
     // When enabled, controllers like DualSense and DualShock4 generate two connected devices:
@@ -301,8 +316,7 @@ void loop() {
     // This call fetches all the controllers' data.
     // Call this function in your main loop.
     bool dataUpdated = BP32.update();
-    if (dataUpdated)
-        processControllers();
+    // if (dataUpdated) processControllers();
 
     // The main loop must have some kind of "yield to lower priority task" event.
     // Otherwise, the watchdog will get triggered.
@@ -311,5 +325,21 @@ void loop() {
     // https://stackoverflow.com/questions/66278271/task-watchdog-got-triggered-the-tasks-did-not-reset-the-watchdog-in-time
 
     //     vTaskDelay(1);
-    delay(150);
+    // delay(150);
+
+    int r, g, b, a;
+    // Wait until color is read from the sensor 
+    while (!apds.colorAvailable()) { delay(5); }
+    apds.readColor(r, g, b, a);
+    // Read color from sensor apds.readColor(r, g, b, a);
+    // Print color in decimal 
+    Console.print("RED: ");
+    Console.print(r);
+    Console.print(" GREEN: ");
+    Console.print(g);
+    Console.print(" BLUE: ");
+    Console.print(b);
+    Console.print(" AMBIENT: ");
+    Console.println(a);
+    delay(100);
 }

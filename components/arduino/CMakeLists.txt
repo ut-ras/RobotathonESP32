@@ -72,6 +72,7 @@ set(CORE_SRCS
   )
 
 set(LIBRARY_SRCS
+  libraries/APDS9960/src/Arduino_APDS9960.cpp
   libraries/ArduinoOTA/src/ArduinoOTA.cpp
   libraries/AsyncUDP/src/AsyncUDP.cpp
   libraries/BluetoothSerial/src/BluetoothSerial.cpp
@@ -172,6 +173,10 @@ set(BLE_SRCS
 set(includedirs
   variants/${CONFIG_ARDUINO_VARIANT}/
   cores/esp32/
+  libraries/APDS9960/src
+  #libraries/ESP32Servo/src
+  #libraries/ESP32-SharpIR/src
+  #libraries/QTRSensors/src
   libraries/ArduinoOTA/src
   libraries/AsyncUDP/src
   libraries/BLE/src
