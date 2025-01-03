@@ -54,6 +54,8 @@ void loop() {
             //     dumpGamepad(myController);
             //     delay(100);
             // }
+            // testNVS();
+            delay(100);
 
             if(myController->a()) {
                 Console.print("button a pressed - entering color mode\n");

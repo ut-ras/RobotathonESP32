@@ -13,3 +13,5 @@
 void colorChallenge(ControllerPtr myController);
 void lineChallenge(ControllerPtr myController);
 void IRChallenge(ControllerPtr myController);
+
+void testNVS();

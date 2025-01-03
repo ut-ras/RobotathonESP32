@@ -11,10 +11,10 @@ void moveMain(ControllerPtr myController) {
     else if(myController->axisX() < -DEADZONE_THRESHOLD) {
         turnLeft();
     }
-    else if(myController->axisRY() > -DEADZONE_THRESHOLD) { // down on the stick is positive
+    else if(myController->axisRY() < -DEADZONE_THRESHOLD) { // down on the stick is positive
         goStraight();
     }
-    else if(myController->axisRY() < DEADZONE_THRESHOLD) {
+    else if(myController->axisRY() > DEADZONE_THRESHOLD) {
         goBack();
     }
     else {

@@ -9,6 +9,7 @@ void IRChallenge(ControllerPtr myController) {
         BP32.update();
         distance = IRSensorName.getDistanceFloat();
         Console.println(distance); 
+        delay(100);
         if(myController->b()) {
             Console.println("button b pressed - exiting to main");
             break;
