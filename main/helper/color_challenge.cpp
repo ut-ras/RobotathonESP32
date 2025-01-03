@@ -27,8 +27,7 @@ void colorChallenge(ControllerPtr myController) {
             }
         }
         apds.readColor(r, g, b, a);
-        // Read color from sensor apds.readColor(r, g, b, a);
-        // Print color in decimal 
+        // Read color from sensor
         Console.printf("RED: %d GREEN: %d BLUE: %d AMBIENT: %d\n", r, g, b, a);
         delay(100);
         if(myController->b()) {

@@ -1,7 +1,10 @@
 set(srcs
         "main.c"
         "arduino_main.cpp"
-        "color_challenge.cpp"
+        "helper/color_challenge.cpp"
+        "helper/line_challenge.cpp"
+        "helper/IR_challenge.cpp"
+        "helper/motors.cpp"
 )
 
 set(requires "bluepad32" "bluepad32_arduino" "arduino" "btstack" "callbacks")
