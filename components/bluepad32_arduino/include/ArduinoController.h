@@ -116,10 +116,10 @@ class Controller {
     }
 
     // To test one button at a time.
-    bool a() const { return buttons() & BUTTON_A; }
-    bool b() const { return buttons() & BUTTON_B; }
-    bool x() const { return buttons() & BUTTON_X; }
-    bool y() const { return buttons() & BUTTON_Y; }
+    bool a() const { return buttons() & BUTTON_B; } //switched A and B / X and Y
+    bool b() const { return buttons() & BUTTON_A; }
+    bool x() const { return buttons() & BUTTON_Y; }
+    bool y() const { return buttons() & BUTTON_X; }
     bool l1() const { return buttons() & BUTTON_SHOULDER_L; }
     bool l2() const { return buttons() & BUTTON_TRIGGER_L; }
     bool r1() const { return buttons() & BUTTON_SHOULDER_R; }
