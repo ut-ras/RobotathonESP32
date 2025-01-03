@@ -1,3 +1,10 @@
+/*
+
+ROBOTATHON PEOPLE START IN arduino_main.cpp!!! This file just initializes the Arduino platform and Bluepad32 library!
+
+*/
+
+
 // SPDX-License-Identifier: Apache-2.0
 // Copyright 2019 Ricardo Quesada
 // http://retro.moe/unijoysticle2
