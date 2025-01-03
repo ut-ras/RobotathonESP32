@@ -39,7 +39,7 @@ uint8_t ESP32SharpIR::getRawDistance( bool avoidBurstRead ) {
   if (!avoidBurstRead) while ( millis() <= lastTime + 20 ) {} //wait for sensor's sampling time
 
   lastTime = millis();
-
+  int reading = 0;
   switch ( sensorType )
   {
     case GP2Y0A41SK0F :
@@ -53,8 +53,9 @@ uint8_t ESP32SharpIR::getRawDistance( bool avoidBurstRead ) {
       break;
 
     case GP2Y0A21YK0F :
-
-      distance = (28400) / (analogRead(pin));
+      reading = analogRead(pin);
+      if(reading == 0) return 0;
+      distance = (28400) / (reading);
       if (distance > 80) return 81;
       // else if (distance < 10) return 9;
       else return distance;

@@ -93,27 +93,29 @@ void dumpGamepad(ControllerPtr ctl) {
 void setup() {
     BP32.setup(&onConnectedController, &onDisconnectedController);
     BP32.forgetBluetoothKeys(); 
+    esp_log_level_set("gpio", ESP_LOG_ERROR); // suppress info log spam from gpio_isr_service
 }
 
 // Arduino loop function. Runs in CPU 1.
 void loop() {
-    vTaskDelay(1);
-    BP32.update();
+    vTaskDelay(1); // ensures WDT does not get triggered when no controller is connected
+    BP32.update(); 
     for (auto myController : myControllers) {
         if (myController && myController->isConnected() && myController->hasData()) {        
-            
-            while(1) {
-                BP32.update();
-                dumpGamepad(myController);
-                delay(100);
-            }
+
+            Console.print("Idle\n");
+            // while(1) {
+            //     BP32.update();
+            //     dumpGamepad(myController);
+            //     delay(100);
+            // }
 
             if(myController->a()) {
-                Console.print("button a pressed - entering color mode");
+                Console.print("button a pressed - entering color mode\n");
                 int r, g, b, a;
                 //sets up color sensor
                 I2C_0.begin(I2C_SDA, I2C_SCL, I2C_FREQ);
-                apds.setInterruptPin(APDS9960_INT); // do we need this?
+                // apds.setInterruptPin(APDS9960_INT); // do we need this?
                 apds.begin();
                 while(1) {
                     BP32.update();
@@ -123,7 +125,7 @@ void loop() {
                         delay(5);
                         watchDogAtHome++;
                         if(watchDogAtHome > 1000) {
-                            Console.println("Color sensor broken lmao");
+                            Console.println("Color sensor broken lmao\n");
                             break;
                         }
                     }
@@ -133,16 +135,19 @@ void loop() {
                     Console.printf("RED: %d GREEN: %d BLUE: %d AMBIENT: %d\n", r, g, b, a);
                     delay(100);
                     if(myController->b()) {
-                        Console.print("button b pressed - exiting to main");
+                        Console.print("button b pressed - exiting to main\n");
                         break;
                     }
                 }
             }
             else if(myController->x()) {
-                Console.print("button x pressed - entering line mode");
+                Console.print("button x pressed - entering line mode\n");
                 // TODO figure out how to deinitialize these
                 qtr.setTypeAnalog(); // or setTypeAnalog()
-                qtr.setSensorPins((const uint8_t[]) {33, 32}, 2); // pin numbers go in the curly brackets {}, and number of pins goes after
+
+                const uint8_t pins[] = {33, 32};
+                const uint8_t numPins = 2;
+                qtr.setSensorPins(pins, numPins);
                 for (uint8_t i = 0; i < 250; i++) { 
                     Console.println("calibrating");
                     qtr.calibrate(); 
@@ -152,6 +157,7 @@ void loop() {
                     BP32.update();
                     qtr.readLineBlack(sensors); // Get calibrated sensor values returned in the sensors array
                     Console.printf("S1: %d S2: %d\n", sensors[0], sensors[1]);
+                    delay(50);
                     if(myController->b()) {
                         Console.println("button b pressed - exiting to main");
                         break;
@@ -161,12 +167,14 @@ void loop() {
             else if(myController->y()) {
                 Console.print("button y pressed - entering IR mode");
                 IRSensorName.setFilterRate(1.0f);
+                float distance;
                 while(1) {
-                    // Console.println(IRSensorName.getDistanceFloat()); 
                     BP32.update();
+                    distance = IRSensorName.getDistanceFloat();
+                    Console.println(distance); 
                     if(myController->b()) {
-                    Console.println("button b pressed - exiting to main");
-                    break;
+                        Console.println("button b pressed - exiting to main");
+                        break;
                     }
                 }   
             }
