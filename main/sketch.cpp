@@ -92,11 +92,7 @@ void dumpGamepad(ControllerPtr ctl) {
 // Arduino setup function. Runs in CPU 1
 void setup() {
     BP32.setup(&onConnectedController, &onDisconnectedController);
-
-    //sets up color sensor
-    I2C_0.begin(I2C_SDA, I2C_SCL, I2C_FREQ);
-    apds.setInterruptPin(APDS9960_INT); // do we need this?
-    apds.begin();
+    BP32.forgetBluetoothKeys(); 
 }
 
 // Arduino loop function. Runs in CPU 1.
@@ -112,25 +108,29 @@ void loop() {
                 delay(100);
             }
 
-
             if(myController->a()) {
                 Console.print("button a pressed - entering color mode");
                 int r, g, b, a;
+                //sets up color sensor
+                I2C_0.begin(I2C_SDA, I2C_SCL, I2C_FREQ);
+                apds.setInterruptPin(APDS9960_INT); // do we need this?
+                apds.begin();
                 while(1) {
                     BP32.update();
                     // Wait until color is read from the sensor 
-                    while (!apds.colorAvailable()) { delay(5); }
+                    int watchDogAtHome = 0;
+                    while (!apds.colorAvailable()) { 
+                        delay(5);
+                        watchDogAtHome++;
+                        if(watchDogAtHome > 1000) {
+                            Console.println("Color sensor broken lmao");
+                            break;
+                        }
+                    }
                     apds.readColor(r, g, b, a);
                     // Read color from sensor apds.readColor(r, g, b, a);
                     // Print color in decimal 
-                    Console.print("RED: ");
-                    Console.print(r);
-                    Console.print(" GREEN: ");
-                    Console.print(g);
-                    Console.print(" BLUE: ");
-                    Console.print(b);
-                    Console.print(" AMBIENT: ");
-                    Console.println(a);
+                    Console.printf("RED: %d GREEN: %d BLUE: %d AMBIENT: %d\n", r, g, b, a);
                     delay(100);
                     if(myController->b()) {
                         Console.print("button b pressed - exiting to main");
