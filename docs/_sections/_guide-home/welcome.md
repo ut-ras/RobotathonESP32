@@ -7,7 +7,7 @@ nav_order: 2
 ---
 
 # Robotathon 2025 Newbie Guide
-
+bajsbjkkfabjkbajkfbafaf yea yeay ea oh yea
 
 # TODO: insert logo here
 
