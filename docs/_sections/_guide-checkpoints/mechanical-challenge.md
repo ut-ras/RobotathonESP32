@@ -2,7 +2,7 @@
 layout: default
 title: Mechanical Challenge
 nav_include: true
-nav_order: 7
+nav_order: 6
 ---
 
 
