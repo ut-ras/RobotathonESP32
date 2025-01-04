@@ -3,7 +3,7 @@ layout: default
 title: Welcome
 permalink: /
 nav_include: true
-nav_order: 1
+nav_order: 2
 ---
 
 # Robotathon 2025 Newbie Guide

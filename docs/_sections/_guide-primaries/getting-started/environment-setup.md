@@ -8,14 +8,6 @@ nav_order: 5
 
 Please reference the setup guide found in the [Robotathon Repo's readme!](https://github.com/ut-ras/RobotathonESP32)
 
-<iframe src="https://docs.google.com/presentation/d/1sghRclMBX0BC2kSrbPlTDvD2zlOXcmhyA2V0Fdr2gAc/embed?start=false" 
-        frameborder="0" 
-        width="960" 
-        height="569" 
-        allowfullscreen="true" 
-        mozallowfullscreen="true" 
-        webkitallowfullscreen="true">
-</iframe>
 
 
 
@@ -33,7 +25,7 @@ The following program will blink the onboard LED (pin 2) on the ESP32 every seco
 
 {: .highlight}
 Note: While it is good coding practice to leave comments in your code to make it more understandable, they should be used sparingly to explain complex code — the below example has many comments for the sake of explanation.
-{: .callout-toby}
+{: .callout-blue}
 
 ```cpp
 #include "sdkconfig.h"

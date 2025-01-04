@@ -30,7 +30,7 @@ There are 3 pins (red, black, white) to the device as seen in the picture, assoc
 
 {: .highlight}
 Note that our IR sensors have reversed cable adapters with **incorrect** color coding (red actually corresponds to GND, and black actually corresponds to +5V). If you plug the power in backwards, you will fry the sensor!
-{: .callout-toby}
+{: .callout-blue}
 
 |  IR Sensor Pin   | ESP32 Pin          |
 |:-------------|:------------------|

@@ -23,7 +23,7 @@ To effectively debug with a scope, follow these steps. For more details, check o
 {: .highlight}
 **Scope probe:**  
 <img src="{{ '/_assets/images/scope_probe.jpg' | prepend: site.baseurl }}" alt="scope_probe.jpg" width=150 height=150>
-{: .callout-toby}
+{: .callout-blue}
 
 ### Step 1: Probe the Circuit at Key Nodes
 Attach the oscilloscope probes to important points in the circuit, such as input and output pins of the ESP32 microcontroller. Make sure to connect GND to the circuit’s GND to prevent floating measurements. (Floating measurements are unreliable or inaccurate readings due to improper voltage referencing.)

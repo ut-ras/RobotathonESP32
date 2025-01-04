@@ -22,14 +22,14 @@ We are only concerned with pins that are power, ground, GPIO, and ADC enabled, s
 
 {: .highlight}
 Warning: Be careful to not short (connect) a power pin directly to a ground pin. This will fry your ESP32 and more by causing a huge surge of current. 
-{: .callout-toby}
+{: .callout-blue}
 
 ## Powering the ESP32
 You can power your ESP32 by 2 methods: battery pack or laptop USB connection.
 
 {: .highlight}
 Note: Do NOT power your ESP32 through its 5V pin with the battery pack while simultaneously connecting it to your computer! This may irreversibly damage your devices (only do one power connection at a time).
-{: .callout-toby}
+{: .callout-blue}
 
 ### USB Connection Power
 The USB connection to your computer is necessary for uploading and debugging your code through the serial monitor. It would be easiest to keep using the USB connection until later in the competition when testing the entire system.

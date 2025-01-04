@@ -5,27 +5,8 @@
 
 // General theme components
 
-
-
 // Unique structures 
-.callout-toby {
-    background-color: #F8F8F0; 
-    border-left: 5px solid #66D9EF;
-    border-radius: 5px; // rounded edge
-    padding: 0.5rem; // left side padding
-    margin-top: .4rem; 
-    margin-bottom: .4rem; 
-  }
-
-// For styles that aren’t defined as SCSS variables, you may want to modify specific CSS classes
-// Additionally, you may want to add completely custom CSS specific to your content
-// To do this, put your styles in the file _sass/custom/custom.scss
-// This will allow for all overrides to be kept in a single file, and for any upstream changes to still be applied
-
-// General theme components
-
-// Unique structures 
-.callout-toby {
+.callout-blue {
   background-color: #F8F8F0; 
   border-left: 5px solid #66D9EF;
   border-radius: 5px; // rounded edge
@@ -34,6 +15,14 @@
   margin-bottom: .4rem; 
 }
 
+.callout-red {
+  background-color: #F8F8F0; 
+  border-left: 5px solid #d94c4c;
+  border-radius: 5px; // rounded edge
+  padding: 0.5rem; // left side padding
+  margin-top: .4rem; 
+  margin-bottom: .4rem; 
+}
 // Custom code block styling
 // pre code {
 // // background-color: #2d2d2d !important; /* Dark background */

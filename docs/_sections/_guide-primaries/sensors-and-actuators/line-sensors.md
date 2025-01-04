@@ -17,7 +17,7 @@ This side of the sensor will be facing the floor to detect the line:
 
 {: .highlight}
 Note: You do NOT have to use all 8 of the LED/phototransistor pairs — You can leave the ones you do not want to use disconnected from the ESP32.
-{: .callout-toby}
+{: .callout-blue}
 
 <img src="{{ '/_assets/images/line_sensor_wire_diagram.png' | prepend: site.baseurl }}" alt="line_sensor_wire_diagram.png">
 

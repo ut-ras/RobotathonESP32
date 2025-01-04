@@ -47,7 +47,7 @@ You should now be able use your USB connection safely!
 
 {: .highlight}
 Do NOT power your ESP32 through its 5V pin with the battery pack while simultaneously connecting it to your computer through USB! This may irreversibly damage your devices (only do one at a time).
-{: .callout-toby}
+{: .callout-blue}
 
 To control a DC motor using the ESP32, a motor controller, and battery pack (**WITH USB CONNECTION**), you can connect them together as shown below:
 

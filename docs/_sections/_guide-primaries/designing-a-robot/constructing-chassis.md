@@ -12,7 +12,7 @@ Now that you have some idea of your drive system layout, let’s look at how to 
 
 {: .highlight}
 Note that you will have to be trained by TIW staff to use their equipment. Their Canvas page for training can be [accessed here!](https://inventionworks.engr.utexas.edu/training)
-{: .callout-toby}
+{: .callout-blue}
 
 ## Subtractive Manufacturing (SM)
 SM, like laser cutting or mills/lathes, removes material from a product to achieve an end result. The laser cutters in the Makerspace can cut things like wood or acrylic sheets.

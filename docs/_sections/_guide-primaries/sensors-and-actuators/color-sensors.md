@@ -43,7 +43,7 @@ Here is a wiring diagram:
 
 {: .highlight}
 Make sure to connect the color sensor's power pin to 3.3V! A 5V connection will fry the sensor.
-{: .callout-toby}
+{: .callout-blue}
 
 The SDA and SCL on the color sensor MUST be connected to the specified GPIO pins on the ESP32. This is because they are the dedicated pins for I2C commmunication.
 
