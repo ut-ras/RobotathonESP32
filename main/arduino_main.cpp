@@ -47,7 +47,7 @@ void loop() {
     BP32.update(); 
     for (auto myController : myControllers) {
         if (myController && myController->isConnected() && myController->hasData()) {        
-
+            needExit = false; // reset if returning from challenge force exit
             moveMain(myController);
             // while(1) {
             //     BP32.update();

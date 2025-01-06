@@ -3,9 +3,13 @@
 #include "nvs_flash.h"
 #include "nvs.h"
 
+#define LINE1_PIN 12
+#define LINE2_PIN 14
+#define LINE3_PIN 27
+#define LINE4_PIN 26
 
 QTRSensors qtr;
-uint16_t sensors[2];
+uint16_t sensors[4];
 bool lineIsCalibrated = false;
 
 void testNVS() {
@@ -68,24 +72,33 @@ void testNVS() {
 void restoreSensorCalibration() {
 
 }
+
+void saveCalibration();
+
 void lineChallenge(ControllerPtr myController) {
     qtr.setTypeAnalog();
 
-    const uint8_t pins[] = {33, 32};
-    const uint8_t numPins = 2;
+    const uint8_t pins[] = {LINE1_PIN, LINE2_PIN, LINE3_PIN, LINE4_PIN};
+    const uint8_t numPins = 4;
     qtr.setSensorPins(pins, numPins);
-    if(!lineIsCalibrated) {
+    if(!lineIsCalibrated) { // only calibrate if necessary. otherwise pull calbration data from flash
+        pinMode(2, OUTPUT);
+        digitalWrite(2, HIGH); // calibration status onboard LED
         for (uint8_t i = 0; i < 250; i++) { 
             Console.println("calibrating");
             qtr.calibrate(); 
             delay(20);
         }
-        // qtr.saveCalibratedValues(); // todo: implement this
+        // saveCalibratedValues(); // todo: implement this
+        digitalWrite(2, LOW);
+    }
+    else {
+        restoreSensorCalibration();
     }
     while(1) {
         BP32.update();
         qtr.readLineBlack(sensors); // Get calibrated sensor values returned in the sensors array
-        Console.printf("S1: %d S2: %d\n", sensors[0], sensors[1]);
+        Console.printf("S1: %d S2: %d S3: %d S4: %d\n", sensors[0], sensors[1], sensors[2], sensors[3]);
         delay(50);
         if(myController->b()) {
             Console.println("button b pressed - exiting to main");
