@@ -15,7 +15,7 @@ QTRSensors qtr;
 uint16_t sensors[NUM_LINE_SENSORS];
 bool lineIsCalibrated = false; // false will trigger calibration + write to NVS, true will trigger read from NVS
 
-// note that NVS functionality will break NUM_LINE_SENSORS != 4
+// note that NVS functionality might break if NUM_LINE_SENSORS != 4
 void lineChallenge(ControllerPtr myController) {
     qtr.setTypeAnalog();
 
@@ -24,7 +24,7 @@ void lineChallenge(ControllerPtr myController) {
     bool boolSensorData[4];
 
     qtr.setSensorPins(pins, numSensors);
-    if(!lineIsCalibrated) { // only calibrate if necessary. otherwise pull calbration data from flash
+    if(!lineIsCalibrated) { // only calibrate if necessary. otherwise read calbration data from flash
         pinMode(2, OUTPUT);
         digitalWrite(2, HIGH); // calibration status onboard LED
         for (uint8_t i = 0; i < 250; i++) { 
@@ -50,8 +50,8 @@ void lineChallenge(ControllerPtr myController) {
         delay(50);
 
         // remap sensors to array of booleans for ease of typing
-        // false is no line
         // true is line
+        // false is no line
         for(int i = 0; i < NUM_LINE_SENSORS; i++) {
             if(sensors[i] < THRESHOLD) {
                 boolSensorData[i] = true;
@@ -72,7 +72,11 @@ void lineChallenge(ControllerPtr myController) {
         else if(!boolSensorData[0] && boolSensorData[1] && boolSensorData[2] && !boolSensorData[3]) {
             goStraight();
         }
-        
+        // OOOO
+        else if(!boolSensorData[0] && !boolSensorData[1] && !boolSensorData[2] && !boolSensorData[3]) {
+            turnLeft(); // idk
+        }
+
         if(myController->b()) {
             Console.println("button b pressed - exiting to main");
             break;
