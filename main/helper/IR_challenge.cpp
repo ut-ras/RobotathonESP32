@@ -22,28 +22,28 @@ void IRChallenge(ControllerPtr myController) {
             filterMode++;
             if(filterMode > 3) filterMode = 0;
             if(filterMode == 0) {
-                Console.printf("Switching to 5.0f");
+                Console.printf("Switching to 5.0f\n");
                 delay(1000);
                 leftIR.setFilterRate(5.0f);
                 middleIR.setFilterRate(5.0f);
                 rightIR.setFilterRate(5.0f);
             }
             if(filterMode == 1) {
-                Console.printf("Switching to 1.0f");
+                Console.printf("Switching to 1.0f\n");
                 delay(1000);
                 leftIR.setFilterRate(1.0f);
                 middleIR.setFilterRate(1.0f);
                 rightIR.setFilterRate(1.0f);
             }
             if(filterMode == 2) {
-                Console.printf("Switching to 0.5f");
+                Console.printf("Switching to 0.5f\n");
                 delay(1000);
                 leftIR.setFilterRate(0.5f);
                 middleIR.setFilterRate(0.5f);
                 rightIR.setFilterRate(0.5f);
             }
             if(filterMode == 3) {
-                Console.printf("Switching to 0.1f");
+                Console.printf("Switching to 0.1f\n");
                 delay(1000);
                 leftIR.setFilterRate(0.1f);
                 middleIR.setFilterRate(0.1f);
