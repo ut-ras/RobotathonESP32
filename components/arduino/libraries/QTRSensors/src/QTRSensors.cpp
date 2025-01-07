@@ -1,5 +1,7 @@
 #include "QTRSensors.h"
 #include <Arduino.h>
+#include "nvs.h"
+#include "nvs_flash.h"
 
 void QTRSensors::setTypeRC()
 {
@@ -298,6 +300,178 @@ void QTRSensors::resetCalibration()
     if (calibrationOff.maximum)  { calibrationOff.maximum[i] = 0; }
     if (calibrationOn.minimum)   { calibrationOn.minimum[i] = _maxValue; }
     if (calibrationOff.minimum)  { calibrationOff.minimum[i] = _maxValue; }
+  }
+}
+
+/**
+ * store calibrationOn struct data into NVS
+ */
+void QTRSensors::saveCalibration() {
+    // Initialize NVS
+    esp_err_t err = nvs_flash_init();
+    if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+        ESP_ERROR_CHECK(nvs_flash_erase());
+        err = nvs_flash_init();
+    }
+    ESP_ERROR_CHECK( err );
+
+    // Open
+    printf("\n");
+    printf("Opening Non-Volatile Storage (NVS) handle... ");
+    nvs_handle_t my_handle1;
+    nvs_handle_t my_handle2;
+    nvs_handle_t my_handle3;
+    nvs_handle_t my_handle4;
+    nvs_handle_t my_handle5;
+    nvs_handle_t my_handle6;
+    nvs_handle_t my_handle7;
+    nvs_handle_t my_handle8;
+    err = nvs_open("storage", NVS_READWRITE, &my_handle1); 
+    err = nvs_open("storage", NVS_READWRITE, &my_handle2);
+    err = nvs_open("storage", NVS_READWRITE, &my_handle3);
+    err = nvs_open("storage", NVS_READWRITE, &my_handle4);
+    err = nvs_open("storage", NVS_READWRITE, &my_handle5);
+    err = nvs_open("storage", NVS_READWRITE, &my_handle6);
+    err = nvs_open("storage", NVS_READWRITE, &my_handle7);
+    err = nvs_open("storage", NVS_READWRITE, &my_handle8);
+    if (err != ESP_OK) { // yeah only checks last one but dont care didnt ask
+        printf("Error (%s) opening NVS handle!\n", esp_err_to_name(err));
+    } else {
+        printf("Done opening\n");
+        
+        uint16_t calData1 = calibrationOn.maximum[0];
+        uint16_t calData2 = calibrationOn.maximum[1];
+        uint16_t calData3 = calibrationOn.maximum[2];
+        uint16_t calData4 = calibrationOn.maximum[3];
+        uint16_t calData5 = calibrationOn.minimum[0];
+        uint16_t calData6 = calibrationOn.minimum[1];
+        uint16_t calData7 = calibrationOn.minimum[2];
+        uint16_t calData8 = calibrationOn.minimum[3];
+        printf("writing max values: %d, %d, %d, %d\n", calibrationOn.maximum[0], calibrationOn.maximum[1], calibrationOn.maximum[2], calibrationOn.maximum[3]);
+        printf("writing min values: %d, %d, %d, %d\n", calibrationOn.minimum[0], calibrationOn.minimum[1], calibrationOn.minimum[2], calibrationOn.minimum[3]);
+
+        err = nvs_set_u16(my_handle1, "calData1", calData1);
+        err = nvs_set_u16(my_handle2, "calData2", calData2);
+        err = nvs_set_u16(my_handle3, "calData3", calData3);
+        err = nvs_set_u16(my_handle4, "calData4", calData4);
+        err = nvs_set_u16(my_handle5, "calData5", calData5);
+        err = nvs_set_u16(my_handle6, "calData6", calData6);
+        err = nvs_set_u16(my_handle7, "calData7", calData7);
+        err = nvs_set_u16(my_handle8, "calData8", calData8);
+        printf((err != ESP_OK) ? "Failed!\n" : "Done\n");
+
+        printf("Committing updates in NVS ... ");
+        err = nvs_commit(my_handle1);
+        err = nvs_commit(my_handle2);
+        err = nvs_commit(my_handle3);
+        err = nvs_commit(my_handle4);
+        err = nvs_commit(my_handle5);
+        err = nvs_commit(my_handle6);
+        err = nvs_commit(my_handle7);
+        err = nvs_commit(my_handle8);
+        printf((err != ESP_OK) ? "Failed!\n" : "Done\n");
+
+        // Close
+        nvs_close(my_handle1);
+        nvs_close(my_handle2);
+        nvs_close(my_handle3);
+        nvs_close(my_handle4);
+        nvs_close(my_handle5);
+        nvs_close(my_handle6);
+        nvs_close(my_handle7);
+        nvs_close(my_handle8);
+    }
+}
+
+/**
+ * read from NVS
+ */
+void QTRSensors::restoreSensorCalibration() {
+    // Initialize NVS
+  esp_err_t err = nvs_flash_init();
+  if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+      ESP_ERROR_CHECK(nvs_flash_erase());
+      err = nvs_flash_init();
+  }
+  ESP_ERROR_CHECK( err );
+
+  // Open
+  printf("\n");
+  printf("Opening Non-Volatile Storage (NVS) handle... ");
+  nvs_handle_t my_handle1;
+  nvs_handle_t my_handle2;
+  nvs_handle_t my_handle3;
+  nvs_handle_t my_handle4;
+  nvs_handle_t my_handle5;
+  nvs_handle_t my_handle6;
+  nvs_handle_t my_handle7;
+  nvs_handle_t my_handle8;
+  err = nvs_open("storage", NVS_READWRITE, &my_handle1);
+  err = nvs_open("storage", NVS_READWRITE, &my_handle2);
+  err = nvs_open("storage", NVS_READWRITE, &my_handle3);
+  err = nvs_open("storage", NVS_READWRITE, &my_handle4);
+  err = nvs_open("storage", NVS_READWRITE, &my_handle5);
+  err = nvs_open("storage", NVS_READWRITE, &my_handle6);
+  err = nvs_open("storage", NVS_READWRITE, &my_handle7);
+  err = nvs_open("storage", NVS_READWRITE, &my_handle8);
+  if (err != ESP_OK) { // yeah it only checks the last one but idc
+      printf("Error (%s) opening NVS handle!\n", esp_err_to_name(err));
+  } 
+  else {
+    printf("Done\n");
+
+    // Read
+    printf("Reading from NVS ... ");
+    uint16_t calData1 = -1; // value will default to -1, if not set yet in NVS
+    uint16_t calData2 = -1; // value will default to -1, if not set yet in NVS
+    uint16_t calData3 = -1; // value will default to -1, if not set yet in NVS
+    uint16_t calData4 = -1; // value will default to -1, if not set yet in NVS
+    uint16_t calData5 = -1; // value will default to -1, if not set yet in NVS
+    uint16_t calData6 = -1; // value will default to -1, if not set yet in NVS
+    uint16_t calData7 = -1; // value will default to -1, if not set yet in NVS
+    uint16_t calData8 = -1; // value will default to -1, if not set yet in NVS
+    err = nvs_get_u16(my_handle1, "calData1", &calData1);
+    err = nvs_get_u16(my_handle2, "calData2", &calData2);
+    err = nvs_get_u16(my_handle3, "calData3", &calData3);
+    err = nvs_get_u16(my_handle4, "calData4", &calData4);
+    err = nvs_get_u16(my_handle5, "calData5", &calData5);
+    err = nvs_get_u16(my_handle6, "calData6", &calData6);
+    err = nvs_get_u16(my_handle7, "calData7", &calData7);
+    err = nvs_get_u16(my_handle8, "calData8", &calData8);
+    switch (err) {
+        case ESP_OK:
+            printf("Done reading\n");
+            calibrationOn.maximum = (uint16_t*) malloc(sizeof(uint16_t) * 4); // yeah i have no idea where to free ts lol
+            calibrationOn.maximum[0] = calData1;
+            calibrationOn.maximum[1] = calData2;
+            calibrationOn.maximum[2] = calData3;
+            calibrationOn.maximum[3] = calData4;
+            calibrationOn.minimum[0] = calData5;
+            calibrationOn.minimum[1] = calData6;
+            calibrationOn.minimum[2] = calData7;
+            calibrationOn.minimum[3] = calData8;
+            calibrationOn.initialized = true;
+            printf("Read maximum values S1: %d S2: %d S3: %d S4: %d\n", calData1, calData2, calData3, calData4);
+            printf("Read minimum values S1: %d S2: %d S3: %d S4: %d\n", calData5, calData6, calData7, calData8);
+            // printf("Read value = %" PRIu32 "\n", calData1);
+            // printf("Read value = %" PRIu32 "\n", calData2);
+            // printf("Read value = %" PRIu32 "\n", calData3);
+            // printf("Read value = %" PRIu32 "\n", calData4);
+            break;
+        case ESP_ERR_NVS_NOT_FOUND:
+            printf("The value is not initialized yet!\n");
+            break;
+        default :
+            printf("Error (%s) reading!\n", esp_err_to_name(err));
+    }
+  nvs_close(my_handle1);
+  nvs_close(my_handle2);
+  nvs_close(my_handle3);
+  nvs_close(my_handle4);
+  nvs_close(my_handle5);
+  nvs_close(my_handle6);
+  nvs_close(my_handle7);
+  nvs_close(my_handle8);
   }
 }
 

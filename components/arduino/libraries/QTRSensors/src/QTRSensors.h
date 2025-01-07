@@ -530,6 +530,12 @@ class QTRSensors
       uint16_t * maximum = nullptr;
     };
 
+
+    // robotathon nvs data functions
+    void saveCalibration();
+    void restoreSensorCalibration();
+
+
     /// \name Calibration data
     ///
     /// See calibrate() and readCalibrated() for details.

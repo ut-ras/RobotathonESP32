@@ -1,99 +1,44 @@
 #include "challenges.h"
 #include "esp_system.h"
 #include "nvs_flash.h"
-#include "nvs.h"
+// #include "nvs.h"
 
-#define LINE1_PIN 12
-#define LINE2_PIN 14
-#define LINE3_PIN 27
-#define LINE4_PIN 26
+#define LINE1_PIN 36
+#define LINE2_PIN 39
+#define LINE3_PIN 34
+#define LINE4_PIN 35
+
+#define NUM_SENSORS 4
 
 QTRSensors qtr;
-uint16_t sensors[4];
-bool lineIsCalibrated = false;
+uint16_t sensors[NUM_SENSORS];
+bool lineIsCalibrated = false; // false will trigger calibration + write to NVS, true will trigger read from NVS
 
-void testNVS() {
-    // Initialize NVS
-    esp_err_t err = nvs_flash_init();
-    if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND) {
-        // NVS partition was truncated and needs to be erased
-        // Retry nvs_flash_init
-        ESP_ERROR_CHECK(nvs_flash_erase());
-        err = nvs_flash_init();
-    }
-    ESP_ERROR_CHECK( err );
-
-    // Open
-    printf("\n");
-    printf("Opening Non-Volatile Storage (NVS) handle... ");
-    nvs_handle_t my_handle;
-    err = nvs_open("storage", NVS_READWRITE, &my_handle);
-    if (err != ESP_OK) {
-        printf("Error (%s) opening NVS handle!\n", esp_err_to_name(err));
-    } else {
-        printf("Done\n");
-
-        // Read
-        printf("Reading restart counter from NVS ... ");
-        int32_t restart_counter = 0; // value will default to 0, if not set yet in NVS
-        err = nvs_get_i32(my_handle, "restart_counter", &restart_counter);
-        switch (err) {
-            case ESP_OK:
-                printf("Done\n");
-                printf("Restart counter = %" PRIu32 "\n", restart_counter);
-                break;
-            case ESP_ERR_NVS_NOT_FOUND:
-                printf("The value is not initialized yet!\n");
-                break;
-            default :
-                printf("Error (%s) reading!\n", esp_err_to_name(err));
-        }
-
-        // Write
-        printf("Updating restart counter in NVS ... ");
-        restart_counter++;
-        err = nvs_set_i32(my_handle, "restart_counter", restart_counter);
-        printf((err != ESP_OK) ? "Failed!\n" : "Done\n");
-
-        // Commit written value.
-        // After setting any values, nvs_commit() must be called to ensure changes are written
-        // to flash storage. Implementations may write to storage at other times,
-        // but this is not guaranteed.
-        printf("Committing updates in NVS ... ");
-        err = nvs_commit(my_handle);
-        printf((err != ESP_OK) ? "Failed!\n" : "Done\n");
-
-        // Close
-        nvs_close(my_handle);
-    }
-}
-
-
-void restoreSensorCalibration() {
-
-}
-
-void saveCalibration();
-
+// note that NVS functionality will break NUM_SENSORS != 4
 void lineChallenge(ControllerPtr myController) {
     qtr.setTypeAnalog();
 
     const uint8_t pins[] = {LINE1_PIN, LINE2_PIN, LINE3_PIN, LINE4_PIN};
-    const uint8_t numPins = 4;
-    qtr.setSensorPins(pins, numPins);
+    const uint8_t numSensors = NUM_SENSORS;
+    qtr.setSensorPins(pins, numSensors);
     if(!lineIsCalibrated) { // only calibrate if necessary. otherwise pull calbration data from flash
         pinMode(2, OUTPUT);
         digitalWrite(2, HIGH); // calibration status onboard LED
         for (uint8_t i = 0; i < 250; i++) { 
-            Console.println("calibrating");
+            Console.printf("calibrating %d/250\n", i);
             qtr.calibrate(); 
             delay(20);
+            checkCancel(myController); // no clue if this interferes with calibration significantly lmao
+            if(needExit) {
+                digitalWrite(2, LOW);
+                return;
+            }
         }
-        // saveCalibratedValues(); // todo: implement this
+        qtr.saveCalibration();
         digitalWrite(2, LOW);
     }
     else {
-        restoreSensorCalibration();
+        qtr.restoreSensorCalibration();
     }
     while(1) {
         BP32.update();
