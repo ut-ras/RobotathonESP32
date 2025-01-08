@@ -36,12 +36,14 @@ void setup() {
     BP32.setup(&onConnectedController, &onDisconnectedController);
     BP32.forgetBluetoothKeys(); 
     esp_log_level_set("gpio", ESP_LOG_ERROR); // suppress info log spam from gpio_isr_service
+    uni_bt_allowlist_set_enabled(true);
+
 }
 
 // A -> color
-// B -> return to idle
 // X -> line
 // Y -> distance
+// B -> return to idle
 void loop() {
     vTaskDelay(1); // ensures WDT does not get triggered when no controller is connected
     BP32.update(); 
