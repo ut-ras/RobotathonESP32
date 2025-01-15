@@ -159,7 +159,7 @@ Do this even if you already have VS Code to minimize  environment setup issues. 
 1. Press and hold the flash enable button on your ESP32 (small black button labeled “100”) until the following output shows in your terminal:
 
 1. Open the serial monitor (monitor/TV icon)
-<img src="{{ '/_assets/images/vscode_bottom_ribbon.png' | prepend: site.baseurl }}" alt="my_image.png :(">
+<img src="{{ '/_assets/images/vscode_bottom_ribbon_monitor.png' | prepend: site.baseurl }}" alt="my_image.png :(">
 
 {: .highlight}
 Note: Building and flashing after the first time does not take nearly as long. In fact, you can press the Build, Flash, and Monitor button (fire icon) to streamline the process!
