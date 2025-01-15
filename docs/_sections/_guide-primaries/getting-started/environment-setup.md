@@ -138,19 +138,18 @@ Do this even if you already have VS Code to minimize  environment setup issues. 
 1. Wait for ESP-IDF to initialize
 1. Build the project by clicking the wrench icon in the bottom ribbon of VS Code (this will take a while)
 (TODO edit image to have circled button)
-<img src="{{ '/_assets/images/vscode_bottom_ribbon.png' | prepend: site.baseurl }}" alt="my_image.png :(">
-
+<img src="{{ '/_assets/images/vscode_bottom_ribbon_build.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_build.png :(">
 
 ### __Flash your ESP32__
 
 1. Plug in your ESP32
-1. Click the `COM` button (plug icon) in VS Code’s bottom ribbon menu (TODO edit image to have circled button)
+1. Click the `COM` button (plug icon) in VS Code’s bottom ribbon menu
 <img src="{{ '/_assets/images/vscode_bottom_ribbon_circle.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_circle.png :(">
 
 1. In the popup dialogue at the top of VS Code, select the COM port labeled `Silicon Labs`
 <img src="{{ '/_assets/images/COM_port.png' | prepend: site.baseurl }}" alt="COM_port.png :(">
 
-1. Click the Flash button (lightning button) in the bottom ribbon menu (TODO edit image to have circled button) 
+1. Click the Flash button (lightning button) in the bottom ribbon menu
 <img src="{{ '/_assets/images/vscode_bottom_ribbon_flash.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_flash.png :(">
 
 1. Select UART in the top popup menu 
