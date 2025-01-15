@@ -127,14 +127,14 @@ This step is **optional**, but it will save you at least 30 minutes when unzippi
 VS Code is an easily customizable IDE with many extensions and a large community.
 
 {: .highlight}
-Do this even if you already have VS Code to minimize all environment setup issues. Installing the ESP-IDF extension manually may result in unecessary debugging.
+Do this even if you already have VS Code to minimize  environment setup issues. Installing the ESP-IDF extension manually may result in unecessary debugging.
 {: .callout-red}
 
 1. Download zip folder from Box TODO insert box link
 1. Unzip the file to your C: drive (this **will** take a while unless you use 7-zip)
 1. Launch the "containerized" VS Code by running the Code.exe file in the unzipped folder
 1. In the top menu bar of VS Code, click File > Open Folder
-1. Open the folder where you cloned the Robotathon Git repository (should be “RobotathonESP32” by default)
+1. Open the folder where you cloned the Robotathon Git repository (“RobotathonESP32” by default)
 1. Wait for ESP-IDF to initialize
 1. Build the project by clicking the wrench icon in the bottom ribbon of VS Code (this will take a while)
 (TODO edit image to have circled button)
@@ -145,16 +145,16 @@ Do this even if you already have VS Code to minimize all environment setup issue
 
 1. Plug in your ESP32
 1. Click the `COM` button (plug icon) in VS Code’s bottom ribbon menu (TODO edit image to have circled button)
-<img src="{{ '/_assets/images/vscode_bottom_ribbon.png' | prepend: site.baseurl }}" alt="my_image.png :(">
+<img src="{{ '/_assets/images/vscode_bottom_ribbon_circle.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_circle.png :(">
 
 1. In the popup dialogue at the top of VS Code, select the COM port labeled `Silicon Labs`
-<img src="{{ '/_assets/images/COM_port.png' | prepend: site.baseurl }}" alt="my_image.png :(">
+<img src="{{ '/_assets/images/COM_port.png' | prepend: site.baseurl }}" alt="COM_port.png :(">
 
 1. Click the Flash button (lightning button) in the bottom ribbon menu (TODO edit image to have circled button) 
-<img src="{{ '/_assets/images/vscode_bottom_ribbon.png' | prepend: site.baseurl }}" alt="my_image.png :(">
+<img src="{{ '/_assets/images/vscode_bottom_ribbon_flash.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_flash.png :(">
 
-1. Select UART in the popup menu 
-<img src="{{ '/_assets/images/UART_selection.png' | prepend: site.baseurl }}" alt="my_image.png :(">
+1. Select UART in the top popup menu 
+<img src="{{ '/_assets/images/UART_selection.png' | prepend: site.baseurl }}" alt="UART_selection.png :(">
 
 1. Press and hold the flash enable button on your ESP32 (small black button labeled “100”) until the following output shows in your terminal:
 
@@ -166,13 +166,16 @@ Note: Building and flashing after the first time does not take nearly as long. I
 {: .callout-blue}
 
 ## macOS Setup
+https://docs.espressif.com/projects/vscode-esp-idf-extension/en/latest/installation.html
 
-1) Run the Bash script named `macOSInstall.sh` found in `RobotathonESP32/scripts`
-1) If that fails, then try to manually follow the steps here:
-good luck 😄👍
+
+
 https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/linux-macos-setup.html
 TODO figure out what to do the setup script installs the CLI for esp-idf isntead of VS Code extension
 proly just gona make them go through the install manually
+
+
+
 
 ### Install VS Code
 TODO
@@ -201,7 +204,7 @@ If you replace your `arduino_main.cpp` file's contents with the following and fl
 #include "sdkconfig.h"
 #include <Arduino.h>
 
-#define ONBOARD_LED_PIN 2 // defines the word "LED_BUILTIN" as the number 2 for ease of use/readability when using the pin later
+#define ONBOARD_LED_PIN 2 // defines the word "LED_BUILTIN" as the number 2 for readability
 
 void setup() {
     pinMode(ONBOARD_LED_PIN, OUTPUT); // configures pin 2 to be a GPIO output pin 
