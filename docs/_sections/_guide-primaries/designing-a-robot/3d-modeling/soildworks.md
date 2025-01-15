@@ -1,11 +1,12 @@
 ---
 layout: default
-title: 3D Modeling
+title: Modeling with SoildWorks
 nav_include: true
-parent: Designing a Robot
-nav_order: 3
+parent: 3D Modeling
+grand_parent: Designing a Robot 
+nav_order: 1
 ---
-# 3D Modeling
+# 3D Modeling with SoildWorks
 ### Solidworks Tutorial 1.1 - Outline & Interface
 
 In this tutorial, you will be learning about how to navigate the Solidworks interface while also getting first hand exposure to many of its features!

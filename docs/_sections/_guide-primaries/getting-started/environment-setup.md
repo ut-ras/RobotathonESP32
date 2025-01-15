@@ -6,12 +6,7 @@ parent: Getting Started
 nav_order: 5
 ---
 
-
-1. TOC
-{:toc}
-
 # Environment Setup
-
 
 The end goal of this article is to flash your ESP32 with an LED blink program. It will take you from having nothing installed to the full coding environment you'll need for the competition!  
 
@@ -20,48 +15,47 @@ Important software to be installed:
 1. Git Bash
 1. SiLabs USB-UART bridge driver
 
-
-For explanations on what each of these applications are, take a look at the FAQ! TODO: WRITE THIS LOL
+For explanations on what each of these applications are, take a look at [the FAQ!](TODO WRITE THIS)
 
 The exact process to arrive at this goal depends on what OS your computer is running (Windows, macOS, etc.), so this article will be split into Windows and MacOS setup. If you happen to use another OS, then talk to a mentor for help.
 
 ## Windows Setup
 
-It is highly recommended to follow each component installation in order
+{: .highlight}
+It is highly recommended to follow each component installation in order!
+{: .callout-blue}
 
 ### __Install Git__
-1. Go to the Git website at [https://git-scm.com/downloads](https://git-scm.com/downloads)
+This is a source-control application that is very useful for sharing projects with many files.
+
+1. Go to the [Git website](https://git-scm.com/downloads)
 1. Download the 64-bit installer
 1. Run the newly downloaded installer and follow the defaults in the installer dialogue
-1. Open Git Bash and familiarize yourself with how to navigate the bash terminal [(How do I do that?)](todo: link to FAQ)
+1. Open Git Bash and familiarize yourself with how to navigate the bash terminal [(How do I do that?)](TODO WRITE THIS)
 
 ### __Create GitHub account__
-
-Go to GitHub and create an account if you do not have one already [https://github.com/](https://github.com/)
+GitHub is like a Google Drive for your Git repositories.
+Go to the [GitHub website](https://github.com/) and create an account if you do not have one already. 
 
 ### __Fork RobotathonESP32 Repository__
+Forking a repository creates a copy that you control on your GitHub account. Teams will use our RobotathonESP32 as the template. 
 
 {: .highlight}
 Note: only **one** person in each team has to fork the repository and invite their teammates to it on Github. **Everybody** that wants to code __including the person that forks__ has to clone the repo to their local computer storage!
-{: .callout-blue}
+{: .callout-red}
 
-
-1. Navigate to the [RobotathonESP32 repository hosted on GitHub](https://github.com/ut-ras/RobotathonESP32)
+1. Go to the [ut-ras RobotathonESP32 repository hosted on GitHub](https://github.com/ut-ras/RobotathonESP32)
 1. Click the `Fork` button on the right and then click `+ Create a new fork` 
 <img src="{{ '/_assets/images/github_fork.png' | prepend: site.baseurl }}" alt="my_image.png :(">
 1. Change the Repository name to whatever you like
 1. Click the green `Create fork` button at the bottom
-1. Share repository access to your teammates by navigating to the settings of your newly forked repository and clicking collaborators in the left menu
- TODO show how to invite teammates to repository
-
+1. Share repository access to your teammates by navigating to the settings of your newly forked repository and clicking collaborators in the left menu [(How do I invite teammates to my forked repository?)](TODO WRITE THIS)
 
 ### __Set Up Git SSH Authentication__
 
-
 {: .highlight}
-This section is **optional**, but it will make your life easier down the road
+This SSH section is **optional**, but it will make your life easier down the road by letting you push code to your remote repository without manually typing credentials
 {: .callout-blue}
-
 
 See the [official GitHub tutorial](https://docs.github.com/en/enterprise-cloud@latest/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) if you want more information. Otherwise just follow these instructions:
 
@@ -74,7 +68,7 @@ Git Bash is finicky and doesn't support Ctrl + V for paste. Use `Shift + Insert`
 1. Open Git Bash
 1. Paste `ssh-keygen -t ed25519 -C "your_email@example.com"`, change the email to the one tied to your Github account, and press `Enter`.
 1. You will be prompted to specify a location to save the SSH key. Press `Enter` to specify the default location.
-1. You will be prompted to enter a passcode. Press `Enter` twice to specify no passcode.
+1. You will likely be prompted to enter a passcode. Press `Enter` twice to specify no passcode.
 
 {: .highlight}
 Note that you can add a passcode if you'd like, but it is not necessary. If you do, keep in mind that the Bash terminal does _not_ show your passcode as you type it out. Just continue (accurately) typing and press `Enter` when done.
@@ -89,88 +83,95 @@ Note that you can add a passcode if you'd like, but it is not necessary. If you 
 1. Copy the entire key
 1. Navigate to the upper-right corner of any page on [GitHub](https://github.com/), click your profile photo, then click Settings (gear icon)
 1. In the `Access` section of the sidebar, click `SSH and GPG keys`
-1. Click New SSH key or Add SSH key.
-1. Put whatever for the title
+1. Click `New SSH key or Add SSH key`.
+1. Put whatever for the key title name
 1. Select the key type to be `Authentication`
 1. Click `Add SSH Key`
 
 ### __Clone Forked Repository__
+Cloning is the process of copying a Git repository onto your local computer storage
 
 <img src="{{ '/_assets/images/github_repo.png' | prepend: site.baseurl }}" alt="my_image.png :(">
 
 1. Go to the your team's newly forked repository
-1. Click the green “<> Code” button
-1. If you did the previous section, copy the SSH git link. Otherwise copy the HTTPS link. [What is the difference?](TODO link to FAQ)
+1. Click the green `<> Code` button
+1. If you did the previous section, copy the SSH git link. Otherwise copy the HTTPS link. [What is the difference?](TODO write this)
 <img src="{{ '/_assets/images/ssh_link_copy.png' | prepend: site.baseurl }}" alt="my_image.png w=200 h=400 :(">
-1. Open Git Bash and navigate to where you want to keep your code for the competition (i.e. Documents, Desktop, etc.)
-1. Run the following command into your Git terminal `git clone https://github.com/ut-ras/RobotathonESP32.git`
+1. Open Git Bash and navigate to where you want to keep your code for the competition, such as your Documents or Desktop. [How do I do that](TODO write this)
+1. Run the following command in your Git terminal `git clone https://github.com/ut-ras/RobotathonESP32.git`
 
 
 ### __Install USB-UART Bridge Driver__
-
 This allows your computer to recognize and program your ESP32 when you plug it in.
+
 1. Go to [SiLabs installer webpage](https://www.silabs.com/developer-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads)
-
-Download the following file:
-TODO: add picture
-
+1. Download the file named `CP210x Windows Drivers`
 1. Extract the downloaded zip file and run the appropriate installer application inside (likely x64)
 1. Agree and use default configuration
 
 ### __Install 7-zip__
-This step is optional, but it will save you at least 30 minutes when unzipping your VSCode installation
-1. Go to the 7-zip download page [https://www.7-zip.org/](https://www.7-zip.org/)
+
+{: .highlight}
+This step is **optional**, but it will save you at least 30 minutes when unzipping your VS Code installation.
+{: .callout-blue}
+
+7-zip is a file compression tool that works much faster than your native Windows tools.
+
+1. Go to the [7-zip download page](https://www.7-zip.org/)
 1. Install using default directory
-TODO: How to use 7-zip
+1. Launch 7-zip
 
+### __Install Preconfigured VS Code__
+VS Code is an easily customizable IDE with many extensions and a large community. The preconfigured version you will download will already have ESP-IDF installed.
 
-### __Install Preconfigured VSCode__
-
-Do this even if you already have VSCode to minimize all environment setup issues. Installing the ESP-IDF extension manually may result in unecessary debugging.
+{: .highlight}
+Do this even if you already have VS Code to minimize  environment setup issues. Installing the ESP-IDF extension manually may result in unecessary debugging.
+{: .callout-red}
 
 1. Download zip folder from Box TODO insert box link
-1. Unzip the file to your C: drive (this WILL take a while unless you use 7-zip)
-1. Launch the "containerized" VSCode by running the Code.exe file in the unzipped folder
-1. In the top menu bar of VSCode, click File > Open Folder
-1. Open the folder where you cloned the Robotathon Git repository (should be “RobotathonESP32” by default)
-1. Wait for ESP-IDF to initialize
-1. Build the project by clicking the wrench icon in the bottom ribbon of VSCode (this will take a while)
-(TODO edit image to have circled button)
-<img src="{{ '/_assets/images/vscode_bottom_ribbon.png' | prepend: site.baseurl }}" alt="my_image.png :(">
-
+1. Unzip the file to your C: drive (this **will** take a while unless you use 7-zip)
+1. Launch the "containerized" VS Code by running the Code.exe file in the unzipped folder
+1. In the top menu bar of VS Code, click `File` > `Open Folder`
+1. Use VS Code to open the folder where you cloned the Robotathon repository (“RobotathonESP32” by default)
+1. Wait for the ESP-IDF extension to initialize 
+1. Build the project by clicking the wrench icon in the bottom ribbon of VS Code (this will take a while)
+<img src="{{ '/_assets/images/vscode_bottom_ribbon_build.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_build.png :(">
 
 ### __Flash your ESP32__
 
 1. Plug in your ESP32
-1. Click the `COM` button (plug icon) in VSCode’s bottom ribbon menu (TODO edit image to have circled button)
-<img src="{{ '/_assets/images/vscode_bottom_ribbon.png' | prepend: site.baseurl }}" alt="my_image.png :(">
+1. Click the `COM` button (plug icon) in VS Code’s bottom ribbon menu
+<img src="{{ '/_assets/images/vscode_bottom_ribbon_com.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_com.png :(">
 
-1. In the popup dialogue at the top of VSCode, select the COM port labeled `Silicon Labs`
-<img src="{{ '/_assets/images/COM_port.png' | prepend: site.baseurl }}" alt="my_image.png :(">
+1. In the popup dialogue at the top of VS Code, select the COM port labeled `Silicon Labs`
+<img src="{{ '/_assets/images/COM_port.png' | prepend: site.baseurl }}" alt="COM_port.png :(">
 
-1. Click the Flash button (lightning button) in the bottom ribbon menu (TODO edit image to have circled button) 
-<img src="{{ '/_assets/images/vscode_bottom_ribbon.png' | prepend: site.baseurl }}" alt="my_image.png :(">
+1. Click the Flash button (lightning button) in the bottom ribbon menu
+<img src="{{ '/_assets/images/vscode_bottom_ribbon_flash.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_flash.png :(">
 
-1. Select UART in the popup menu 
-<img src="{{ '/_assets/images/UART_selection.png' | prepend: site.baseurl }}" alt="my_image.png :(">
+1. Select UART in the top popup menu 
+<img src="{{ '/_assets/images/UART_selection.png' | prepend: site.baseurl }}" alt="UART_selection.png :(">
 
 1. Press and hold the flash enable button on your ESP32 (small black button labeled “100”) until the following output shows in your terminal:
 
 1. Open the serial monitor (monitor/TV icon)
-<img src="{{ '/_assets/images/vscode_bottom_ribbon.png' | prepend: site.baseurl }}" alt="my_image.png :(">
+<img src="{{ '/_assets/images/vscode_bottom_ribbon_monitor.png' | prepend: site.baseurl }}" alt="my_image.png :(">
 
 {: .highlight}
 Note: Building and flashing after the first time does not take nearly as long. In fact, you can press the Build, Flash, and Monitor button (fire icon) to streamline the process!
 {: .callout-blue}
 
 ## macOS Setup
+https://docs.espressif.com/projects/vscode-esp-idf-extension/en/latest/installation.html
 
-1) Run the Bash script named `macOSInstall.sh` found in `RobotathonESP32/scripts`
-1) If that fails, then try to manually follow the steps here:
-good luck 😄👍
+
+
 https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/linux-macos-setup.html
-TODO figure out what to do the setup script installs the CLI for esp-idf isntead of VSCode extension
+TODO figure out what to do the setup script installs the CLI for esp-idf isntead of VS Code extension
 proly just gona make them go through the install manually
+
+
+
 
 ### Install VS Code
 TODO
@@ -199,7 +200,7 @@ If you replace your `arduino_main.cpp` file's contents with the following and fl
 #include "sdkconfig.h"
 #include <Arduino.h>
 
-#define ONBOARD_LED_PIN 2 // defines the word "LED_BUILTIN" as the number 2 for ease of use/readability when using the pin later
+#define ONBOARD_LED_PIN 2 // defines the word "LED_BUILTIN" as the number 2 for readability
 
 void setup() {
     pinMode(ONBOARD_LED_PIN, OUTPUT); // configures pin 2 to be a GPIO output pin 
