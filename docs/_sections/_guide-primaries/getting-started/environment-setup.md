@@ -105,9 +105,7 @@ Cloning is the process of copying a Git repository onto your local computer stor
 This allows your computer to recognize and program your ESP32 when you plug it in.
 
 1. Go to [SiLabs installer webpage](https://www.silabs.com/developer-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads)
-
 1. Download the file named `CP210x Windows Drivers`
-
 1. Extract the downloaded zip file and run the appropriate installer application inside (likely x64)
 1. Agree and use default configuration
 
@@ -124,7 +122,7 @@ This step is **optional**, but it will save you at least 30 minutes when unzippi
 1. Launch 7-zip
 
 ### __Install Preconfigured VS Code__
-VS Code is an easily customizable IDE with many extensions and a large community.
+VS Code is an easily customizable IDE with many extensions and a large community. The preconfigured version you will download will already have ESP-IDF installed.
 
 {: .highlight}
 Do this even if you already have VS Code to minimize  environment setup issues. Installing the ESP-IDF extension manually may result in unecessary debugging.
@@ -133,18 +131,17 @@ Do this even if you already have VS Code to minimize  environment setup issues. 
 1. Download zip folder from Box TODO insert box link
 1. Unzip the file to your C: drive (this **will** take a while unless you use 7-zip)
 1. Launch the "containerized" VS Code by running the Code.exe file in the unzipped folder
-1. In the top menu bar of VS Code, click File > Open Folder
-1. Open the folder where you cloned the Robotathon Git repository (“RobotathonESP32” by default)
-1. Wait for ESP-IDF to initialize
+1. In the top menu bar of VS Code, click `File` > `Open Folder`
+1. Use VS Code to open the folder where you cloned the Robotathon repository (“RobotathonESP32” by default)
+1. Wait for the ESP-IDF extension to initialize 
 1. Build the project by clicking the wrench icon in the bottom ribbon of VS Code (this will take a while)
-(TODO edit image to have circled button)
 <img src="{{ '/_assets/images/vscode_bottom_ribbon_build.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_build.png :(">
 
 ### __Flash your ESP32__
 
 1. Plug in your ESP32
 1. Click the `COM` button (plug icon) in VS Code’s bottom ribbon menu
-<img src="{{ '/_assets/images/vscode_bottom_ribbon_circle.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_circle.png :(">
+<img src="{{ '/_assets/images/vscode_bottom_ribbon_com.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_com.png :(">
 
 1. In the popup dialogue at the top of VS Code, select the COM port labeled `Silicon Labs`
 <img src="{{ '/_assets/images/COM_port.png' | prepend: site.baseurl }}" alt="COM_port.png :(">
