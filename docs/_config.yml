@@ -73,6 +73,9 @@ collections:
   guide-supplementals:
     permalink: "/:path"
     output: true
+  guide-FAQ:
+    permalink: "/:path"
+    output: true
 
 # Define which collections are used in just-the-docs
 just_the_docs:
@@ -88,6 +91,9 @@ just_the_docs:
       nav_fold: false
     guide-supplementals:
       name: Resources
+      nav_fold: false
+    guide-FAQ:
+      name: FAQ
       nav_fold: false
 
 # Define sass
