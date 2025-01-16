@@ -4,7 +4,9 @@ title: Competition Logistics
 nav_include: true
 nav_order: 1
 ---
-# Competition Logistics
+
+# Competition Logistics FAQ
+
 ## Where/when can I work on my robot?
 Teams can work on their robot any time, but the robot and parts bag must be stored in the RAS office. So as long as a RAS leader (like your team mentor) is available to unlock the office, you can work on your robot.
 
@@ -16,3 +18,9 @@ The night before competition day we will host an all-nighter in the EER to work 
 
 ## What kind of additional materials can we buy?
 Puchasing other materials is not necessary and the components in the bag will be adequate to complete all the challenges. If you choose to purchase extra metarials though, teams can buy anything that will help them with their robot like springs, rods, and electrical components as long as the total cost is less than $25. Wood, filament, or acrylic from the TIW are not included in the $25.
+
+TODO address given materials not being enough to finish mechanical challenge as of 1/15/2025
+
+## Do you have x item?
+
+TODO make list of things 
