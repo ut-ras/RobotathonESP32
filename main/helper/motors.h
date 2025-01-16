@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <Bluepad32.h>
+#include <ESP32Servo.h>
 
 void checkCancel(ControllerPtr myController);
 void moveMain(ControllerPtr myController);
