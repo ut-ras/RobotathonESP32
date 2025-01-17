@@ -1,24 +1,11 @@
 ---
 layout: default
-title: Windows
+title: Windows Setup
 nav_include: true
 parent: Environment Setup
 grand_parent: Getting Started
 nav_order: 1
 ---
-
-# Environment Setup
-
-The end goal of this article is to flash your ESP32 with an LED blink program. It will take you from having nothing installed to the full coding environment you'll need for the competition!  
-
-Important software to be installed:
-1. VS Code with ESP-IDF
-1. Git Bash
-1. SiLabs USB-UART bridge driver
-
-For explanations on what each of these applications are, take a look at [the FAQ!](TODO WRITE THIS)
-
-The exact process to arrive at this goal depends on what OS your computer is running (Windows, macOS, etc.), so this article will be split into Windows and MacOS setup. If you happen to use another OS, then talk to a mentor for help.
 
 ## Windows Setup
 
@@ -39,7 +26,7 @@ GitHub is like a Google Drive for your Git repositories.
 Go to the [GitHub website](https://github.com/) and create an account if you do not have one already. 
 
 ### __Fork RobotathonESP32 Repository__
-Forking a repository creates a copy that you control on your GitHub account. Teams will use our RobotathonESP32 as the template. 
+Forking a repository creates a copy that you control on your GitHub account. Teams will use our RobotathonESP32 repo as the template. 
 
 {: .highlight}
 Note: only **one** person in each team has to fork the repository and invite their teammates to it on Github. **Everybody** that wants to code __including the person that forks__ has to clone the repo to their local computer storage!
