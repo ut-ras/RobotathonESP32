@@ -26,5 +26,4 @@ TODO address given materials not being enough to finish mechanical challenge as 
 TODO make list of things 
 
 ## Where can we store our robot in the RAS office?
-
 TODO

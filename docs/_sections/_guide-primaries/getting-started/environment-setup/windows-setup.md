@@ -146,7 +146,7 @@ Do this even if you already have VS Code to minimize  environment setup issues. 
 <img src="{{ '/_assets/images/vscode_bottom_ribbon_monitor.png' | prepend: site.baseurl }}" alt="my_image.png :(">
 
 {: .highlight}
-Note: Building and flashing after the first time does not take nearly as long. In fact, you can press the Build, Flash, and Monitor button (fire icon) to streamline the process!
+Building and flashing after the first time does not take nearly as long. In fact, you can press the Build, Flash, and Monitor button (fire icon) to streamline the process!
 {: .callout-blue}
 
 
@@ -155,6 +155,10 @@ Note: Building and flashing after the first time does not take nearly as long. I
 Here is an example program that blinks the onboard LED. "Blinky" projects are a standard "hello world" type of program that demonstrate your development environment works properly.
 
 If you replace your `arduino_main.cpp` file's contents with the following and flash properly, then your ESP32's blue onboard LED will begin to blink (yay 😄)!
+
+{: .highlight}
+Note that it is **your** responsibility to integrate this code with the controller starter code!
+{: .callout-blue}
 
 ```cpp
 #include "sdkconfig.h"

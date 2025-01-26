@@ -11,7 +11,7 @@ nav_order: 3
 To pass this checkpoint, your team should meet the following requirements:
 
 * Use your controller to control the ESP32's onboard LED (i.e. button pressed = on, button released = off)
-* Have your teammates added to your team's forked GitHub repository
+* Show everyone has set up coding environment by showing Git commits to your forked repo
 
 Questions:
 * What does it mean to build your project?
