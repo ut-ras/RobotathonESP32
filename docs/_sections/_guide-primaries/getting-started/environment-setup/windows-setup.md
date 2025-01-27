@@ -54,7 +54,7 @@ Git Bash is finicky and doesn't support Ctrl + V for paste. Use `Shift + Insert`
 {: .callout-blue}
 
 1. Open Git Bash
-1. Paste `ssh-keygen -t ed25519 -C "your_email@example.com"`, change the email to the one tied to your Github account, and press `Enter`.
+1. Paste `ssh-keygen -t ed25519 -C "your_email@example.com"`, change the email to the one tied to your Github account (keep the quotes), and press `Enter`.
 1. You will be prompted to specify a location to save the SSH key. Press `Enter` to specify the default location.
 1. You will likely be prompted to enter a passcode. Press `Enter` twice to specify no passcode.
 

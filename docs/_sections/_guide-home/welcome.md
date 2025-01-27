@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Welcome
-permalink: /
+# permalink: / # put this back when done with development
 nav_include: true
 nav_order: 2
 ---
@@ -10,7 +10,7 @@ nav_order: 2
 
 # TODO: insert logo here
 
-## Hello!ajnasfaf
+## Hello!
 
 This guide aims to provide you with helpful information and direction throughout your robot building process. While this guide is broad, it stays mostly within the realm of setup and basic tips since we encourage you to discover your own solutions.
 
