@@ -19,26 +19,11 @@ HTTPS (Hypertext Transfer Protocol Secure) and SSH (Secure Shell) are both data 
 The main reason why you should use SSH over HTTPS is that you can push code to your repositories without having to input credentials each time (HTTPS requires credentials each push, which is annoying).
 TODO elaborate more
 
-## How do I find out what my controller’s Bluetooth address is?
-1. Plug in your ESP32 and flash it with the starter code in your forked repository if you haven't already
-1. Open the serial monitor
-1. You should see this in the serial monitor while trying to connect your controller:
-<img src="{{ '/_assets/images/controller_address.png' | prepend: site.baseurl }}" alt="controller_address :(">
-The string of octets (something like “98:B6:E1:7C:C3:95”) is your controller’s Bluetooth address
-
-## How do I connect my controller?
-1. Make sure you have added your controller’s Bluetooth address to the ESP32 ([How do I do that?](TODO WRITE THIS))
-1. Power and flash ESP32 with starter code
-1. Press and hold the home button on your controller (big H button in the middle) until the lights turn on and then speed up
-1. Controller should connect automatically
-
 ## I've tried to add my controller's Bluetooth address, but my controller still isn't connecting!
 There is a maximum storage of 4 Bluetooth addresses in the allow-list. Simply remove an existing one and replace it with your controller’s Bluetooth address.
 <img src="{{ '/_assets/images/allowlist_list.png' | prepend: site.baseurl }}" alt="allowlist_list :(">
 <img src="{{ '/_assets/images/allowlist_remove.png' | prepend: site.baseurl }}" alt="allowlist_remove :(">
 <img src="{{ '/_assets/images/allowlist_add.png' | prepend: site.baseurl }}" alt="allowlist_add :(">
-
-If this fails, then try [hard resetting your ESP32’s flash memory](https://randomnerdtutorials.com/esp32-erase-flash-memory/)
 
 
 ## I tried doing the above, but my controller isn’t connecting! How do I troubleshoot?
@@ -47,6 +32,11 @@ See [BluePad32's official docs](https://bluepad32.readthedocs.io/en/latest/FAQ/#
 This is probably an issue with BluePad32’s whitelisted connections. You will not be able to connect your controller to the ESP32 without adding your controller’s Bluetooth address to the whitelist.
 
 Try manually adding your controller's Bluetooth address through the serial terminal
+
+If this fails, then try [hard resetting your ESP32’s flash memory](https://randomnerdtutorials.com/esp32-erase-flash-memory/)
+
+## Why bother with the whitelisted Bluetooth connections for the controller?
+In previous years, connecting the controller when many robots were powered on in close proximity was a nightmare because connecting to the wrong robot was unfortunately inevitable.
 
 ## I can’t flash my ESP32 because of a “fatal error”! What should I do?
 <img src="{{ '/_assets/images/fatal_error.png' | prepend: site.baseurl }}" alt="fatal_error.png :(">
@@ -63,7 +53,7 @@ If that fails, close VS Code and reopen it.
 If *that* fails, then check if there are any other applications on your computer that are occupying the COM port (extreme solution is to restart computer).
 
 ## How to calibrate the QTR line sensor?
-TODO write this or link somewhere
+TODO actualy make sure u incorporate this in the main guide portion lol
 
 ## How does the ESP-IDF build system work?
 This information is not required for the competition, but it can be good to know if you'd like to continue IoT develpoment with Espressif MCU's.
