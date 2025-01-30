@@ -65,10 +65,47 @@ ESP-IDF (**Esp**ressif **I**oT **D**evelopment **F**ramework) is the official de
 
 For Robotathon, you will use the VS Code ESP-IDF extension to develop your robot's software.
 
+
+## What is a Bash terminal?
+
+Before GUI's were common in computers way back in the day, users had to rely on **command-line interfaces** (CLI) or terminals to interface with the computer. As you may have guessed, CLI's and Bash are probably way older than you are (Bash was released in 1989!), so there is much history if you'd like to learn more [(Wikipedia article)](https://en.wikipedia.org/wiki/Bash_(Unix_shell)).
+
+A **Bash terminal** is a CLI where you type in various commands to execute tasks like file management, application execution, and scripting (literally anything) through Bash terminals. 
+
+It is the standard CLI for Unix (Linux/macOS) systems today, and is powerful even on Windows machines as seen with Windows Subsystem for Linux (WSL).
+
+For Robotathon, you will be using a Bash terminal emulator called **Git Bash**, which will allow you to use Bash commands on your Windows machine.
+
+The main use for Git Bash in Robotathon will be for Git and file management. While you could get away with your OS's native file explorer GUI, you can do everything and more with the Bash terminal!
+
+Some of the most important commands include:
+* ls (list files)
+* cd (change directory)
+* git (invokes various git functionalities)
+* mkdir (create directory)
+* rm (remove files)
+* cp (copy files)
+* mv (move or rename files)
+* cat (display file contents)
+* grep (search for patterns in files)
+
+
+{: .highlight}
+Note that you probably will only need to use the first three commands to complete Robotathon, but it's good to learn the others
+{: .callout-blue}
+
+Commands will often come with extra functionalities that you can invoke through the use of **options/flags**.
+
+For example, `rm` by default can only delete single files, while `rm -rf` can delete entire folders that have files in them.
+
+Another example is `git commit -m`, where the `-m` flag tells Git that you want to specify an inline message instead of opening the terminal text editor.
+
+If you want to know how to actually use these commands, it would be a good exercise to Google them (as you should whenever you get stuck) and try them out on your own! 
+
 ## How do I navigate the Git Bash terminal?
 You will primarily use the `ls` and `cd` commands to navigate to your Git repository.
 
-By default, Git Bash starts up in your user's folder in Windows as denoted by the tilde `~`. This **path** will change as you move through directories using `cd`.
+By default, Git Bash starts up in your user's home folder in Windows as denoted by the tilde `~`. This **path** will change as you move through directories using `cd`.
 
 Here is a little exercise to navigate to a sample directory in desktop and create a folder:
 
@@ -86,24 +123,6 @@ Here is a little exercise to navigate to a sample directory in desktop and creat
 <img src="{{ '/_assets/images/rmdir.png' | prepend: site.baseurl }}" alt="rmdir :(">
 
 In a similar fashion, Git commands require you to navigate to your Git repository's directory!
-
-## What is a Bash terminal?
-The Bash terminal is a **command-line interface** (CLI) where you type in various commands to execute tasks. The main use for Git Bash in Robotathon will be for Git and file management. While you could get away with your OS's native file explorer GUI, you can do everything and more with the Bash terminal!
-
-Some of the most important commands include:
-* ls (list files)
-* cd (change directory)
-* mkdir (create directory)
-* rm (remove files)
-* cp (copy files)
-* mv (move or rename files)
-* cat (display file contents)
-* grep (search for patterns in files)
-
-You can use various `options/flags` to change the functionality of commands.
-
-For example, `rm` by default can only delete single files, while `rm -rf` can delete entire folders.
-
 
 
 ## What is the SiLabs USB-UART driver for?

@@ -13,7 +13,7 @@ nav_order: 5
 
 It allows you to:
 
-* Easily share code or other files (i.e. KiCad files) with teammates
+* Easily share code or other files (not necessarily code, such as KiCad project files) with teammates
 * Keep a history of your project
 * Revert to previous versions if needed
 * Work on new ideas or features without affecting the main project
@@ -30,7 +30,7 @@ Note that Robotathon aims to give you a *basic* understanding of how Git/GitHub 
 1. Navigate to your repo's root directory in Git Bash (i.e. `RobotathonESP32` by default or whatever you named your repository)
 1. Run `git status` to verify that Git will change what you want it to change (i.e. file actually edited or deleted, file does not belong, etc.)
 1. Run `git add .` to stage your changes [(What is staging?)](TODO write this)
-1. Run `git commit -m "message here"` (keep quotes) to **commit** your change to your *local* repository
+1. Run `git commit -m "message here"` (keep quotes) to **commit** your change to your *local* repository [(What is the `-m`?)](todo LINK to how to use git bash in faq)
 1. Run `git push` to write your changes to the *remote* repository on GitHub
 
 TODO add picture
@@ -49,7 +49,7 @@ In Git, a **branch** is essentially a separate line of development within your p
 
 You can then make changes and commit them to this branch without affecting the original branch (can be any).
 
-Once you're finished working on a branch (i.e. a new feature, bug fix), you can **merge** it back into the original branch by starting a **pull request** on GitHub [(How do I do that?)](TODO write this)
+Once you're finished working on a branch (i.e. a new feature, bug fix), you can **merge** it back into the original branch by starting a **pull request** on GitHub.
 
 Oftentimes this original branch is your `main` or `master` branch (though `main` is the recommended and default GitHub name), which is your project's stable version.
 
@@ -74,6 +74,46 @@ You might fork a repo to experiment, add new features, fix bugs, or contribute t
 ## What is the difference between a Git repo fork and clone?
 Forks are copies of a repo on GitHub (remote), while clones are repos stored on your computer (local).
 
-## How to deal with merge conflicts
+## What is merging in Git?
 
-## How do I initiate a pull request on GitHub?
+## How to deal with merge conflicts
+A **merge conflict** occurs when you try to merge (i.e. git pull) two branches that have made different changes to the same part of a file. Git can't automatically figure out which change to keep, so it needs your help to resolve the conflict.
+
+In the problem file, Git marks the conflicting area with special markers that looks something like this:
+```C
+   <<<<<<< HEAD
+   Your changes
+   =======
+   Their changes
+   >>>>>>> branch-name
+``` 
+
+It is your job to go into the file and delete **all** the special markers along with the content you want to discard before commiting the fixed merge.
+
+For example, let's say we had some C++ file that had a merge conflict:
+
+```cpp
+#include <iostream>
+
+int main() {
+    std::cout << "Hello, world!" << std::endl;
+<<<<<<< HEAD
+    std::cout << "Feature A says hi!" << std::endl;
+=======
+    std::cout << "Feature B is here!" << std::endl;
+>>>>>>> feature-branch
+    return 0;
+}
+```
+
+You would have to modify the content accordingly to look something like this:
+```cpp
+#include <iostream>
+
+int main() {
+    std::cout << "Hello, world!" << std::endl;
+    std::cout << "Feature A says hi and Feature B is here!" << std::endl;
+    return 0;
+}
+```
+
