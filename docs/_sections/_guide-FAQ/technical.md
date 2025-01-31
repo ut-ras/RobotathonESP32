@@ -59,7 +59,7 @@ For Robotathon, you will use the VS Code ESP-IDF extension to develop your robot
 
 ## What is a Bash terminal?
 
-Before GUI's were common in computers way back in the day, users had to rely on **command-line interfaces** (CLI) or terminals to interface with the computer. As you may have guessed, CLI's and Bash are probably way older than you are (Bash was released in 1989!), so there is much history if you'd like to learn more [(Wikipedia article)](https://en.wikipedia.org/wiki/Bash_(Unix_shell)).
+Before **graphic user interfaces** (GUI) were common in computers way back in the day, users had to rely on **command-line interfaces** (CLI) or terminals to interface with the computer. As you may have guessed, CLI's and Bash are probably way older than you are (Bash was released in 1989!), so there is much history if you'd like to learn more [(Wikipedia article)](https://en.wikipedia.org/wiki/Bash_(Unix_shell)).
 
 A **Bash terminal** is a CLI where you type in various commands to execute tasks like file management, application execution, and scripting (literally anything) through Bash terminals. 
 

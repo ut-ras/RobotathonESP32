@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Line Sensor
+title: Powering the System
 nav_include: true
-parent: Powering the System
+parent: Hardware
 nav_order: 1
 ---
 

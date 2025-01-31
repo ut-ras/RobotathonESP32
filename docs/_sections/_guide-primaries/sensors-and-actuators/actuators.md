@@ -2,7 +2,7 @@
 layout: default
 title: Actuators
 nav_include: true
-parent: Sensors and Actuators
+parent: Hardware
 nav_order: 5
 ---
 
