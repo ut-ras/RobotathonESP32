@@ -27,3 +27,5 @@ TODO make list of things
 
 ## Where can we store our robot in the RAS office?
 TODO
+
+## What can we keep after the competition?

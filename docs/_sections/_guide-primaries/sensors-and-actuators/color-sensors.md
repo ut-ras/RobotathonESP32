@@ -3,7 +3,7 @@ layout: default
 title: Color Sensor
 nav_include: true
 parent: Sensors and Actuators
-nav_order: 1
+nav_order: 2
 ---
 
 # Color Sensor

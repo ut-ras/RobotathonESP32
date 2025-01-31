@@ -92,6 +92,9 @@ It is your job to go into the file and delete **all** the special markers along 
 
 For example, let's say we had some C++ file that had a merge conflict:
 
+
+TODO make this code something more like robotathon code?? (oh no oh no namespaces oh no)
+
 ```cpp
 #include <iostream>
 
@@ -106,7 +109,7 @@ int main() {
 }
 ```
 
-You would have to modify the content accordingly to look something like this:
+You could modify the content accordingly to look something like this:
 ```cpp
 #include <iostream>
 

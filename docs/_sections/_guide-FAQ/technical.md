@@ -25,18 +25,12 @@ There is a maximum storage of 4 Bluetooth addresses in the allow-list. Simply re
 <img src="{{ '/_assets/images/allowlist_remove.png' | prepend: site.baseurl }}" alt="allowlist_remove :(">
 <img src="{{ '/_assets/images/allowlist_add.png' | prepend: site.baseurl }}" alt="allowlist_add :(">
 
+If this fails, then try [hard resetting your ESP32’s flash memory](https://randomnerdtutorials.com/esp32-erase-flash-memory/) and try again!
 
-## I tried doing the above, but my controller isn’t connecting! How do I troubleshoot?
-See [BluePad32's official docs](https://bluepad32.readthedocs.io/en/latest/FAQ/#:~:text=true%3B%0A%7D-,Using%20allowlist%20commands%20from%20the%20USB%20console,%C2%B6,-Note)
 
-This is probably an issue with BluePad32’s whitelisted connections. You will not be able to connect your controller to the ESP32 without adding your controller’s Bluetooth address to the whitelist.
-
-Try manually adding your controller's Bluetooth address through the serial terminal
-
-If this fails, then try [hard resetting your ESP32’s flash memory](https://randomnerdtutorials.com/esp32-erase-flash-memory/)
 
 ## Why bother with the whitelisted Bluetooth connections for the controller?
-In previous years, connecting the controller when many robots were powered on in close proximity was a nightmare because connecting to the wrong robot was unfortunately inevitable.
+Connecting the controller without a specific address when many robots are powered on in close proximity is a nightmare.
 
 ## I can’t flash my ESP32 because of a “fatal error”! What should I do?
 <img src="{{ '/_assets/images/fatal_error.png' | prepend: site.baseurl }}" alt="fatal_error.png :(">
@@ -52,16 +46,13 @@ If that fails, close VS Code and reopen it.
 
 If *that* fails, then check if there are any other applications on your computer that are occupying the COM port (extreme solution is to restart computer).
 
-## How to calibrate the QTR line sensor?
-TODO actualy make sure u incorporate this in the main guide portion lol
-
 ## How does the ESP-IDF build system work?
 This information is not required for the competition, but it can be good to know if you'd like to continue IoT develpoment with Espressif MCU's.
 
 Here is a link to their official documentation: [https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/build-system.html#component-requirements](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/build-system.html#component-requirements)
 
 ## What is ESP-IDF?
-ESP-IDF (**Esp**ressif **I**oT **D**evelopment **F**ramework) is the official development framework for building applications for Espressif's ESP32 microcontroller series.
+ESP-IDF (**Esp**ressif **I**oT **D**evelopment **F**ramework) is the official development framework for Espressif's ESP32 microcontroller series.
 
 For Robotathon, you will use the VS Code ESP-IDF extension to develop your robot's software.
 

@@ -7,7 +7,7 @@ grand_parent: Getting Started
 nav_order: 1
 ---
 
-## macOS Setup
+# macOS Setup
 https://docs.espressif.com/projects/vscode-esp-idf-extension/en/latest/installation.html
 
 

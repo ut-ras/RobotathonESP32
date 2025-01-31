@@ -7,7 +7,7 @@ grand_parent: Getting Started
 nav_order: 1
 ---
 
-## Windows Setup
+# Windows Setup
 
 {: .highlight}
 It is highly recommended to follow each component installation in order!
