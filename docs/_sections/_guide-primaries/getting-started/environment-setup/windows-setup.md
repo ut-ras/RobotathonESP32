@@ -87,13 +87,12 @@ Cloning is the process of copying a Git repository onto your local computer stor
 
 <img src="{{ '/_assets/images/github_repo.png' | prepend: site.baseurl }}" alt="my_image.png :(">
 
-1. Go to the your team's newly forked repository
+1. Go to your team's newly forked repository
 1. Click the green `<> Code` button
 1. If you did the previous section, copy the SSH git link. Otherwise copy the HTTPS link. [What is the difference?](https://ut-ras.github.io/RobotathonESP32/technical#what-is-the-difference-between-cloning-using-https-and-ssh)
 <img src="{{ '/_assets/images/ssh_link_copy.png' | prepend: site.baseurl }}" alt="my_image.png w=200 h=400 :(">
-1. Open Git Bash and navigate to where you want to keep your code for the competition, such as your Documents or Desktop. [How do I do that](TODO write this)
-1. Run the following command in your Git terminal `git clone https://github.com/ut-ras/RobotathonESP32.git`
-
+1. Open Git Bash and navigate to where you want to keep your code for the competition, such as your Documents or Desktop. [How do I do that?](TODO write this)
+1. Run the following command in your Git terminal `git clone [PASTE LINK HERE]` without the square brackets
 
 ### __Install USB-UART Bridge Driver__
 This allows your computer to recognize and program your ESP32 when you plug it in.
