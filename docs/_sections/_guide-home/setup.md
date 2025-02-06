@@ -43,7 +43,7 @@ Make sure to have Docker running for later!
 1. Go to the [Robotathon repository](https://github.com/ut-ras/RobotathonESP32/tree/main)
 1. Click the green `<> Code` button
 
-<img src="{{ '/_assets/images/ssh_link_copy.png' | prepend: site.baseurl }}" alt="my_image.png w=200 h=400 :(">
+<img src="{{ '/_assets/images/ssh_link_copy.png' | prepend: site.baseurl }}" alt="my_image.png :(">
 1. Copy the SSH Link (HTTPS bad and sucks 👎)
 1. Open Git Bash and navigate to where you want to keep the code by using `ls` and `cd`
 1. Run the following command in your Git terminal: `git clone [LINK HERE]` without the square brackets
