@@ -1,6 +1,6 @@
 ---
 layout: default
-title: LOOKIE HERE NEWBIE GUIDE SLAVES FOR SYNTAX REFERENCE
+title: NEWBIE GUIDE SYNTAX REFERENCE FOR SLAVES
 nav_include: true
 nav_order: 2
 ---

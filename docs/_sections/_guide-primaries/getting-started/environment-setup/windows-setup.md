@@ -85,14 +85,14 @@ The key should look something like `ssh-ed25519 SFNJNAFNEJKFNJNJKNFJHFJAHOHiowur
 ### __Clone Forked Repository__
 Cloning is the process of copying a Git repository onto your local computer storage
 
-<img src="{{ '/_assets/images/github_repo.png' | prepend: site.baseurl }}" alt="my_image.png :(">
 
 1. Go to your team's newly forked repository
+<img src="{{ '/_assets/images/github_repo.png' | prepend: site.baseurl }}" alt="my_image.png :(">
 1. Click the green `<> Code` button
 1. If you did the previous section, copy the SSH git link. Otherwise copy the HTTPS link. [What is the difference?](https://ut-ras.github.io/RobotathonESP32/technical#what-is-the-difference-between-cloning-using-https-and-ssh)
 <img src="{{ '/_assets/images/ssh_link_copy.png' | prepend: site.baseurl }}" alt="my_image.png w=200 h=400 :(">
 1. Open Git Bash and navigate to where you want to keep your code for the competition, such as your Documents or Desktop. [How do I do that?](TODO write this)
-1. Run the following command in your Git terminal `git clone [PASTE LINK HERE]` without the square brackets
+1. Run the following command in your Git terminal: `git clone [PASTE GIT LINK HERE]` without the square brackets
 
 ### __Install USB-UART Bridge Driver__
 This allows your computer to recognize and program your ESP32 when you plug it in.
@@ -118,7 +118,7 @@ This step is **optional**, but it will save you at least 30 minutes when unzippi
 VS Code is an easily customizable IDE with many extensions and a large community. The preconfigured version you will download will already have ESP-IDF installed.
 
 {: .highlight}
-Do this even if you already have VS Code to minimize environment setup issues. Installing the ESP-IDF extension manually may result in unecessary debugging.
+Do this even if you already have VS Code to minimize environment setup issues. Installing the ESP-IDF extension normally may result in unecessary debugging.
 {: .callout-red}
 
 1. Download zip folder from Box TODO insert box link

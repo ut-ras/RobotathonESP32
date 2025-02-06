@@ -1,6 +1,6 @@
 ---
 layout: default
-title: LOOKIE HERE NEWBIE GUIDE SLAVES FOR JEKYLL SETUP
+title: NEWBIE GUIDE JEKYLL SLAVE SETUP
 permalink: /
 nav_include: true
 nav_order: 1

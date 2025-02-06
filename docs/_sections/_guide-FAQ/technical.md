@@ -122,13 +122,15 @@ The SiLabs USB-UART driver is an application that allows your computer to send a
 It translates USB data into serial data (UART) and vice versa, allowing applications to interact with a connected device (your microcontroller) as if it were a traditional serial port. 
 
 
-## How do I use 7-zip?
+## What is 7-zip?   
+7-zip is an open source application used for file compression. It is a lot faster than the native Windows file extractor (50 minutes -> 1 minute).
 
+## How do I use 7-zip?
 To extract your zipped VS Code archive, follow these steps:
 1. Locate and click the zipped archive you'd like to extract in the 7-zip file browser
-<img src="{{ '/_assets/images/locate_7zip.png' | prepend: site.baseurl }}" alt="rmdir :(">
+<img src="{{ '/_assets/images/locate_file_7zip.png' | prepend: site.baseurl }}" alt="locate_file_7zip :(">
 1. Click the `Extract` button at the top of the 7-zip GUI
-<img src="{{ '/_assets/images/extract_7ip.png' | prepend: site.baseurl }}" alt="rmdir :(">
+<img src="{{ '/_assets/images/extract_7zip.png' | prepend: site.baseurl }}" alt="extract_7ip :(">
 1. Set the `Extract to` path to `C:` 
-<img src="{{ '/_assets/images/path_7zip.png' | prepend: site.baseurl }}" alt="rmdir :(">
+<img src="{{ '/_assets/images/extract_7zip.png' | prepend: site.baseurl }}" alt="path_7zip :(">
 1. Click `OK` and wait for the unzipping to finish
