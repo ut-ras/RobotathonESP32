@@ -18,13 +18,10 @@ The night before competition day we will host an all-nighter in the EER to work 
 
 ## What kind of additional materials can we buy?
 Puchasing other materials is not necessary and the components in the bag will be adequate to complete all the challenges. If you choose to purchase extra metarials though, teams can buy anything that will help them with their robot like springs, rods, and electrical components as long as the total cost is less than $25. Wood, filament, or acrylic from the TIW are not included in the $25.
-
-TODO address given materials not being enough to finish mechanical challenge as of 1/15/2025
-
-## Do you have x item?
-
-TODO make list of things 
+These TIW materials will (most likely) include your chassis and your mechanical chalenge design, as your component bag will not come with either.
 
 ## Where can we store our robot in the RAS office?
 
 TODO
+<img src="{{ '/_assets/images/my_image.png' | prepend: site.baseurl }}" alt="my_image.png :(">
+***replace with picture of shelf with designated robotathon robot area***
