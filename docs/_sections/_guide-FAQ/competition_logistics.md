@@ -23,10 +23,7 @@ These TIW materials will (most likely) include your chassis and your mechanical 
 ## Where can we store our robot in the RAS office?
 TODO
 
-<<<<<<< HEAD
-TODO
 <img src="{{ '/_assets/images/my_image.png' | prepend: site.baseurl }}" alt="my_image.png :(">
-***replace with picture of shelf with designated robotathon robot area***
-=======
+replace with picture of shelf with designated robotathon robot area
+
 ## What can we keep after the competition?
->>>>>>> dfbccd6255bd8fb2f1165167a92f2686e3d58012
