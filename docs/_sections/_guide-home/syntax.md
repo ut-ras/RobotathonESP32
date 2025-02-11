@@ -1,8 +1,8 @@
 ---
 layout: default
-title: LOOKIE HERE NEWBIE GUIDE SLAVES FOR SYNTAX REFERENCE
+title: NEWBIE GUIDE SYNTAX REFERENCE FOR SLAVES
 nav_include: true
-nav_order: 1
+nav_order: 2
 ---
 
 # official syntax docs [https://just-the-docs.com/](https://just-the-docs.com/)

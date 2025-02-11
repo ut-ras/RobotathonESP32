@@ -7,7 +7,7 @@ grand_parent: Getting Started
 nav_order: 1
 ---
 
-## Windows Setup
+# Windows Setup
 
 {: .highlight}
 It is highly recommended to follow each component installation in order!
@@ -54,12 +54,12 @@ Git Bash is finicky and doesn't support Ctrl + V for paste. Use `Shift + Insert`
 {: .callout-blue}
 
 1. Open Git Bash
-1. Paste `ssh-keygen -t ed25519 -C "your_email@example.com"`, change the email to the one tied to your Github account, and press `Enter`.
+1. Paste `ssh-keygen -t ed25519 -C "your_email@example.com"`, change the email to the one tied to your Github account (keep the quotes), and press `Enter`.
 1. You will be prompted to specify a location to save the SSH key. Press `Enter` to specify the default location.
 1. You will likely be prompted to enter a passcode. Press `Enter` twice to specify no passcode.
 
 {: .highlight}
-Note that you can add a passcode if you'd like, but it is not necessary. If you do, keep in mind that the Bash terminal does _not_ show your passcode as you type it out. Just continue (accurately) typing and press `Enter` when done.
+Note that you can add a passcode if you'd like, but it is not recommended. If you do, keep in mind that the Bash terminal does _not_ show your passcode as you type it out. Just continue (accurately) typing and press `Enter` when done.
 {: .callout-blue}
 
 #### Add SSH key to SSH-agent
@@ -69,25 +69,30 @@ Note that you can add a passcode if you'd like, but it is not necessary. If you 
 #### Add SSH key to Github
 1. Paste `cat ~/.ssh/id_ed25519.pub` into the terminal and press `Enter` to display your public SSH key
 1. Copy the entire key
+{: .highlight}
+The key should look something like `ssh-ed25519 SFNJNAFNEJKFNJNJKNFJHFJAHOHiowuroiuwr/sfjeher+KX/rH email@gmail.com`
+{: .callout-blue}
 1. Navigate to the upper-right corner of any page on [GitHub](https://github.com/), click your profile photo, then click Settings (gear icon)
+<img src="{{ '/_assets/images/github_settings.png' | prepend: site.baseurl }}" alt="my_image.png :(">
 1. In the `Access` section of the sidebar, click `SSH and GPG keys`
-1. Click `New SSH key or Add SSH key`.
-1. Put whatever for the key title name
+1. Click the green `New SSH key` button on the right
+<img src="{{ '/_assets/images/github_ssh_gpg.png' | prepend: site.baseurl }}" alt="my_image.png :(">
+1. Put whatever you want for the key title name
 1. Select the key type to be `Authentication`
+1. Paste in the key you copied earlier into the `Key` section
 1. Click `Add SSH Key`
 
 ### __Clone Forked Repository__
 Cloning is the process of copying a Git repository onto your local computer storage
 
+
+1. Go to your team's newly forked repository
 <img src="{{ '/_assets/images/github_repo.png' | prepend: site.baseurl }}" alt="my_image.png :(">
-
-1. Go to the your team's newly forked repository
 1. Click the green `<> Code` button
-1. If you did the previous section, copy the SSH git link. Otherwise copy the HTTPS link. [What is the difference?](TODO write this)
+1. If you did the previous section, copy the SSH git link. Otherwise copy the HTTPS link. [What is the difference?](https://ut-ras.github.io/RobotathonESP32/technical#what-is-the-difference-between-cloning-using-https-and-ssh)
 <img src="{{ '/_assets/images/ssh_link_copy.png' | prepend: site.baseurl }}" alt="my_image.png w=200 h=400 :(">
-1. Open Git Bash and navigate to where you want to keep your code for the competition, such as your Documents or Desktop. [How do I do that](TODO write this)
-1. Run the following command in your Git terminal `git clone https://github.com/ut-ras/RobotathonESP32.git`
-
+1. Open Git Bash and navigate to where you want to keep your code for the competition, such as your Documents or Desktop. [How do I do that?](TODO write this)
+1. Run the following command in your Git terminal: `git clone [PASTE GIT LINK HERE]` without the square brackets
 
 ### __Install USB-UART Bridge Driver__
 This allows your computer to recognize and program your ESP32 when you plug it in.
@@ -106,18 +111,21 @@ This step is **optional**, but it will save you at least 30 minutes when unzippi
 7-zip is a file compression tool that works much faster than your native Windows tools.
 
 1. Go to the [7-zip download page](https://www.7-zip.org/)
-1. Install using default directory
+1. Install using defaults
 1. Launch 7-zip
 
 ### __Install Preconfigured VS Code__
 VS Code is an easily customizable IDE with many extensions and a large community. The preconfigured version you will download will already have ESP-IDF installed.
 
 {: .highlight}
-Do this even if you already have VS Code to minimize  environment setup issues. Installing the ESP-IDF extension manually may result in unecessary debugging.
+Do this even if you already have VS Code to minimize environment setup issues. Installing the ESP-IDF extension normally may result in unecessary debugging.
 {: .callout-red}
 
 1. Download zip folder from Box TODO insert box link
-1. Unzip the file to your C: drive (this **will** take a while unless you use 7-zip)
+1. Unzip the file to your C: drive 
+{: .highlight}
+This **will** take a while unless you use 7-zip. [How do I use 7-zip?](TODO link)
+{: .callout-red}
 1. Launch the "containerized" VS Code by running the Code.exe file in the unzipped folder
 1. In the top menu bar of VS Code, click `File` > `Open Folder`
 1. Use VS Code to open the folder where you cloned the Robotathon repository (“RobotathonESP32” by default)
@@ -146,7 +154,7 @@ Do this even if you already have VS Code to minimize  environment setup issues. 
 <img src="{{ '/_assets/images/vscode_bottom_ribbon_monitor.png' | prepend: site.baseurl }}" alt="my_image.png :(">
 
 {: .highlight}
-Note: Building and flashing after the first time does not take nearly as long. In fact, you can press the Build, Flash, and Monitor button (fire icon) to streamline the process!
+Building and flashing after the first time does not take nearly as long. In fact, you can press the Build, Flash, and Monitor button (fire icon) to streamline the process!
 {: .callout-blue}
 
 
@@ -155,6 +163,10 @@ Note: Building and flashing after the first time does not take nearly as long. I
 Here is an example program that blinks the onboard LED. "Blinky" projects are a standard "hello world" type of program that demonstrate your development environment works properly.
 
 If you replace your `arduino_main.cpp` file's contents with the following and flash properly, then your ESP32's blue onboard LED will begin to blink (yay 😄)!
+
+{: .highlight}
+Note that it is **your** responsibility to integrate this code with the controller starter code!
+{: .callout-blue}
 
 ```cpp
 #include "sdkconfig.h"
