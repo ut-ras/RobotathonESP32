@@ -1,13 +1,13 @@
 ---
 layout: default
-title: NEWBIE GUIDE JEKYLL SLAVE SETUP
+title: NEWBIE GUIDE JEKYLL SETUP (remove during comp)
 permalink: /
 nav_include: true
 nav_order: 1
 ---
 
 # windows setup
-good luck linux losers and macos mucks (im sure its 90% the same but gl)
+gl to linux/macos people. its mostly the same so u got it :)
 
 ## Download VS Code 
 1. Click big download button for Windows
