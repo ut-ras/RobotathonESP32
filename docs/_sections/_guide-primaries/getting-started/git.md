@@ -62,7 +62,7 @@ TODO MAKE PICTURE
 When you clone a repository, you’re downloading all the files, the commit history, and the current state of the project so that you can work on it locally. It’s like taking a snapshot of a project from the remote server (like GitHub) and bringing it into your workspace.
 
 {: .highlight}
-Note that a cloned repository does **not** automatically update to reflect newly pushed commits to GitHub! To update and merge any changes, simply run `git pull` in your repostiory's root directory (i.e. `RobotathonESP32`)
+Note that a cloned repository does **not** automatically update to reflect newly pushed commits to GitHub! To update and merge any changes, simply run `git pull` in your repository's root directory (i.e. `RobotathonESP32`)
 {: .callout-blue}
 
 
@@ -73,6 +73,8 @@ You might fork a repo to experiment, add new features, fix bugs, or contribute t
 
 ## What is the difference between a Git repo fork and clone?
 Forks are copies of a repo on GitHub (remote), while clones are repos stored on your computer (local).
+
+## How do I invite my teammates to my forked repository on GitHub?
 
 ## What is merging in Git?
 
@@ -93,7 +95,7 @@ It is your job to go into the file and delete **all** the special markers along 
 For example, let's say we had some C++ file that had a merge conflict:
 
 
-TODO make this code something more like robotathon code?? (oh no oh no namespaces oh no)
+TODO make this code something more like robotathon code?? (oh no oh no namespaces oh no not my arduino)
 
 ```cpp
 #include <iostream>

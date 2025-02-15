@@ -19,7 +19,7 @@ This is a source-control application that is very useful for sharing projects wi
 1. Go to the [Git website](https://git-scm.com/downloads)
 1. Download the 64-bit installer
 1. Run the newly downloaded installer and follow the defaults in the installer dialogue
-1. Open Git Bash and familiarize yourself with how to navigate the bash terminal [(How do I do that?)](TODO WRITE THIS)
+1. Open Git Bash and familiarize yourself with how to navigate the bash terminal [(How do I do that?)](https://ut-ras.github.io/RobotathonESP32/technical#what-is-a-bash-terminal)
 
 ### __Create GitHub account__
 GitHub is like a Google Drive for your Git repositories.
@@ -37,7 +37,7 @@ Note: only **one** person in each team has to fork the repository and invite the
 <img src="{{ '/_assets/images/github_fork.png' | prepend: site.baseurl }}" alt="my_image.png :(">
 1. Change the Repository name to whatever you like
 1. Click the green `Create fork` button at the bottom
-1. Share repository access to your teammates by navigating to the settings of your newly forked repository and clicking collaborators in the left menu [(How do I invite teammates to my forked repository?)](TODO WRITE THIS)
+1. Share repository access to your teammates by navigating to the settings of your newly forked repository and clicking collaborators in the left menu [(How do I invite teammates to my forked repository?)](https://ut-ras.github.io/RobotathonESP32/getting-started/git#how-do-i-invite-teammates-to-my-forked-repository)
 
 ### __Set Up Git SSH Authentication__
 
@@ -91,7 +91,7 @@ Cloning is the process of copying a Git repository onto your local computer stor
 1. Click the green `<> Code` button
 1. If you did the previous section, copy the SSH git link. Otherwise copy the HTTPS link. [What is the difference?](https://ut-ras.github.io/RobotathonESP32/technical#what-is-the-difference-between-cloning-using-https-and-ssh)
 <img src="{{ '/_assets/images/ssh_link_copy.png' | prepend: site.baseurl }}" alt="my_image.png w=200 h=400 :(">
-1. Open Git Bash and navigate to where you want to keep your code for the competition, such as your Documents or Desktop. [How do I do that?](TODO write this)
+1. Open Git Bash and navigate to where you want to keep your code for the competition, such as your Documents or Desktop. [How do I do that?](https://ut-ras.github.io/RobotathonESP32/technical#how-do-i-navigate-the-git-bash-terminal)
 1. Run the following command in your Git terminal: `git clone [PASTE GIT LINK HERE]` without the square brackets
 
 ### __Install USB-UART Bridge Driver__
@@ -121,10 +121,10 @@ VS Code is an easily customizable IDE with many extensions and a large community
 Do this even if you already have VS Code to minimize environment setup issues. Installing the ESP-IDF extension normally may result in unecessary debugging.
 {: .callout-red}
 
-1. Download zip folder from Box TODO insert box link
+1. Download [zip folder from Box](https://utexas.box.com/s/2enfprqovfq8kmgcz8d8sn28yr6wpzt4) 
 1. Unzip the file to your C: drive 
 {: .highlight}
-This **will** take a while unless you use 7-zip. [How do I use 7-zip?](TODO link)
+This **will** take a while unless you use 7-zip. [How do I use 7-zip?](https://ut-ras.github.io/RobotathonESP32/technical#how-do-i-use-7-zip)
 {: .callout-red}
 1. Launch the "containerized" VS Code by running the Code.exe file in the unzipped folder
 1. In the top menu bar of VS Code, click `File` > `Open Folder`

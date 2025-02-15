@@ -10,7 +10,7 @@ nav_order: 3
 
 # Environment Setup
 
-Setting up your environment is almost always a pain, but it must be done properly so you can have fun building your robot :)
+Setting up a development environment is almost always a pain, but it must be done properly so you can have fun building your robot :)
 
 The exact process depends on what OS your computer is running (Windows, macOS, etc.), so this article will be split into Windows and MacOS setup. If you happen to use another OS, then talk to a mentor for help.
 
