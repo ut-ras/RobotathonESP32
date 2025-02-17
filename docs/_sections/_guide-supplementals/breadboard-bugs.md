@@ -1,10 +1,12 @@
 ---
 layout: default
-title: Breadboard Bugs
+title: Debugging
 nav_include: true
 # parent: Resources
-nav_order: 1
+nav_order: 2
 ---
+
+TODO write software debugging guide in here too
 
 # How to (not) Explode Your Microcontroller like the Rest of Us
 

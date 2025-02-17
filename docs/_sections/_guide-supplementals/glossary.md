@@ -3,7 +3,7 @@ layout: default
 title: Glossary
 nav_include: true
 # parent: Resources
-nav_order: 6
+nav_order: 3
 ---
 
 **Abstracted:** When details have been simplified, hidden, or removed from your perspective or the task at hand. The purpose of abstraction is to make your tasks easier or more manageable in the Robotathon learning environment.
