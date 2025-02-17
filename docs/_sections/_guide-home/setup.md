@@ -17,7 +17,8 @@ gl to linux/macos people. its mostly the same so u got it :)
 <img src="{{ '/_assets/images/dev_container.png' | prepend: site.baseurl }}" alt="my_image.png :(">
 
 ## Download WSL
-1. Open **Powershell**
+See official documentation here: [https://learn.microsoft.com/en-us/windows/wsl/install](https://learn.microsoft.com/en-us/windows/wsl/install)
+1. Open Powershell
 1. Type `wsl --set-default-version 2`
 1. Type `wsl --install`
    - If you are prompted to put in credentials, put something you will remember
@@ -49,7 +50,7 @@ Make sure to have Docker running for later!
 1. Run the following command in your Git terminal: `git clone [LINK HERE]` without the square brackets
 
 
-## Opening the Containerized Repository
+## Opening the Container
 1. Navigate to `RobotathonESP32` by using `ls` and `cd`
 1. Type `git checkout newbie-guide-2025` to switch to the Newbie Guide branch
 1. Open `RobotathonESP32` in VS Code
@@ -66,7 +67,7 @@ Make sure to have Docker running for later!
 1. `Ctrl` + `Left Click` on the server address link to open the site locally after it is done compiling
 
 {: .highlight}
-You do not need to rerun any terminal commands to view changes if you use the `--force_polling` and `--livereload` flags. If your computer is blowing up with constant autoreload, you can just use `bundle exec jekyll serve`, but you'll have to recompile each time you want to render new local changes 
+You do not need to rerun any terminal commands to view changes if you use the `--force_polling` and `--livereload` flags. If your computer is blowing up with constant autoreload, you can just use `bundle exec jekyll serve`, but you'll have to rerun the command each time you want to render new local changes 
 {: .callout-blue}
 
 <img src="{{ '/_assets/images/server_link.png' | prepend: site.baseurl }}" alt="my_image.png :(">

@@ -59,7 +59,7 @@ Git Bash is finicky and doesn't support Ctrl + V for paste. Use `Shift + Insert`
 1. You will likely be prompted to enter a passcode. Press `Enter` twice to specify no passcode.
 
 {: .highlight}
-Note that you can add a passcode if you'd like, but it is not recommended. If you do, keep in mind that the Bash terminal does _not_ show your passcode as you type it out. Just continue (accurately) typing and press `Enter` when done.
+You can add a passcode if you'd like, but it is not recommended. If you do, keep in mind that the Bash terminal does _not_ show your passcode as you type it out. Just continue (accurately) typing and press `Enter` when done.
 {: .callout-blue}
 
 #### Add SSH key to SSH-agent
@@ -69,9 +69,11 @@ Note that you can add a passcode if you'd like, but it is not recommended. If yo
 #### Add SSH key to Github
 1. Paste `cat ~/.ssh/id_ed25519.pub` into the terminal and press `Enter` to display your public SSH key
 1. Copy the entire key
+
 {: .highlight}
 The key should look something like `ssh-ed25519 SFNJNAFNEJKFNJNJKNFJHFJAHOHiowuroiuwr/sfjeher+KX/rH email@gmail.com`
 {: .callout-blue}
+
 1. Navigate to the upper-right corner of any page on [GitHub](https://github.com/), click your profile photo, then click Settings (gear icon)
 <img src="{{ '/_assets/images/github_settings.png' | prepend: site.baseurl }}" alt="my_image.png :(">
 1. In the `Access` section of the sidebar, click `SSH and GPG keys`
@@ -125,7 +127,7 @@ Do this even if you already have VS Code to minimize environment setup issues. I
 1. Unzip the file to your C: drive 
 {: .highlight}
 This **will** take a while unless you use 7-zip. [How do I use 7-zip?](https://ut-ras.github.io/RobotathonESP32/technical#how-do-i-use-7-zip)
-{: .callout-red}
+{: .callout-blue}
 1. Launch the "containerized" VS Code by running the Code.exe file in the unzipped folder
 1. In the top menu bar of VS Code, click `File` > `Open Folder`
 1. Use VS Code to open the folder where you cloned the Robotathon repository (“RobotathonESP32” by default)
