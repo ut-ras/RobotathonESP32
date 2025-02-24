@@ -9,8 +9,7 @@ nav_order: 2
 # Color Sensor
 The APDS-9960 Color Sensor will allow you to complete the Color Challenge.
 
-<img src="{{ '/_assets/images/color_sensor.jpg' | prepend: site.baseurl }}" alt="color_sensor.jpg" width=300 height=300>
-
+ygvgvgvygv
 
 ## Workshop Slides
 <iframe src="https://docs.google.com/presentation/d/1h5p9pCGCKSqfrkFSnQQ6bxtwjZGJe90FrfASYaGZwRY/embed?start=false" 
