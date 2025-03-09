@@ -1,8 +1,8 @@
 ---
 layout: default
-title: LOOKIE HERE NEWBIE GUIDE SLAVES FOR SYNTAX REFERENCE
+title: NEWBIE GUIDE SYNTAX REFERENCE (remove during comp)
 nav_include: true
-nav_order: 1
+nav_order: 2
 ---
 
 # official syntax docs [https://just-the-docs.com/](https://just-the-docs.com/)
@@ -16,7 +16,7 @@ see official docs for more standard syntax like titles, ordered lists, bullet po
 nice and blue callout
 {: .callout-blue}
 
-{: .highlight}asdasd
+{: .highlight}
 angry and red callout
 {: .callout-red}
 

@@ -2,8 +2,8 @@
 layout: default
 title: Line Sensor
 nav_include: true
-parent: Sensors and Actuators
-nav_order: 3
+parent: Hardware
+nav_order: 4
 ---
 
 # Line Sensor

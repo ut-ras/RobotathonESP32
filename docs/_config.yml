@@ -25,6 +25,10 @@ description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "/docs" # the subpath of your site, e.g. /blog
 url: "https://ut.ieee.ras.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
+aux_links:
+  "Join the RAS Discord!":
+    - "https://discord.com/invite/ehmhUTZ2NZ"
+
 # Build settings
 theme: just-the-docs
 
@@ -73,6 +77,9 @@ collections:
   guide-supplementals:
     permalink: "/:path"
     output: true
+  guide-FAQ:
+    permalink: "/:path"
+    output: true
 
 # Define which collections are used in just-the-docs
 just_the_docs:
@@ -88,6 +95,9 @@ just_the_docs:
       nav_fold: false
     guide-supplementals:
       name: Resources
+      nav_fold: false
+    guide-FAQ:
+      name: FAQ
       nav_fold: false
 
 # Define sass

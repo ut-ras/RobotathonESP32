@@ -2,8 +2,8 @@
 layout: default
 title: Sensor Integration
 nav_include: true
-parent: Sensors and Actuators
-nav_order: 5
+parent: Hardware
+nav_order: 6
 ---
 
 # Sensor Integration

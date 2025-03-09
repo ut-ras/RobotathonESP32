@@ -13,7 +13,7 @@ To pass this checkpoint, your robot should meet the following requirements:
 
 * Have the color sensor attached to the robot in some way
 * Be able to sample and store the color of the initial tile
-* Autonomously drive until the identical tile is found
+* Autonomously drive until the matching tile color is found
 
 Some questions we might ask about this checkpoint are:
 

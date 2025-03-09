@@ -1,9 +1,9 @@
 ---
 layout: default
 title: Welcome
-permalink: /
+# permalink: / # put this back when done with development
 nav_include: true
-nav_order: 2
+nav_order: 3
 ---
 
 # Robotathon 2025 Newbie Guide

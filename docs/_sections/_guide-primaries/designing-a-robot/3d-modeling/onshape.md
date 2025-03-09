@@ -3,7 +3,7 @@ layout: default
 title: Modeling with Onshape
 nav_include: true
 parent: 3D Modeling
-grand_parent: Designing a Robot 
+grand_parent: Designing a Robot
 nav_order: 1
 ---
 # 3D Modeling with Onshape
