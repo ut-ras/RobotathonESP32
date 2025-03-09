@@ -14,7 +14,7 @@ Onshape have excellent documentation on its [help website](https://cad.onshape.c
 
 ### Sign up and setting up OnShape
 1. Create an Onshape account using any email with and choose a student (education) subscription, this will allow your designs to be private and not leaked to competitors, because a free account cannot make private documents. Go to [Onshape signup](https://www.onshape.com/en/sign-up) and follow the onscreen instructions.
-2. You should be at the intial setup screen where you can choose your units, controls preferences as well as test your browser, it might tell you "reduced performace detected" if you are using intergrated graphics, don't get offended, you'll be fine. You can change all of these settings later in your account page (top right corner)
+2. You should be at the intial setup screen where you can choose your units, controls preferences as well as test your browser, it might tell you "reduced performace detected" if you are using intergrated graphics, don't be offended, you'll be fine. You can change all of these settings later in your account page (top right corner)
 
 After that, you are really to go, the following videos will guide you through the process of designing a example robot and provide some best practices for designing using CAD in general.
 
@@ -29,7 +29,7 @@ Sketching is extremely important in CAD (you wouldn't be able to do anything els
 _Planes, shapes, constraints, references_
 ### Making your second, third, fourth,... part
 Being organized is the key to reducing hassle while designing, learn the effective tools to be organized!
-_Variable studio, naming, folders_
+_Variable studio, naming, folders, appearance_
 ### We be doin a bit of stealin sometimes
 Aside from [GrabCad](https://grabcad.com/), you can also get 3D models of parts you need straight in Onshape and quicky model with it.
 _Public page, importing models to own document_
