@@ -68,7 +68,7 @@ void colorChallenge(ControllerPtr myController) {
     apds.begin();
 
     targetColor = sampleColor();
-    goStraight();
+    // goStraight();
 
     colorData = sampleColor();
     Console.printf("Target color: %d\n", targetColor);
@@ -86,7 +86,7 @@ void colorChallenge(ControllerPtr myController) {
         colorData = sampleColor();
         if(colorData == targetColor) {
             Console.printf("Color %d Found! Exiting to main\n", targetColor);
-            stop();
+            // stop();
             return; // exit to main
         }
     }

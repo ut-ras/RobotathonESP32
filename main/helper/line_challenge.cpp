@@ -60,22 +60,22 @@ void lineChallenge(ControllerPtr myController) {
             }
         }
 
-        // IIOO
-        if(boolSensorData[0] && boolSensorData[1] && !boolSensorData[2] && !boolSensorData[3]) {
-            turnLeft();
-        }
-        // OOII
-        else if(!boolSensorData[0] && !boolSensorData[1] && boolSensorData[2] && boolSensorData[3]) {
-            turnRight();
-        }
-        // OIIO
-        else if(!boolSensorData[0] && boolSensorData[1] && boolSensorData[2] && !boolSensorData[3]) {
-            goStraight();
-        }
-        // OOOO
-        else if(!boolSensorData[0] && !boolSensorData[1] && !boolSensorData[2] && !boolSensorData[3]) {
-            turnLeft(); // idk
-        }
+        // // IIOO
+        // if(boolSensorData[0] && boolSensorData[1] && !boolSensorData[2] && !boolSensorData[3]) {
+        //     turnLeft();
+        // }
+        // // OOII
+        // else if(!boolSensorData[0] && !boolSensorData[1] && boolSensorData[2] && boolSensorData[3]) {
+        //     turnRight();
+        // }
+        // // OIIO
+        // else if(!boolSensorData[0] && boolSensorData[1] && boolSensorData[2] && !boolSensorData[3]) {
+        //     goStraight();
+        // }
+        // // OOOO
+        // else if(!boolSensorData[0] && !boolSensorData[1] && !boolSensorData[2] && !boolSensorData[3]) {
+        //     turnLeft(); // idk
+        // }
 
         if(myController->b()) {
             Console.println("button b pressed - exiting to main");

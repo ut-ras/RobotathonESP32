@@ -11,6 +11,8 @@
 #include "helper/challenges.h"
 #include "helper/motors.h"
 
+#include <uni.h>
+
 extern ControllerPtr myControllers[BP32_MAX_GAMEPADS];
 
 void dumpGamepad(ControllerPtr ctl) {
