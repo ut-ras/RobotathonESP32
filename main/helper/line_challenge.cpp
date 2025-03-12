@@ -61,17 +61,17 @@ void lineChallenge(ControllerPtr myController) {
         }
 
         // // IIOO
-        // if(boolSensorData[0] && boolSensorData[1] && !boolSensorData[2] && !boolSensorData[3]) {
-        //     turnLeft();
-        // }
+        if(boolSensorData[0] && boolSensorData[1] && !boolSensorData[2] && !boolSensorData[3]) {
+            turnLeft();
+        }
         // // OOII
-        // else if(!boolSensorData[0] && !boolSensorData[1] && boolSensorData[2] && boolSensorData[3]) {
-        //     turnRight();
-        // }
+        else if(!boolSensorData[0] && !boolSensorData[1] && boolSensorData[2] && boolSensorData[3]) {
+            turnRight();
+        }
         // // OIIO
-        // else if(!boolSensorData[0] && boolSensorData[1] && boolSensorData[2] && !boolSensorData[3]) {
-        //     goStraight();
-        // }
+        else if(!boolSensorData[0] && boolSensorData[1] && boolSensorData[2] && !boolSensorData[3]) {
+            goStraight();
+        }
         // // OOOO
         // else if(!boolSensorData[0] && !boolSensorData[1] && !boolSensorData[2] && !boolSensorData[3]) {
         //     turnLeft(); // idk

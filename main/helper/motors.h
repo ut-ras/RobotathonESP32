@@ -4,7 +4,7 @@
 
 void checkCancel(ControllerPtr myController);
 void moveMain(ControllerPtr myController);
-// void goStraight();
+void goStraight();
 void goBack();
 void turnLeft();
 void turnRight();
