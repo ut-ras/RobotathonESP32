@@ -3,12 +3,12 @@
 #define SERVOPIN 13
 
 #define DEADZONE_THRESHOLD 10
-#define A1PIN 19
-#define A2PIN 18
-#define B1PIN 5
-#define B2PIN 17
-#define PWMA 1
-#define PWMB 3
+#define A1PIN 32
+#define A2PIN 33
+#define B1PIN 25
+#define B2PIN 26
+// #define PWMA 1
+// #define PWMB 3
 
 // Servo servo;
 
@@ -25,8 +25,8 @@ void initMotors() {
     pinMode(A2PIN, OUTPUT);
     pinMode(B1PIN, OUTPUT);
     pinMode(B2PIN, OUTPUT);
-    pinMode(PWMA, OUTPUT);
-    pinMode(PWMB, OUTPUT);
+    // pinMode(PWMA, OUTPUT);
+    // pinMode(PWMB, OUTPUT);
 }
 
 
@@ -42,8 +42,8 @@ void initMotors() {
 
 void goBack(int val) {
     Console.println("back");
-    analogWrite(PWMA, val);
-    analogWrite(PWMB, val);
+    // analogWrite(PWMA, val);
+    // analogWrite(PWMB, val);
     digitalWrite(A1PIN, LOW);
     digitalWrite(A2PIN, HIGH);
     digitalWrite(B1PIN, LOW);
@@ -86,16 +86,18 @@ void checkCancel(ControllerPtr myController) {
 void moveMain(ControllerPtr myController) {
     BP32.update();
     if(myController->axisX() > DEADZONE_THRESHOLD) {
-        // turnRight();
+        turnRight();
     }
     else if(myController->axisX() < -DEADZONE_THRESHOLD) {
-        // turnLeft();
+        turnLeft();
     }
     else if(myController->axisRY() < -DEADZONE_THRESHOLD) { // down on the stick is positive
         // goStraight(abs(((double)myController->axisRY()) / 512) * 256);
+        goStraight();
     }
     else if(myController->axisRY() > DEADZONE_THRESHOLD) {
         // goBack(abs(((double)myController->axisRY()) / 512) * 256);
+        goBack();
     }
     else {
         stop();
