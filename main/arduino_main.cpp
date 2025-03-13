@@ -39,7 +39,7 @@ void setup() {
     BP32.forgetBluetoothKeys(); 
     esp_log_level_set("gpio", ESP_LOG_ERROR); // suppress info log spam from gpio_isr_service
     uni_bt_allowlist_set_enabled(true);
-
+    initMotors();
 }
 
 // A -> color

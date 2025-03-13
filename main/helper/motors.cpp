@@ -2,11 +2,11 @@
 
 #define SERVOPIN 13
 
-#define DEADZONE_THRESHOLD 10
-#define A1PIN 32
-#define A2PIN 33
-#define B1PIN 25
-#define B2PIN 26
+#define DEADZONE_THRESHOLD 40
+#define IN1PIN 26
+#define IN2PIN 27
+#define IN3PIN 14
+#define IN4PIN 12
 // #define PWMA 1
 // #define PWMB 3
 
@@ -21,57 +21,58 @@ bool needExit = false; // for cancel in challenges
 
 void initMotors() {    
     // servo.attach(SERVOPIN);
-    pinMode(A1PIN, OUTPUT);
-    pinMode(A2PIN, OUTPUT);
-    pinMode(B1PIN, OUTPUT);
-    pinMode(B2PIN, OUTPUT);
+    pinMode(IN1PIN, OUTPUT);
+    pinMode(IN2PIN, OUTPUT);
+    pinMode(IN3PIN, OUTPUT);
+    pinMode(IN4PIN, OUTPUT);
     // pinMode(PWMA, OUTPUT);
     // pinMode(PWMB, OUTPUT);
+    Console.println("init'ing motors");
 }
 
 
-// void goStraight(int val) {
-//     Console.println("straight");
-//     analogWrite(PWMA, val);
-//     analogWrite(PWMB, val);
-//     digitalWrite(A1PIN, HIGH);
-//     digitalWrite(A2PIN, LOW);
-//     digitalWrite(B1PIN, HIGH);
-//     digitalWrite(B2PIN, LOW);
-// }
+void goStraight() {
+    Console.println("straight");
+    // analogWrite(PWMA, val);
+    // analogWrite(PWMB, val);
+    digitalWrite(IN1PIN, LOW);
+    digitalWrite(IN2PIN, HIGH);
+    digitalWrite(IN3PIN, HIGH);
+    digitalWrite(IN4PIN, LOW);
+}
 
-void goBack(int val) {
+void goBack() {
     Console.println("back");
     // analogWrite(PWMA, val);
     // analogWrite(PWMB, val);
-    digitalWrite(A1PIN, LOW);
-    digitalWrite(A2PIN, HIGH);
-    digitalWrite(B1PIN, LOW);
-    digitalWrite(B2PIN, HIGH);
+    digitalWrite(IN1PIN, HIGH);
+    digitalWrite(IN2PIN, LOW);
+    digitalWrite(IN3PIN, LOW);
+    digitalWrite(IN4PIN, HIGH);
 }
 
 void turnLeft() {
     Console.println("left");
-    digitalWrite(A1PIN, HIGH);
-    digitalWrite(A2PIN, LOW);
-    digitalWrite(B1PIN, LOW);
-    digitalWrite(B2PIN, LOW);
+    digitalWrite(IN1PIN, HIGH);
+    digitalWrite(IN2PIN, LOW);
+    digitalWrite(IN3PIN, HIGH);
+    digitalWrite(IN4PIN, LOW);
 }
 
 void turnRight() {
     Console.println("right");
-    digitalWrite(A1PIN, LOW);
-    digitalWrite(A2PIN, LOW);
-    digitalWrite(B1PIN, HIGH);
-    digitalWrite(B2PIN, LOW);
+    digitalWrite(IN1PIN, LOW);
+    digitalWrite(IN2PIN, HIGH);
+    digitalWrite(IN3PIN, LOW);
+    digitalWrite(IN4PIN, HIGH);
 }
 
 void stop() {
     Console.println("stop");
-    digitalWrite(A1PIN, LOW);
-    digitalWrite(A2PIN, LOW);
-    digitalWrite(B1PIN, LOW);
-    digitalWrite(B2PIN, LOW);
+    digitalWrite(IN1PIN, LOW);
+    digitalWrite(IN2PIN, LOW);
+    digitalWrite(IN3PIN, LOW);
+    digitalWrite(IN4PIN, LOW);
 }
 
 void checkCancel(ControllerPtr myController) {
