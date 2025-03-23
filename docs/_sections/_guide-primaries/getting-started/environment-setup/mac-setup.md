@@ -110,5 +110,70 @@ This allows your computer to recognize and program your ESP32 when you plug it i
 1. Extract the downloaded zip file and open the installer
 1. Agree and use default configuration
 
-###__Install ESP-IDF Extension__
+### __Install ESP-IDF Extension__
+
+1. Click the Extensions icon in VSCode and type `ESP-IDF` in the search bar
+1. Click the ESP-IDF extension and click `Install`
+1. Click the new `ESP-IDF: Explorer` icon, click `Advanced` in the side menu, then click `Configure ESP-IDF Extension`
+
+<img src="{{ '/_assets/images/my_image.png' | prepend: site.baseurl }}" alt="my_image.png :(">
+1. Select `Express`
+1. For ESP-IDF Version, select v4.4.8 and for Python Version, select the one ending in `python3`. Leave everything else as default.
+
+<img src="{{ '/_assets/images/my_image.png' | prepend: site.baseurl }}" alt="my_image.png :(">
+1. Select `Install`
+
+
+### __Flash your ESP32__
+
+1. Plug in your ESP32
+1. Click the `COM` button (plug icon) in VS Code’s bottom ribbon menu
+<img src="{{ '/_assets/images/vscode_bottom_ribbon_com.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_com.png :(">
+
+1. In the popup dialogue at the top of VS Code, select the COM port labeled `Silicon Labs`
+<img src="{{ '/_assets/images/COM_port.png' | prepend: site.baseurl }}" alt="COM_port.png :(">
+
+1. Click the Flash button (lightning button) in the bottom ribbon menu
+<img src="{{ '/_assets/images/vscode_bottom_ribbon_flash.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_flash.png :(">
+
+1. Select UART in the top popup menu 
+<img src="{{ '/_assets/images/UART_selection.png' | prepend: site.baseurl }}" alt="UART_selection.png :(">
+
+1. Press and hold the flash enable button on your ESP32 (small black button labeled “100”) until the following output shows in your terminal:
+
+1. Open the serial monitor (monitor/TV icon)
+<img src="{{ '/_assets/images/vscode_bottom_ribbon_monitor.png' | prepend: site.baseurl }}" alt="my_image.png :(">
+
+{: .highlight}
+Building and flashing after the first time does not take nearly as long. In fact, you can press the Build, Flash, and Monitor button (fire icon) to streamline the process!
+{: .callout-blue}
+
+
+# Example Program
+
+Here is an example program that blinks the onboard LED. "Blinky" projects are a standard "hello world" type of program that demonstrate your development environment works properly.
+
+If you replace your `arduino_main.cpp` file's contents with the following and flash properly, then your ESP32's blue onboard LED will begin to blink (yay 😄)!
+
+{: .highlight}
+Note that it is **your** responsibility to integrate this code with the controller starter code!
+{: .callout-blue}
+
+```cpp
+#include "sdkconfig.h"
+#include <Arduino.h>
+
+#define ONBOARD_LED_PIN 2 // defines the word "LED_BUILTIN" as the number 2 for readability
+
+void setup() {
+    pinMode(ONBOARD_LED_PIN, OUTPUT); // configures pin 2 to be a GPIO output pin 
+}
+
+void loop() {
+    digitalWrite(ONBOARD_LED_PIN, HIGH); // writes a digital high to pin 2
+    delay(1000); // waits for 1000 milliseconds (1 second)
+    digitalWrite(ONBOARD_LED_PIN, LOW); // writes a digital low to pin 2
+    delay(1000);
+}
+```
 
