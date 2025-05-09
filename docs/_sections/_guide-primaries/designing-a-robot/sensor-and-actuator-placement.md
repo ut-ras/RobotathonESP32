@@ -32,5 +32,5 @@ Illustrated below is a sample configuration:
 <img src="{{ '/_assets/images/line_and_color.png' | prepend: site.baseurl }}" alt="line_and_color.png :(" >
 
 ## Actuators
-"Actuators" is just a fancy name for motors or anything that enables some kind of movement for your robot. You will need at least two of these with a castor ball to have a moving base. While you have full creative reign on where to put your actuators to achieve motion and solve the mechanical challenge, it will be important to consider where to place your wheel actuators since they will affect how your robot drives and, (arguably) most importantly, turns.
+"Actuators" is just a fancy name for motors or anything that enables some kind of movement for your robot. You will need at least two of these with a caster ball to have a moving base. While you have full creative reign on where to put your actuators to achieve motion and solve the mechanical challenge, it will be important to consider where to place your wheel actuators since they will affect how your robot drives and, (arguably) most importantly, turns.
 

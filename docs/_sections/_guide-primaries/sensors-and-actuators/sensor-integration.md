@@ -19,7 +19,7 @@ Unfortunately, there are no easy answers to these questions. Your best bet is to
 * If not, then I am off the line and should correct slightly by:
  * Driving one wheel faster than the other.
  * Stopping and rotating the robot until I find the line again.
- * Etcetera …
+ * Et cetera …
 
 Test each intuition to see if it makes sense! Eventually, your intuitions will build a representative model of the world and how to traverse it.  This is important because a great deal of robotics revolves around this concept. Think about autonomous cars. They need to build an internal world replete with virtual pedestrians, vehicles, stop signs, and more, as well as make decisions based on encountering them.
 

@@ -109,7 +109,7 @@ Again, more detailed information about the L298N motor controllers can be [found
 
 ## What Are Servos?
 
-Servos are motors that are designed for precise position control. Instead of freely rotating when powered, servos listen to a control signal (usually [PWM](https://learn.sparkfun.com/tutorials/pulse-width-modulation/all)) to determine where to rotate. Some servos offer limited rotation, while others can rotate continuously (like ours).More advanced servos have other ways to be even more precise such as a feedback system on top of the control signal, but that is not necessary for this competition.
+Servos are motors that are designed for precise position control. Instead of freely rotating when powered, servos listen to a control signal (usually [PWM](https://learn.sparkfun.com/tutorials/pulse-width-modulation/all)) to determine where to rotate. Some servos offer limited rotation, while others can rotate continuously (like ours). More advanced servos have other ways to be even more precise such as a feedback system on top of the control signal, but that is not necessary for this competition.
 
 ## How to Use Servos?
 

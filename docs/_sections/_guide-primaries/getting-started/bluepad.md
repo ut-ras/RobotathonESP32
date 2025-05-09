@@ -10,7 +10,7 @@ nav_order: 6
 
 You will be connecting a game controller to your ESP32 for controlling your robot (i.e. triggering autonomous modes, moving between challenges, and firing your launching mechanism)
 
-That being said, you will not be allowed to manually drive your robot through the challenges, as that defeats the purpose of having the sensors.
+That being said, you will not earn points for manually driving your robot through the challenges, as that defeats the purpose of having the sensors.
 
 It is highly recommended that you program specific functions of the sensors (line, color, distance) to specific buttons on the remote controller so that you have more control over your robot's behavior (i.e. press A -> color autonomy mode, press B -> exit to normal drive mode).
 

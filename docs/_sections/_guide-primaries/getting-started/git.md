@@ -6,7 +6,7 @@ parent: Getting Started
 nav_order: 5
 ---
 
-# How to use Git
+# How to use Git:
 
 ## What is Git?
 **Git** is a tool used for source/version control, which is the process of tracking changes to files over time.
@@ -33,7 +33,10 @@ Note that Robotathon aims to give you a *basic* understanding of how Git/GitHub 
 1. Run `git commit -m "message here"` (keep quotes) to **commit** your change to your *local* repository [(What is the `-m`?)](todo LINK to how to use git bash in faq)
 1. Run `git push` to write your changes to the *remote* repository on GitHub
 
+
+{: .highlight}
 TODO add picture
+{: .callout-red}
 
 ## What is staging in Git?
 Instead of having to push every little change to your repository, you can group them into a collection of changes called a **commit**, which serve as a snapshot of the project's state.
