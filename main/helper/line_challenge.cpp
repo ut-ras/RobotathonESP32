@@ -11,12 +11,9 @@
 
 QTRSensors qtr;
 uint16_t sensors[NUM_LINE_SENSORS];
-bool lineIsCalibrated = false; // false will trigger calibration + write to NVS, true will trigger read from NVS
-// TODO: can use separate buttons to trigger line mode with flag raised/not raised (i.e. UP -> precalibrated, DOWN -> need calibrate)
-// instead of hardcoded flag
 
-// note that NVS functionality might break if NUM_LINE_SENSORS != 4
-void lineChallenge(ControllerPtr myController) {
+// lineIsCalibrated false will trigger calibration + write to NVS, true will trigger read from NVS
+void lineChallenge(ControllerPtr myController, bool lineIsCalibrated) {
     qtr.setTypeAnalog();
 
     const uint8_t pins[] = {LINE1_PIN, LINE2_PIN, LINE3_PIN, LINE4_PIN};

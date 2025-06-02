@@ -14,6 +14,7 @@
 #include <uni.h>
 
 extern ControllerPtr myControllers[BP32_MAX_GAMEPADS];
+ControllerPtr myCtl = myControllers[0]; // we will only ever have one controller connected, so 0 index will grab the one we need
 
 void dumpGamepad(ControllerPtr ctl) {
     Console.printf(
@@ -38,45 +39,48 @@ void setup() {
 
     // SAMPLE CODE BEGIN
     BP32.setup(&onConnectedController, &onDisconnectedController);
-    BP32.forgetBluetoothKeys(); 
+    BP32.forgetBluetoothKeys(); // i actually dont know if we want this lol
     esp_log_level_set("gpio", ESP_LOG_ERROR); // suppress info log spam from gpio_isr_service
-    uni_bt_allowlist_set_enabled(true);
+    uni_bt_allowlist_set_enabled(true); // only allow whitelisted BLE connections
     // SAMPLE CODE END
 
     initMotors();
 }
 
 // A -> color
-// X -> line
+// L1 -> line precalibrated
+// L2 -> line uncalibrated
 // Y -> distance
 // B -> return to idle
 void loop() {
-
     vTaskDelay(1); // ensures WDT does not get triggered when no controller is connected
-    BP32.update(); // note you MUST call BP32.update() to ensure new values are read into the controller
-    for (auto myController : myControllers) { // TODO look into removing this. we will not need to iterate over each controller since we will always have one
-        if (myController && myController->isConnected() && myController->hasData()) {        
-            needExit = false; // reset if returning from challenge force exit
-            moveMain(myController);
-            // while(1) {
-            //     BP32.update();
-            //     dumpGamepad(myController);
-            //     delay(100);
-            // }
-            delay(100);
+    BP32.update(); // note you MUST call BP32.update() to ensure new values are read from the controller
 
-            if(myController->a()) {
-                Console.print("button a pressed - entering color mode\n");
-                colorChallenge(myController);
-            }
-            else if(myController->x()) {
-                Console.print("button x pressed - entering line mode\n");
-                lineChallenge(myController);
-            }
-            else if(myController->y()) {
-                Console.print("button y pressed - entering IR mode\n");
-                IRChallenge(myController);
-            }
+    if (myCtl->isConnected() && myCtl->hasData()) {        
+        needExit = false; // reset if returning from challenge force exit
+        moveMain(myCtl);
+        // while(1) {
+        //     BP32.update();
+        //     dumpGamepad(myCtl);
+        //     delay(100);
+        // }
+        delay(100);
+
+        if(myCtl->a()) {
+            Console.print("button a pressed - entering color mode\n");
+            colorChallenge(myCtl);
+        }
+        else if(myCtl->l1()) {
+            Console.print("button l2 pressed - entering precalibrated line mode\n");
+            lineChallenge(myCtl, true);
+        }
+        else if(myCtl->l2()) {
+            Console.print("button l2 pressed - entering uncalibrated line mode\n");
+            lineChallenge(myCtl, false);
+        }
+        else if(myCtl->y()) {
+            Console.print("button y pressed - entering IR mode\n");
+            IRChallenge(myCtl);
         }
     }
 }

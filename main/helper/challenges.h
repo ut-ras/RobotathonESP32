@@ -16,9 +16,7 @@
 
 extern bool needExit;
 void colorChallenge(ControllerPtr myController);
-void lineChallenge(ControllerPtr myController);
+void lineChallenge(ControllerPtr myController, bool lineIsCalibrated);
 void IRChallenge(ControllerPtr myController);
-
-void testNVS();
 
 #endif // CHALLENGES_H

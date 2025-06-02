@@ -72,21 +72,19 @@ void colorChallenge(ControllerPtr myController) {
 
     colorData = sampleColor();
     Console.printf("Target color: %d\n", targetColor);
-    while(colorData == targetColor) {
+    while(colorData == targetColor) { // continuously sample until not on starting color
         checkCancel(myController);
         if(needExit) return;
-        
-        colorData = sampleColor(); // continuously sample until not on starting color
+        colorData = sampleColor(); 
     }
     Console.printf("Searching for color: %d\n", targetColor);
     while(colorData != targetColor) { // continiuously sample while searching for target color
         checkCancel(myController); 
         if(needExit) return;
-
         colorData = sampleColor();
         if(colorData == targetColor) {
             Console.printf("Color %d Found! Exiting to main\n", targetColor);
-            // stop();
+            stop();
             return; // exit to main
         }
     }
