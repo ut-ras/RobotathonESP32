@@ -35,10 +35,14 @@ void dumpGamepad(ControllerPtr ctl) {
 }
 
 void setup() {
+
+    // SAMPLE CODE BEGIN
     BP32.setup(&onConnectedController, &onDisconnectedController);
     BP32.forgetBluetoothKeys(); 
     esp_log_level_set("gpio", ESP_LOG_ERROR); // suppress info log spam from gpio_isr_service
     uni_bt_allowlist_set_enabled(true);
+    // SAMPLE CODE END
+
     initMotors();
 }
 
@@ -47,9 +51,10 @@ void setup() {
 // Y -> distance
 // B -> return to idle
 void loop() {
+
     vTaskDelay(1); // ensures WDT does not get triggered when no controller is connected
-    BP32.update(); 
-    for (auto myController : myControllers) {
+    BP32.update(); // note you MUST call BP32.update() to ensure new values are read into the controller
+    for (auto myController : myControllers) { // TODO look into removing this. we will not need to iterate over each controller since we will always have one
         if (myController && myController->isConnected() && myController->hasData()) {        
             needExit = false; // reset if returning from challenge force exit
             moveMain(myController);

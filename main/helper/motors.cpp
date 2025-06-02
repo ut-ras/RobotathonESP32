@@ -75,6 +75,7 @@ void stop() {
     digitalWrite(IN4PIN, LOW);
 }
 
+// TODO move this to own file bc not really motors ?
 void checkCancel(ControllerPtr myController) {
     BP32.update();
     if(myController->b()) {

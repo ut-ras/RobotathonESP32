@@ -1,7 +1,5 @@
 #include "challenges.h"
 #include "esp_system.h"
-#include "nvs_flash.h"
-// #include "nvs.h"
 
 #define LINE1_PIN 36
 #define LINE2_PIN 39
@@ -14,6 +12,8 @@
 QTRSensors qtr;
 uint16_t sensors[NUM_LINE_SENSORS];
 bool lineIsCalibrated = false; // false will trigger calibration + write to NVS, true will trigger read from NVS
+// TODO: can use separate buttons to trigger line mode with flag raised/not raised (i.e. UP -> precalibrated, DOWN -> need calibrate)
+// instead of hardcoded flag
 
 // note that NVS functionality might break if NUM_LINE_SENSORS != 4
 void lineChallenge(ControllerPtr myController) {
@@ -21,12 +21,12 @@ void lineChallenge(ControllerPtr myController) {
 
     const uint8_t pins[] = {LINE1_PIN, LINE2_PIN, LINE3_PIN, LINE4_PIN};
     const uint8_t numSensors = NUM_LINE_SENSORS;
-    bool boolSensorData[4];
+    bool boolData[4];
 
     qtr.setSensorPins(pins, numSensors);
     if(!lineIsCalibrated) { // only calibrate if necessary. otherwise read calbration data from flash
-        pinMode(2, OUTPUT);
-        digitalWrite(2, HIGH); // calibration status onboard LED
+        pinMode(2, OUTPUT); // onboard status lED
+        digitalWrite(2, HIGH); 
         for (uint8_t i = 0; i < 250; i++) { 
             Console.printf("calibrating %d/250\n", i);
             qtr.calibrate(); 
@@ -37,11 +37,11 @@ void lineChallenge(ControllerPtr myController) {
                 return;
             }
         }
-        qtr.saveCalibration();
+        qtr.writeCalibration();
         digitalWrite(2, LOW);
     }
     else {
-        qtr.restoreSensorCalibration();
+        qtr.readCalibration();
     }
     while(1) {
         BP32.update();
@@ -54,26 +54,26 @@ void lineChallenge(ControllerPtr myController) {
         // false is no line
         for(int i = 0; i < NUM_LINE_SENSORS; i++) {
             if(sensors[i] < THRESHOLD) {
-                boolSensorData[i] = true;
+                boolData[i] = true;
             } else {
-                boolSensorData[i] = false;
+                boolData[i] = false;
             }
         }
 
         // // IIOO
-        if(boolSensorData[0] && boolSensorData[1] && !boolSensorData[2] && !boolSensorData[3]) {
+        if(boolData[0] && boolData[1] && !boolData[2] && !boolData[3]) {
             turnLeft();
         }
         // // OOII
-        else if(!boolSensorData[0] && !boolSensorData[1] && boolSensorData[2] && boolSensorData[3]) {
+        else if(!boolData[0] && !boolData[1] && boolData[2] && boolData[3]) {
             turnRight();
         }
         // // OIIO
-        else if(!boolSensorData[0] && boolSensorData[1] && boolSensorData[2] && !boolSensorData[3]) {
+        else if(!boolData[0] && boolData[1] && boolData[2] && !boolData[3]) {
             goStraight();
         }
         // // OOOO
-        // else if(!boolSensorData[0] && !boolSensorData[1] && !boolSensorData[2] && !boolSensorData[3]) {
+        // else if(!boolData[0] && !boolData[1] && !boolData[2] && !boolData[3]) {
         //     turnLeft(); // idk
         // }
 

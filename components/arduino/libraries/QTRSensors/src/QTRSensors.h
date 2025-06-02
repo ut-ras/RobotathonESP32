@@ -3,6 +3,9 @@
 #pragma once
 
 #include <stdint.h>
+#include "esp_err.h"
+#include "nvs.h"
+#include "nvs_flash.h"
 
 /// \brief Emitter behavior when taking readings.
 ///
@@ -532,8 +535,10 @@ class QTRSensors
 
 
     // robotathon nvs data functions
-    void saveCalibration();
-    void restoreSensorCalibration();
+    esp_err_t saveArr(const char* key, uint16_t* array, size_t length);
+    esp_err_t loadArr(const char* key, uint16_t* array, size_t maxLength, size_t& actualLength);
+    void writeCalibration();
+    void readCalibration();
 
 
     /// \name Calibration data
