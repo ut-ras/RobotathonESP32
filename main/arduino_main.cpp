@@ -74,7 +74,7 @@ void loop() {
                 lineChallenge(myController);
             }
             else if(myController->y()) {
-                Console.print("button y pressed - entering IR mode");
+                Console.print("button y pressed - entering IR mode\n");
                 IRChallenge(myController);
             }
         }
