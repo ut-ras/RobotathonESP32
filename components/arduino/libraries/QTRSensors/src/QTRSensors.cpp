@@ -404,12 +404,22 @@ void QTRSensors::calibrateOnOrOff(CalibrationData &calibration, QTRReadMode mode
   }
 }
 
+void QTRSensors::initNVS() {
+    esp_err_t err = nvs_flash_init();
+    if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+        // NVS partition was truncated and needs to be erased
+        ESP_ERROR_CHECK(nvs_flash_erase());
+        err = nvs_flash_init();
+    }
+    ESP_ERROR_CHECK(err);
+}
+
 esp_err_t QTRSensors::saveArr(const char* key, uint16_t* array, size_t length) {
     nvs_handle_t handle;
     esp_err_t err = nvs_open("storage", NVS_READWRITE, &handle);
     if (err != ESP_OK) return err;
 
-    err = nvs_set_blob(handle, key, array, length * sizeof(int));
+    err = nvs_set_blob(handle, key, array, length * sizeof(uint16_t));
     if (err != ESP_OK) {
         nvs_close(handle);
         return err;
@@ -447,11 +457,14 @@ esp_err_t QTRSensors::loadArr(const char* key, uint16_t* array, size_t maxLength
 }
 
 void QTRSensors::writeCalibration() {
-  saveArr("calMinOn", (uint16_t*)calibrationOn.minimum, _sensorCount);
-  saveArr("calMaxOn", (uint16_t*)calibrationOn.maximum, _sensorCount);
-  
-  saveArr("calMinOff", (uint16_t*)calibrationOff.minimum, _sensorCount);
-  saveArr("calMaxOff", (uint16_t*)calibrationOff.maximum, _sensorCount);
+
+  if(calibrationOn.initialized && calibrationOff.initialized) {
+    saveArr("calMinOn", (uint16_t*)calibrationOn.minimum, _sensorCount);
+    saveArr("calMaxOn", (uint16_t*)calibrationOn.maximum, _sensorCount);
+    
+    saveArr("calMinOff", (uint16_t*)calibrationOff.minimum, _sensorCount);
+    saveArr("calMaxOff", (uint16_t*)calibrationOff.maximum, _sensorCount);
+  }
 }
 
 void QTRSensors::readCalibration() {

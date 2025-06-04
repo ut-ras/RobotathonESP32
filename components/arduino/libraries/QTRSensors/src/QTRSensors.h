@@ -535,6 +535,7 @@ class QTRSensors
 
 
     // robotathon nvs data functions
+    void initNVS();
     esp_err_t saveArr(const char* key, uint16_t* array, size_t length);
     esp_err_t loadArr(const char* key, uint16_t* array, size_t maxLength, size_t& actualLength);
     void writeCalibration();

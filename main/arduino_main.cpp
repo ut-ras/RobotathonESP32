@@ -14,7 +14,7 @@
 #include <uni.h>
 
 extern ControllerPtr myControllers[BP32_MAX_GAMEPADS];
-ControllerPtr myCtl = myControllers[0]; // we will only ever have one controller connected, so 0 index will grab the one we need
+// ControllerPtr myCtl = myControllers[0]; // we will only ever have one controller connected, so 0 index will grab the one we need
 
 void dumpGamepad(ControllerPtr ctl) {
     Console.printf(
@@ -42,8 +42,15 @@ void setup() {
     BP32.forgetBluetoothKeys(); // i actually dont know if we want this lol
     esp_log_level_set("gpio", ESP_LOG_ERROR); // suppress info log spam from gpio_isr_service
     uni_bt_allowlist_set_enabled(true); // only allow whitelisted BLE connections
+    BP32.enableVirtualDevice(false); // i think virtual device refers to stuff like the "mouse" trackpad thing for PS4 controllers
+    esp_log_level_set("gpio", ESP_LOG_ERROR); // suppress info log spam from gpio_isr_service
+    esp_log_level_set("BT_L2CAP", ESP_LOG_DEBUG);
+    esp_log_level_set("BLUEPAD32", ESP_LOG_DEBUG);
+    Console.printf("Free heap: %d\n", esp_get_free_heap_size());
     // SAMPLE CODE END
 
+
+    
     initMotors();
 }
 
@@ -57,7 +64,9 @@ void loop() {
     BP32.update(); // note you MUST call BP32.update() to read values from the controller into the controller data structures
     // make sure to call this in loops if you expect to read from your controller!!!
 
-    if (myCtl && (myCtl->isConnected() && myCtl->hasData())) {     
+    for (auto myCtl : myControllers) { // TODO look into removing this. we will not need to iterate over each controller since we will always have one
+    if (myCtl && myCtl->isConnected() && myCtl->hasData()) {  
+    // if (myCtl && (myCtl->isConnected() && myCtl->hasData())) {     
         needExit = false; // reset if returning from challenge force exit
         moveMain(myCtl);
         // while(1) {
@@ -88,4 +97,5 @@ void loop() {
         // Console.println("Controller not connected :(");
         // delay(1000);
     }
+}
 }

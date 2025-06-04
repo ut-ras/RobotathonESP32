@@ -14,6 +14,8 @@ uint16_t sensors[NUM_LINE_SENSORS];
 
 // lineIsCalibrated false will trigger calibration + write to NVS, true will trigger read from NVS
 void lineChallenge(ControllerPtr myController, bool lineIsCalibrated) {
+
+    qtr.initNVS();
     qtr.setTypeAnalog();
 
     const uint8_t pins[] = {LINE1_PIN, LINE2_PIN, LINE3_PIN, LINE4_PIN};
@@ -33,6 +35,15 @@ void lineChallenge(ControllerPtr myController, bool lineIsCalibrated) {
                 digitalWrite(2, LOW);
                 return;
             }
+        }
+        if (!qtr.calibrationOn.initialized) {
+            Console.println("Warning: Calibration data not initialized!");
+            return; // Don't proceed with writing calibration
+        }
+        else {
+            Console.printf("Calibration status: initialized=%d\n", qtr.calibrationOn.initialized);
+            Console.printf("Minimum array address: %p\n", qtr.calibrationOn.minimum);
+            Console.printf("Maximum array address: %p\n", qtr.calibrationOn.maximum);
         }
         qtr.writeCalibration();
         digitalWrite(2, LOW);
