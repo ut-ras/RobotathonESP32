@@ -54,9 +54,10 @@ void setup() {
 // B -> return to idle
 void loop() {
     vTaskDelay(1); // ensures WDT does not get triggered when no controller is connected
-    BP32.update(); // note you MUST call BP32.update() to ensure new values are read from the controller
+    BP32.update(); // note you MUST call BP32.update() to read values from the controller into the controller data structures
+    // make sure to call this in loops if you expect to read from your controller!!!
 
-    if (myCtl->isConnected() && myCtl->hasData()) {        
+    if (myCtl && (myCtl->isConnected() && myCtl->hasData())) {     
         needExit = false; // reset if returning from challenge force exit
         moveMain(myCtl);
         // while(1) {
@@ -67,20 +68,24 @@ void loop() {
         delay(100);
 
         if(myCtl->a()) {
-            Console.print("button a pressed - entering color mode\n");
+            Console.println("button a pressed - entering color mode");
             colorChallenge(myCtl);
         }
         else if(myCtl->l1()) {
-            Console.print("button l2 pressed - entering precalibrated line mode\n");
+            Console.println("button l2 pressed - entering precalibrated line mode");
             lineChallenge(myCtl, true);
         }
         else if(myCtl->l2()) {
-            Console.print("button l2 pressed - entering uncalibrated line mode\n");
+            Console.println("button l2 pressed - entering uncalibrated line mode");
             lineChallenge(myCtl, false);
         }
         else if(myCtl->y()) {
-            Console.print("button y pressed - entering IR mode\n");
+            Console.println("button y pressed - entering IR mode");
             IRChallenge(myCtl);
         }
+    }
+    else {
+        // Console.println("Controller not connected :(");
+        // delay(1000);
     }
 }
