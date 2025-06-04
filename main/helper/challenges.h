@@ -19,4 +19,6 @@ void colorChallenge(ControllerPtr myController);
 void lineChallenge(ControllerPtr myController, bool lineIsCalibrated);
 void IRChallenge(ControllerPtr myController);
 
+void initLineChallenge(bool lineIsCalibrated);
+
 #endif // CHALLENGES_H

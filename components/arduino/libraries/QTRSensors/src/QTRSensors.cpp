@@ -414,18 +414,30 @@ void QTRSensors::initNVS() {
     ESP_ERROR_CHECK(err);
 }
 
-esp_err_t QTRSensors::saveArr(const char* key, uint16_t* array, size_t length) {
+esp_err_t QTRSensors::saveArr(const char* key, const uint16_t* array, size_t length) {
+    Serial.printf("Saving array '%s' with %d elements\n", key, length);
+    
     nvs_handle_t handle;
     esp_err_t err = nvs_open("storage", NVS_READWRITE, &handle);
-    if (err != ESP_OK) return err;
+    if (err != ESP_OK) {
+        Serial.printf("nvs_open failed with error %d\n", err);
+        return err;
+    }
 
     err = nvs_set_blob(handle, key, array, length * sizeof(uint16_t));
     if (err != ESP_OK) {
+        Serial.printf("nvs_set_blob failed with error %d\n", err);
         nvs_close(handle);
         return err;
     }
 
     err = nvs_commit(handle);
+    if (err != ESP_OK) {
+        Serial.printf("nvs_commit failed with error %d\n", err);
+    } else {
+        Serial.printf("Successfully saved array '%s'\n", key);
+    }
+    
     nvs_close(handle);
     return err;
 }
@@ -457,25 +469,109 @@ esp_err_t QTRSensors::loadArr(const char* key, uint16_t* array, size_t maxLength
 }
 
 void QTRSensors::writeCalibration() {
-
-  if(calibrationOn.initialized && calibrationOff.initialized) {
-    saveArr("calMinOn", (uint16_t*)calibrationOn.minimum, _sensorCount);
-    saveArr("calMaxOn", (uint16_t*)calibrationOn.maximum, _sensorCount);
+  // Check if minimum and maximum pointers are valid before attempting to save
+  if (calibrationOn.initialized && 
+      calibrationOn.minimum != nullptr && calibrationOn.maximum != nullptr) {
+    Serial.println("Writing ON calibration data to NVS...");
+    esp_err_t err1 = saveArr("calMinOn", calibrationOn.minimum, _sensorCount);
+    esp_err_t err2 = saveArr("calMaxOn", calibrationOn.maximum, _sensorCount);
     
-    saveArr("calMinOff", (uint16_t*)calibrationOff.minimum, _sensorCount);
-    saveArr("calMaxOff", (uint16_t*)calibrationOff.maximum, _sensorCount);
+    if (err1 == ESP_OK && err2 == ESP_OK) {
+      Serial.println("Successfully saved ON calibration data");
+    } else {
+      Serial.printf("Failed to save ON calibration: err1=%d, err2=%d\n", err1, err2);
+    }
+  } else {
+    Serial.println("ON calibration not initialized, skipping save");
+  }
+  
+  if (calibrationOff.initialized && 
+      calibrationOff.minimum != nullptr && calibrationOff.maximum != nullptr) {
+    Serial.println("Writing OFF calibration data to NVS...");
+    esp_err_t err1 = saveArr("calMinOff", calibrationOff.minimum, _sensorCount);
+    esp_err_t err2 = saveArr("calMaxOff", calibrationOff.maximum, _sensorCount);
+    
+    if (err1 == ESP_OK && err2 == ESP_OK) {
+      Serial.println("Successfully saved OFF calibration data");
+    } else {
+      Serial.printf("Failed to save OFF calibration: err1=%d, err2=%d\n", err1, err2);
+    }
+  } else {
+    Serial.println("OFF calibration not initialized, skipping save");
   }
 }
 
 void QTRSensors::readCalibration() {
   size_t actualLength;
-  loadArr("calMinOn", (uint16_t*)calibrationOn.minimum, _sensorCount, actualLength);
-  loadArr("calMaxOn", (uint16_t*)calibrationOn.maximum, _sensorCount, actualLength);
-  if (actualLength > 0) calibrationOn.initialized = true;
+  esp_err_t err;
   
-  loadArr("calMinOff", (uint16_t*)calibrationOff.minimum, _sensorCount, actualLength);
-  loadArr("calMaxOff", (uint16_t*)calibrationOff.maximum, _sensorCount, actualLength);
-  if (actualLength > 0) calibrationOff.initialized = true;
+  // Initialize arrays if they don't exist
+  // Allocate calibrationOn arrays if needed
+  if (calibrationOn.minimum == nullptr) {
+    calibrationOn.minimum = (uint16_t *)malloc(sizeof(uint16_t) * _sensorCount);
+  }
+  if (calibrationOn.maximum == nullptr) {
+    calibrationOn.maximum = (uint16_t *)malloc(sizeof(uint16_t) * _sensorCount);
+  }
+  
+  // Allocate calibrationOff arrays if needed
+  if (calibrationOff.minimum == nullptr) {
+    calibrationOff.minimum = (uint16_t *)malloc(sizeof(uint16_t) * _sensorCount);
+  }
+  if (calibrationOff.maximum == nullptr) {
+    calibrationOff.maximum = (uint16_t *)malloc(sizeof(uint16_t) * _sensorCount);
+  }
+  
+  // Check if memory allocation was successful
+  if (calibrationOn.minimum == nullptr || calibrationOn.maximum == nullptr ||
+      calibrationOff.minimum == nullptr || calibrationOff.maximum == nullptr) {
+    Serial.println("Memory allocation failed in readCalibration");
+    return;
+  }
+
+  // Load calibrationOn data
+  bool onSuccess = true;
+  err = loadArr("calMinOn", calibrationOn.minimum, _sensorCount, actualLength);
+  if (err != ESP_OK || actualLength != _sensorCount) {
+    Serial.printf("Failed to load calMinOn, err=%d, actualLength=%d\n", err, actualLength);
+    onSuccess = false;
+  }
+  
+  err = loadArr("calMaxOn", calibrationOn.maximum, _sensorCount, actualLength);
+  if (err != ESP_OK || actualLength != _sensorCount) {
+    Serial.printf("Failed to load calMaxOn, err=%d, actualLength=%d\n", err, actualLength);
+    onSuccess = false;
+  }
+  
+  // Set calibrationOn.initialized based on load success
+  calibrationOn.initialized = onSuccess;
+  
+  // Load calibrationOff data
+  bool offSuccess = true;
+  err = loadArr("calMinOff", calibrationOff.minimum, _sensorCount, actualLength);
+  if (err != ESP_OK || actualLength != _sensorCount) {
+    Serial.printf("Failed to load calMinOff, err=%d, actualLength=%d\n", err, actualLength);
+    offSuccess = false;
+  }
+  
+  err = loadArr("calMaxOff", calibrationOff.maximum, _sensorCount, actualLength);
+  if (err != ESP_OK || actualLength != _sensorCount) {
+    Serial.printf("Failed to load calMaxOff, err=%d, actualLength=%d\n", err, actualLength);
+    offSuccess = false;
+  }
+  
+  // Set calibrationOff.initialized based on load success
+  calibrationOff.initialized = offSuccess;
+  
+  // Print calibration summary
+  Serial.printf("Calibration load: ON=%s, OFF=%s\n", 
+                onSuccess ? "Success" : "Failed", 
+                offSuccess ? "Success" : "Failed");
+                
+  if (onSuccess) {
+    Serial.printf("ON Calibration values: min[0]=%d, max[0]=%d\n", 
+                  calibrationOn.minimum[0], calibrationOn.maximum[0]);
+  }
 }
 
 

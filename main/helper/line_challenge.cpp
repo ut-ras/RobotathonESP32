@@ -12,16 +12,12 @@
 QTRSensors qtr;
 uint16_t sensors[NUM_LINE_SENSORS];
 
-// lineIsCalibrated false will trigger calibration + write to NVS, true will trigger read from NVS
-void lineChallenge(ControllerPtr myController, bool lineIsCalibrated) {
-
+void initLineChallenge(ControllerPtr myController, bool lineIsCalibrated) {
     qtr.initNVS();
     qtr.setTypeAnalog();
 
     const uint8_t pins[] = {LINE1_PIN, LINE2_PIN, LINE3_PIN, LINE4_PIN};
     const uint8_t numSensors = NUM_LINE_SENSORS;
-    bool boolData[4];
-
     qtr.setSensorPins(pins, numSensors);
     if(!lineIsCalibrated) { // only calibrate if necessary. otherwise read calbration data from flash
         pinMode(2, OUTPUT); // onboard status lED
@@ -37,7 +33,7 @@ void lineChallenge(ControllerPtr myController, bool lineIsCalibrated) {
             }
         }
         if (!qtr.calibrationOn.initialized) {
-            Console.println("Warning: Calibration data not initialized!");
+            Console.println("Warning: Calibration data not initialized! Aborting...");
             return; // Don't proceed with writing calibration
         }
         else {
@@ -50,7 +46,22 @@ void lineChallenge(ControllerPtr myController, bool lineIsCalibrated) {
     }
     else {
         qtr.readCalibration();
+        if (!qtr.calibrationOn.initialized) {
+            Console.println("Failed to load calibration data from NVS. Need to calibrate first.");
+            // Either return or fall back to calibration
+            return;
+        }
+        
+        Console.println("Successfully loaded calibration from NVS!");
     }
+}
+
+// lineIsCalibrated false will trigger calibration + write to NVS, true will trigger read from NVS
+void lineChallenge(ControllerPtr myController, bool lineIsCalibrated) {
+
+    initLineChallenge(myController, lineIsCalibrated);
+
+    bool boolData[4];
     while(1) {
         BP32.update();
         qtr.readLineBlack(sensors); // Get calibrated sensor values returned in the sensors array
