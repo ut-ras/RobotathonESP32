@@ -33,9 +33,10 @@ Note: only **one** person in each team has to fork the repository and invite the
 {: .callout-red}
 
 1. Go to the [ut-ras RobotathonESP32 repository hosted on GitHub](https://github.com/ut-ras/RobotathonESP32)
-1. Click the `Fork` button on the right and then click `+ Create a new fork` 
-<img src="{{ '/_assets/images/github_fork.png' | prepend: site.baseurl }}" alt="my_image.png :(">
-1. Change the Repository name to whatever you like
+1. Click the `Fork` button on the right
+<img src="{{ '/_assets/images/fork1.png' | prepend: site.baseurl }}" alt="fork1.png :(">
+1. Keep the repository name as `RobotathonESP32`
+<img src="{{ '/_assets/images/fork2.png' | prepend: site.baseurl }}" alt="fork2.png :(">
 1. Click the green `Create fork` button at the bottom
 1. Share repository access to your teammates by navigating to the settings of your newly forked repository and clicking collaborators in the left menu [(How do I invite teammates to my forked repository?)](https://ut-ras.github.io/RobotathonESP32/getting-started/git#how-do-i-invite-teammates-to-my-forked-repository)
 
