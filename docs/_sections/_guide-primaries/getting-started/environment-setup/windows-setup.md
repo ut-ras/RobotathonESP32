@@ -37,7 +37,7 @@ Note: only **one** person in each team has to fork the repository and invite the
 1. Keep the repository name as `RobotathonESP32`
 <img src="{{ '/_assets/images/fork2.png' | prepend: site.baseurl }}" alt="fork2.png :(">
 1. Click the green `Create fork` button at the bottom
-1. Share repository access to your teammates by navigating to the settings of your newly forked repository and clicking collaborators in the left menu [(How do I invite teammates to my forked repository?)](https://ut-ras.github.io/RobotathonESP32/getting-started/git#how-do-i-invite-teammates-to-my-forked-repository)
+1. Share repository access to your teammates by navigating to the settings of your newly forked repository and clicking collaborators in the left menu [(How do I invite teammates to my forked repository?)](getting-started/git#how-do-i-invite-my-teammates-to-my-forked-repository-on-github)
 
 ### __Set Up Git SSH Authentication__
 This allows for easy and secure interfacing with Git when you want to touch your repositories. The SSH keys are a nice way to authenticate your identity with GitHub.

@@ -10,27 +10,24 @@ nav_order: 3
 
 <img src="{{ '/_assets/images/ir_sensor.png' | prepend: site.baseurl }}" alt="ir_sensor.png" width=200 height=300>
 
-A necessary component for any challenge that utilizes walls, analog IR sensors are a staple of Robotathon. This particular sensor is the GP2Y0A21YK0F model.
+The infrared distance sensor is necessary to complete the wall challenge. This particular sensor is the GP2Y0A21YK0F model.
 
 ## How it Works
-IR distance sensors emit bursts of infrared light towards a surface. The light bounces off objects it hits, and then enters a proximity sensor. The output is then transformed into a voltage (see graph below) that can be read by the ESP32. See [this link for more information.](https://www.pololu.com/product/136)
+IR distance sensors emit bursts of infrared light towards a surface. The light bounces off objects it hits, and then enters a proximity sensor. The output is then transformed into a voltage (see graph below) that can be read by the ESP32's ADC. See [this link for more information.](https://www.pololu.com/product/136)
 
 <img src="{{ '/_assets/images/ir_sensor_functionality.png' | prepend: site.baseurl }}" alt="ir_sensor_functionality.png">
 <img src="{{ '/_assets/images/ir_sensor_graph.png' | prepend: site.baseurl }}" alt="ir_sensor_graph.png">
 
+{: .highlight}
 Notice that the sensor will output garbage if the sensor is too close to an object.
+{: .callout-red}
 
 ## Interfacing
 There are 3 pins (red, black, white) to the device as seen in the picture, associated to Power, Ground, and Output Signal, respectively. For testing the distance sensor, let’s use pin 12, as the signal pin. Hook up the circuit as follows:
 
-<!-- <img src="{{ '/_assets/images/ir_sensor_wiring.png' | prepend: site.baseurl }}" alt="ir_sensor_wiring.png"> -->
-<!-- decided not to include the above picture because it might be confusing with the adapter being the wrong colors lol -->
-<img src="{{ '/_assets/images/ir_sensor_wiring_switched.png' | prepend: site.baseurl }}" alt="ir_sensor_wiring.png">
+TODO: figure out which power pinout of the line sensor we are going to use!!
 
-
-{: .highlight}
-Note that our IR sensors have reversed cable adapters with **incorrect** color coding (red actually corresponds to GND, and black actually corresponds to +5V). If you plug the power in backwards, you will fry the sensor! (still holds with new wire order?)
-{: .callout-blue}
+<img src="{{ '/_assets/images/ir_sensor_wiring.png' | prepend: site.baseurl }}" alt="ir_sensor_wiring.png">
 
 |  IR Sensor Pin   | ESP32 Pin          |
 |:-------------|:------------------|
