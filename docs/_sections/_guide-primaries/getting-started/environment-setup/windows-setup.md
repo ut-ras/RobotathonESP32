@@ -10,7 +10,7 @@ nav_order: 1
 # Windows Setup
 
 {: .highlight}
-It is highly recommended to follow each component installation in order!
+It is highly recommended to follow everything in order!
 {: .callout-blue}
 
 ### __Install Git__
@@ -22,8 +22,7 @@ This is a source-control application that is very useful for sharing projects wi
 1. Open Git Bash and familiarize yourself with how to navigate the bash terminal [(How do I do that?)](https://ut-ras.github.io/RobotathonESP32/technical#what-is-a-bash-terminal)
 
 ### __Create GitHub account__
-GitHub is like a Google Drive for your Git repositories.
-Go to the [GitHub website](https://github.com/) and create an account if you do not have one already. 
+GitHub is a cloud service for saving your Git repositories online. Go to the [GitHub website](https://github.com/) and create an account if you do not have one already. 
 
 ### __Fork RobotathonESP32 Repository__
 Forking a repository creates a copy that you control on your GitHub account. Teams will use our RobotathonESP32 repo as the template. 
@@ -41,10 +40,7 @@ Note: only **one** person in each team has to fork the repository and invite the
 1. Share repository access to your teammates by navigating to the settings of your newly forked repository and clicking collaborators in the left menu [(How do I invite teammates to my forked repository?)](https://ut-ras.github.io/RobotathonESP32/getting-started/git#how-do-i-invite-teammates-to-my-forked-repository)
 
 ### __Set Up Git SSH Authentication__
-
-{: .highlight}
-This SSH section is **optional**, but it will make your life easier down the road by letting you push code to your remote repository without manually typing credentials
-{: .callout-blue}
+This allows for easy and secure interfacing with Git when you want to touch your repositories. The SSH keys are a nice way to authenticate your identity with GitHub.
 
 See the [official GitHub tutorial](https://docs.github.com/en/enterprise-cloud@latest/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) if you want more information. Otherwise just follow these instructions:
 
@@ -86,8 +82,7 @@ The key should look something like `ssh-ed25519 SFNJNAFNEJKFNJNJKNFJHFJAHOHiowur
 1. Click `Add SSH Key`
 
 ### __Clone Forked Repository__
-Cloning is the process of copying a Git repository onto your local computer storage
-
+Cloning is the process of copying a Git repository onto your local computer storage. Everyone has to do this to work on code!
 
 1. Go to your team's newly forked repository
 <img src="{{ '/_assets/images/github_repo.png' | prepend: site.baseurl }}" alt="my_image.png :(">
@@ -106,11 +101,6 @@ This allows your computer to recognize and program your ESP32 when you plug it i
 1. Agree and use default configuration
 
 ### __Install 7-zip__
-
-{: .highlight}
-This step is **optional**, but it will save you at least 30 minutes when unzipping your VS Code installation.
-{: .callout-blue}
-
 7-zip is a file compression tool that works much faster than your native Windows tools.
 
 1. Go to the [7-zip download page](https://www.7-zip.org/)
@@ -118,7 +108,7 @@ This step is **optional**, but it will save you at least 30 minutes when unzippi
 1. Launch 7-zip
 
 ### __Install Preconfigured VS Code__
-VS Code is an easily customizable IDE with many extensions and a large community. The preconfigured version you will download will already have ESP-IDF installed.
+VS Code is an easily customizable IDE with many extensions and a large community. The preconfigured version you will download will already have the ESP-IDF extension installed for convenience.
 
 {: .highlight}
 Do this even if you already have VS Code to minimize environment setup issues. Installing the ESP-IDF extension normally may result in unecessary debugging.
@@ -129,11 +119,11 @@ Do this even if you already have VS Code to minimize environment setup issues. I
 {: .highlight}
 This **will** take a while unless you use 7-zip. [How do I use 7-zip?](https://ut-ras.github.io/RobotathonESP32/technical#how-do-i-use-7-zip)
 {: .callout-blue}
-1. Launch the "containerized" VS Code by running the Code.exe file in the unzipped folder
+1. Launch the "containerized" VS Code by running the `Code.exe` file in the unzipped folder
 1. In the top menu bar of VS Code, click `File` > `Open Folder`
 1. Use VS Code to open the folder where you cloned the Robotathon repository (“RobotathonESP32” by default)
 1. Wait for the ESP-IDF extension to initialize 
-1. Build the project by clicking the wrench icon in the bottom ribbon of VS Code (this will take a while)
+1. Build the project by clicking the wrench icon in the bottom ribbon of VS Code (this will take a while the first time)
 <img src="{{ '/_assets/images/vscode_bottom_ribbon_build.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_build.png :(">
 
 ### __Flash your ESP32__
@@ -165,7 +155,7 @@ Building and flashing after the first time does not take nearly as long. In fact
 
 Here is an example program that blinks the onboard LED. "Blinky" projects are a standard "hello world" type of program that demonstrate your development environment works properly.
 
-If you replace your `arduino_main.cpp` file's contents with the following and flash properly, then your ESP32's blue onboard LED will begin to blink (yay 😄)!
+If you replace your `arduino_main.cpp` file's contents with the following and flash properly, then your ESP32's blue onboard LED will begin to blink every second (yay 😄)!
 
 {: .highlight}
 Note that it is **your** responsibility to integrate this code with the controller starter code!

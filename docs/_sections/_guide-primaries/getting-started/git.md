@@ -67,11 +67,11 @@ Forks are copies of a repo on GitHub (remote), while clones are repos stored on 
 
 ## How do I invite my teammates to my forked repository on GitHub?
 1. Navigate to your repository on GitHub
-<img src="{{ '/_assets/images/main_github.png' | prepend: site.baseurl }}" alt="fork1.png :(">
+<img src="{{ '/_assets/images/main_github.png' | prepend: site.baseurl }}" alt="main_github.png :(">
 1. Click the `Settings` tab
-<img src="{{ '/_assets/images/settings_tab.png' | prepend: site.baseurl }}" alt="fork1.png :(">
+<img src="{{ '/_assets/images/settings_tab.png' | prepend: site.baseurl }}" alt="settings_tab.png :(">
 1. Click `Collaborators` in the left menu
-<img src="{{ '/_assets/images/collaborators.png' | prepend: site.baseurl }}" alt="fork1.png :(">
+<img src="{{ '/_assets/images/collaborators.png' | prepend: site.baseurl }}" alt="collaborators.png :(">
 1. Click `Add people` and find your teammates once they have made their own GitHub accounts
 1. Have your teammates accept the invite on their account
 
