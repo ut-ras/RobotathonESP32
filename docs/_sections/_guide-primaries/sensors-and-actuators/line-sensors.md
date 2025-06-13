@@ -16,7 +16,7 @@ This side of the sensor will be facing the floor to detect the line:
 <img src="{{ '/_assets/images/line_sensor_diodes.png' | prepend: site.baseurl }}" alt="line_sensor_diodes.png">
 
 {: .highlight}
-Note: You do NOT have to use all 8 of the LED/phototransistor pairs — You can leave the ones you do not want to use disconnected from the ESP32.
+You do NOT have to use all 8 of the LED/phototransistor pairs — You can leave the ones you do not want to use disconnected from the ESP32.
 {: .callout-blue}
 
 <img src="{{ '/_assets/images/line_sensor_wire_diagram.png' | prepend: site.baseurl }}" alt="line_sensor_wire_diagram.png">
@@ -26,7 +26,12 @@ Note: You do NOT have to use all 8 of the LED/phototransistor pairs — You can 
 | 5V | 5V                      |
 | GND         | GND      |
 | Signal      |  Any ADC Capable Pin (i.e. GPIO32)    |
-| Signal      |  Any ADC Capable Pin (i.e. GPIO33)    |
+
+If you're not sure about the ESP32 pinout, then check out [this page!](https://ut-ras.github.io/RobotathonESP32/getting-started/microcontroller-interface)
+
+{: .highlight}
+This wiring diagram only shows the situation where 1 IR/phototransistor pair is used. If you want to use more, simply use more ADC capable pins
+{: .callout-blue}
 
 ## Programming
 The following program will allow you to continuously read the sensor data from 2 of the photodiode sensors. You will have to calibrate the sensors by positioning the ones you want to use directly over  the black electrical tape. If you need to use more than 2 sensors, then you can also move the line sensor back and forth over the black electrical tape to calibrate it.

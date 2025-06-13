@@ -42,6 +42,8 @@ Here is a wiring diagram:
 | SDA       |  GPIO21   |
 | SCL     |  GPIO22    |
 
+If you're not sure about the ESP32 pinout, then check out [this page!](https://ut-ras.github.io/RobotathonESP32/getting-started/microcontroller-interface)
+
 {: .highlight}
 Make sure to connect the color sensor's power pin to 3.3V! A 5V connection will fry the sensor.
 {: .callout-blue}
