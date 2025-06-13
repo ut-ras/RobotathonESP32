@@ -77,9 +77,9 @@ TIP: Always calibrate your line sensor to ensure consistent and accurate results
 ## Extensions
 * You received values from the sensor, but what do they mean? 
 * How does the position value change as you place your line beneath different sensors, and how can you control that? 
-* Is there an easier way to quantify the “change” when the car is veering off the line?
-* What do you do with your robot when that happens? I.e. adjusting movement
+* What do you do with your robot when you detect a change?
 * Consistency in data collection is key for calibration
  * Can you automate the calibration process?
+ * Can you use the super secret NVS functions to save and restore calibration data?
 
 

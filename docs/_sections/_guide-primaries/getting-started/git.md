@@ -102,6 +102,7 @@ At commit B, a new branch called `feature-branch` is created. From this branch, 
 A **merge conflict** occurs when you try to merge (i.e. git pull) two branches that have made different changes to the same part of a file. Git can't automatically figure out which change to keep, so it needs your help to resolve the conflict.
 
 {: .highlight}
+
 Note that a `git pull` that triggers a merge conflict may open a terminal text editor like Vim or Nano.
 
 **For Vim:**
@@ -113,6 +114,7 @@ Note that a `git pull` that triggers a merge conflict may open a terminal text e
 - To abort: Press `Ctrl+X`, press `N` if prompted to save, then run `git merge --abort`
 
 {: .callout-blue}
+
 
 In the problem file, Git marks the conflicting area with special markers that looks something like this:
 
