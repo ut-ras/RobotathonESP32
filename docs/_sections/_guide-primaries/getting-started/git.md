@@ -103,11 +103,9 @@ A **merge conflict** occurs when you try to merge (i.e. git pull) two branches t
 
 {: .highlight}
 Note that a `git pull` that triggers a merge conflict may open a terminal text editor like Vim or Nano.
-
 **For Vim:**
 - To save and continue: Press `Esc`, type `:wq`, then press `Enter`
 - To abort: Press `Esc`, type `:q!`, then press `Enter`, then run `git merge --abort`
-
 **For Nano:**
 - To save and continue: Press `Ctrl+O`, press `Enter`, then press `Ctrl+X`
 - To abort: Press `Ctrl+X`, press `N` if prompted to save, then run `git merge --abort`
