@@ -18,8 +18,10 @@ It is highly recommended that you map autonomous sensors modes (line, color, dis
 
 See [BluePad32's official docs](https://bluepad32.readthedocs.io/en/latest/FAQ/#:~:text=true%3B%0A%7D-,Using%20allowlist%20commands%20from%20the%20USB%20console,%C2%B6,-Note) if you'd like to see other features.
 
-
 First you will need to find out what your controller's Bluetooth address is.
+{: .highlight}
+Note that your controller will likely have the address already labeled on it for ease of use, so you can easily jump to Step 4
+{: .callout-blue}
 1. Plug in your ESP32 and flash it with the starter code
 1. Open the serial monitor
 1. You should see your controller address as a string of octets (something like `98:B6:E1:7C:C3:95`) in the serial monitor while trying to connect your controller (press and hold power button on controller until lights slowly and then rapidly move to put it in pairing mode):

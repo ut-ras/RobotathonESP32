@@ -9,6 +9,16 @@ nav_order: 4
 # Line Sensor
 A necessary component for any challenge that requires your robot to follow a line. This one is the QTR-8A Reflectance Sensor Array and uses IR transmitters and receivers on it to detect lines.
 
+## Workshop Slides
+<iframe src="https://docs.google.com/presentation/d/1Hs6NceBqnyrwj3lxO_192RLk6LQGkcfpnS2Lv2SEOHE/embed?start=false" 
+        frameborder="0" 
+        width="960" 
+        height="569" 
+        allowfullscreen="true" 
+        mozallowfullscreen="true" 
+        webkitallowfullscreen="true">
+</iframe>
+
 ## How it Works
 The line sensor is made up of an array of 8 IR LED/phototransistor pairs, each take an analog reflectance reading by timing how long it takes the output voltage to decay due to the phototransistor. By pointing the line sensor IR LEDs/phototransistors at the line, the robot is able to tell where the dark line of tape is by reading the output voltage of each phototransistor
 
@@ -16,8 +26,11 @@ This side of the sensor will be facing the floor to detect the line:
 <img src="{{ '/_assets/images/line_sensor_diodes.png' | prepend: site.baseurl }}" alt="line_sensor_diodes.png">
 
 {: .highlight}
-You do NOT have to use all 8 of the LED/phototransistor pairs — You can leave the ones you do not want to use disconnected from the ESP32.
+Keep in mind that the QTR line sensor has two 5V pins that are connected to each other! They are identical in function besides being in a different location
 {: .callout-blue}
+
+TODO decide if we want to make them use the LEDON pin
+TODO add backside pinout with labels
 
 <img src="{{ '/_assets/images/line_sensor_wire_diagram.png' | prepend: site.baseurl }}" alt="line_sensor_wire_diagram.png">
 
@@ -39,7 +52,6 @@ The following program will allow you to continuously read the sensor data from 2
 After the calibration process, you should see the values in the terminal change as you shift the sensors over the black tape.
 
 ```cpp
-
 #include "sdkconfig.h"
 #include <Arduino.h>
 
@@ -67,7 +79,6 @@ void loop() {
     Console.printf("S1: %d S2: %d\n", sensors[0], sensors[1]);
     delay(250);
 }
-
 ```
 
 TIP: Always calibrate your line sensor to ensure consistent and accurate results.
