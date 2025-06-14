@@ -25,9 +25,9 @@ The APDS-9960 Color Sensor will allow you to complete the Color Challenge.
 
 
 ## How it Works
-The RGB (Red Green Blue) sensor has an infrared LED light that detects color by emitting light and detecting with four photodiodes the reflected light. The photodiodoes are each filtered to sense the Red, Green, Blue, and Clear color components. The RGB provides the R G and B data in integer values of 0-255 (8 bit representation). We will grab that data using a communication protocol called I2C (Inter-integrated circuit), which is used in many electrical devices. Implementing I2C is out of the scope of this competition, but you can find more information about it [here.](https://learn.sparkfun.com/tutorials/i2c/all)
+The RGB (Red Green Blue) sensor has an infrared LED light that detects color by emitting light and detecting with four photodiodes the reflected light. The photodiodoes are each filtered to sense the Red, Green, Blue, and Clear color components. The RGB provides the R G and B strength in integer values of 0-255 (8 bit representation). We will grab that data using a communication protocol called I2C (inter-integrated circuit), which is used in many electrical devices. Implementing I2C on our own is out of the scope of this competition, but you can find more information about it [here.](https://learn.sparkfun.com/tutorials/i2c/all)
 
-For the competition, you will want to make sure you understand the RGB sensor also detect ambient light levels and proximity, so make sure your color sense is placed appropriately to successfully complete the color challenge.
+You will definitely want to keep in mind that the sensor is affected by ambient light levels and proximity, so make sure your color sensor is placed appropriately and has sufficient (external🤔?) lighting to successfully complete the color challenge.
 
 If you want more details on how the color sensor works, check out [this link!](https://www.utmel.com/components/everything-you-know-about-tcs34725-color-sensors-faq?id=1986)
 
@@ -46,16 +46,12 @@ If you're not sure about the ESP32 pinout, then check out [this page!](https://u
 
 {: .highlight}
 Make sure to connect the color sensor's power pin to 3.3V! A 5V connection will fry the sensor.
-{: .callout-blue}
+{: .callout-red}
 
 The SDA and SCL on the color sensor MUST be connected to the specified GPIO pins on the ESP32. This is because they are the dedicated pins for I2C commmunication.
 
-If you're not sure about the ESP32 pinout, then check out the diagram in [this page!](https://ut-ras.github.io/RobotathonESP32/getting-started/microcontroller-interface)
-
-
-
 ## Programming
-For this tutorial, we’re only going to be reading the RGB sensor values from the TCS34725. Make sure that your pins are correctly connected or otherwise you won’t receive the data!
+For this tutorial, we’re only going to be reading the color sensor values. Make sure that your pins are correctly connected or otherwise you won’t receive any data!
 
 ```cpp
 
@@ -86,19 +82,9 @@ void setup() {
 
 void loop() {
     int r, g, b, a;
-    // Wait until color is read from the sensor 
-    while (!apds.colorAvailable()) { delay(5); }
+    while (!apds.colorAvailable()) { delay(5); } // Wait until color is read from the sensor 
     apds.readColor(r, g, b, a);
-    // Read color from sensor apds.readColor(r, g, b, a);
-    // Print color in decimal 
-    Serial.print("RED: ");
-    Serial.print(r);
-    Serial.print(" GREEN: ");
-    Serial.print(g);
-    Serial.print(" BLUE: ");
-    Serial.print(b);
-    Serial.print(" AMBIENT: ");
-    Serial.println(a);
+    Console.printf("RED: %d GREEN: %d BLUE: %d AMBIENT: %d\n", r, g, b, a);
     delay(100);
 }
 ```

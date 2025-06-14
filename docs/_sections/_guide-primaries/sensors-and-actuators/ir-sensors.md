@@ -54,12 +54,13 @@ void setup() {
 }
     
 void loop() {
-    Serial.println(IRSensorName.getDistanceFloat()); 
+    Console.println(IRSensorName.getDistanceFloat()); 
     delay(100);
 }
 ```
 
 ## Extensions
-You received values from the sensor, but do they mean anything? The next step for the IR sensor is translating and thresholding it. Take a look at the above graph. There is a strong linear relationship between your signal value and the distance away from the object. It’s your job now to code a function that returns an accurate distance given a voltage input value. After that, your team needs to threshold the data. When do the values become inconsistent (too close or too far)? What do you do with your robot when that happens?
+You received values from the sensor, but what do they mean? The next step for the IR sensor is translating and thresholding it. Take a look at the above graph. There is a strong linear relationship between your signal value and the distance away from the object. It’s your job now to code a function that returns an accurate distance given a voltage input value. After that, your team needs to threshold the data. When do the values become inconsistent (too close or too far)? What do you do with your robot when that happens?
 
+TODO review this extension thing and see if we want to make them actually calculate distance
 

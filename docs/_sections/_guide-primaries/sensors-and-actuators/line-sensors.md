@@ -25,7 +25,7 @@ You do NOT have to use all 8 of the LED/phototransistor pairs — You can leave 
 |:-------------|:------------------|
 | 5V | 5V                      |
 | GND         | GND      |
-| Signal      |  Any ADC Capable Pin (i.e. GPIO32)    |
+| Signal      |  Any ADC Capable Pin (i.e. GPIO32, GPIO33)    |
 
 If you're not sure about the ESP32 pinout, then check out [this page!](https://ut-ras.github.io/RobotathonESP32/getting-started/microcontroller-interface)
 
@@ -52,21 +52,19 @@ void setup() {
     // set up Serial Communication and sensor pins
     Serial.begin(115200);
     qtr.setTypeAnalog(); // or setTypeAnalog()
-    qtr.setSensorPins((const uint8_t[]) {33, 32}, 2); // pin numbers go in the curly brackets {}, and number of pins goes after
+    qtr.setSensorPins((const uint8_t[]) {32, 33}, 2); // pin numbers go in the curly brackets {}, and number of sensors in use goes after
 
     // calibration sequence
     for (uint8_t i = 0; i < 250; i++) { 
-        Serial.println("calibrating");
+        Console.printf("calibrating %d/250\n", i); // 250 is the number of calibrations recommended by manufacturer
         qtr.calibrate(); 
         delay(20);
     }
 }
 
 void loop() {
-    qtr.readLineBlack(sensors); // Get calibrated sensor values returned in the sensors array
-    Serial.print(sensors[0]);
-    Serial.print(" ");
-    Serial.println(sensors[1]);
+    qtr.readLineBlack(sensors); // Get calibrated sensor values returned into sensors[]
+    Console.printf("S1: %d S2: %d\n", sensors[0], sensors[1]);
     delay(250);
 }
 
@@ -80,6 +78,6 @@ TIP: Always calibrate your line sensor to ensure consistent and accurate results
 * What do you do with your robot when you detect a change?
 * Consistency in data collection is key for calibration
  * Can you automate the calibration process?
- * Can you use the super secret NVS functions to save and restore calibration data?
+ * Can you use the super secret NVS functions to save and restore calibration?
 
 
