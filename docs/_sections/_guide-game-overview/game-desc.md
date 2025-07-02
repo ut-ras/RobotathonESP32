@@ -2,7 +2,7 @@
 layout: default
 title: Game Description
 nav_include: true
-nav_order: 2
+nav_order: 1
 ---
 
 # Game Description
@@ -10,7 +10,7 @@ nav_order: 2
 Welcome to RASpionage: our spy themed robotics competition! Cooperate with Perry the Platypus to take down Dr. Jeffrey Doofenshmirtz’s nefarious collusion with A&M!
 
 ## Rounds
-Each team will play in 5 minute long rounds with 2 minute setup times in between. Round number is subject to change as competition day rolls closer. Each team will complete various challenges to score points against another team (bracket TBA).
+Each team will play in 5 minute long rounds with 2 minute setup times in between. Round number is subject to change as competition day rolls closer. Every round will pit two teams against each other to see who can score the most points through various challenges detailed below.
 
 ## Challenges
 The main challenge of this game requires each team to break into Dr. Jeffrey Doofenshmirtz’s evil lab, navigate the dangerous traps and obstacles, and finally help Perry destroy the Aggienator!
@@ -19,19 +19,20 @@ The color sensor, line sensor, and wall sensor challenges can all be done indivi
 
 
 ## Remote Controller
-The remote controller can be used to drive your robot in the areas between each challenge and trigger autonomous modes tailored to each sensor.
+The remote controller can be used to manually drive your robot in the areas between each challenge and trigger autonomous modes tailored for each sensor.
 You can use your remote controller to drive through the sensor challenges, but you will NOT EARN POINTS
 You are encouraged to use your remote controller in the event that your robot gets stranded in the middle of the field.
 
 ## Field
-The field is split into two sections, with a layout of the main challenge set up as a mirror image of one another. It is made to accommodate two teams for each round.
+The field is split into two symmetrical loops to accommodate two teams for each round.
 
-Teams will start on opposing corners of the field.
-
-The field configuration is shown below (General location of challenge is correct. Do not refer to for actual format of line or maze)
+Teams will start on opposing corners of the field as shown below:
 
 <img src="{{ '/_assets/images/replace_this_map_with_better_one.png' | prepend: site.baseurl }}" alt="map :(">
 
+{: .highlight}
+Do not hardcode your robot according to the above layout for maze or line! The exact layout for those challenges may be different on the actual field.
+{: .callout-red}
 
 ## Section 1: Breaking into the lab
 
@@ -46,7 +47,6 @@ TODO: add image of map
 ## Section 2: Navigate the lab (Wall Follow)/Dodge the lasers(or some other line follow doof-esque obstacle)
 
 ### Wall Challenge
-Requires manual or automated completion of collection.
 Your robot must navigate through the maze while carrying a ping pong ball and avoid running into the walls.
 If your robot gets stuck you may manually reset your robot to the beginning of the maze section.
 One side of the field could have a maze with more turns than the other. In the player’s choice rounds, it’s best if the team with the better wall sensor opts to that side.

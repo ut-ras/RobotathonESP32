@@ -68,14 +68,11 @@ collections:
     permalink: "/:path"
     output: true
     sort: nav_order
-  guide-rulebook:
+  guide-game-overview:
     permalink: "/:path"
     output: true
     sort: nav_order
   guide-primaries:
-    permalink: "/:path"
-    output: true
-  guide-checkpoints:
     permalink: "/:path"
     output: true
   guide-supplementals:
@@ -91,14 +88,11 @@ just_the_docs:
     guide-home:
       name: Home
       nav_fold: false
-    guide-rulebook:
-      name: Rulebook
+    guide-game-overview:
+      name: Game Overview
       nav_fold: false
     guide-primaries:
       name: Guide
-      nav_fold: false
-    guide-checkpoints:
-      name: Checkpoints
       nav_fold: false
     guide-supplementals:
       name: Resources

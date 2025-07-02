@@ -76,7 +76,7 @@ https://docs.google.com/presentation/d/[PRESENTATION ID]/embed?start=false"
 #include <stdio.h>
 
 int main() {
-        printf("colins clowns takeover when");
+        printf("choblins goblins is #1 robotathon team");
 }
 
 ```
