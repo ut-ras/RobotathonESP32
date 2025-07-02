@@ -12,7 +12,7 @@ on:
       - "robotathon-guide-2025" # Commented out, used for initial commits
     paths: # UNCOMMENT once website is running (only changes to docs should trigger workflow)
       - "docs/**"
-
+  
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch: # UNCOMMENT once website is running (prevent user-based remote event triggers)
 
