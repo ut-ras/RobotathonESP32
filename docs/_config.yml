@@ -88,7 +88,7 @@ just_the_docs:
       name: Home
       nav_fold: false
     guide-primaries:
-      name: Newbie Guide
+      name: Robotathon Guide
       nav_fold: false
     guide-checkpoints:
       name: Checkpoints

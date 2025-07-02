@@ -6,7 +6,7 @@ nav_include: true
 nav_order: 3
 ---
 
-# Robotathon 2025 Newbie Guide
+# Robotathon Guide - 2025
 
 # TODO: insert logo here
 

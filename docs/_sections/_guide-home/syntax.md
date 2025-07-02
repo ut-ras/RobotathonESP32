@@ -1,6 +1,6 @@
 ---
 layout: default
-title: NEWBIE GUIDE SYNTAX REFERENCE (remove during comp)
+title: Robotathon GUIDE SYNTAX REFERENCE (remove during comp)
 nav_include: true
 nav_order: 2
 ---

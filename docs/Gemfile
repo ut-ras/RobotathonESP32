@@ -13,7 +13,7 @@ source "https://rubygems.org"
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
 # gem "minima", "~> 2.5"
 
-# This is the chosen theme for the newbie guide.
+# This is the chosen theme for the robotathon guide.
 gem "just-the-docs"
 
 # This resolves Ruby version issues since webrick is no longer bundled in Ruby 3.0.

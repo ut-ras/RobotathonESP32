@@ -1,6 +1,6 @@
 ---
 layout: default
-title: NEWBIE GUIDE JEKYLL SETUP (remove during comp)
+title: ROBOTATHON GUIDE JEKYLL SETUP (remove during comp)
 permalink: /
 nav_include: true
 nav_order: 1
@@ -38,7 +38,7 @@ Make sure to have Docker running for later!
 - [https://git-scm.com/downloads](https://git-scm.com/downloads)
 
 ## Set up SSH Authentication for GitHub
-- See existing Newbie Guide doc [here](https://ut-ras.github.io/RobotathonESP32/getting-started/environment-setup/windows-setup#set-up-git-ssh-authentication)
+- See existing Robotathon Guide doc [here](https://ut-ras.github.io/RobotathonESP32/getting-started/environment-setup/windows-setup#set-up-git-ssh-authentication)
 
 ## Clone RobotathonESP32 Repository 
 1. Go to the [Robotathon repository](https://github.com/ut-ras/RobotathonESP32/tree/main)
@@ -52,7 +52,7 @@ Make sure to have Docker running for later!
 
 ## Opening the Container
 1. Navigate to `RobotathonESP32` by using `ls` and `cd`
-1. Type `git checkout newbie-guide-2025` to switch to the Newbie Guide branch
+1. Type `git checkout robotathon-guide-2025` to switch to the robotathon guide branch
 1. Open `RobotathonESP32` in VS Code
 1. Click the `><` icon in the bottom left corner of VS Code
       <img src="{{ '/_assets/images/the_vscode_thing.png' | prepend: site.baseurl }}" alt="my_image.png :(">
