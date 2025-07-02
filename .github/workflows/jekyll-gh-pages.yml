@@ -9,7 +9,7 @@ name: Deploy Jekyll site to Pages
 on:
   push:
     branches:
-      - "newbie-guide-2025" # Commented out, used for initial commits
+      - "robotathon-guide-2025" # Commented out, used for initial commits
     paths: # UNCOMMENT once website is running (only changes to docs should trigger workflow)
       - "docs/**"
 
