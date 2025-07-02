@@ -8,7 +8,7 @@ nav_order: 4
 
 # Awards
 
-The top 3 teams will receive trophies.
+* The top 3 teams will receive trophies.
 
 Additional certificates for various aspects include:
 * Best Mechanical Design

@@ -17,12 +17,6 @@ The main challenge of this game requires each team to break into Dr. Jeffrey Doo
 
 The color sensor, line sensor, and wall sensor challenges can all be done individually by either side to gain points, but the bulk of the points will be earned by completing the mechanical challenge.
 
-
-## Remote Controller
-The remote controller can be used to manually drive your robot in the areas between each challenge and trigger autonomous modes tailored for each sensor.
-You can use your remote controller to drive through the sensor challenges, but you will NOT EARN POINTS
-You are encouraged to use your remote controller in the event that your robot gets stranded in the middle of the field.
-
 ## Field
 The field is split into two symmetrical loops to accommodate two teams for each round.
 
@@ -71,4 +65,9 @@ The bottom tier will be at field level, and teams can place ping pong balls in t
 
 TODO: add image of map
 
+
+## Remote Controller
+Each team will be provided a Bluetooth controller. You will need to use this controller to manually drive your robot between each challenge and trigger autonomous modes tailored for each sensor.
+* You can use your remote controller to drive through the sensor challenges, but you will NOT EARN POINTS
+* You are encouraged to use your remote controller in the event that your robot gets stranded in the middle of the field.
 

@@ -1,10 +1,10 @@
----
+<!-- ---
 layout: default
 title: ROBOTATHON GUIDE JEKYLL SETUP (remove during comp)
 permalink: /
 nav_include: true
 nav_order: 1
----
+--- -->
 
 # windows setup
 gl to linux/macos people. its mostly the same so u got it :)

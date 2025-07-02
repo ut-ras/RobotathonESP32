@@ -1,9 +1,9 @@
----
+<!-- ---
 layout: default
 title: Robotathon GUIDE SYNTAX REFERENCE (remove during comp)
 nav_include: true
 nav_order: 2
----
+--- -->
 
 # official syntax docs [https://just-the-docs.com/](https://just-the-docs.com/)
 ^ hyperlinked text example

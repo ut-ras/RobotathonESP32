@@ -92,7 +92,7 @@ just_the_docs:
       name: Game Overview
       nav_fold: false
     guide-primaries:
-      name: Guide
+      name: Technical Guides
       nav_fold: false
     guide-supplementals:
       name: Resources
