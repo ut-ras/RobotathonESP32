@@ -30,6 +30,7 @@ Keep in mind that the QTR line sensor has two 5V pins that are connected to each
 {: .callout-blue}
 
 TODO decide if we want to make them use the LEDON pin
+
 TODO add backside pinout with labels
 
 <img src="{{ '/_assets/images/line_sensor_wire_diagram.png' | prepend: site.baseurl }}" alt="line_sensor_wire_diagram.png">
@@ -43,7 +44,7 @@ TODO add backside pinout with labels
 If you're not sure about the ESP32 pinout, then check out [this page!](https://ut-ras.github.io/RobotathonESP32/getting-started/microcontroller-interface)
 
 {: .highlight}
-This wiring diagram only shows the situation where 1 IR/phototransistor pair is used. If you want to use more, simply use more ADC capable pins
+This wiring diagram only shows the situation where two IR/phototransistor pair are used. If you want to use more, simply use more ADC capable pins
 {: .callout-blue}
 
 ## Programming
