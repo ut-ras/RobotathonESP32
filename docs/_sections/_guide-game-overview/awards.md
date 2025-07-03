@@ -5,7 +5,6 @@ nav_include: true
 nav_order: 4
 ---
 
-
 # Awards
 
 * The top 3 teams will receive trophies.

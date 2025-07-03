@@ -10,12 +10,22 @@ nav_order: 1
 Welcome to RASpionage: our spy themed robotics competition! Cooperate with Perry the Platypus to take down Dr. Jeffrey Doofenshmirtz’s nefarious collusion with A&M!
 
 ## Rounds
-Each team will play in 5 minute long rounds with 2 minute setup times in between. Round number is subject to change as competition day rolls closer. Every round will pit two teams against each other to see who can score the most points through various challenges detailed below.
+Each team will play in 5 minute long rounds with 2 minute setup times in between. Number of rounds is subject to change as competition day rolls closer. Every round will pit two teams against each other to see who can score the most points through various challenges detailed below.
+
+TODO more information about tourney bracket
 
 ## Challenges
-The main challenge of this game requires each team to break into Dr. Jeffrey Doofenshmirtz’s evil lab, navigate the dangerous traps and obstacles, and finally help Perry destroy the Aggienator!
+The premise of this year's game requires each team to break into Dr. Jeffrey Doofenshmirtz’s evil lab, navigate the dangerous traps and obstacles, and finally help Perry destroy the Aggienator! 
 
-The color sensor, line sensor, and wall sensor challenges can all be done individually by either side to gain points, but the bulk of the points will be earned by completing the mechanical challenge.
+You will build a robot around the color, line, wall, and mechanical peripherals to achieve this.
+
+TODO verify this
+These 4 challenges will be repeatable until the time limit is up
+
+## Remote Controller
+Each team will be provided a Bluetooth controller. You will need to use this controller to manually drive your robot between each challenge and trigger autonomous modes tailored for each sensor.
+* You can use your remote controller to drive through the sensor challenges, but you will NOT EARN POINTS
+* You are encouraged to use your remote controller in the event that your robot gets stranded in the middle of the field.
 
 ## Field
 The field is split into two symmetrical loops to accommodate two teams for each round.
@@ -38,7 +48,7 @@ Then, test the next three strips to find one that matches the first strip and pi
 
 TODO: add image of map
 
-## Section 2: Navigate the lab (Wall Follow)/Dodge the lasers(or some other line follow doof-esque obstacle)
+## Section 2: Navigate the lab
 
 ### Wall Challenge
 Your robot must navigate through the maze while carrying a ping pong ball and avoid running into the walls.
@@ -46,6 +56,8 @@ If your robot gets stuck you may manually reset your robot to the beginning of t
 One side of the field could have a maze with more turns than the other. In the player’s choice rounds, it’s best if the team with the better wall sensor opts to that side.
 
 TODO: add image of map
+
+## Section 3: Dodge the Lasers
 
 ### Line Challenge
 Requires manual or automated completion of collection but not preparation.
@@ -58,16 +70,12 @@ TODO: add image of map
 One side of the field will be more jagged, while the other is curved. The team that met the most checkpoints/deadlines will have the option of choosing which side they want to run.
 {: .callout-blue}
 
-### Mechanical Challenge: Defeat the Aggienator!
+## Section 4: Destroying the Aggienator!
+
+### Mechanical Challenge
 Launch your ping pong ball into one of the tiers of the Aggienator to score points
 Tiers will be smaller the higher they are, but scoring in higher tiers will earn more points.
 The bottom tier will be at field level, and teams can place ping pong balls in this bottom tier for minimal points.
 
 TODO: add image of map
-
-
-## Remote Controller
-Each team will be provided a Bluetooth controller. You will need to use this controller to manually drive your robot between each challenge and trigger autonomous modes tailored for each sensor.
-* You can use your remote controller to drive through the sensor challenges, but you will NOT EARN POINTS
-* You are encouraged to use your remote controller in the event that your robot gets stranded in the middle of the field.
 
