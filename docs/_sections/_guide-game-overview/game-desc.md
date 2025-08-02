@@ -14,7 +14,7 @@ Each team will play in 5 minute long rounds with 2 minute setup times in between
 
 The competition will be double-elimination style which means if your team is beat once, you still have a chance to win Robotathon! However if your team is defeated two times, you will be eliminated
 
-Your team will receive a ping pong ball at the beginning of every round as ammo to destroy the Aggienator
+Your team will receive one ping pong ball at the beginning of every round as ammo to destroy the Aggienator
 
 ## Challenges
 The premise of this year's game requires each team to break into Dr. Jeffrey Doofenshmirtz’s evil lab, navigate the dangerous traps and obstacles, and finally help Perry destroy the Aggienator! 
@@ -72,7 +72,7 @@ TODO: add image of map
 ### Wall Challenge
 Your robot must navigate through the maze while carrying a ping pong ball and avoid running into the walls.
 If your robot gets stuck you may manually reset your robot to the beginning of the maze section.
-One side of the field could have a maze with more turns than the other. In the player’s choice rounds, it’s best if the team with the better wall sensor opts to that side.
+One side of the field could have a maze with more turns than the other. 
 
 {: .highlight}
 TODO: add image of map
@@ -81,8 +81,7 @@ TODO: add image of map
 ## Section 3: Dodge the Lasers
 
 ### Line Challenge
-Requires manual or automated completion of collection but not preparation.
-Your robot must follow the path and make it to the end of the line while carrying a ping pong ball
+Your robot must follow the path and make it to the end of the line while carrying a ping pong ball.
 If your robot gets stuck or lost, you may reset your robot, but you must start from the beginning of the path.
 
 {: .highlight}
@@ -96,7 +95,7 @@ One side of the field will be more jagged, while the other is curved. The team t
 ## Section 4: Destroying the Aggienator!
 
 ### Mechanical Challenge
-Launch your ping pong ball into one of the tiers of the Aggienator to score points
+Launch your ping pong ball into one of the tiers of the Aggienator to score points.
 Tiers will be smaller the higher they are, but scoring in higher tiers will earn more points.
 The bottom tier will be at field level, and teams can place ping pong balls in this bottom tier for minimal points.
 
