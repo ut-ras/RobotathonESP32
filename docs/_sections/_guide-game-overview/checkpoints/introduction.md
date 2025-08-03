@@ -12,11 +12,8 @@ nav_order: 1
 To pass this checkpoint, your team should meet the following requirements:
 
 * Create a groupchat with your team on any platform (Discord, iMessage, etc.)
-* Take selfie with your team and send it in your own team's group chat
+* Take selfie with your team and send it in the robotathon-chat channel in the RAS Discord, and your team's group chats
 * Come up with a fun name and have it approved by your mentor (professors will see it😄)
-
-Questions:
-* Why did you choose your team's name? tbh idt we should have/need this lol
 
 Next Steps:
 * Divide up tasks (software/mechanical)

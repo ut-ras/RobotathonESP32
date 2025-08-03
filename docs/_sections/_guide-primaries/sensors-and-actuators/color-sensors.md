@@ -27,7 +27,7 @@ The APDS-9960 Color Sensor will allow you to complete the Color Challenge.
 ## How it Works
 The RGB (Red Green Blue) sensor has an infrared LED light that detects color by emitting light and detecting with four photodiodes the reflected light. The photodiodoes are each filtered to sense the Red, Green, Blue, and Clear color components. The RGB provides the R G and B strength in integer values of 0-255 (8 bit representation). We will grab that data using a communication protocol called I2C (inter-integrated circuit), which is used in many electrical devices. Implementing I2C on our own is out of the scope of this competition, but you can find more information about it [here.](https://learn.sparkfun.com/tutorials/i2c/all)
 
-You will definitely want to keep in mind that the sensor is affected by ambient light levels and proximity, so make sure your color sensor is placed appropriately and has sufficient (external🤔?) lighting to successfully complete the color challenge.
+You will definitely want to keep in mind that the sensor is affected by ambient light levels and proximity, so make sure your color sensor is placed appropriately and has sufficient external lighting to accurately read colors and complete the challenge.
 
 If you want more details on how the color sensor works, check out [this link!](https://www.utmel.com/components/everything-you-know-about-tcs34725-color-sensors-faq?id=1986)
 

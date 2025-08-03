@@ -14,18 +14,18 @@ nav_order: 4
 
 
 To pass this checkpoint, your design should meet the following requirements:
-* A drawn picture (does not have to be detailed) that shows where you plan to place each component
+* A drawn schematic of your chassis and where you plan to place each component (does not have to be detailed)
 
-Component list: TODO update
-* 1 Battery pack
+Component to include:
+* 1 Portable Battery
 * 1 Dual Motor Driver
 * 2 DC Motors
 * 1 Servo
 * 1 Caster Wheel
 * 1 Line Sensor
 * 1 Color Sensor
-* 1 IR Distance Sensor
-* 1 White LED (color sensor) TODO elaborate or link smth here
+* at least 2 IR Distance Sensors
+* 1 White LED near the color sensor ([why?](https://ut-ras.github.io/RobotathonESP32/sensors-and-actuators/color-sensors))
 * 1 ESP32 on breadboard
 
 Questions:

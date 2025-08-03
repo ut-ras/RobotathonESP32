@@ -12,7 +12,7 @@ nav_order: 4
 
 To pass this checkpoint, your robot should meet the following requirements:
 
-* Motors attached to a chassis (can be literally anything)
+* Motors attached to a chassis
 * Robot chassis moves when given controller input (i.e. pushing joystick moves forward, letting go stops)
 
 
@@ -24,4 +24,3 @@ Next Steps:
 
 Some questions we might ask you:
 * How is your robot powered?
-* 

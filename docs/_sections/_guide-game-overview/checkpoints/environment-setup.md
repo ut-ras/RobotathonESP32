@@ -20,4 +20,4 @@ Questions:
 * What does it mean to build your project?
 * What does it mean to flash your project?
 * What is the process for putting your code onto your team's GitHub repo?
-* What is a GPIO?
+* What is a GPIO pin?
