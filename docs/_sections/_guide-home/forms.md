@@ -9,7 +9,7 @@ nav_order: 5
 
 This page contains direct links and forms that you might need for Robotathon!
 
-[Robotathon Linktree](https://linktr.ee/robotathon2024?utm_source=linktree_profile_share&ltsid=e97f46bf-044a-4460-9ae9-b069387234ea){: .btn .btn-purple }
+[Robotathon Linktree](https://linktr.ee/jeffchang0){: .btn .btn-purple }
 <br>
 [Robotathon Dues Form](https://utdirect.utexas.edu/txshop/item_details.WBX?application_name=ENENGALU&component=0&dept_prefix=EN&item_id=155&cat_seq_chosen=01&subcategory_seq_chosen=000){: .btn .btn-green }
 [RAS Dues Form](https://utdirect.utexas.edu/nlogon/txshop/item_details.WBX?application_name=ENENGALU&component=0&dept_prefix=E2&item_id=199&cat_seq_chosen=02&subcategory_seq_chosen=000){: .btn .btn-green }

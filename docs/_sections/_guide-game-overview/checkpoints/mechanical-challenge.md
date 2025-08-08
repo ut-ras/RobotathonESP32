@@ -14,6 +14,9 @@ To pass this checkpoint, your robot should meet the following requirement:
 
 * Autonomously launch a ping pong ball some distance
 
+OR
+* Push the ball manually or autonomously (this will earn minimal points during the mech challenge)
+
 Some questions we might ask about this checkpoint are:
 
 * How did you tell your robot to start the mechanical challenge?
