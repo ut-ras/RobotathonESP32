@@ -24,3 +24,7 @@ Next Steps:
 
 Some questions we might ask you:
 * How is your robot powered?
+* Why do we recommend using a diode to feed power into the ESP32 5V pin?
+* How does the ESP32 control the motors?
+* How does passing DC through these motors create torque?
+* How do H-bridge motor drivers work?

@@ -16,9 +16,6 @@ Despite their different looks, they all have the same fundametals and more than 
 
 - **Software compatibility:** SoildWorks and Creo, for example only runs on Windows. Fusion can run on both Windows and MacOS. FreeCad can be ran on Windows, MacOS and Linux. Onshape will be fine with any devices that has a browser (like phones and Chromebooks). _Note that we are not considering Vitural Machine options here because it is not practical to set up nor good for regular usage._
 
-- **Hardware compatibility:** While any programs can run on any computers, it is important to choose the right program for your device hardware to avoid any unpleasant experience. Programs that needs to be installed, SoildWorks, Creo, Fusion and FreeCad have higher system requirements than Onshape, which is web-based. Additionally, programs can react differently to varying inputs such as trackpad or touchscreen input that some users might prefer. For example, SoildWorks can be used with a touchscreen and a trackpad, but Onshape refuses to take a input from those sources.
+- **Hardware compatibility:** It is important to choose the right program for your device hardware to avoid any unpleasant experience. Programs that need to be installed, SoildWorks, Creo, Fusion and FreeCad have higher system requirements than Onshape, which is web-based. Additionally, programs can react differently to varying inputs such as trackpad or touchscreen input that some users might prefer. For example, SoildWorks can be used with a touchscreen and a trackpad, but Onshape refuses to take a input from those sources.
 
 **This guide will focus on getting started with modeling in Onshape, as it's suitable for beginers thanks it's simple interface, customizable controls and strong compatitbility.** 
-
-
-<!-- this file is for the section drop down bar -->

@@ -22,7 +22,7 @@ SM, like laser cutting or mills/lathes, removes material from a product to achie
 **Cons of laser cutting:** Must pay for material, must be trained at TIW
 
 ## Additive Manufacturing (AM)
-AM, such as 3D printing, adds layers of materials to create an object. The CraftBots in the Makerspace use PLA or PETG (plastic) filaments. 
+AM, such as 3D printing, adds layers of materials to create an object. The CraftBots in the TIW Makerspace use PLA or PETG (plastic) filaments. 
 
 **Pros of 3D printing:** Free, best for small 3D parts, no certification required
 

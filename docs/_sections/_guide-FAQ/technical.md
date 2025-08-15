@@ -16,8 +16,11 @@ TODO: Document reading the error messages (i.e. starting from the first error cu
 ## What is the difference between cloning using HTTPS and SSH?
 HTTPS (Hypertext Transfer Protocol Secure) and SSH (Secure Shell) are both data transfer protocols used in networking
 
-The main reason why you should use SSH over HTTPS is that you can push code to your repositories without having to input credentials each time (HTTPS requires credentials each push, which is annoying).
-TODO elaborate more
+HTTPS uses your username and password (or a personal access token) for authentication, which by default must be entered each time you push changes unless you configure a credential manager. It works immediately without extra setup, making it ideal for quick access to public repositories or for environments where SSH is blocked by firewalls. However, without caching, it can be inconvenient for frequent contributions due to repeated credential prompts.
+
+SSH, on the other hand, uses cryptographic key pairs for authentication. Once you generate an SSH key and upload the public key to your Git hosting service, you can push and pull without re-entering credentials, making it more convenient for long-term, frequent development. SSH keys are generally more secure than passwords, but initial setup takes extra steps and may be restricted on certain networks.
+
+TLDR: HTTPS is simpler for occasional use or restricted environments, while SSH is the preferred choice for frequent contributors who want a seamless and secure workflow.
 
 ## I've tried to add my controller's Bluetooth address, but my controller still isn't connecting!
 There is a maximum storage of 4 Bluetooth addresses in the allow-list. Simply remove an existing one and replace it with your controller’s Bluetooth address.

@@ -8,31 +8,48 @@ nav_order: 1
 ---
 # 3D Modeling with Onshape
 
+# TODO: finish this page
+
 {: .highlight}
-Onshape have excellent documentation on its [help website](https://cad.onshape.com/help/Content/sketch.htm?tocpath=Part%20Studios%7C_____0) (also can be found on the top right corner of your homepage), and should be referenced when you need more detailed help of a specific feature.
+Onshape has excellent documentation on its [help website](https://cad.onshape.com/help/Content/sketch.htm?tocpath=Part%20Studios%7C_____0) (also can be found on the top right corner of your homepage), and should be referenced when you need more detailed help of a specific feature.
 {: .callout-blue}
 
 ### Sign up and setting up OnShape
-1. Create an Onshape account using any email with and choose a student (education) subscription, this will allow your designs to be private and not leaked to competitors, because a free account cannot make private documents. Go to [Onshape signup](https://www.onshape.com/en/sign-up) and follow the onscreen instructions.
-2. You should be at the intial setup screen where you can choose your units, controls preferences as well as test your browser, it might tell you "reduced performace detected" if you are using intergrated graphics, don't be offended, you'll be fine. You can change all of these settings later in your account page (top right corner)
+1. Create an Onshape account using any email with and choose a student (education) subscription, this will allow your designs to be private if desired. Go to [Onshape signup](https://www.onshape.com/en/sign-up) and follow the onscreen instructions.
+2. You should be at the intial setup screen where you can choose your units, controls preferences as well as test your browser, it might tell you "reduced performace detected" if you are using intergrated graphics, don't be offended, you'll be fine. You can change all of these settings later in your account page (top right corner).
 
-After that, you are really to go, the following videos will guide you through the process of designing a example robot and provide some best practices for designing using CAD in general.
+After that, you are ready to go! The Onshape quickstart will guide you through Onshape's features.
 
 ### Getting the most of the user interface
-Despite having one of the simplest interface of any CAD programs, Onshape can still hide some very useful features from you, find out where to find them!
-_tab manager, search, feature visability, file storage, shortcuts keys, 3d space navigation_
+Despite having one of the simplest interface of any CAD programs, Onshape can still hide some very useful features from you. Be sure to explore on your own! Some features of interest may be:
+- Tab manager
+- Search
+- Feature visibility
+- File storage
+- Keybinds/shortcuts
+- 3D space navigation
+
 ### Invite your team!
-Team work make dream work (maybe not sometimes). Onshape behaves much like Google Docs and GitHub, workspace can shared and edit at the same time to keep everything consolidated in one place.
-_Teams, email invitation_
+Team work make dream work! Onshape behaves a lot like Google Docs/GitHub in the sense that the workspace can be shared and worked on by multiple epeople simultaneously.
+
 ### Making your first part
-Sketching is extremely important in CAD (you wouldn't be able to do anything else without sketching first).
-_Planes, shapes, constraints, references_
+Sketching is extremely important in CAD (you wouldn't be able to do anything else without sketching first). Some things to look into:
+- Planes
+- Shapes
+- Constraints
+- References
+
 ### Making your second, third, fourth,... part
-Being organized is the key to reducing hassle while designing, learn the effective tools to be organized!
-_Variable studio, naming, folders, appearance_
-### We be doin a bit of stealin sometimes
-Aside from [GrabCad](https://grabcad.com/), you can also get 3D models of parts you need straight in Onshape and quicky model with it.
-_Public page, importing models to own document_
+Being organized is the key to reducing hassle while designing, learn the effective tools to be organized! Important considerations for organzation are:
+- Variable studio
+- Naming
+- Folders
+- Appearance
+
+### We Thief a bit (sometimes)
+Sometimes you don't want to spend the time modeling something that already exists out on the internet. Aside from [GrabCad](https://grabcad.com/library), you can also get 3D models of parts you need straight in Onshape and quicky model with it.
+TODO: write **or link** a tutorial on how to import models into an onshape project
+
 ### Put it all together!
 Time to see your robot coming together virtually. This step is very important to make sure you don't spend your time making a prototype that you later finds having just that one little dimension that is wrong and rendering the entire thing usable!!! (sometimes recklessly drilling would fix the problem, but we apparently don't recommend that)
 _Adding parts, attaching parts, types of mates, fixing_
