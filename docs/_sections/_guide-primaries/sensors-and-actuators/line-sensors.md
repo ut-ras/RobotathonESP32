@@ -31,7 +31,7 @@ Keep in mind that the QTR line sensor has two 5V pins that are connected to each
 
 TODO decide if we want to make them use the LEDON pin
 
-TODO add backside pinout with labels
+TODO add picture of backside pinout with labels
 
 <img src="{{ '/_assets/images/line_sensor_wire_diagram.png' | prepend: site.baseurl }}" alt="line_sensor_wire_diagram.png">
 

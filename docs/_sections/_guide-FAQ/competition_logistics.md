@@ -20,10 +20,19 @@ The night before competition day we will host an all-nighter in the EER to work 
 Puchasing other materials is not necessary and the components in the bag will be adequate to complete all the challenges. If you choose to purchase extra metarials though, teams can buy anything that will help them with their robot like springs, rods, and electrical components as long as the total cost is less than $25. Wood, filament, or acrylic from the TIW are not included in the $25.
 These TIW materials will (most likely) include your chassis and your mechanical chalenge design, as your component bag will not come with either.
 
-## Where can we store our robot in the RAS office?
-TODO
+## Where can we store our robot?
+
+You can store your robot on the RAS Office's (EER 0.822C) Robotathon shelf! If there are no RAS leaders in the office and you want to do some work on your robot, please reach out to us in the [Robotathon Discord chat](https://discord.com/channels/692834117687181505/881756500933091338)!
+
+We ask that you keep the robot in the EER at all times to prevent items from getting lost.
 
 <img src="{{ '/_assets/images/my_image.png' | prepend: site.baseurl }}" alt="my_image.png :(">
-replace with picture of shelf with designated robotathon robot area
+TODO: replace with picture of shelf with designated robotathon robot area
 
 ## What can we keep after the competition?
+TODO: figure out what they can keep
+- Robot chassis
+- ESP32/all sensors
+
+You must return the following:
+- Remote controller 

@@ -6,6 +6,8 @@ parent: Hardware
 nav_order: 5
 ---
 
+# TODO: elaborate more on how servos and DC motors actually work
+
 # Actuators
 
 The word "actuators" is just a fancy word for "devices that create motion," which can include anything ranging from hydraulic pistons to motors. In our case, electric motors will be the key to your robot's motion! In this competition, you will be dealing with servo motors.

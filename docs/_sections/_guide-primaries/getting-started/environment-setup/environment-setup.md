@@ -18,8 +18,9 @@ The end goal of this section is to flash your ESP32 with an LED blink program. I
 
 Important software to be installed:
 1. VS Code with ESP-IDF
+    * IDE (Intgrated Development Environment) configured for ESP32 development
 1. Git Bash
+    * Saves history of your work and allows team collaboration
 1. SiLabs USB-UART bridge driver
-
-For explanations on what each of these applications are, take a look at [the FAQ!](TODO WRITE THIS)
+    * Required for communication with ESP32 chip
 

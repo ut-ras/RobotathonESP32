@@ -14,6 +14,7 @@ To pass this checkpoint, your robot should meet the following requirements:
 
 * Have at least two wall sensors attached to the robot in some way
 * Autonomously navigate through a maze until the exit is found
+    * Test will consist of a few turns
 
 Some questions we might ask about this checkpoint are:
 

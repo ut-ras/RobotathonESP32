@@ -25,8 +25,6 @@ Notice that the sensor will output garbage if the sensor is too close to an obje
 ## Interfacing
 There are 3 pins (red, black, white) to the device as seen in the picture, associated to Power, Ground, and Output Signal, respectively. For testing the distance sensor, let’s use pin 12, as the signal pin. Hook up the circuit as follows:
 
-TODO: figure out which power pinout of the line sensor we are going to use!!
-
 <img src="{{ '/_assets/images/ir_sensor_wiring.png' | prepend: site.baseurl }}" alt="ir_sensor_wiring.png">
 
 |  IR Sensor Pin   | ESP32 Pin          |

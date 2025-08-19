@@ -7,9 +7,7 @@ nav_order: 2
 ---
 
 # Color Sensor
-The APDS-9960 Color Sensor will allow you to complete the Color Challenge.
-
-
+The APDS-9960 Color Sensor will allow you to complete the Color Challenge by enabling your robot to see colors!
 
 ## Workshop Slides
 <iframe src="https://docs.google.com/presentation/d/1h5p9pCGCKSqfrkFSnQQ6bxtwjZGJe90FrfASYaGZwRY/embed?start=false" 

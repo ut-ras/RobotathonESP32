@@ -6,6 +6,8 @@ parent: Checkpoints
 nav_order: 4
 ---
 
+# Moving Base Checkpoint
+
 <img src="{{ '/_assets/images/my_image.png' | prepend: site.baseurl }}" alt="my_image.png :(">
 ***replace with smth smth moving base***
 
@@ -20,7 +22,6 @@ Next Steps:
 * Use CADed materials for your chassis (laser-cut for main chassis, 3D-print for other parts recommended)
 * Be able to control your robot more precisely with the controller (turn left, right, back, forward)
 * Be able to change your robot's mode when you press a button (TODO insert smth about mentorbot)
-
 
 Some questions we might ask you:
 * How is your robot powered?

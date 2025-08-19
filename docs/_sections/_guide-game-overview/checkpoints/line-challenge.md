@@ -20,3 +20,4 @@ Some questions we might ask about this checkpoint are:
 * How did you tell your robot to start the line sensor challenge?
 * How did you use the data from the line sensor in your program?
 * Why did you place the line sensor in the spot that it is?
+* How would you automate or simplify the calibration process?

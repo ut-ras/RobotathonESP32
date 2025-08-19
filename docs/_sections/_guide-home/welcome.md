@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Welcome
-# permalink: / # put this back when done with development
+permalink: / # put this back when done with development
 nav_include: true
 nav_order: 3
 ---
