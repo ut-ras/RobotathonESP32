@@ -6,18 +6,32 @@ nav_include: true
 nav_order: 2
 ---
 
-TODO write software debugging guide in here too
+TODO finish 
+# Debugging
 
-# How to (not) Explode Your Microcontroller like the Rest of Us
+Things aren't working? Chances are it's because of something super silly like an unplugged wire or off by one error.
 
-## What is a short circuit?
+## Software Bugs
+
+TODO make checklist
+
+
+## Hardware Bugs
+
+TODO finish checklist
+1. Is everything plugged in properly?
+    * Did you double check?
+1. If the issue is with your color sensor, did you have the SDA and SCL lines flipped?
+1. Did you try using a multimeter to diagnose the issue?
+
+### What is a short circuit?
 
 A short circuit is the connection between two different nodes that are at different voltages via  a path of very low resistance. 
 
-## Why Should You Avoid a Short Circuit?
+### Why Should You Avoid a Short Circuit?
 A short circuit causes a surge of high amounts of current to flow through both nodes, which is very dangerous. This could cause potential injuries such as a shock or a burn as well as damage electronics nearby.  Hence why it is preferable to avoid shorting anything.
 
-## How to Avoid a Short Circuit:
+### How to Avoid a Short Circuit:
 * Disconnect power from any electronic device when interfacing with its hardware.
  * Do not have microcontroller connected to power when moving around cables
 * Make sure that there are no open cables  near an electronic device with power.

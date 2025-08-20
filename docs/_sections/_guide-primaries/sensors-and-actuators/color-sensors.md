@@ -29,7 +29,7 @@ You will definitely want to keep in mind that the sensor is affected by ambient 
 
 If you want more details on how the color sensor works, check out [this link!](https://www.utmel.com/components/everything-you-know-about-tcs34725-color-sensors-faq?id=1986)
 
-Here is a wiring diagram:
+Here is a wiring diagram (sensor colors may vary):
 
 <img src="{{ '/_assets/images/color_sensor_wiring.png' | prepend: site.baseurl }}" alt="color_sensor_wiring.png">
 

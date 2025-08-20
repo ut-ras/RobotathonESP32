@@ -16,7 +16,14 @@ The word "actuators" is just a fancy word for "devices that create motion," whic
 # DC Motors
 <img src="{{ '/_assets/images/dc_motor.jpg' | prepend: site.baseurl }}" alt="dc_motor.jpg" width="200" height="300">
 
-You will be using DC (direct current) motors as the primary means of moving your robot around. However, directly connecting a DC motor to the ESP32 may not be desirable due to lack of direction control and higher voltage/current requirements of the motor. This is where motor controllers come into play.
+You will be using DC (direct current) motors as the primary means of moving your robot around. 
+
+
+DC motors operate on electromagnetic principles. Inside the motor, there are permanent magnets (stator) that create a stationary magnetic field, and wire coils (rotor/armature) that carry electrical current. When current flows through the rotor windings in the presence of the magnetic field, electromagnetic forces cause the rotor to spin. A commutator and brushes automatically switch the current direction in the windings as the motor rotates, ensuring continuous rotation.
+
+The motor's speed is controlled by varying the applied voltage (typically using PWM), while direction is reversed by switching the voltage polarity.
+
+However, directly connecting a DC motor to the ESP32 is not desirable due to lack of direction control and higher voltage/current requirements of the motor. This is where motor controllers come into play.  
 
 ## Motor Controllers
 <img src="{{ '/_assets/images/l298n_motor_driver.jpg' | prepend: site.baseurl }}" alt="l298n_motor_driver.jpg" width="200" height="300">

@@ -29,8 +29,6 @@ This side of the sensor will be facing the floor to detect the line:
 Keep in mind that the QTR line sensor has two 5V pins that are connected to each other! They are identical in function besides being in a different location
 {: .callout-blue}
 
-TODO decide if we want to make them use the LEDON pin
-
 TODO add picture of backside pinout with labels
 
 <img src="{{ '/_assets/images/line_sensor_wire_diagram.png' | prepend: site.baseurl }}" alt="line_sensor_wire_diagram.png">

@@ -155,7 +155,7 @@ Building and flashing after the first time does not take nearly as long. In fact
 
 Here is an example program that blinks the onboard LED. "Blinky" projects are a standard "hello world" type of program that demonstrate your development environment works properly.
 
-If you replace your `arduino_main.cpp` file's contents with the following and flash properly, then your ESP32's blue onboard LED will begin to blink every second (yay 😄)!
+If you replace your `arduino_main.cpp` file's contents with the following, build, and flash properly, then your ESP32's blue onboard LED will begin to blink every second (yay 😄)!
 
 {: .highlight}
 Note that it is **your** responsibility to integrate this code with the controller starter code!
@@ -180,4 +180,7 @@ void loop() {
 ```
 
 
+{: .highlight}
+Tip: Make sure to enable auto-save in your VS Code! It will save you a lot of headaches down the road :)
+{: .callout-blue}
 
