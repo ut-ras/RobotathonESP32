@@ -60,7 +60,7 @@ The robot is tasked with sampling a color, at a far end of the field.
 
 ### Color Challenge
 Four colored strips will be placed on the floor. The robot must sample the first strip and remember its color.
-Then, test the next three strips to find one that matches the first strip and pick the ping pong ball up.
+Then, drive over the next three strips to find one that matches the first strip and pick the ping pong ball up.
 
 
 {: .highlight}

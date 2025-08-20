@@ -17,7 +17,7 @@ We are only concerned with pins that are power, ground, GPIO, and ADC enabled, s
 
 * Power - 3V3 and 5V pins labeled with red. These pins will always be outputting their respective voltage levels (3.3V and 5V) if the ESP32 is powered through its USB-micro port.
 * Ground - pins labeled as GND. These pins serve as the current's return path in your circuits.
-* GPIO (General Purpose Input/Output) - virtually every pin. These pins can be configured to read or output digital high and low signals.
+* GPIO (General Purpose Input/Output) - just about every pin. These pins can be configured to read or output digital high and low signals.
 * ADC (Analog to Digital Converter) - only some pins. These pins can read analog values instead of just high or low. 
 
 {: .highlight}
@@ -25,18 +25,17 @@ Warning: Be careful to not short (connect) a power pin directly to a ground pin.
 {: .callout-red}
 
 ## Powering the ESP32
-You can power your ESP32 by 2 methods: battery pack or laptop USB connection.
+You can power your ESP32 by 2 methods: portable battery or laptop USB connection.
 
 {: .highlight}
-Note: Do NOT power your ESP32 through its 5V pin with the battery pack while simultaneously connecting it to your computer! This may irreversibly damage your devices (only do one power connection at a time).
+Note: Do NOT power your ESP32 through its 5V pin with the portable battery while simultaneously connecting it to your computer! This may irreversibly damage your devices (only do one power connection at a time).
 {: .callout-blue}
 
 ### USB Connection Power
 The USB connection to your computer is necessary for uploading and debugging your code through the serial monitor. It would be easiest to keep using the USB connection until later in the competition when testing the entire system.
 
 ### External Power Source
-
-Using the external battery pack is detailed in the [Actuators page](https://ut-ras.github.io/RobotathonESP32/sensors-and-actuators/actuators) because we will be using the motor driver's 5V output to power the ESP32.
+Using the external portable battery is detailed in the [Actuators page](https://ut-ras.github.io/RobotathonESP32/sensors-and-actuators/actuators) because we will be using the motor driver's 5V output to power the ESP32.
 
 If you want to know more about any features, feel free to ask a mentor or Google for more information :) 
 
