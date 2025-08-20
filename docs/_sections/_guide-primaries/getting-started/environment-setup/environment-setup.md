@@ -17,7 +17,7 @@ The exact process depends on what OS your computer is running (Windows, macOS, e
 The end goal of this section is to flash your ESP32 with an LED blink program. It will take you from having nothing installed to the full coding environment you'll need for the competition!  
 
 Important software to be installed:
-1. VS Code with ESP-IDF
+1. VS Code with ESP-IDF v4.4.8
     * IDE (Intgrated Development Environment) configured for ESP32 development
 1. Git Bash
     * Saves history of your work and allows team collaboration

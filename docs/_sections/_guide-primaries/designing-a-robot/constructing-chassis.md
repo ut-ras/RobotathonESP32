@@ -8,7 +8,7 @@ nav_order: 4
 
 # Chassis Construction
 
-Now that you have some idea of your drive system layout, let’s look at how to build a base for your bot. While you can use a Poptart box to house everything (yes, it’s been done), we highly encourage you to use one of following methods using the tools found at TIW.
+Now that you have some idea of your drive system layout, let’s look at how to build a base for your bot. While you can use a Poptart box to house everything (yes, it’s been done), we highly encourage you to use one of following methods using the tools found at TIW. The following information will be brief since TIW pages will cover pretty much everything you need to know
 
 {: .highlight}
 Note that you will have to be trained by TIW staff to use their equipment. Their Canvas page for training can be [accessed here!](https://inventionworks.engr.utexas.edu/training)
@@ -24,7 +24,7 @@ SM, like laser cutting or mills/lathes, removes material from a product to achie
 ## Additive Manufacturing (AM)
 AM, such as 3D printing, adds layers of materials to create an object. The CraftBots in the TIW Makerspace use PLA or PETG (plastic) filaments. 
 
-**Pros of 3D printing:** Free, best for small 3D parts, no certification required
+**Pros of 3D printing:** Free, best for small 3D parts
 
 **Cons of 3D printing:** Slow process (also prone to more error), main CraftBots are limited to 1 ft<sup>3</sup>
 
@@ -38,6 +38,6 @@ You can create your chassis out of a single part or attach many parts together. 
 - Don’t forget to add holes or section dividers for wheels, wires, sensors, etc.
 - Make sure to design your chassis to accomodate your breadboard and wires!
 - If you’re a visual person, create an assembly in Solidworks of your robot base before constructing! Find part files online or create rough estimate shapes and see how everything fits together.
-- When fastening things like sensors or casters, temporarily secure with foam tape then use other adhesives once you’re 100% certain!
-- Motor mounting bracket step file for 3D printing: [https://www.pololu.com/product/3435/resources](https://www.pololu.com/product/3435/resources)
+- When fastening things like sensors or casters, temporarily secure with foam tape then use other more permanent adhesives once you’re 100% certain!
+- Servo motor mounting bracket step file for 3D printing: [https://www.pololu.com/product/3435/resources](https://www.pololu.com/product/3435/resources)
 

@@ -6,9 +6,11 @@ nav_include: true
 nav_order: 3
 ---
 
-# Robotathon Guide - 2025
+# Robotathon Guide - 2025 RASPionage
 
-# TODO: insert logo here
+<div style="text-align: center;">
+<img src="{{ '/_assets/images/robotathon_2025_logo.png' | prepend: site.baseurl }}" alt="robotathon_2025_logo.png :(" width="250" height="250">
+</div>
 
 ## Hello!
 

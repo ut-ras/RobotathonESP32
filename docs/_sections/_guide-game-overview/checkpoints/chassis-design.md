@@ -4,7 +4,7 @@ title: Chassis Design
 nav_include: true
 parent: Checkpoints
 parent: Checkpoints
-nav_order: 4
+nav_order: 2
 
 ---
 

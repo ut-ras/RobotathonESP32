@@ -35,14 +35,14 @@ Note that Robotathon aims to give you a *basic* understanding of how Git/GitHub 
 
 <img src="{{ '/_assets/images/git_graph.png' | prepend: site.baseurl }}" alt="git_graph.png :(">
 
-This graph shows a Git commit history graph. Each node represents a version of the code with new committed changes (i.e. node B includes the contents of node A along with the committed changes). 
+This graph is a Git commit history graph. Each node represents a version of the code with new committed changes (i.e. node B includes the contents of node A along with the newly committed changes). 
 
 ## What is staging in Git?
-Instead of having to push every little change to your repository, you can group them into a collection of changes called a **commit**, which serve as a snapshot of the project's state. You can collect specific changes by running `git add <file>` (or you can use `git add .` if you want to add all changes).
+Instead of having to push every little change to your repository, you can group them into a collection of changes called a **commit**, which serve as a snapshot of the project's state. You can collect changes in a file by running `git add <file>` (or you can use `git add .` if you want to add all changes across all files).
 
 The **staging area** in Git is where you can manage your changes before saving them to your commit. You can take a look at what's going on with `git status`.
 
-For example, if you accidentally stage a file or change that you don't want in your commit (i.e. a build directory), you can simply remove it from the staging area by running `git restore --staged <file>`.
+For example, if you accidentally stage a file that you don't want in your commit (i.e. a build directory), you can simply remove it from the staging area by running `git restore --staged <file>`.
 
 Once you verify that everything you want to commit is shown in `git status`, you can proceed to **commit** the changes to your local repository and then **push** your local repository to the remote repository on GitHub with `git push`.
 
@@ -82,6 +82,13 @@ In Git, a **branch** is essentially a separate line of development within your r
 You can then make changes and commit them to this branch without affecting the original branch.
 
 Oftentimes this original branch is your `main` or `master` branch (though `main` is the recommended and default GitHub name), which is (or should be) your project's stable version.
+
+To create and switch to a new branch:
+1. `git checkout -b <branch name>`
+
+To switch to a branch that exists in your remote repository already
+1. `git fetch`
+1. `git checkout <branch name>`
 
 
 ## What is merging in Git?
