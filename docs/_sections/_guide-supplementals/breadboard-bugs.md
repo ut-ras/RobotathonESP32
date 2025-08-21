@@ -6,7 +6,6 @@ nav_include: true
 nav_order: 2
 ---
 
-TODO finish 
 # Debugging
 
 Things aren't working? Chances are it's because of something super silly like an unplugged wire or off by one error.
