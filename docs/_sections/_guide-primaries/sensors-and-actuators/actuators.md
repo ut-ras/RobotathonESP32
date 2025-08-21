@@ -40,13 +40,11 @@ First we will go over using an external power source for the ESP32. For this com
 
 Here is a diagram of how your circuit should look when using the portable battery pack:
 
-<img src="{{ '/_assets/images/external_ESP32_power.png' | prepend: site.baseurl }}" alt="external_ESP32_power.png">
-* Notice how the blue lines are shared between all components so that they have a common ground
+<img src="{{ '/_assets/images/Power_from_power_bank.png' | prepend: site.baseurl }}" alt="external_ESP32_power.png">
 
 However, if you want to be able to use your motors and plug your ESP32 into your laptop to use the serial monitor for debugging, then you'll have to change the wiring (or else you will fry your equipment!):
 
-<img src="{{ '/_assets/images/motor_controller_with_usb.png' | prepend: site.baseurl }}" alt="motor_controller_with_usb.png">
-* Note how the line from the motor controller's 5V line is now gone! 
+<img src="{{ '/_assets/images/Power_from_microUSB.png' | prepend: site.baseurl }}" alt="motor_controller_with_usb.png">
 
 You should now be able use your USB connection safely!
 
