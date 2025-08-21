@@ -17,6 +17,9 @@ It is highly recommended that you map autonomous sensors modes (line, color, dis
 See [BluePad32's official docs](https://bluepad32.readthedocs.io/en/latest/FAQ/#:~:text=true%3B%0A%7D-,Using%20allowlist%20commands%20from%20the%20USB%20console,%C2%B6,-Note) if you'd like to see other features.
 
 
+TODO: testslakdfasnfanfkllkfk
+<img src="{{ '/_assets/gifs/test.png' | prepend: site.baseurl }}" alt="test.png">
+
 The process for interfacing your controller to the ESP32 is as follows:
 1. Find controller Bluetooth address
 1. Add address to ESP32 allowlist
