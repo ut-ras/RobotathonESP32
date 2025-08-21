@@ -20,6 +20,10 @@ See [BluePad32's official docs](https://bluepad32.readthedocs.io/en/latest/FAQ/#
 TODO: testslakdfasnfanfkllkfk
 <img src="{{ '/_assets/gifs/test.png' | prepend: site.baseurl }}" alt="test.png">
 
+TEST
+<img src="https://i.imgur.com/BNJ8PZy.gif" alt="GIF from Imgur">
+
+
 The process for interfacing your controller to the ESP32 is as follows:
 1. Find controller Bluetooth address
 1. Add address to ESP32 allowlist
