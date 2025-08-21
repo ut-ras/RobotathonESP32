@@ -29,13 +29,13 @@ Note that your controller will likely have the address already labeled on it on 
 {: .callout-blue}
 
 1. Plug in your ESP32 and flash it with the Robotathon starter code your team should have forked 
-1. Open the serial monitor
-<img src="{{ '/_assets/gifs/controller_listen.gif' | prepend: site.baseurl }}" alt="controller_listen.gif">
+1. Open the serial monitor    
+<img src="{{ '/_assets/gifs/controller_listen.gif' | prepend: site.baseurl }}" alt="controller_listen.gif">    
 *Opening the serial monitor through the ESP-IDF extension GUI*
-1. You should see your controller address as a string of octets (something like `98:B6:E1:7C:C3:95`) in the serial monitor while trying to connect your controller (press and hold power button on controller until lights slowly and then rapidly move to put it in pairing mode)
-<img src="{{ '/_assets/gifs/controller_not_allowed.gif' | prepend: site.baseurl }}" alt="controller_not_allowed.gif">
-*Viewing your controller's Bluetooth address*
-* Look for something like this when finding your controller's address:
+1. Put your controller into pairing mode by pressing and **holding** the power button until the lights slowly **then** rapidly move. You should then see  your controller address as a string of octets (something like `98:B6:E1:7C:C3:95`) in the serial monitor     
+<img src="{{ '/_assets/gifs/controller_not_allowed.gif' | prepend: site.baseurl }}" alt="controller_not_allowed.gif">    
+*Viewing your controller's Bluetooth address*   
+* Look for terminal output like this when finding your controller's address:
 <img src="{{ '/_assets/images/controller_address.png' | prepend: site.baseurl }}" alt="controller_address :(">
 
 ## Adding Bluetooth Address
@@ -44,15 +44,18 @@ Note that your controller will likely have the address already labeled on it on 
 * Now check that the ESP32 actually accepted the address:
     * `allowlist_list`
 
-<img src="{{ '/_assets/images/add_bluetooth.png' | prepend: site.baseurl }}" alt="add_bluetooth.png :(">
+<img src="{{ '/_assets/images/add_bluetooth.png' | prepend: site.baseurl }}" alt="add_bluetooth.png :(">    
 *Adding and checking Bluetooth address*
 
 ## Accessing controller data
 * The controller should be able to connect now, and the data should begin streaming in the serial monitor after connecting
 
-<img src="{{ '/_assets/gifs/controller_dump.gif' | prepend: site.baseurl }}" alt="controller_dump.gif">
+<img src="{{ '/_assets/gifs/controller_dump.gif' | prepend: site.baseurl }}" alt="controller_dump.gif">    
 *Streaming controller data from ESP32*
 
+{: .highlight}
+Notice how some joystick values are fluctuating! This is caused by mechanical wear on the joystick, and can be solved by implementing a [deadzone](https://wiki.purduesigbots.com/software/robotics-basics/joystick-deadzones#:~:text=Sometimes%2C%20controller,not%20be%20read) when using your joystick values.
+{: .callout-blue}
 
 ## Code
 
@@ -61,7 +64,7 @@ In the sample code, there is a handle (i.e. pointer) for your controller called 
 This means you will have to pass the controller handle into functions if you want to use them in there. Here is a basic example:
 
 {: .highlight}
-This sample only provides the basic structure of how you would break your logic up into different functions. You may edit it however you please!
+This sample only provides the basic structure of how you would break your logic up into different functions as good practice. You may edit it however you please!
 {: .callout-blue}
 
 ```
@@ -74,11 +77,14 @@ This sample only provides the basic structure of how you would break your logic 
 extern ControllerPtr myControllers[BP32_MAX_GAMEPADS]; // BP32 library allows for up to 4 concurrent controller connections, but we only need 1
 
 void foo(ControllerPtr myController) {
-    BP32.update();
     while(1) {
+        BP32.update();
         if(myController->a()) {
             Console.printf("hi");
             return;
+        }
+        else {
+            Console.printf("Press button A!"); // Replace with whatever you want
         }
     }
 }
@@ -111,7 +117,7 @@ just hardcode the `myController` pointer to always be myControllers[0]?
 TODO: check if the code actually builds lmao
 
 {: .highlight}
-You **must** call `BP32.update()` to update the current controller values, and then call helper functions (i.e. `myController->a()` or `myController->x()`) to actually retrieve the controller values.
+You **must** call `BP32.update()` to update the current controller values before calling helper functions (i.e. `myController->a()` or `myController->x()`) to actually retrieve the controller values.
 {: .callout-red}
 
 To see how to access the different peripherals on your controller, check out the sample code's `dumpGamepad()` function! Alternatively, you can hover over a function defined by BluePad32 and `Ctrl + Left Click` to see the actual source code for it (if your VS Code isn't being dumb). Yet another alternative is to go dig around on the official [BluePad32 docs](https://bluepad32.readthedocs.io/en/latest/FAQ/#:~:text=true%3B%0A%7D-,Using%20allowlist%20commands%20from%20the%20USB%20console,%C2%B6,-Note).
