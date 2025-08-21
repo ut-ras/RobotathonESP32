@@ -17,11 +17,6 @@ It is highly recommended that you map autonomous sensors modes (line, color, dis
 See [BluePad32's official docs](https://bluepad32.readthedocs.io/en/latest/FAQ/#:~:text=true%3B%0A%7D-,Using%20allowlist%20commands%20from%20the%20USB%20console,%C2%B6,-Note) if you'd like to see other features.
 
 
-TODO: testslakdfasnfanfkllkfk
-<img src="{{ '/_assets/gifs/test.png' | prepend: site.baseurl }}" alt="test.png">
-
-TEST
-<img src="https://i.imgur.com/BNJ8PZy.gif" alt="GIF from Imgur">
 
 
 The process for interfacing your controller to the ESP32 is as follows:
@@ -37,10 +32,16 @@ Note that your controller will likely have the address already labeled on it on 
 
 1. Plug in your ESP32 and flash it with the Robotathon starter code your team should have forked 
 1. Open the serial monitor    
-<img src="{{ '/_assets/gifs/controller_listen.gif' | prepend: site.baseurl }}" alt="controller_listen.gif">    
+
+<!-- <img src="{{ '/_assets/gifs/controller_listen.gif' | prepend: site.baseurl }}" alt="controller_listen.gif">     -->
+<!-- locally stored gifs no work idk why. imgur works fine -->
+<img src="https://i.imgur.com/uAtGs5R.gif" alt="controller listen">
 *Opening the serial monitor through the ESP-IDF extension GUI*
 1. Put your controller into pairing mode by pressing and **holding** the power button until the lights slowly **then** rapidly move. You should then see  your controller address as a string of octets (something like `98:B6:E1:7C:C3:95`) in the serial monitor     
-<img src="{{ '/_assets/gifs/controller_not_allowed.gif' | prepend: site.baseurl }}" alt="controller_not_allowed.gif">    
+
+<!-- <img src="{{ '/_assets/gifs/controller_not_allowed.gif' | prepend: site.baseurl }}" alt="controller_not_allowed.gif">     -->
+<!-- locally stored gifs no work idk why. imgur works fine -->
+<img src="https://i.imgur.com/wBzGrLx.gif" alt="controller not allowed">
 *Viewing your controller's Bluetooth address*   
 * Look for terminal output like this when finding your controller's address:
 <img src="{{ '/_assets/images/controller_address.png' | prepend: site.baseurl }}" alt="controller_address :(">
@@ -57,7 +58,10 @@ Note that your controller will likely have the address already labeled on it on 
 ## Accessing controller data
 * The controller should be able to connect now, and the data should begin streaming in the serial monitor after connecting
 
-<img src="{{ '/_assets/gifs/controller_dump.gif' | prepend: site.baseurl }}" alt="controller_dump.gif">    
+<!-- <img src="{{ '/_assets/gifs/controller_dump.gif' | prepend: site.baseurl }}" alt="controller_dump.gif">     -->
+<!-- locally stored gifs no work idk why. imgur works fine -->
+<img src="https://i.imgur.com/BNJ8PZy.gif" alt="controller data stream">
+
 *Streaming controller data from ESP32*
 
 {: .highlight}
