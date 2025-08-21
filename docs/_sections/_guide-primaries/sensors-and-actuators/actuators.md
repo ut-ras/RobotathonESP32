@@ -26,23 +26,19 @@ The motor's speed is controlled by varying the applied voltage (typically using 
 However, directly connecting a DC motor to the ESP32 is not desirable due to lack of direction control and higher voltage/current requirements of the motor. This is where motor controllers come into play.  
 
 ## Motor Controllers
-<img src="{{ '/_assets/images/l298n_motor_driver.jpg' | prepend: site.baseurl }}" alt="l298n_motor_driver.jpg" width="200" height="300">
-<img src="{{ '/_assets/images/l298n_driver_pinout.png' | prepend: site.baseurl }}" alt="l298n_driver_pinout.png" width="300" height="400">
+<img src="{{ '/_assets/images/DRV8833.png' | prepend: site.baseurl }}" alt="l298n_motor_driver.jpg" width="200" height="300">
+<img src="{{ '/_assets/images/DRV8833_Pinout.png' | prepend: site.baseurl }}" alt="l298n_driver_pinout.png" width="300" height="400">
 
-A motor controller, such as the L298N, acts as an intermediary between the microcontroller and the DC motor. It allows the microcontroller to control the motor's speed and direction without directly handling the high current. The motor controller has the following key components:
-* H-Bridge Circuit: This allows the motor to be driven in both forward and reverse directions. Different combinations of IN1 and IN2 will determine the spin direction. 
-* PWM (Pulse Width Modulation) Control: This allows speed control by varying the duty cycle of the PWM signal.
-* Power Supply Terminals: These provide the necessary power to the motor.
-* 5V Voltage Regulator: This allows the motor controller to act as a 5V output power supply. This functionality can be disabled by removing the corresponding jumper (see below)
+A motor controller, such as the DRV8833, acts as an intermediary between the microcontroller and the DC motor. It allows the microcontroller to control the motor's speed and direction without directly handling the high current. The motor controller has an H-bridge circuit, which allows different combinations of IN1 and IN2 to change the motor direction.
 
-The following information is an adapted version of [this guide.](https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tutorial/)
+The following information is an adapted version of [this guide.](https://lastminuteengineers.com/drv8833-arduino-tutorial/)
 
 # How to Use Motor and Motor Controller?
 
-# Battery Pack Power
-First we will go over using an external power source for the ESP32. For this competition, you will be able to control your robot with a wireless game controller to navigate around the field (sensor challenges should be completed autonomously). It would be impractical to power your ESP32 through USB on the field, so you will use a battery pack. We need to reduce the voltage of the battery pack down to a level the ESP32 can safely use through the motor controller's 5V voltage regulator.
+## Portable Battery Pack Power
+First we will go over using an external power source for the ESP32. For this competition, you will be able to control your robot with a wireless game controller to navigate around the field (sensor challenges should be completed autonomously). It would be impractical to power your ESP32 through the on-board USB on the field, so you will use a portable battery pack. 
 
-Here is a diagram of how your circuit should look when using the battery pack:
+Here is a diagram of how your circuit should look when using the portable battery pack:
 
 <img src="{{ '/_assets/images/external_ESP32_power.png' | prepend: site.baseurl }}" alt="external_ESP32_power.png">
 * Notice how the blue lines are shared between all components so that they have a common ground
