@@ -32,16 +32,14 @@ Note that your controller will likely have the address already labeled on it on 
 
 1. Plug in your ESP32 and flash it with the Robotathon starter code your team should have forked 
 1. Open the serial monitor    
-
 <!-- <img src="{{ '/_assets/gifs/controller_listen.gif' | prepend: site.baseurl }}" alt="controller_listen.gif">     -->
 <!-- locally stored gifs no work idk why. imgur works fine -->
-<img src="https://i.imgur.com/uAtGs5R.gif" alt="controller listen">
+<img src="https://i.imgur.com/uAtGs5R.gif" alt="controller listen">    
 *Opening the serial monitor through the ESP-IDF extension GUI*
 1. Put your controller into pairing mode by pressing and **holding** the power button until the lights slowly **then** rapidly move. You should then see  your controller address as a string of octets (something like `98:B6:E1:7C:C3:95`) in the serial monitor     
-
 <!-- <img src="{{ '/_assets/gifs/controller_not_allowed.gif' | prepend: site.baseurl }}" alt="controller_not_allowed.gif">     -->
 <!-- locally stored gifs no work idk why. imgur works fine -->
-<img src="https://i.imgur.com/wBzGrLx.gif" alt="controller not allowed">
+<img src="https://i.imgur.com/wBzGrLx.gif" alt="controller not allowed">    
 *Viewing your controller's Bluetooth address*   
 * Look for terminal output like this when finding your controller's address:
 <img src="{{ '/_assets/images/controller_address.png' | prepend: site.baseurl }}" alt="controller_address :(">
@@ -60,7 +58,7 @@ Note that your controller will likely have the address already labeled on it on 
 
 <!-- <img src="{{ '/_assets/gifs/controller_dump.gif' | prepend: site.baseurl }}" alt="controller_dump.gif">     -->
 <!-- locally stored gifs no work idk why. imgur works fine -->
-<img src="https://i.imgur.com/BNJ8PZy.gif" alt="controller data stream">
+<img src="https://i.imgur.com/BNJ8PZy.gif" alt="controller data stream">    
 
 *Streaming controller data from ESP32*
 
