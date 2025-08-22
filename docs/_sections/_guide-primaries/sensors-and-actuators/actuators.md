@@ -59,7 +59,9 @@ To control a DC motor using the ESP32, a motor controller, and battery pack (**W
 * You will need to remove the jumper shorting the ENA pin to 5V
 * You will need to use a screwdriver to clamp the power wires in place (all the wires connecting to the blue screw terminals) into place. Make sure these are secure because wires coming loose and causing a short circuit could be catastrophic!
 * Note that the wire polarity on the motor does not matter because DC motors' spin direction is based on the direction of current flowing through them.
-
+{: .highlight}
+^replace
+{: .callout-red}
 <br>
 
 |  Motor Controller Terminal   | ESP32 Pin          |
