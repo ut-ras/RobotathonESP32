@@ -6,8 +6,6 @@ parent: Hardware
 nav_order: 5
 ---
 
-# TODO: elaborate more on how servos and DC motors actually work
-
 # Actuators
 
 The word "actuators" is just a fancy word for "devices that create motion," which can include anything ranging from hydraulic pistons to motors. In our case, electric motors will be the key to your robot's motion! In this competition, you will be dealing with servo motors.
@@ -21,7 +19,7 @@ You will be using DC (direct current) motors as the primary means of moving your
 
 DC motors operate on electromagnetic principles. Inside the motor, there are permanent magnets (stator) that create a stationary magnetic field, and wire coils (rotor/armature) that carry electrical current. When current flows through the rotor windings in the presence of the magnetic field, electromagnetic forces cause the rotor to spin. A commutator and brushes automatically switch the current direction in the windings as the motor rotates, ensuring continuous rotation.
 
-The motor's speed is controlled by varying the applied voltage (typically using PWM), while direction is reversed by switching the voltage polarity.
+The motor’s speed depends on the applied voltage; higher voltage makes the motor spin faster. The torque (rotational force) depends on the current; more current allows the motor to push harder, such as when moving a heavier robot. Motor speed is controlled by pulse-width modulation ([PWM](https://learn.sparkfun.com/tutorials/pulse-width-modulation/all)), which is when the supply voltage is switched on and off rapidly. By adjusting the ratio of “on” to “off” time, you can smoothly control the average voltage the motor receives. Direction is reversed by by switching the voltage polarity.
 
 However, directly connecting a DC motor to the ESP32 is not desirable due to lack of direction control and higher voltage/current requirements of the motor. This is where motor controllers come into play.  
 
@@ -74,22 +72,19 @@ The following is an example of configuring and running the motor in software:
 #include "sdkconfig.h"
 #include <Arduino.h>
 
-#define IN1  27  // Control pin 1
-#define IN2  14  // Control pin 2
-#define ENA  12  // PWM pin
+#define IN1  16  // Control pin 1
+#define IN2  17  // Control pin 2
 
 void setup() {
   Serial.begin(115200);
   pinMode(IN1, OUTPUT);
   pinMode(IN2, OUTPUT);
-  pinMode(ENA, OUTPUT);
 }
 
 void loop() {
   // Spin motor
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
-  analogWrite(ENA, 255);
+  analogWrite(IN1, 255);  // PWM signal
+  digitalWrite(IN2, LOW); // Direction control
 
   delay(1000);  // Run for 1 second
 
@@ -108,7 +103,7 @@ Again, more detailed information about the DRV8833 motor controllers can be [fou
 
 ## What Are Servos?
 
-Servos are motors that are designed for precise position control. Instead of freely rotating when powered, servos listen to a control signal (usually [PWM](https://learn.sparkfun.com/tutorials/pulse-width-modulation/all)) to determine where to rotate. Some servos offer limited rotation, while others can rotate continuously (like ours). More advanced servos have other ways to be even more precise such as a feedback system on top of the control signal, but that is not necessary for this competition.
+Servos are motors that are designed for precise position control. Instead of freely rotating when powered, servos listen to a control signal (usually [PWM](https://learn.sparkfun.com/tutorials/pulse-width-modulation/all)) to determine where to rotate. Some servos offer limited rotation (like 0°–180°), while others can rotate continuously (like ours). More advanced servos have other ways to be even more precise such as a feedback system on top of the control signal, but that is not necessary for this competition.
 
 ## How to Use Servos?
 
