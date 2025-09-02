@@ -36,40 +36,34 @@ The following information is an adapted version of [this guide.](https://lastmin
 # How to Use Motor and Motor Controller?
 
 ## Portable Battery Pack Power
-First we will go over using an external power source for the ESP32. For this competition, you will be able to control your robot with a wireless game controller to navigate around the field (sensor challenges should be completed autonomously). It would be impractical to power your ESP32 through the on-board USB on the field, so you will use a portable battery pack. 
+First we will go over using an external power source for the ESP32. For this competition, you will be able to control your robot with a wireless game controller to navigate around the field (sensor challenges should be completed autonomously). It would be impractical to power your ESP32 through the on-board USB on the field, so you will use a portable battery pack. This battery pack will be connected using a USB-C 5V breakout board, which ensures the pack provides a steady 5V supply for your ESP32 and motor controller.
 
-Here is a diagram of how your circuit should look when using the portable battery pack:
+To safely power your ESP32 from the battery pack and still have the option to connect it to your laptop to use the serial monitor for debugging, add a diode between the breadboard's power line and the ESP32’s 5V pin. The diode works like a one-way valve, so it prevents current from accidentally flowing back into your computer or battery pack. Without the diode, you could risk frying your equipment!
 
-<img src="{{ '/_assets/images/Power_from_power_bank.png' | prepend: site.baseurl }}" alt="external_ESP32_power.png">
+Here is a diagram of how your circuit should look:
 
-However, if you want to be able to use your motors and plug your ESP32 into your laptop to use the serial monitor for debugging, then you'll have to change the wiring (or else you will fry your equipment!):
+<img src="{{ '/_assets/images/DRV8833BatteryPack.png' | prepend: site.baseurl }}" alt="external_ESP32_power.png">
 
-<img src="{{ '/_assets/images/Power_from_microUSB.png' | prepend: site.baseurl }}" alt="motor_controller_with_usb.png">
-
-You should now be able use your USB connection safely!
+With this wiring, you can safely use both the battery pack and the USB connection!
 
 {: .highlight}
-Do NOT power your ESP32 through its 5V pin with the battery pack while simultaneously connecting it to your computer through USB! This may irreversibly damage your devices (only do one at a time).
+ALWAYS use a diode on the ESP32’s 5V line when powering it from a battery pack.  
+This prevents current from flowing back into your computer or battery pack if USB is also connected.
 {: .callout-blue}
 
-To control a DC motor using the ESP32, a motor controller, and battery pack (**WITH USB CONNECTION**), you can connect them together as shown below:
+To control a DC motor using the ESP32, a motor controller, and battery pack (**WITH or WITHOUT USB CONNECTION**), you can connect them together as shown below:
 
-<img src="{{ '/_assets/images/motor_with_external_power.png' | prepend: site.baseurl }}" alt="motor_with_external_power.png">
+<img src="{{ '/_assets/images/DRV8833withDCMotor.png' | prepend: site.baseurl }}" alt="motor_with_external_power.png">
 
-* You will need to remove the jumper shorting the ENA pin to 5V
-* You will need to use a screwdriver to clamp the power wires in place (all the wires connecting to the blue screw terminals) into place. Make sure these are secure because wires coming loose and causing a short circuit could be catastrophic!
 * Note that the wire polarity on the motor does not matter because DC motors' spin direction is based on the direction of current flowing through them.
-{: .highlight}
-^replace
-{: .callout-red}
+
 <br>
 
 |  Motor Controller Terminal   | ESP32 Pin          |
 |:-------------|:------------------|
 | 5V           | 5V                      |
-| IN1          | Any GPIO      |
-| IN2          | Any GPIO     |
-| ENA          | Any PWM enabled pin      |
+| IN1          | Any PWM enabled pin      |
+| IN2          | Any PWM enabled pin     |
 
 If you're not sure about the ESP32 pinout, then check out [this page!](https://ut-ras.github.io/RobotathonESP32/getting-started/microcontroller-interface)
 
@@ -106,7 +100,7 @@ void loop() {
   delay(1000); // Stop for 1 second
 }
 ```
-Again, more detailed information about the L298N motor controllers can be [found here!](https://lastminuteengineers.com/l298n-dc-stepper-driver-arduino-tutorial/)
+Again, more detailed information about the DRV8833 motor controllers can be [found here!](https://lastminuteengineers.com/drv8833-arduino-tutorial/)
 
 # Servo Motors
 
@@ -120,13 +114,14 @@ Servos are motors that are designed for precise position control. Instead of fre
 
 For the servos in our competition, you can use it to precisely control your mechanism for the Mechanical Challenge. To interface it with your ESP32, you will connect the wires as follows:
 
-<img src="{{ '/_assets/images/servo_wiring.png' | prepend: site.baseurl }}" alt="servo_wiring.png">
+<img src="{{ '/_assets/images/DRV8833Servo.png' | prepend: site.baseurl }}" alt="servo_wiring.png">
+
+The Red wire is connected to 5V from the battery pack.
 
 | Servo Wire        | ESP32 Pin          |
 |:-------------|:------------------|
-| Red           | 5V                      |
 | Black          | GND      |
-| White        |  Any PWM capable pin          |
+| White        |  Any PWM enabled pin          |
 
 If you're not sure about the ESP32 pinout, then check out [this page!](https://ut-ras.github.io/RobotathonESP32/getting-started/microcontroller-interface)
 
