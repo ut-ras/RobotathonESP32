@@ -27,15 +27,11 @@ Warning: Be careful to not short (connect) a power pin directly to a ground pin.
 ## Powering the ESP32
 You can power your ESP32 by 2 methods: portable battery or laptop USB connection.
 
-{: .highlight}
-Note: Do NOT power your ESP32 through its 5V pin with the portable battery while simultaneously connecting it to your computer! This may irreversibly damage your devices (only do one power connection at a time).
-{: .callout-blue}
-
 ### USB Connection Power
 The USB connection to your computer is necessary for uploading and debugging your code through the serial monitor. It would be easiest to keep using the USB connection until later in the competition when testing the entire system.
 
 ### External Power Source
-Using the external portable battery is detailed in the [Actuators page](https://ut-ras.github.io/RobotathonESP32/sensors-and-actuators/actuators) because we will be using the motor driver's 5V output to power the ESP32.
+Using the external portable battery is detailed in the [Powering the System page](https://ut-ras.github.io/RobotathonESP32/sensors-and-actuators/power) because we will be using the USBC breakout board's 5V output to power the ESP32.
 
 If you want to know more about any features, feel free to ask a mentor or Google for more information :) 
 
