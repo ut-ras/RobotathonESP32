@@ -109,14 +109,14 @@ Servos are motors that are designed for precise position control. Instead of fre
 
 For the servos in our competition, you can use it to precisely control your mechanism for the Mechanical Challenge. To interface it with your ESP32, you will connect the wires as follows:
 
-<img src="{{ '/_assets/images/DRV8833Servo.png' | prepend: site.baseurl }}" alt="servo_wiring.png">
+<img src="{{ '/_assets/images/DRV8833withServo.png' | prepend: site.baseurl }}" alt="servo_wiring.png">
 
-The Red wire is connected to 5V from the battery pack.
 
-| Servo Wire        | ESP32 Pin          |
+| Servo Wire        | Connection         |
 |:-------------|:------------------|
+| Red         | 5V from the battery pack      |
 | Black          | GND      |
-| White        |  Any PWM enabled pin          |
+| White        |  Any PWM enabled pin on the ESP32         |
 
 If you're not sure about the ESP32 pinout, then check out [this page!](https://ut-ras.github.io/RobotathonESP32/getting-started/microcontroller-interface)
 
