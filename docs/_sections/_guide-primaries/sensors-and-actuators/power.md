@@ -41,4 +41,4 @@ Voltage is the key property to know when wiring your robot, and these are the su
 * Power Bank, supplies the voltage to your robot
 * Wires, carries voltage from one place to another
 
-Your Breadboard will be the main connection between all of your components
+Your Breadboard will be the main connection between all of your components, so it's crucial you understand it's layout.
