@@ -6,6 +6,9 @@ parent: Getting Started
 nav_order: 5
 ---
 
+TODO: add diagram showing a main branch and a feature branch
+TODO: redo diagrams to be accurate and more understandable
+
 # How to use Git:
 
 ## What is Git?
