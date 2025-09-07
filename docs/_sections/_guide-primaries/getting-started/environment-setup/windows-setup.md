@@ -116,11 +116,11 @@ VS Code is an easily customizable IDE with many extensions and a large community
 Do this even if you already have VS Code to minimize environment setup issues. Installing the ESP-IDF extension normally may result in unecessary debugging.
 {: .callout-red}    
 
-1. Download [zip folder from Box](https://utexas.box.com/s/2enfprqovfq8kmgcz8d8sn28yr6wpzt4) 
-2. Unzip the file to your C: drive 
+1. Download [zip folder from Box (~3.1 GB)](https://utexas.box.com/shared/static/0f8jo5nuhbsmefy4jkklvslvlj38f2bz.zip) 
+2. Unzip the file to your C: drive using 7-zip. [(How do I use 7-zip?)](https://ut-ras.github.io/RobotathonESP32/technical#how-do-i-use-7-zip)
 {: .highlight}
-This **will** take a while unless you use 7-zip. [How do I use 7-zip?](https://ut-ras.github.io/RobotathonESP32/technical#how-do-i-use-7-zip)
-{: .callout-blue}
+This **will** take a while if you don't use 7-zip 
+{: .callout-red}
 
 3. Launch the "containerized" VS Code by running the `Code.exe` file in the unzipped folder
 4. In the top menu bar of VS Code, click `File` > `Open Folder`

@@ -126,7 +126,7 @@ It translates USB data into serial data (UART) and vice versa, allowing applicat
 
 
 ## What is 7-zip?   
-7-zip is an open source application used for file compression. It is a lot faster than the native Windows file extractor (50 minutes -> 1 minute).
+7-zip is an open source application used for file compression. It is way faster than the native Windows file extractor.
 
 ## How do I use 7-zip?
 To extract your zipped VS Code archive, follow these steps:
