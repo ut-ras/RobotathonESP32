@@ -71,15 +71,15 @@ You can add a passcode if you'd like, but it is not recommended. If you do, keep
 The key should look something like `ssh-ed25519 SFNJNAFNEJKFNJNJKNFJHFJAHOHiowuroiuwr/sfjeher+KX/rH email@gmail.com`
 {: .callout-blue}
 
-1. Navigate to the upper-right corner of any page on [GitHub](https://github.com/), click your profile photo, then click Settings (gear icon)
-<img src="{{ '/_assets/images/github_settings.png' | prepend: site.baseurl }}" alt="my_image.png :(">
-2. In the `Access` section of the sidebar, click `SSH and GPG keys`
-3. Click the green `New SSH key` button on the right
+3. Navigate to the upper-right corner of any page on [GitHub](https://github.com/), click your profile photo, then click Settings (gear icon)
+<img src="{{ '/_assets/images/github_settings.png' | prepend: site.baseurl }}" alt="my_image.png :(" h=200>
+4. In the `Access` section of the sidebar, click `SSH and GPG keys`
+5. Click the green `New SSH key` button on the right
 <img src="{{ '/_assets/images/github_ssh_gpg.png' | prepend: site.baseurl }}" alt="my_image.png :(">
-4. Put whatever you want for the key title name
-5. Select the key type to be `Authentication`
-6. Paste in the key you copied earlier into the `Key` section
-7. Click `Add SSH Key`
+6. Put whatever you want for the key title name
+7. Select the key type to be `Authentication`
+8. Paste in the key you copied earlier into the `Key` section
+9. Click `Add SSH Key`
 
 ### __Clone Forked Repository__
 Cloning is the process of copying a Git repository onto your local computer storage. Everyone has to do this to work on code!
