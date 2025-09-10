@@ -107,13 +107,16 @@ This allows your computer to recognize and program your ESP32 when you plug it i
 VS Code is an easily customizable IDE with many extensions and a large community, meaning you can easiy find solutions to any issues that may arise :) 
 
 {: .highlight}
-If your Windows username has spaces in it, then you will need to use the following guide in lieu of the steps below to install VS Code! This is because ESP-IDF cannot install properly if the install path contains spaces, so the following is our workaround :)
+If your Windows username has spaces in it, then you will need to use the dropdown guide in lieu of the `Normal Installation` to set up your VS Code! This is because ESP-IDF cannot install properly if the installation path contains spaces, so the following is our workaround :)
 {: .callout-red}
 
 <details markdown="1">
-  <summary>🪟 <strong>Alternative Installation (for usernames with spaces)</strong></summary>
+  <summary>🎁 <strong>Alternative Installation (Only do if you have spaces in your Windows username)</strong></summary>
 
 ### Preconfigured Installation (Only do if you have spaces in your Windows username)
+
+The preconfigured version allows you to circumvent the issue of not being able to install ESP-IDF if your Windows username has whitespace in it (ESP-IDF refuses to install if that is the case). This is a (in my humble opinion) a better solution than creating an entirely new account on your computer
+
 #### __Install 7-zip__
 7-zip is a file compression tool that works much faster than your native Windows tools.
 
@@ -121,8 +124,7 @@ If your Windows username has spaces in it, then you will need to use the followi
 2. Install using defaults
 3. Launch 7-zip
 
-### __Install Preconfigured VS Code__
-The preconfigured version allows you to circumvent the issue of not being able to install ESP-IDF if your Windows username has whitespace in it (ESP-IDF refuses to install if that is the case). This is a (in my humble opinion) a better solution than creating an entirely new account on your computer
+#### __Install Preconfigured VS Code__
 
 1. Download [zip folder from Box (~3.1 GB)](https://utexas.box.com/shared/static/0f8jo5nuhbsmefy4jkklvslvlj38f2bz.zip) 
 2. Unzip the file to your C: drive using 7-zip. [(How do I use 7-zip?)](https://ut-ras.github.io/RobotathonESP32/technical#how-do-i-use-7-zip)
@@ -195,7 +197,7 @@ Here is an example program that blinks the onboard LED. "Blinky" projects are a 
 If you replace your `arduino_main.cpp` file's contents with the following, build, and flash properly, then your ESP32's blue onboard LED will begin to blink every second (yay 😄)!
 
 {: .highlight}
-Note that it is **your** responsibility to integrate this code with the controller starter code!
+Note that it is **your** responsibility to integrate this code with the controller starter code for the environment setup checkpoint!
 {: .callout-blue}
 
 ```cpp
