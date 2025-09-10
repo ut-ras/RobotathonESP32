@@ -12,7 +12,7 @@ nav_order: 3
 
 Setting up a development environment is almost always a pain, but it must be done properly so you can have fun building your robot :)
 
-The exact process depends on what OS your computer is running (Windows, macOS, etc.), so this article will be split into Windows and MacOS setup. If you happen to use another OS, then talk to a mentor for help.
+The exact process depends on what OS your computer is running (Windows, macOS, etc.), so this article will be split into Windows and MacOS setup. If you happen to use another OS, then talk to a mentor for help. It is also important to note that you will need around 5 GB of free storage.
 
 The end goal of this section is to flash your ESP32 with an LED blink program. It will take you from having nothing installed to the full coding environment you'll need for the competition!  
 

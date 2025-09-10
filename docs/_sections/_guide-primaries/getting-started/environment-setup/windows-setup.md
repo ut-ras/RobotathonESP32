@@ -102,6 +102,53 @@ This allows your computer to recognize and program your ESP32 when you plug it i
 3. Extract the downloaded zip file and run the appropriate installer application inside (likely x64)
 4. Agree and use default configuration
 
+### __Install VS Code and ESP-IDF Extension__
+VS Code is an easily customizable IDE with many extensions and a large community, meaning you can easiy find solutions to any issues that may arise :) 
+
+1. Download and install [VS Code](https://code.visualstudio.com/download)
+2. Open the extensions tab and search `ESP-IDF`
+TODO put picture
+3. Download the ESP-IDF extension
+TODO put picture
+4. Open the setup wizard by clicking the `Configure Extension` button
+TODO put picture
+5. Click `Express`
+TODO put picture
+6. Check the box saying `Show all ESP-IDF tags`
+TODO put picture
+7. Select option `v4.4.8 (release version)`
+TODO put picture
+8. Ensure the installation paths are valid (i.e. no red warnings) and click the blue `Install` button
+9. Wait (this will take a while) :)
+10. In the top menu bar of VS Code, click `File` > `Open Folder`
+11. Use VS Code to open the folder where you cloned the Robotathon repository (“RobotathonESP32” by default)
+12. Wait for the ESP-IDF extension to initialize 
+13. Build the project by clicking the wrench icon in the bottom ribbon of VS Code (this will take a while the first time)
+<img src="{{ '/_assets/images/vscode_bottom_ribbon_build.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_build.png :(">
+
+
+
+
+<details>
+  <summary>Click to expand</summary>
+
+  This is the content that will be hidden until expanded.
+
+  - You can use **Markdown** inside
+  - Lists, code blocks, images all work
+  - Even multiple paragraphs
+
+</details>
+
+
+
+
+
+
+
+TODO move this to FAQ ???
+
+
 ### __Install 7-zip__
 7-zip is a file compression tool that works much faster than your native Windows tools.
 
@@ -110,11 +157,7 @@ This allows your computer to recognize and program your ESP32 when you plug it i
 3. Launch 7-zip
 
 ### __Install Preconfigured VS Code__
-VS Code is an easily customizable IDE with many extensions and a large community. The preconfigured version you will download will already have the ESP-IDF extension installed for convenience.
-
-{: .highlight}
-Do this even if you already have VS Code to minimize environment setup issues. Installing the ESP-IDF extension normally may result in unecessary debugging.
-{: .callout-red}    
+The preconfigured version allows you to circumvent the issue of not being able to install ESP-IDF if your Windows username has whitespace in it (ESP-IDF refuses to install if that is the case). This is a (in my humble opinion) a better solution than creating an entirely new account on your computer
 
 1. Download [zip folder from Box (~3.1 GB)](https://utexas.box.com/shared/static/0f8jo5nuhbsmefy4jkklvslvlj38f2bz.zip) 
 2. Unzip the file to your C: drive using 7-zip. [(How do I use 7-zip?)](https://ut-ras.github.io/RobotathonESP32/technical#how-do-i-use-7-zip)
@@ -128,6 +171,22 @@ This **will** take a while if you don't use 7-zip
 6. Wait for the ESP-IDF extension to initialize 
 7. Build the project by clicking the wrench icon in the bottom ribbon of VS Code (this will take a while the first time)
 <img src="{{ '/_assets/images/vscode_bottom_ribbon_build.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_build.png :(">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### __Flash your ESP32__
 
