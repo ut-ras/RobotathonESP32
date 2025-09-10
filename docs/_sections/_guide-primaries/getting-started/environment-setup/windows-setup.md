@@ -112,28 +112,28 @@ If your Windows username has spaces in it, then you will need to use the followi
 
 <details markdown="1">
   <summary>Click to expand</summary>
-    ### __Install 7-zip__
-    7-zip is a file compression tool that works much faster than your native Windows tools.
+### __Install 7-zip__
+7-zip is a file compression tool that works much faster than your native Windows tools.
 
-    1. Go to the [7-zip download page](https://www.7-zip.org/)
-    2. Install using defaults
-    3. Launch 7-zip
+1. Go to the [7-zip download page](https://www.7-zip.org/)
+2. Install using defaults
+3. Launch 7-zip
 
-    ### __Install Preconfigured VS Code__
-    The preconfigured version allows you to circumvent the issue of not being able to install ESP-IDF if your Windows username has whitespace in it (ESP-IDF refuses to install if that is the case). This is a (in my humble opinion) a better solution than creating an entirely new account on your computer
+### __Install Preconfigured VS Code__
+The preconfigured version allows you to circumvent the issue of not being able to install ESP-IDF if your Windows username has whitespace in it (ESP-IDF refuses to install if that is the case). This is a (in my humble opinion) a better solution than creating an entirely new account on your computer
 
-    1. Download [zip folder from Box (~3.1 GB)](https://utexas.box.com/shared/static/0f8jo5nuhbsmefy4jkklvslvlj38f2bz.zip) 
-    2. Unzip the file to your C: drive using 7-zip. [(How do I use 7-zip?)](https://ut-ras.github.io/RobotathonESP32/technical#how-do-i-use-7-zip)
-    {: .highlight}
-    This **will** take a while if you don't use 7-zip 
-    {: .callout-red}
+1. Download [zip folder from Box (~3.1 GB)](https://utexas.box.com/shared/static/0f8jo5nuhbsmefy4jkklvslvlj38f2bz.zip) 
+2. Unzip the file to your C: drive using 7-zip. [(How do I use 7-zip?)](https://ut-ras.github.io/RobotathonESP32/technical#how-do-i-use-7-zip)
+{: .highlight}
+This **will** take a while if you don't use 7-zip 
+{: .callout-red}
 
-    3. Launch the "containerized" VS Code by running the `Code.exe` file in the unzipped folder
-    4. In the top menu bar of VS Code, click `File` > `Open Folder`
-    5. Use VS Code to open the folder where you cloned the Robotathon repository (“RobotathonESP32” by default)
-    6. Wait for the ESP-IDF extension to initialize 
-    7. Build the project by clicking the wrench icon in the bottom ribbon of VS Code (this will take a while the first time)
-    <img src="{{ '/_assets/images/vscode_bottom_ribbon_build.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_build.png :(">
+3. Launch the "containerized" VS Code by running the `Code.exe` file in the unzipped folder
+4. In the top menu bar of VS Code, click `File` > `Open Folder`
+5. Use VS Code to open the folder where you cloned the Robotathon repository (“RobotathonESP32” by default)
+6. Wait for the ESP-IDF extension to initialize 
+7. Build the project by clicking the wrench icon in the bottom ribbon of VS Code (this will take a while the first time)
+<img src="{{ '/_assets/images/vscode_bottom_ribbon_build.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_build.png :(">
 </details>
 
 1. Download and install [VS Code](https://code.visualstudio.com/download)
