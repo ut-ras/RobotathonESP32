@@ -111,8 +111,10 @@ If your Windows username has spaces in it, then you will need to use the followi
 {: .callout-red}
 
 <details markdown="1">
-  <summary>Click to expand</summary>
-### __Install 7-zip__
+  <summary>🪟 <strong>Alternative Installation (for usernames with spaces)</strong></summary>
+
+### Preconfigured Installation (Only do if you have spaces in your Windows username)
+#### __Install 7-zip__
 7-zip is a file compression tool that works much faster than your native Windows tools.
 
 1. Go to the [7-zip download page](https://www.7-zip.org/)
@@ -124,6 +126,7 @@ The preconfigured version allows you to circumvent the issue of not being able t
 
 1. Download [zip folder from Box (~3.1 GB)](https://utexas.box.com/shared/static/0f8jo5nuhbsmefy4jkklvslvlj38f2bz.zip) 
 2. Unzip the file to your C: drive using 7-zip. [(How do I use 7-zip?)](https://ut-ras.github.io/RobotathonESP32/technical#how-do-i-use-7-zip)
+
 {: .highlight}
 This **will** take a while if you don't use 7-zip 
 {: .callout-red}
@@ -136,6 +139,7 @@ This **will** take a while if you don't use 7-zip
 <img src="{{ '/_assets/images/vscode_bottom_ribbon_build.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_build.png :(">
 </details>
 
+### Normal Installation
 1. Download and install [VS Code](https://code.visualstudio.com/download)
 2. Open the extensions tab and search `ESP-IDF`
 TODO put picture
