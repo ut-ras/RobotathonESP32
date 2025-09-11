@@ -6,6 +6,9 @@ parent: Getting Started
 nav_order: 4
 ---
 
+TODO: elaborate on analog / digital signals
+
+
 # Microcontroller Interfacing
 Microcontrollers are cool and all, but they’re a lot more interesting when you can use them to do stuff in the real world! You can connect all sorts of devices to the ESP32 microcontroller to do whatever your heart desires.
 
@@ -25,10 +28,10 @@ Warning: Be careful to not short (connect) a power pin directly to a ground pin.
 {: .callout-red}
 
 ## Powering the ESP32
-You can power your ESP32 by 2 methods: portable battery or laptop USB connection.
+You can power your ESP32 by 2 methods: Micro-USB power or portable power bank
 
 ### USB Connection Power
-The USB connection to your computer is necessary for uploading and debugging your code through the serial monitor. It would be easiest to keep using the USB connection until later in the competition when testing the entire system.
+The USB connection to your computer is necessary for uploading and debugging your code through the serial monitor (i.e. print statements). It would be easiest to keep using the USB connection until later in the competition when testing the entire system.
 
 ### External Power Source
 Using the external portable battery is detailed in the [Powering the System page](https://ut-ras.github.io/RobotathonESP32/sensors-and-actuators/power) because we will be using the USBC breakout board's 5V output to power the ESP32.
