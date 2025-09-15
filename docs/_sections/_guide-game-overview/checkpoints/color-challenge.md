@@ -6,10 +6,6 @@ parent: Checkpoints
 nav_order: 7
 ---
 # Color Sensor Checkpoint
-
-<img src="{{ '/_assets/images/my_image.png' | prepend: site.baseurl }}" alt="my_image.png :(">
-***replace with picture of current color challenge***
-
 To pass this checkpoint, your robot should meet the following requirements:
 
 * Have the color sensor attached to the robot in some way
