@@ -120,10 +120,10 @@ void loop() {
 }
 ```
 
-TODO: check if we can simplify the above code by removing the for loop
+<!-- TODO: check if we can simplify the above code by removing the for loop
 just hardcode the `myController` pointer to always be myControllers[0]?
 
-TODO: check if the code actually builds lmao
+TODO: check if the code actually builds lmao -->
 
 {: .highlight}
 You **must** call `BP32.update()` to update the current controller values before calling helper functions (i.e. `myController->a()` or `myController->x()`) to actually retrieve the controller values.

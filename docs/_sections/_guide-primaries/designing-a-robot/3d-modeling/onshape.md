@@ -8,7 +8,7 @@ nav_order: 1
 ---
 # 3D Modeling with Onshape
 
-# TODO: finish this page
+<!-- # TODO: finish this page -->
 
 {: .highlight}
 Onshape has excellent documentation on its [help website](https://cad.onshape.com/help/Content/sketch.htm?tocpath=Part%20Studios%7C_____0) (also can be found on the top right corner of your homepage), and should be referenced when you need more detailed help of a specific feature.
@@ -48,7 +48,7 @@ Being organized is the key to reducing hassle while designing, learn the effecti
 
 ### We Thief a bit (sometimes)
 Sometimes you don't want to spend the time modeling something that already exists out on the internet. Aside from [GrabCad](https://grabcad.com/library), you can also get 3D models of parts you need straight in Onshape and quicky model with it.
-TODO: write **or link** a tutorial on how to import models into an onshape project
+<!-- TODO: write **or link** a tutorial on how to import models into an onshape project -->
 
 ### Put it all together!
 Time to see your robot coming together virtually. This step is very important to make sure you don't spend your time making a prototype that you later finds having just that one little dimension that is wrong and rendering the entire thing usable!!! (sometimes recklessly drilling would fix the problem, but we apparently don't recommend that)

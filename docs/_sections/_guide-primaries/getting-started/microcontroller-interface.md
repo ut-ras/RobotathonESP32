@@ -6,7 +6,7 @@ parent: Getting Started
 nav_order: 4
 ---
 
-TODO: elaborate on analog / digital signals
+<!-- TODO: elaborate on analog / digital signals -->
 
 
 # Microcontroller Interfacing

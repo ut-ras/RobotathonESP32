@@ -143,19 +143,17 @@ This **will** take a while if you don't use 7-zip
 
 ### Normal Installation
 1. Download and install [VS Code](https://code.visualstudio.com/download)
-2. Open the extensions tab and search `ESP-IDF`
-TODO put picture
-3. Download the ESP-IDF extension
-TODO put picture
-4. Open the setup wizard by clicking the `Configure Extension` button
-TODO put picture
+2. Open the extensions tab, search `ESP-IDF`, and download the extension
+<img src="{{ '/_assets/images/espidf_extension.png' | prepend: site.baseurl }}" alt="espidf_extension.png :(">
+4. Open the setup wizard by clicking the `Configure Extension` button in the VS Code ESP-IDF welcome page
+<img src="{{ '/_assets/images/espidf_configure.png' | prepend: site.baseurl }}" alt="espidf_configure.png :(">
 5. Click `Express`
-TODO put picture
+<img src="{{ '/_assets/images/espidf_express.png' | prepend: site.baseurl }}" alt="espidf_express.png :(">
 6. Check the box saying `Show all ESP-IDF tags`
-TODO put picture
+<img src="{{ '/_assets/images/espidf_showalltags.png' | prepend: site.baseurl }}" alt="espidf_showalltags.png :(">
 7. Select option `v4.4.8 (release version)`
-TODO put picture
-8. Ensure the installation paths are valid (i.e. no red warnings) and click the blue `Install` button
+<img src="{{ '/_assets/images/espidf_448.png' | prepend: site.baseurl }}" alt="espidf_448.png :(">
+8. Ensure the default installation paths are valid (i.e. no red warnings) and click the blue `Install` button
 9. Wait (this will take a while) :)
 10. In the top menu bar of VS Code, click `File` > `Open Folder`
 11. Use VS Code to open the folder where you cloned the Robotathon repository (“RobotathonESP32” by default)

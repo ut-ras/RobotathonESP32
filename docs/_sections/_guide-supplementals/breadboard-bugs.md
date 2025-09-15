@@ -1,10 +1,12 @@
----
+<!-- ---
 layout: default
 title: Debugging
 nav_include: true
 # parent: Resources
 nav_order: 2
----
+--- -->
+
+<!-- TODO add to this section and maybe remove the bottom "How to avoid a short circuit bc its kinda useless for the comp. if anything just integrate some of the tips into hardware bugs? -->
 
 # Debugging
 
@@ -12,16 +14,19 @@ Things aren't working? Chances are it's because of something super silly like an
 
 ## Software Bugs
 
-TODO make checklist
+1. Do you have any unintentional infinite loops?
+1. Are you calling `vTaskDelay(1)` in your main loop to reset the watchdog timer? (included in sample code)
+1.
 
 
 ## Hardware Bugs
 
-TODO finish checklist
+<!-- TODO finish checklist -->
 1. Is everything plugged in properly?
     * Did you double check?
 1. If the issue is with your color sensor, did you have the SDA and SCL lines flipped?
 1. Did you try using a multimeter to diagnose the issue?
+1. Did you try another sensor if the current one you are trying doesn't work?
 
 ### What is a short circuit?
 
@@ -35,7 +40,7 @@ A short circuit causes a surge of high amounts of current to flow through both n
  * Do not have microcontroller connected to power when moving around cables
 * Make sure that there are no open cables  near an electronic device with power.
 * Make sure to not connect cables to the wrong pins.
- * I.e. you should never directly connect VCC to GND with no resistance in between. 
+ * i.e. you should never directly connect VCC to GND with no resistance in between. 
 * Make sure to connect resistors of the necessary resistance to any electronic devices you will interface with.
  * Not doing so will a high amount of current through the electronic device and potentially damage it (or make it burst into flames)
 * Don’t touch an electronic part with a metal

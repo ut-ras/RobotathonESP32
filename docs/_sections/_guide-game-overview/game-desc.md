@@ -16,7 +16,7 @@ The competition will be double-elimination style which means if your team is bea
 
 Your team will receive one ping pong ball at the beginning of every round as ammo to destroy the Aggienator
 
-TODO include image of map and have it in its own subcategory
+<!-- TODO include image of map and have it in its own subcategory -->
 
 ## Challenges
 

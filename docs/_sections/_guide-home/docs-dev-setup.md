@@ -1,11 +1,11 @@
----
+<!-- ---
 layout: default
 title: ROBOTATHON GUIDE JEKYLL SETUP (remove during comp)
 nav_include: true
 nav_order: 1
----
+--- -->
 
-<!-- comment the front matter above when not in dev mode -->
+<!-- comment the front matter above during competition season -->
 
 
 

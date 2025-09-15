@@ -22,17 +22,19 @@ These TIW materials will (most likely) include your chassis and your mechanical 
 
 ## Where can we store our robot?
 
-You can store your robot on the RAS Office's (EER 0.822C) Robotathon shelf! If there are no RAS leaders in the office and you want to do some work on your robot, please reach out to us in the [Robotathon Discord chat](https://discord.com/channels/692834117687181505/881756500933091338)!
+You can store your robot / components on the RAS Office's (EER 0.822C) Robotathon shelf! If there are no RAS leaders in the office and you want to do some work on your robot, please reach out to us in the [Robotathon Discord chat](https://discord.com/channels/692834117687181505/881756500933091338)!
 
-We ask that you keep the robot in the EER at all times to prevent items from getting lost.
+We ask that you keep the robot in the EER at all times to prevent items from getting lost. 
 
-<img src="{{ '/_assets/images/my_image.png' | prepend: site.baseurl }}" alt="my_image.png :(">
-TODO: replace with picture of shelf with designated robotathon robot area
+The designated Robotathon shelf area can be found with all the bags:
+<img src="{{ '/_assets/images/robotathon_shelf.jpg' | prepend: site.baseurl }}" alt="robotathon_shelf.jpg :(">
 
-## What can we keep after the competition?
+<!-- 
 TODO: figure out what they can keep
+## What can we keep after the competition?
+Your team may keep the following:
 - Robot chassis
 - ESP32/all sensors
 
-You must return the following:
-- Remote controller 
+Your team must return the following:
+- Remote controller  -->
