@@ -44,10 +44,10 @@ Each team will be provided a Bluetooth controller. You will need to use this con
 ## Field
 The field is split into two symmetrical loops to accommodate two teams for each round.
 
-Teams will start on opposing corners of the field as shown below:
+<!-- Teams will start on opposing corners of the field as shown below: -->
 
-TODO replace this map with better one
-<img src="{{ '/_assets/images/replace_this_map_with_better_one.png' | prepend: site.baseurl }}" alt="map :(">
+<!-- TODO replace this map with better one
+<img src="{{ '/_assets/images/replace_this_map_with_better_one.png' | prepend: site.baseurl }}" alt="map :("> -->
 
 {: .highlight}
 Do not hardcode your robot according to the above layout for maze or line! The exact layout for those challenges may be different on the actual field.
