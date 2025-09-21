@@ -9,7 +9,7 @@ nav_order: 4
 # Line Sensor
 A necessary component for any challenge that requires your robot to follow a line. This one is the QTR-8A Reflectance Sensor Array and uses IR transmitters and receivers on it to detect lines.
 
-## Workshop Slides
+<!-- ## Workshop Slides
 <iframe src="https://docs.google.com/presentation/d/1Hs6NceBqnyrwj3lxO_192RLk6LQGkcfpnS2Lv2SEOHE/embed?start=false" 
         frameborder="0" 
         width="960" 
@@ -17,7 +17,7 @@ A necessary component for any challenge that requires your robot to follow a lin
         allowfullscreen="true" 
         mozallowfullscreen="true" 
         webkitallowfullscreen="true">
-</iframe>
+</iframe> -->
 
 ## How it Works
 The line sensor is made up of an array of 8 IR LED/phototransistor pairs, each take an analog reflectance reading by timing how long it takes the output voltage to decay due to the phototransistor. By pointing the line sensor IR LEDs/phototransistors at the line, the robot is able to tell where the dark line of tape is by reading the output voltage of each phototransistor
