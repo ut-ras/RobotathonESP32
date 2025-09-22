@@ -76,7 +76,7 @@ This means you will have to pass the controller handle into functions if you wan
 This sample only provides the basic structure of how you would break your logic up into different functions as good practice. You may edit it however you please!
 {: .callout-blue}
 
-```
+```cpp
 #include "sdkconfig.h"
 #include <Arduino.h>
 #include <Bluepad32.h>

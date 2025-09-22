@@ -24,7 +24,7 @@ We are only concerned with pins that are power, ground, GPIO, and ADC enabled, s
 * ADC (Analog to Digital Converter) - only some pins. These pins can read analog values instead of just high or low. 
 
 {: .highlight}
-Warning: Be careful to not short (connect) a power pin directly to a ground pin. This will fry your ESP32 and more by causing a huge surge of current (not good). 
+Warning: Be careful to not short (connect) a power pin directly to a ground pin. This will likely fry your ESP32 and more by causing a huge surge of current (not good). 
 {: .callout-red}
 
 ## Powering the ESP32
