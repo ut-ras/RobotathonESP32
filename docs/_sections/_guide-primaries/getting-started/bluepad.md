@@ -76,7 +76,7 @@ This means you will have to pass the controller handle into functions if you wan
 This sample only provides the basic structure of how you would break your logic up into different functions as good practice. You may edit it however you please!
 {: .callout-blue}
 
-```
+```cpp
 #include "sdkconfig.h"
 #include <Arduino.h>
 #include <Bluepad32.h>
@@ -120,10 +120,10 @@ void loop() {
 }
 ```
 
-TODO: check if we can simplify the above code by removing the for loop
+<!-- TODO: check if we can simplify the above code by removing the for loop
 just hardcode the `myController` pointer to always be myControllers[0]?
 
-TODO: check if the code actually builds lmao
+TODO: check if the code actually builds lmao -->
 
 {: .highlight}
 You **must** call `BP32.update()` to update the current controller values before calling helper functions (i.e. `myController->a()` or `myController->x()`) to actually retrieve the controller values.

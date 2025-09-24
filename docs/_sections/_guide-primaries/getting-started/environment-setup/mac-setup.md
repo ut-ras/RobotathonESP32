@@ -13,8 +13,8 @@ https://docs.espressif.com/projects/vscode-esp-idf-extension/en/latest/installat
 
 
 https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/linux-macos-setup.html
-TODO figure out what to do the setup script installs the CLI for esp-idf isntead of VS Code extension
-proly just gona make them go through the install manually
+<!-- TODO figure out what to do the setup script installs the CLI for esp-idf isntead of VS Code extension
+proly just gona make them go through the install manually -->
 
 ### __Install VSCode__
 Download VSCode from the [online download for Mac](https://code.visualstudio.com/download)
@@ -45,7 +45,8 @@ Note: only **one** person in each team has to fork the repository and invite the
 <img src="{{ '/_assets/images/github_fork.png' | prepend: site.baseurl }}" alt="my_image.png :(">
 1. Change the Repository name to whatever you like
 1. Click the green `Create fork` button at the bottom
-1. Share repository access to your teammates by navigating to the settings of your newly forked repository and clicking collaborators in the left menu [(How do I invite teammates to my forked repository?)](TODO WRITE THIS)
+1. Share repository access to your teammates by navigating to the settings of your newly forked repository and clicking collaborators in the left menu 
+<!-- [(How do I invite teammates to my forked repository?)](TODO WRITE THIS) -->
 
 ### __Set Up Git SSH Authentication__
 
@@ -99,7 +100,8 @@ Cloning is the process of copying a Git repository onto your local computer stor
 1. Click the green `<> Code` button
 1. If you did the previous section, copy the SSH git link. Otherwise copy the HTTPS link. [What is the difference?](https://ut-ras.github.io/RobotathonESP32/technical#what-is-the-difference-between-cloning-using-https-and-ssh)
 <img src="{{ '/_assets/images/ssh_link_copy.png' | prepend: site.baseurl }}" alt="my_image.png w=200 h=400 :(">
-1. Open Git Bash and navigate to where you want to keep your code for the competition, such as your Documents or Desktop. [How do I do that?](TODO write this)
+1. Open Git Bash and navigate to where you want to keep your code for the competition, such as your Documents or Desktop. 
+<!-- [How do I do that?](TODO write this) -->
 1. Run the following command in your Git terminal: `git clone [PASTE GIT LINK HERE]` without the square brackets
 
 ### __Install USB-UART Bridge Driver__

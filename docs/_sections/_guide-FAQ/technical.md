@@ -7,11 +7,11 @@ nav_order: 1
 
 # Technical FAQ
 
-## Why does my build fail?
+<!-- ## Why does my build fail?
 Ensure their portable vscode installation is located in a path without spaces
 Document instance where they have spaces in name
 - Solution is to move project directory to C drive
-TODO: Document reading the error messages (i.e. starting from the first error culprit fixes ones below etc etc)
+TODO: Document reading the error messages (i.e. starting from the first error culprit fixes ones below etc etc) -->
 
 ## What is the difference between cloning using HTTPS and SSH?
 HTTPS (Hypertext Transfer Protocol Secure) and SSH (Secure Shell) are both data transfer protocols used in networking

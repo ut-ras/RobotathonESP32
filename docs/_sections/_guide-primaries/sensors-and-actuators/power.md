@@ -1,12 +1,12 @@
----
+<!-- ---
 layout: default
 title: Powering the System
 nav_include: true
 parent: Hardware
 nav_order: 1
----
+--- -->
 
-TODO write this
+<!-- TODO write this -->
 
 
 - How do basic circuits work? (i.e. current only flows in a closed loop, what is voltage, what is ground, etc.)

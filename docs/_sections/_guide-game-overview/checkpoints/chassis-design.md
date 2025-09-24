@@ -9,11 +9,6 @@ nav_order: 2
 ---
 
 # Chassis Design Checkpoint
-<img src="{{ '/_assets/images/my_image.png' | prepend: site.baseurl }}" alt="my_image.png :(">
-
-***replace with smth smth design***
-
-
 To pass this checkpoint, your design should meet the following requirements:
 * A drawn schematic of your chassis and where you plan to place each component (does not have to be detailed)
 

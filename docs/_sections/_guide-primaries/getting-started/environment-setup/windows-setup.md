@@ -91,8 +91,8 @@ Cloning is the process of copying a Git repository onto your local computer stor
 <img src="{{ '/_assets/images/ssh_link_copy.png' | prepend: site.baseurl }}" alt="my_image.png w=200 h=400 :(">
 4. Open Git Bash and navigate to where you want to keep your code for the competition, such as your Documents or Desktop. [How do I do that?](https://ut-ras.github.io/RobotathonESP32/technical#how-do-i-navigate-the-git-bash-terminal)
 5. Run the following command in your Git terminal: `git clone [PASTE GIT LINK HERE]` without the square brackets
-<img src="{{ '/_assets/images/git_authenticity_confirm.png' | prepend: site.baseurl }}" alt="git_authenticity_confirm.png w=200 h=400 :(">
 6. You will likely run into Git having an issue with the authenticity. Simply type `yes` and press `Enter`
+<img src="{{ '/_assets/images/git_authenticity_confirm.png' | prepend: site.baseurl }}" alt="git_authenticity_confirm.png w=200 h=400 :(">
 
 ### __Install USB-UART Bridge Driver__
 This allows your computer to recognize and program your ESP32 when you plug it in.
@@ -102,22 +102,33 @@ This allows your computer to recognize and program your ESP32 when you plug it i
 3. Extract the downloaded zip file and run the appropriate installer application inside (likely x64)
 4. Agree and use default configuration
 
-### __Install 7-zip__
+### __Install VS Code and ESP-IDF Extension__
+
+VS Code is an easily customizable IDE with many extensions and a large community, meaning you can easiy find solutions to any issues that may arise :) 
+
+{: .highlight}
+If your Windows username has spaces in it, then you will need to use the dropdown guide in lieu of the `Normal Installation` to set up your VS Code! This is because ESP-IDF cannot install properly if the installation path contains spaces, so the following is our workaround :)
+{: .callout-red}
+
+<details markdown="1">
+  <summary>🎁 <strong>Alternative Installation (Only do if you have spaces in your Windows username)</strong></summary>
+
+### Preconfigured Installation (Only do if you have spaces in your Windows username)
+
+The preconfigured version allows you to circumvent the issue of not being able to install ESP-IDF if your Windows username has whitespace in it (ESP-IDF refuses to install if that is the case). This is a (in my humble opinion) a better solution than creating an entirely new account on your computer
+
+#### __Install 7-zip__
 7-zip is a file compression tool that works much faster than your native Windows tools.
 
 1. Go to the [7-zip download page](https://www.7-zip.org/)
 2. Install using defaults
 3. Launch 7-zip
 
-### __Install Preconfigured VS Code__
-VS Code is an easily customizable IDE with many extensions and a large community. The preconfigured version you will download will already have the ESP-IDF extension installed for convenience.
-
-{: .highlight}
-Do this even if you already have VS Code to minimize environment setup issues. Installing the ESP-IDF extension normally may result in unecessary debugging.
-{: .callout-red}    
+#### __Install Preconfigured VS Code__
 
 1. Download [zip folder from Box (~3.1 GB)](https://utexas.box.com/shared/static/0f8jo5nuhbsmefy4jkklvslvlj38f2bz.zip) 
 2. Unzip the file to your C: drive using 7-zip. [(How do I use 7-zip?)](https://ut-ras.github.io/RobotathonESP32/technical#how-do-i-use-7-zip)
+
 {: .highlight}
 This **will** take a while if you don't use 7-zip 
 {: .callout-red}
@@ -128,6 +139,29 @@ This **will** take a while if you don't use 7-zip
 6. Wait for the ESP-IDF extension to initialize 
 7. Build the project by clicking the wrench icon in the bottom ribbon of VS Code (this will take a while the first time)
 <img src="{{ '/_assets/images/vscode_bottom_ribbon_build.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_build.png :(">
+</details>
+
+### Normal Installation
+1. Download and install [VS Code](https://code.visualstudio.com/download)
+2. Open the extensions tab, search `ESP-IDF`, and download the extension
+<img src="{{ '/_assets/images/espidf_extension.png' | prepend: site.baseurl }}" alt="espidf_extension.png :(">
+4. Open the setup wizard by clicking the `Configure Extension` button in the VS Code ESP-IDF welcome page
+<img src="{{ '/_assets/images/espidf_configure.png' | prepend: site.baseurl }}" alt="espidf_configure.png :(">
+5. Click `Express`
+<img src="{{ '/_assets/images/espidf_express.png' | prepend: site.baseurl }}" alt="espidf_express.png :(">
+6. Check the box saying `Show all ESP-IDF tags`
+<img src="{{ '/_assets/images/espidf_showalltags.png' | prepend: site.baseurl }}" alt="espidf_showalltags.png :(">
+7. Select option `v4.4.8 (release version)`
+<img src="{{ '/_assets/images/espidf_448.png' | prepend: site.baseurl }}" alt="espidf_448.png :(">
+8. Ensure the default installation paths are valid (i.e. no red warnings) and click the blue `Install` button
+9. Wait (this will take a while) :)
+10. In the top menu bar of VS Code, click `File` > `Open Folder`
+11. Use VS Code to open the folder where you cloned the Robotathon repository (“RobotathonESP32” by default)
+12. Wait for the ESP-IDF extension to initialize 
+13. Build the project by clicking the wrench icon in the bottom ribbon of VS Code (this will take a while the first time)
+<img src="{{ '/_assets/images/vscode_bottom_ribbon_build.png' | prepend: site.baseurl }}" alt="vscode_bottom_ribbon_build.png :(">
+
+
 
 ### __Flash your ESP32__
 
@@ -161,7 +195,7 @@ Here is an example program that blinks the onboard LED. "Blinky" projects are a 
 If you replace your `arduino_main.cpp` file's contents with the following, build, and flash properly, then your ESP32's blue onboard LED will begin to blink every second (yay 😄)!
 
 {: .highlight}
-Note that it is **your** responsibility to integrate this code with the controller starter code!
+Note that it is **your** responsibility to integrate this code with the controller starter code for the environment setup checkpoint!
 {: .callout-blue}
 
 ```cpp

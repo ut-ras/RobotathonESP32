@@ -7,11 +7,6 @@ nav_order: 4
 ---
 
 # Moving Base Checkpoint
-
-<img src="{{ '/_assets/images/my_image.png' | prepend: site.baseurl }}" alt="my_image.png :(">
-***replace with smth smth moving base***
-
-
 To pass this checkpoint, your robot should meet the following requirements:
 
 * Motors attached to a chassis
@@ -22,7 +17,7 @@ Next Steps:
 * Use CADed materials for your chassis (laser-cut for main chassis, 3D-print for other parts recommended)
 * Be able to control your robot more precisely with the controller (turn left, right, back, forward)
 * Be able to change your robot's mode when you press a button
-    * For example, an easy way to organize your robot's functionality would have a default drive mode where you can easily switch between sensor modes as shown below:
+    * For example, an easy way to organize your robot's functionality would have a default drive mode where you can easily switch between automatic sensor modes
     
 
 Some questions we might ask you:

@@ -8,14 +8,13 @@ nav_order: 5
 
 # Actuators
 
-The word "actuators" is just a fancy word for "devices that create motion," which can include anything ranging from hydraulic pistons to motors. In our case, electric motors will be the key to your robot's motion! In this competition, you will be dealing with servo motors.
+The word "actuators" is just a fancy word for "devices that create motion," which can include anything ranging from hydraulic pistons to motors. In our case, electric motors will be the key to your robot's motion! In this competition, you will be dealing with DC brushed motors and servo motors.
 
 
 # DC Motors
 <img src="{{ '/_assets/images/dc_motor.jpg' | prepend: site.baseurl }}" alt="dc_motor.jpg" width="200" height="300">
 
 You will be using DC (direct current) motors as the primary means of moving your robot around. 
-
 
 DC motors operate on electromagnetic principles. Inside the motor, there are permanent magnets (stator) that create a stationary magnetic field, and wire coils (rotor/armature) that carry electrical current. When current flows through the rotor windings in the presence of the magnetic field, electromagnetic forces cause the rotor to spin. A commutator and brushes automatically switch the current direction in the windings as the motor rotates, ensuring continuous rotation.
 

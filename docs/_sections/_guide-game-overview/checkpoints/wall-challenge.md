@@ -5,11 +5,8 @@ nav_include: true
 parent: Checkpoints
 nav_order: 8
 ---
+
 # Wall Sensor Checkpoint
-
-<img src="{{ '/_assets/images/my_image.png' | prepend: site.baseurl }}" alt="my_image.png :(">
-***replace with picture of current wall challenge***
-
 To pass this checkpoint, your robot should meet the following requirements:
 
 * Have at least two wall sensors attached to the robot in some way

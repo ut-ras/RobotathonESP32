@@ -1,11 +1,22 @@
----
+<!-- ---
 layout: default
 title: ROBOTATHON GUIDE JEKYLL SETUP (remove during comp)
 nav_include: true
 nav_order: 1
----
+--- -->
 
-<!-- comment the front matter above when not in dev mode -->
+<!-- comment the front matter above during competition season -->
+
+
+
+{: .highlight}
+
+DO NOT USE THIS GUIDE UNLESS YOU ARE CONTRIBUTING TO DOCUMENTATION!! THIS IS ONLY FOR SETTING UP THE JEKYLL DEVELOPMENT ENVIRONMENT
+
+{: .callout-red}
+
+repo link:
+https://github.com/ut-ras/RobotathonESP32/tree/robotathon-guide-2025
 
 # windows setup
 gl to linux/macos people. its mostly the same so u got it :)
