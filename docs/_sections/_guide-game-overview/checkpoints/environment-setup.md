@@ -13,7 +13,7 @@ nav_order: 3
 
 To pass this checkpoint, your team should meet the following requirements:
 
-* Use your controller to control the ESP32's onboard LED (i.e. button pressed = on, button released = off)
+* Flash code to repeatedly toggle the ESP32's onboard LED 
 * Demonstrate at least half your team has set up their coding environment by showing Git commits in your forked repo
 
 Questions:
