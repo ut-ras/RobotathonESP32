@@ -9,7 +9,7 @@ nav_order: 3
 # Environment Setup Checkpoint
 To pass this checkpoint, your team should meet the following requirements:
 
-* Flash code to repeatedly toggle the ESP32's onboard LED 
+* Flash your code to repeatedly toggle the ESP32's onboard LED 
 * Demonstrate at least half your team has set up their coding environment by showing Git commits in your forked repo
 
 Questions:
