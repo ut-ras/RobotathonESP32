@@ -29,8 +29,8 @@ There are 3 pins (red, black, white) to the device as seen in the picture, assoc
 
 |  IR Sensor Pin   | ESP32 Pin          |
 |:-------------|:------------------|
-| VIN (cable adapter BLACK)  | 5V                      |
-| GND (cable adapter RED)          | GND      |
+| VIN  | 5V                      |
+| GND          | GND      |
 | Signal     |  Any ADC Capable Pin    |
 
 If you're not sure about the ESP32 pinout, then check out the diagram in [this page!](https://ut-ras.github.io/RobotathonESP32/getting-started/microcontroller-interface)
@@ -56,4 +56,5 @@ void loop() {
     delay(100);
 }
 ```
+
 
