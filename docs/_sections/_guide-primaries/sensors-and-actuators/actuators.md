@@ -120,7 +120,7 @@ For the servos in our competition, you can use it to precisely control your mech
 If you're not sure about the ESP32 pinout, then check out [this page!](https://ut-ras.github.io/RobotathonESP32/getting-started/microcontroller-interface)
 
 
-In this competition, we will be using the Arduino servo library to control the servos. The following is an example of how to spin a servo using the ESP32's pin 2 as the PWM output.
+In this competition, we will be using the Arduino servo library to control the servos. The following is an example of how to spin a servo using the ESP32's pin 12 as the PWM output.
 
 ```cpp
 #include "sdkconfig.h"
@@ -131,7 +131,7 @@ In this competition, we will be using the Arduino servo library to control the s
 Servo myServo;
 
 void setup() {
-  myServo.attach(2);
+  myServo.attach(12);
   myServo.write(1750);
 }
 

@@ -202,7 +202,7 @@ Note that it is **your** responsibility to integrate this code with the controll
 #include "sdkconfig.h"
 #include <Arduino.h>
 
-#define ONBOARD_LED_PIN 2 // defines the word "LED_BUILTIN" as the number 2 for readability
+#define ONBOARD_LED_PIN 2 // defines the word "ONBOARD_LED_PIN" as the number 2 for readability. Note that pin 2 is directly attached to the onboard LED of the microcontroller.
 
 void setup() {
     pinMode(ONBOARD_LED_PIN, OUTPUT); // configures pin 2 to be a GPIO output pin 
