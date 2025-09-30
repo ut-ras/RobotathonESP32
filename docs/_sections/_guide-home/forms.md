@@ -13,9 +13,10 @@ This page contains direct links and forms that you might need for Robotathon!
 Once you fill out the RAS Membership and Robotathon signup Google Forms, you will be emailed with the payment links sometime after :)
 {: .callout-blue}
 
-# Robotathon Links
-
+# Robotathon Links    
 [Robotathon Linktree](https://linktr.ee/jeffchang0){: .btn .btn-purple }
+<br>
+[Robotathon GitHub](https://github.com/ut-ras/RobotathonESP32){: .btn .btn-blue }
 <br>
 [RAS Membership Form](https://docs.google.com/forms/d/e/1FAIpQLSeJyGWffPVdBZgwRRqzeAlxuTWJ3tkK9NteLnWWAL22tK-W8A/viewform){: .btn .btn-blue } 
 <br>
