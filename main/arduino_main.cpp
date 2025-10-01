@@ -1,54 +1,69 @@
-// SPDX-License-Identifier: Apache-2.0
-// Copyright 2021 Ricardo Quesada
-// http://retro.moe/unijoysticle2
-
 #include "sdkconfig.h"
 #include <Arduino.h>
 #include <Bluepad32.h>
 #include <uni.h>
 #include "controller_callbacks.h"
 
+#define IN1  16  // Control pin 1
+#define IN2  17  // Control pin 2
+
 extern ControllerPtr myControllers[BP32_MAX_GAMEPADS]; // BP32 library allows for up to 4 concurrent controller connections, but we only need 1
 
-void dumpGamepad(ControllerPtr ctl) {
-    Console.printf(
-        "DPAD: %d A: %d B: %d X: %d Y: %d LX: %d LY: %d RX: %d RY: %d L1: %d R1: %d L2: %d R2: %d\n",
-        ctl->dpad(),        // D-pad
-        ctl->a(),           // Letter buttons
-        ctl->b(),
-        ctl->x(),
-        ctl->y(),
-        ctl->axisX(),        // (-511 - 512) left X Axis
-        ctl->axisY(),        // (-511 - 512) left Y axis
-        ctl->axisRX(),       // (-511 - 512) right X axis
-        ctl->axisRY(),       // (-511 - 512) right Y axis
-        ctl->l1(),           // Bumpers
-        ctl->r1(),
-        ctl->l2(),
-        ctl->r2()
-    );
+void handleController(ControllerPtr myController) {
+    // Simple direction control - no braking, no state tracking
+    if (myController->r2() && !myController->l2()) {  // ZR button for forward
+        analogWrite(IN1, 255);  // Full speed forward
+        digitalWrite(IN2, LOW);
+    } 
+    else if (myController->l2() && !myController->r2()) {  // ZL button for backward
+        digitalWrite(IN1, LOW);
+        analogWrite(IN2, 255);  // Full speed backward
+    }
+    else {  // If neither trigger is pressed, or both are pressed, stop the motor
+        analogWrite(IN1, 0);
+        analogWrite(IN2, 0);
+        digitalWrite(IN1, LOW);
+        digitalWrite(IN2, LOW);
+    }
 }
 
 void setup() {
+    Serial.begin(115200);
+    uni_bt_allowlist_set_enabled(true); // Enable allowlist first
     BP32.setup(&onConnectedController, &onDisconnectedController);
-    BP32.forgetBluetoothKeys(); 
     esp_log_level_set("gpio", ESP_LOG_ERROR); // Suppress info log spam from gpio_isr_service
-    uni_bt_allowlist_set_enabled(true);
+    Serial.begin(115200);
+    pinMode(IN1, OUTPUT);
+    pinMode(IN2, OUTPUT);
 }
 
 void loop() {
-    vTaskDelay(1); // Ensures WDT does not get triggered when no controller is connected
-    BP32.update(); 
-    for (auto myController : myControllers) { // Only execute code when controller is connected
-        if (myController && myController->isConnected() && myController->hasData()) {        
-          
-            /*
-            ====================
-            Your code goes here!
-            ====================
-            */
-
-            dumpGamepad(myController); // Prints the gamepad state, delete or comment if don't need
+    static unsigned long lastDebugTime = 0;
+    
+    BP32.update(); // Update the gamepad state
+    
+    // Print debug info every 5 seconds if no controller is connected
+    unsigned long currentTime = millis();
+    if (currentTime - lastDebugTime >= 5000) {
+        bool anyConnected = false;
+        for (auto myController : myControllers) {
+            if (myController && myController->isConnected()) {
+                anyConnected = true;
+                Serial.printf("Controller connected - Battery: %d%%\n", myController->battery());
+            }
+        }
+        if (!anyConnected) {
+            Serial.println("Waiting for controller connection...");
+        }
+        lastDebugTime = currentTime;
+    }
+    
+    // Handle connected controllers
+    for (auto myController : myControllers) {
+        if (myController && myController->isConnected() && myController->hasData()) {
+            handleController(myController);
         }
     }
+    
+    vTaskDelay(1); // Small delay to prevent watchdog issues
 }
