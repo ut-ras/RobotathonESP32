@@ -52,13 +52,13 @@ To control a DC motor using the ESP32, a motor controller, and battery pack (**W
 
 <img src="{{ '/_assets/images/DRV8833withDCMotor.png' | prepend: site.baseurl }}" alt="motor_with_external_power.png">
 
-* Note that the wire polarity on the motor does not matter because DC motors' spin direction is based on the direction of current flowing through them.
+* Note that the wire polarity on the motor does not matter because DC motors' spin direction is based on the direction of current flowing through them. This direction is controlled by the H-bridge motor driver.
 
 <br>
 
 |  Motor Controller Terminal   | ESP32 Pin          |
 |:-------------|:------------------|
-| 5V           | 5V                      |
+| VCC           | 5V                      |
 | IN1          | Any PWM enabled pin      |
 | IN2          | Any PWM enabled pin     |
 
@@ -92,6 +92,8 @@ void loop() {
   digitalWrite(IN2, LOW);
 
   delay(1000); // Stop for 1 second
+
+  vTaskDelay(1); // Yield CPU to not starve other ESP32 processes and cause WDT reset
 }
 ```
 Again, more detailed information about the DRV8833 motor controllers can be [found here!](https://lastminuteengineers.com/drv8833-arduino-tutorial/)
@@ -102,7 +104,7 @@ Again, more detailed information about the DRV8833 motor controllers can be [fou
 
 ## What Are Servos?
 
-Servos are motors that are designed for precise position control. Instead of freely rotating when powered, servos listen to a control signal (usually [PWM](https://learn.sparkfun.com/tutorials/pulse-width-modulation/all)) to determine where to rotate. Some servos offer limited rotation (like 0°–180°), while others can rotate continuously (like ours). More advanced servos have other ways to be even more precise such as a feedback system on top of the control signal, but that is not necessary for this competition.
+Servos are motors that are designed for precise position control. Instead of freely rotating when powered, servos listen to a control signal (usually [PWM](https://learn.sparkfun.com/tutorials/pulse-width-modulation/all)) to determine where to rotate. Some servos rotate continuously, while others rotate with a fixed angle range (like ours). More advanced servos have other ways to be even more precise such as a feedback system on top of the control signal, but that is not necessary for this competition.
 
 ## How to Use Servos?
 
@@ -132,11 +134,15 @@ Servo myServo;
 
 void setup() {
   myServo.attach(12);
-  myServo.write(1750);
 }
 
 void loop() {
+  myServo.write(0); // Rotate to 0 degrees
+  delay(1000); // Delay 1000 ms
+  myServo.write(180); // Rotate to 180 degrees
+  delay(1000);
 
+  vTaskDelay(1); // Yield CPU to not starve other ESP32 processes and cause WDT reset
 }
 ```
 
