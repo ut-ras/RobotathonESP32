@@ -76,6 +76,7 @@ set(LIBRARY_SRCS
   libraries/QTRSensors/src/QTRSensors.cpp
   libraries/ESP32-SharpIR/src/ESP32SharpIR.cpp
   libraries/ESP32Servo/src/ESP32Servo.cpp
+  libraries/ESP32Servo/src/ESP32PWM.cpp
   libraries/ArduinoOTA/src/ArduinoOTA.cpp
   libraries/AsyncUDP/src/AsyncUDP.cpp
   libraries/BluetoothSerial/src/BluetoothSerial.cpp

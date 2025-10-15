@@ -7,6 +7,7 @@
 #include <Bluepad32.h>
 #include <uni.h>
 #include "controller_callbacks.h"
+#include <ESP32Servo.h>
 
 extern ControllerPtr myControllers[BP32_MAX_GAMEPADS]; // BP32 library allows for up to 4 concurrent controller connections, but we only need 1
 
@@ -29,11 +30,35 @@ void dumpGamepad(ControllerPtr ctl) {
     );
 }
 
+int IN1=16;
+int IN2=17;
+
+Servo myServo;
+
 void setup() {
     BP32.setup(&onConnectedController, &onDisconnectedController);
     BP32.forgetBluetoothKeys(); 
     esp_log_level_set("gpio", ESP_LOG_ERROR); // Suppress info log spam from gpio_isr_service
     uni_bt_allowlist_set_enabled(true);
+        
+    Serial.begin(115200);
+    pinMode(IN1, OUTPUT);
+    pinMode(IN2, OUTPUT);
+
+      // Spin motor
+  digitalWrite(IN1, HIGH);  // PWM signal
+  digitalWrite(IN2, LOW); // Direction control
+
+  delay(1000);  // Run for 1 second
+
+  // Stop motor
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+
+  delay(1000); // Stop for 1 second
+
+  vTaskDelay(1); // Yield CPU to not starve other ESP32 processes and cause WDT reset
+
 }
 
 void loop() {
