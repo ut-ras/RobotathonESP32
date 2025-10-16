@@ -4,26 +4,28 @@
 #include <uni.h>
 #include "controller_callbacks.h"
 
+#include "Drivetrain.cpp"
+
 #define IN1  16  // Control pin 1
 #define IN2  17  // Control pin 2
+#define IN3  18  // Control pin 3
+#define IN4  19  // Control pin 4
+
+Drivetrain drivetrain(IN1, IN2, IN3, IN4);
 
 extern ControllerPtr myControllers[BP32_MAX_GAMEPADS]; // BP32 library allows for up to 4 concurrent controller connections, but we only need 1
 
 void handleController(ControllerPtr myController) {
+    
     // Simple direction control - no braking, no state tracking
     if (myController->r2() && !myController->l2()) {  // ZR button for forward
-        analogWrite(IN1, 255);  // Full speed forward
-        digitalWrite(IN2, LOW);
+        drivetrain.setSpeed(255, 255);
     } 
     else if (myController->l2() && !myController->r2()) {  // ZL button for backward
-        digitalWrite(IN1, LOW);
-        analogWrite(IN2, 255);  // Full speed backward
+        drivetrain.setSpeed(-255, -255);
     }
     else {  // If neither trigger is pressed, or both are pressed, stop the motor
-        analogWrite(IN1, 0);
-        analogWrite(IN2, 0);
-        digitalWrite(IN1, LOW);
-        digitalWrite(IN2, LOW);
+        drivetrain.setSpeed(0, 0);
     }
 }
 
@@ -35,6 +37,8 @@ void setup() {
     Serial.begin(115200);
     pinMode(IN1, OUTPUT);
     pinMode(IN2, OUTPUT);
+    pinMode(IN3, OUTPUT);
+    pinMode(IN4, OUTPUT);
 }
 
 void loop() {
