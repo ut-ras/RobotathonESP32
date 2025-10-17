@@ -14,30 +14,28 @@
 extern ControllerPtr myControllers[BP32_MAX_GAMEPADS]; // BP32 library allows for up to 4 concurrent controller connections, but we only need 1
 
 void GoForward(int duty){
-    //Left Motor Forward
-    analogWrite(IN1,duty);
-    digitalWrite(IN2, LOW);
-    //Right Motor Forward
-    analogWrite(IN3,duty);
-    digitalWrite(IN4,LOW);
+    
+    analogWrite(IN1,LOW);
+    digitalWrite(IN2,duty);
+    digitalWrite(IN3,duty);
+    analogWrite(IN4,LOW);
+
 }
 
 void GoBackward(int duty){
-    //Spin Motor 1
-    digitalWrite(IN1,LOW);
-    analogWrite(IN2, duty);
-
-    //Spin motor 2 
-    digitalWrite(IN3, LOW);
-    analogWrite(IN4, duty);
+  
+    digitalWrite(IN1,duty);
+    digitalWrite(IN2, LOW);
+    digitalWrite(IN3,LOW);
+    digitalWrite(IN4,duty);
     
 }
 
 void GoLeft(int duty){
     
-    digitalWrite(IN1, LOW);
-    analogWrite(IN2, duty);
-    analogWrite(IN3,duty);
+    digitalWrite(IN1,LOW);
+    digitalWrite(IN2,LOtW);
+    digitalWrite(IN3,duty);
     digitalWrite(IN4,LOW);
 
 
@@ -45,12 +43,10 @@ void GoLeft(int duty){
 
 void GoRight(int duty){
     
-    analogWrite(IN1,duty);
-    digitalWrite(IN2, LOW);
+    digitalWrite(IN1,LOW);
+    digitalWrite(IN2,duty);
     digitalWrite(IN3,LOW);
-    analogWrite(IN4,duty);
-
-
+    digitalWrite(IN4,LOW);
 }
 
 void Stop(){
