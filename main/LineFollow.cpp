@@ -1,6 +1,6 @@
-#include "Routine.cpp"
-#include "LineSensor.cpp"
-#include "Drivetrain.cpp"
+#include "LineSensor.h"
+#include "Drivetrain.h"
+#include "Routine.h"
 
 class LineFollow : public Routine{
     LineSensor* lineSensor;

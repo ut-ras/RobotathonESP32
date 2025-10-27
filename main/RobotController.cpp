@@ -4,25 +4,25 @@
 #include <uni.h>
 #include "controller_callbacks.h"
 
-#include "Drivetrain.cpp"
-#include "LineSensor.cpp"
+#include "Drivetrain.h"
+#include "LineSensor.h"
+#include "Routine.h"
 #include "LineFollow.cpp"
-#include "Routine.cpp"
 
 #define IN1  16  // Control pin 1
 #define IN2  17  // Control pin 2
 #define IN3  18  // Control pin 3
 #define IN4  19  // Control pin 4
 
-#define OUT1 32
-#define OUT2 33
-#define OUT3 34
-#define OUT4 35
+#define OUT1 27
+#define OUT2 26
+#define OUT3 25
+#define OUT4 33
 
 #define LED 2
 
 Drivetrain drivetrain(IN1, IN2, IN3, IN4);
-LineSensor lineSensor;
+LineSensor lineSensor(OUT1, OUT2, OUT3, OUT4);
 
 Routine* routine;
 
@@ -41,17 +41,13 @@ void handleController(ControllerPtr myController) {
         digitalWrite(LED, LOW); // writes a digital low to pin 2
         drivetrain.setSpeed(0, 0);
     }
-
-    if(myController->dpad() & DPAD_DOWN){
-        routine = new LineFollow(&lineSensor, &drivetrain);
-    }
 }
 
 void setup() {
     Serial.begin(115200);
     uni_bt_allowlist_set_enabled(true); // Enable allowlist first
     BP32.setup(&onConnectedController, &onDisconnectedController);
-    esp_log_level_set("gpio", ESP_LOG_ERROR); // Suppress info log spam from gpio_isr_service
+    esp_log_level_set("gpio", ESP_LOG_NONE); // Suppress info log spam from gpio_isr_service
     Serial.begin(115200);
     pinMode(IN1, OUTPUT);
     pinMode(IN2, OUTPUT);
@@ -64,6 +60,8 @@ void setup() {
     pinMode(OUT2, OUTPUT);
     pinMode(OUT3, OUTPUT);
     pinMode(OUT4, OUTPUT);
+
+    routine = new LineFollow(&lineSensor, &drivetrain);
 }
 
 void loop() {

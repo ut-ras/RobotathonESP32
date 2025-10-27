@@ -5,6 +5,6 @@ set(srcs
 
 set(requires "bluepad32" "bluepad32_arduino" "arduino" "btstack" "callbacks")
 
-idf_component_register(SRCS "MazeSolver.cpp" "ColorFind.cpp" "LineFollow.cpp" "Teleop.cpp" "Routine.cpp" "Shooter.cpp" "DistanceSensor.cpp" "LineSensor.cpp" "Drivetrain.cpp" "RobotController.cpp" "ColorSensor.cpp" "${srcs}"
+idf_component_register(SRCS "MazeSolver.cpp" "ColorFind.cpp" "LineFollow.cpp" "Teleop.cpp" "Shooter.cpp" "DistanceSensor.cpp" "LineSensor.cpp" "Drivetrain.cpp" "RobotController.cpp" "ColorSensor.cpp" "${srcs}"
                     INCLUDE_DIRS "."
                     REQUIRES "${requires}")
