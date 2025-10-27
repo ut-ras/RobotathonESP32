@@ -6,10 +6,10 @@
 #include <bits/stdc++.h>
 
 class Drivetrain{
-    int motorPin1 = 16;
-    int motorPin2 = 17;
-    int motorPin3 = 18;
-    int motorPin4 = 19;
+    int motorPin1;
+    int motorPin2;
+    int motorPin3;
+    int motorPin4;
 
     public:
     Drivetrain(int pin1, int pin2, int pin3, int pin4){
@@ -26,8 +26,8 @@ class Drivetrain{
             analogWrite(motorPin2, left);
         }
         else{
-            analogWrite(motorPin1, left);   // Forwards
             digitalWrite(motorPin2, LOW);
+            analogWrite(motorPin1, left);   // Forwards
         }
         if(right < 0){
             right *= -1;
@@ -35,8 +35,8 @@ class Drivetrain{
             analogWrite(motorPin4, right);
         }
         else{
-            analogWrite(motorPin3, right);  // Forwards
             digitalWrite(motorPin4, LOW);
+            analogWrite(motorPin3, right);  // Forwards
         }
     }
 };
