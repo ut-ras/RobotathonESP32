@@ -6,7 +6,7 @@ class LineFollow : public Routine{
     LineSensor* lineSensor;
     Drivetrain* drivetrain;
 
-    int lastValue;
+    int lastValue = 0;
 
     public:
     LineFollow(LineSensor* lineSensor, Drivetrain* drivetrain){
@@ -17,28 +17,26 @@ class LineFollow : public Routine{
     void update(){
         analogWrite(2, 255);
         
-        uint16_t* value = lineSensor->getValues();
+        std::array<uint16_t,4> sensors = lineSensor->getValues();
 
-        auto& sensors = *reinterpret_cast<uint16_t(*)[4]>(value);
-
-        if(sensors[1] > 50 || sensors[2] > 50){
-            drivetrain->setSpeed(100, 100);
+        if(sensors[1] > 800 || sensors[2] > 800){
+            drivetrain->setSpeed(255, 255);
             lastValue = 0;
         }
-        else if(sensors[0] > 50){
-            drivetrain->setSpeed(-100, 100);
+        else if(sensors[0] > 800){
+            drivetrain->setSpeed(-255, 255);
             lastValue = 1;
         }
-        else if(sensors[3] > 50){
-            drivetrain->setSpeed(100, -100);
+        else if(sensors[3] > 800){
+            drivetrain->setSpeed(255, -255);
             lastValue = 2;
         }
         else{
             if(lastValue == 1){
-                drivetrain->setSpeed(-100, 100);
+                drivetrain->setSpeed(-255, 255);
             }
             else{
-                drivetrain->setSpeed(100, -100);
+                drivetrain->setSpeed(255, -255);
             }
         }
     }

@@ -13,9 +13,15 @@ void Drivetrain::setSpeed(int left, int right) {
         digitalWrite(motorPin1, LOW);
         analogWrite(motorPin2, left);
     } 
-    else {
+    else if(left > 0) {
         digitalWrite(motorPin2, LOW);
         analogWrite(motorPin1, left);
+    }
+    else{
+        digitalWrite(motorPin1, LOW);
+        digitalWrite(motorPin2, LOW);
+        analogWrite(motorPin1, 0);
+        analogWrite(motorPin2, 0);
     }
 
     if (right < 0) {
@@ -23,8 +29,15 @@ void Drivetrain::setSpeed(int left, int right) {
         digitalWrite(motorPin3, LOW);
         analogWrite(motorPin4, right);
     } 
-    else {
+    else if(right > 0){
         digitalWrite(motorPin4, LOW);
         analogWrite(motorPin3, right);
     }
+    else{
+        digitalWrite(motorPin3, LOW);
+        digitalWrite(motorPin4, LOW);
+        analogWrite(motorPin3, 0);
+        analogWrite(motorPin4, 0);
+    }
+    delay(50);
 }

@@ -14,15 +14,9 @@
 #define IN3  18  // Control pin 3
 #define IN4  19  // Control pin 4
 
-#define OUT1 27
-#define OUT2 26
-#define OUT3 25
-#define OUT4 33
-
 #define LED 2
 
 Drivetrain drivetrain(IN1, IN2, IN3, IN4);
-LineSensor lineSensor(OUT1, OUT2, OUT3, OUT4);
 
 Routine* routine;
 
@@ -30,7 +24,7 @@ extern ControllerPtr myControllers[BP32_MAX_GAMEPADS]; // BP32 library allows fo
 
 void handleController(ControllerPtr myController) {
     
-    // Simple direction control - no braking, no state tracking
+    //Simple direction control - no braking, no state tracking
     if (myController->r2() && !myController->l2()) {  // ZR button for forward
         drivetrain.setSpeed(255, 255);
     } 
@@ -56,10 +50,18 @@ void setup() {
 
     pinMode(LED, OUTPUT);
 
-    pinMode(OUT1, OUTPUT);
-    pinMode(OUT2, OUTPUT);
-    pinMode(OUT3, OUTPUT);
-    pinMode(OUT4, OUTPUT);
+    uint8_t OUT1 = 27;
+    uint8_t OUT2 = 26;
+    uint8_t OUT3 = 25;
+    uint8_t OUT4 = 33;
+
+    pinMode(OUT1, INPUT);
+    pinMode(OUT2, INPUT);
+    pinMode(OUT3, INPUT);
+    pinMode(OUT4, INPUT);
+
+    static LineSensor lineSensor(OUT1, OUT2, OUT3, OUT4);
+    static Drivetrain drivetrain(IN1, IN2, IN3, IN4);
 
     routine = new LineFollow(&lineSensor, &drivetrain);
 }
@@ -85,11 +87,11 @@ void loop() {
         lastDebugTime = currentTime;
     }
     
-    // Handle connected controllers
+    //Handle connected controllers
     for (auto myController : myControllers) {
-        if (myController && myController->isConnected() && myController->hasData()) {
-            handleController(myController);
-        }
+       if (myController && myController->isConnected() && myController->hasData()) {
+           handleController(myController);
+       }
     }
 
     if(routine != nullptr){
