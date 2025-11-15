@@ -15,28 +15,26 @@ class LineFollow : public Routine{
     }
 
     void update(){
-        analogWrite(2, 255);
-        
-        std::array<uint16_t,4> sensors = lineSensor->getValues();
+        std::array<uint16_t,8> sensors = lineSensor->getValues();
 
-        if(sensors[1] > 800 || sensors[2] > 800){
-            drivetrain->setSpeed(255, 255);
+        if(sensors[3] > 750 && sensors[4] > 750){
+            drivetrain->setSpeed(180, 180);
             lastValue = 0;
         }
-        else if(sensors[0] > 800){
-            drivetrain->setSpeed(-255, 255);
+        else if(sensors[0] > 750 || sensors[1] > 750 || sensors[2] > 750){
+            drivetrain->setSpeed(-180, 180);
             lastValue = 1;
         }
-        else if(sensors[3] > 800){
-            drivetrain->setSpeed(255, -255);
+        else if(sensors[5] > 750 || sensors[6] > 750 || sensors[7] > 750){
+            drivetrain->setSpeed(180, -180);
             lastValue = 2;
         }
         else{
             if(lastValue == 1){
-                drivetrain->setSpeed(-255, 255);
+                drivetrain->setSpeed(-180, 180);
             }
             else{
-                drivetrain->setSpeed(255, -255);
+                drivetrain->setSpeed(180, -180);
             }
         }
     }

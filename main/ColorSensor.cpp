@@ -4,37 +4,42 @@
 #include <Wire.h>
 #include <Arduino_APDS9960.h>
 #include <bits/stdc++.h>
+#include <array>
 
-class ColorSensor{
-    static const int sensorPin1 = 0;
-    static const int sensonPin2 = 0;
-    static const int sensorInteruptPin = 2;
-    static const int sensorFrequency = 0;
+#include "ColorSensor.h"
+#include <ArduinoConsole.h>
 
-    TwoWire sensorProtocol = TwoWire(0);
-    APDS9960 colorSensor = APDS9960(sensorProtocol, sensorInteruptPin);
+ColorSensor::ColorSensor(int SDA, int SCL){
+    // create the APDS9960 instance on the heap using the local TwoWire
+    colorSensor = new APDS9960(sensorProtocol, APSD9960INT);
+    //sets up I2C protocol (use constructor parameters for SDA/SCL)
+    sensorProtocol.begin(SDA, SCL, sensorFrequency);
+    //sets up color sensor
+    colorSensor->setInterruptPin(APSD9960INT);
 
-    ColorSensor(){
-        //sets up I2C protocol
-        sensorProtocol.begin(sensorPin1, sensonPin2, sensorFrequency);
-
-        //sets up color sensor
-        colorSensor.setInterruptPin(sensorInteruptPin);
-        colorSensor.begin();
-        Serial.begin(115200);
+    while (!colorSensor->begin()) {
+        delay(150); // Wait before retrying
     }
 
-    int* getColors(){
-        int r, g, b, a;
+    delay(150);
+}
+std::array<int,4> ColorSensor::getColors(){
+    int r = 0;
+    int g = 0;
+    int b = 0;
+    int a = 0;
 
-        while (!colorSensor.colorAvailable()) { // Wait until color is read from the sensor 
-            delay(5); 
-        }
 
-        colorSensor.readColor(r, g, b, a);
-        delay(50);
-
-        int num[] = {r, g, b, a};
-        return num;
+    while (!colorSensor->colorAvailable()) { // Wait until color is read from the sensor 
+        delay(5); 
     }
-};
+
+    Serial.println("7");
+
+    colorSensor->readColor(r, g, b, a);
+    delay(50);
+
+    Console.printf("Color Sensor: R: %d G: %d B: %d A: %d\n", r, g, b, a);
+
+    return {r, g, b, a};
+}
