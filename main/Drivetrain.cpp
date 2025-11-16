@@ -58,5 +58,5 @@ void Drivetrain::setSpeed(int left, int right) {
     }
 
     frameCount++;
-    delay(10);
+    delay(12);
 }

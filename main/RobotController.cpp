@@ -12,11 +12,14 @@
 #include "LineFollow.cpp"
 #include "ColorFind.cpp"
 #include "MazeSolver.cpp"
+#include <ESP32Servo.h>
 
 #define IN1  16  // Control pin 1
 #define IN2  17  // Control pin 2
 #define IN3  19  // Control pin 3
 #define IN4  18  // Control pin 4
+
+#define SERVO 13
 
 #define OUT1 14
 #define OUT2 12
@@ -35,6 +38,15 @@
 #define IRRight 36
 
 #define LED 2
+
+Servo armServo;
+int servoAngle = 90;
+int servoDirection = 1;
+long lastServoTime = 0;
+const int SERVO_STEP = 20;
+const int SERVO_MIN = 0;
+const int SERVO_MAX = 180;
+const unsigned long SERVO_DELAY = 1;
 
 Drivetrain* drivetrain;
 LineSensor* lineSensor;
@@ -61,6 +73,30 @@ void handleController(ControllerPtr myController) {
         }
         else{
         drivetrain->setSpeed(0, 0);
+        }
+
+        if((myController->r1() || myController->l1()) && myController->r2() == false && myController->l2() == false){
+            unsigned long now = millis();
+            if(now - lastServoTime >= SERVO_DELAY){
+                if (myController->r1()) {  // ZR button for forward
+                    servoDirection = 1;
+                }
+                else if (myController->l1()){
+                    servoDirection = -1;
+                }
+                servoAngle += servoDirection * SERVO_STEP;
+
+                if(servoAngle >= SERVO_MAX){
+                    servoAngle = SERVO_MAX;
+                    servoDirection = -servoDirection;
+                }
+                else if(servoAngle <= SERVO_MIN){
+                    servoAngle = SERVO_MIN;
+                    servoDirection = -servoDirection;
+                }
+                armServo.write(servoAngle);
+                lastServoTime = now;
+            }
         }
     }
 
@@ -99,6 +135,8 @@ void setup() {
 
     pinMode(LED, OUTPUT);
 
+    pinMode(SERVO, OUTPUT);
+
     pinMode(OUT1, INPUT);
     pinMode(OUT2, INPUT);
     pinMode(OUT3, INPUT);
@@ -119,6 +157,9 @@ void setup() {
     lineSensor = new LineSensor(OUT1, OUT2, OUT3, OUT4, OUT5, OUT6, OUT7, OUT8);
     colorSensor = new ColorSensor(ColorSDA, ColorSCL);
     distanceSensor = new DistanceSensor(IRLeft, IRMiddle, IRRight);
+
+    armServo.attach(SERVO);
+    armServo.write(servoAngle);
 }
 
 void loop() {

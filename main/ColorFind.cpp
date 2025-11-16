@@ -21,6 +21,20 @@ class ColorFind : public Routine{
         g = colors[1];
         b = colors[2];
         a = colors[3];
+
+        delay(100);
+
+        colors = colorSensor->getColors();
+        int rVal = std::abs(r - colors[0]);
+        int gVal = std::abs(g - colors[1]);   
+        int bVal = std::abs(b - colors[2]);
+        int aVal = std::abs(a - colors[3]);
+
+        drivetrain->setSpeed(190, 190);
+
+        delay(1000);
+
+        drivetrain->setSpeed(0, 0);
     }
 
     void update(){
@@ -30,11 +44,11 @@ class ColorFind : public Routine{
         int bVal = std::abs(b - colors[2]);
         int aVal = std::abs(a - colors[3]);
 
-        if(rVal < 25 && gVal < 25 && bVal < 25 && aVal < 25){
+        if(rVal < 200 && gVal < 200 && bVal < 200){
             drivetrain->setSpeed(0, 0);
         }
         else{
-            drivetrain->setSpeed(255, 255);
+            drivetrain->setSpeed(190, 190);
         }
     }
 };
