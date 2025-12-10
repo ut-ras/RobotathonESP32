@@ -89,3 +89,14 @@ You do not need to rerun any terminal commands to view changes if you use the `-
 1. Navigate to `RobotathonESP32` in Git Bash
 1. Commit and push changes ([How?](https://ut-ras.github.io/RobotathonESP32/getting-started/git))
 1. Observe changes on live website in about a minute
+
+
+
+
+# How to migrate to developing next year's Robotathon guide (only need to do for repository)
+1. Create copy of newest robotathon guide
+      `git checkout robotathon-guide-20xx`
+      `git checkout -b robotathon-guide-202xx+1`
+1. Navigate to `/github/workflows/jekyll-gh-pages.yml` in this repository and modify the name in the `branches` property to be `robotathon-guide-202xx+1`
+1. Make a modification to any of the content in /docs
+1. Push changes and wait for new website to deploy
