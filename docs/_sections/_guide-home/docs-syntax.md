@@ -1,9 +1,7 @@
-<!-- ---
 layout: default
 title: Robotathon GUIDE SYNTAX REFERENCE (remove during comp)
 nav_include: true
 nav_order: 2
---- -->
 
 <!-- comment the front matter above when in competition season -->
 
