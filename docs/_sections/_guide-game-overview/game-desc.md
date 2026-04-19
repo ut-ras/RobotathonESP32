@@ -7,7 +7,7 @@ nav_order: 1
 
 # Game Description
 
-Welcome to RASpionage: our spy themed robotics competition! Cooperate with Perry the Platypus to take down Dr. Jeffrey Doofenshmirtz’s nefarious collusion with A&M!
+Welcome to wRAStling: our Sumo Wrestling themed competition! Build your robot from the ground up and compete against other wrastlers in the ring!
 
 ## Rounds
 Each team will play in 5 minute long rounds with 2 minute setup times in between. Number of rounds is subject to change as competition day rolls closer. Every round will pit two teams against each other to see who can score the most points through various challenges detailed below.
