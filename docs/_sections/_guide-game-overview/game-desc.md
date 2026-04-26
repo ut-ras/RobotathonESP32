@@ -9,40 +9,40 @@ nav_order: 1
 
 Welcome to wRAStling: our Sumo Wrestling themed competition! Build your robot from the ground up and compete against other wrastlers in the ring!
 
+
 ## Rounds
-Each team will play in 5 minute long rounds with 2 minute setup times in between. Number of rounds is subject to change as competition day rolls closer. Every round will pit two teams against each other to see who can score the most points through various challenges detailed below.
+Each team will play in 8 minute long rounds with 2 minute setup times in between. Number of rounds is subject to change as competition day rolls closer. Every round will pit four teams against each other to see who can score the most points by navigating challenges and pushing opponents out of the ring!
 
-The competition will be double-elimination style which means if your team is beat once, you still have a chance to win Robotathon! However if your team is defeated two times, you will be eliminated
-
-Your team will receive one ping pong ball at the beginning of every round as ammo to destroy the Aggienator
+The competition will be double-elimination style which means if your team is beat once, you still have a chance to win Robotathon! However if your team is defeated two times, you will be eliminated.
 
 <!-- TODO include image of map and have it in its own subcategory -->
 
 ## Challenges
 
-The premise of this year's game requires each team to break into Dr. Jeffrey Doofenshmirtz’s evil lab, navigate the dangerous traps and obstacles, and finally help Perry destroy the Aggienator! 
+The premise of this year's game requires each team to navigate obstacles and a steep ramp to reach the challenger ring and face off in a wRAStling match!
 
-You will build a robot around the color, line, wall, and mechanical peripherals to achieve this.
+You will build a robot around the color, line, and mechanical peripherals to achieve this.
 
-Every challenge your team completes autonomously will earn your team an additional ping pong ball, and challenges can be repeated until the round is over. 
+Every sensor challenge your team completes autonomously will earn your team points and challenges can be repeated until the round is over. 
 
-Challenges can be completed in either of the routes below:
-* Color challenge -> Wall challenge -> Mechanical challenge -> Line challenge
-* Color challenge -> Line challenge -> Mechanical challenge -> Wall challenge
+Within the ring is the driver challenge. Operators must use their controllers to manually face off. Time spent in the ring and opponents knocked out is rewarded with points.
 
-After one of these routes is completed, teams will manually drive back to the start location to repeat the challenges
+Challenges will be completed in the order below:
+* Color challenge -> Line challenge -> Mechanical and Driver challenge
 
-Ping pong balls can only be loaded into your robot at the start location
+After one of these routes is completed, teams will manually drive back to the start location to repeat the challenges.
 
+No flashing code during the round! You may do so during setup or between rounds.
 
 
 ## Remote Controller
-Each team will be provided a Bluetooth controller. You will need to use this controller to manually drive your robot between each challenge and trigger autonomous modes tailored for each sensor.
-* You can use your remote controller to drive through the sensor challenges, but you will NOT EARN POINTS
+Each team will be provided a Bluetooth controller. You will need to use this controller to manually operate your robot within challenger ring (MANUAL CHALLENGE).
+* Note that the line and color challenges are AUTONOMOUS challenges. You can use your remote controller to drive through the sensor challenges, but you will NOT EARN POINTS.
 * You are encouraged to use your remote controller in the event that your robot gets stranded in the middle of the field.
 
+
 ## Field
-The field is split into two symmetrical loops to accommodate two teams for each round.
+The field is split into four symmetrical courses to accommodate four teams for each round.
 
 <!-- Teams will start on opposing corners of the field as shown below: -->
 
@@ -53,39 +53,34 @@ The field is split into two symmetrical loops to accommodate two teams for each 
 Do not hardcode your robot according to the above layout for maze or line! The exact layout for those challenges may be different on the actual field.
 {: .callout-red}
 
-## Section 1: Breaking into the lab
 
-The robot is tasked with sampling a color, at a far end of the field. 
+## Section 1: Journeying to the ring
 
 ### Color Challenge
-Four colored strips will be placed on the floor. The robot must sample the first strip and remember its color.
-Then, drive over the next three strips to find one that matches the first strip and pick the ping pong ball up.
+Colored blocks will form a track. During the challenge, the robot must sample the first block and second block and remember both colors.
 
-
-
-## Section 2: Navigate the lab
-
-### Wall Challenge
-Your robot must navigate through the maze while carrying a ping pong ball and avoid running into the walls.
-If your robot gets stuck you may manually reset your robot to the beginning of the maze section.
-One side of the field could have a maze with more turns than the other. 
-
-
-
-## Section 3: Dodge the Lasers
+Then, the robot must move forward until it reaches the first color and turn to find the direction of the block of the second color, and move so forth until the last block (of the first color).
 
 ### Line Challenge
-Your robot must follow the path and make it to the end of the line while carrying a ping pong ball.
+Your robot must follow the path and make it to the end of the line.
+
 If your robot gets stuck or lost, you may reset your robot, but you must start from the beginning of the path.
 
 
-{: .highlight}
-One side of the field will be more jagged, while the other is curved. The team that met the most checkpoints/deadlines will have the option of choosing which side they want to run.
-{: .callout-blue}
-
-## Section 4: Destroying the Aggienator!
+## Section 2: Climb the walls
 
 ### Mechanical Challenge
-Launch your ping pong ball into one of the tiers of the Aggienator to score points.
-Tiers will be smaller the higher they are, but scoring in higher tiers will earn more points.
-The bottom tier will be at field level, and teams can place ping pong balls in this bottom tier for minimal points.
+Your robot must traverse the ramp leading up to the raised ring.
+If your robot falls off, you may reset your robot, but you must start from the beginning of the path.
+
+Keep in mind to design your robot to handle a small fall!
+
+
+## Section 3: Destroy your opponents
+
+### Driver Challenge
+Fight to stay the longest in the ring! Push off as many opponents as possible. 
+
+If pushed off or in the ring for over a minute, the competitors must drive back to the start (may be manual) and complete another lap of the challenges.
+
+Note that robots are not permitted to intentionally damage the field or other robots. "Smashing" mechanisms are not allowed and the objective is to simply push other robots out of the ring.
