@@ -19,13 +19,13 @@ The competition will be double-elimination style which means if your team is bea
 
 ## Challenges
 
-The premise of this year's game requires each team to navigate obstacles and a steep ramp to reach the challenger ring and face off in a wRAStling match!
+The premise of this year's game requires each team to complete their "walk-out", which incorporates navigating obstacles and a steep ramp to reach the challenger ring and "fight" in a wRAStling match!
 
-You will build a robot around the color, line, and mechanical peripherals to achieve this.
+You will build a robot using the starter pack we provide you, which incorporates a color and line sensor, and the rest is up to you!
 
-Every sensor challenge your team completes autonomously will earn your team points and challenges can be repeated until the round is over. 
+Every sensor challenge your team completes autonomously during the competition will earn your team points and challenges can be repeated until the round is over. 
 
-Within the ring is the driver challenge. Operators must use their controllers to manually face off. Time spent in the ring and opponents knocked out is rewarded with points.
+Within the ring is the driver challenge. Operators must use their controllers to manually face off. Time spent in the ring and opponents knocked out is rewarded with points!
 
 Challenges will be completed in the order below:
 * Color challenge -> Line challenge -> Mechanical and Driver challenge
@@ -36,7 +36,7 @@ No flashing code during the round! You may do so during setup or between rounds.
 
 
 ## Remote Controller
-Each team will be provided a Bluetooth controller. You will need to use this controller to manually operate your robot within challenger ring (MANUAL CHALLENGE).
+Each team will be provided a Bluetooth controller. You will need to use this controller to manually operate your robot within the challenge ring (MANUAL CHALLENGE).
 * Note that the line and color challenges are AUTONOMOUS challenges. You can use your remote controller to drive through the sensor challenges, but you will NOT EARN POINTS.
 * You are encouraged to use your remote controller in the event that your robot gets stranded in the middle of the field.
 
@@ -54,7 +54,7 @@ Do not hardcode your robot according to the above layout for maze or line! The e
 {: .callout-red}
 
 
-## Section 1: Journeying to the ring
+## Section 1: "Walk Out" - Journey to the ring
 
 ### Color Challenge
 Colored blocks will form a track. During the challenge, the robot must sample the first block and second block and remember both colors.
@@ -73,7 +73,7 @@ If your robot gets stuck or lost, you may reset your robot, but you must start f
 Your robot must traverse the ramp leading up to the raised ring.
 If your robot falls off, you may reset your robot, but you must start from the beginning of the path.
 
-Keep in mind to design your robot to handle a small fall!
+Keep in mind to design your robot to handle a small fall! Not only that, design it in a way that ensures you have a low center of gravity and a good layout for sensors!
 
 
 ## Section 3: Destroy your opponents

@@ -6,15 +6,17 @@ nav_order: 2
 ---
 # Rules 
 
-1. Robot Size Constraints: Your robot cannot exceed the dimensions 9in x 9in, with no height limit. These dimensions include the mechanisms used to complete all the challenges.
+1. Robot Size Constraints: Your robot cannot exceed the dimensions 7in x 7in, with no height limit. These dimensions include the mechanisms used to complete all the challenges.
+1. Robots are not permitted to include “smashing” mechanisms. You are only allowed to push opponents outside of the sumo ring.
+1. You must add padding to the outside edges of your robot so as to minimize damage to opposing robots, and increase your chances of a safer fall.
 1. Your robot cannot (intentionally) damage the field.
-1. Your robot cannot interfere or impede the other robot on the field.
 1. No flashing code during rounds! You're welcome to do it in between rounds.
-1. No driving through the middle to the othe team's side.
-1. You may pick up/adjust your robot when moving from one challenge to the next during competition.
+1. You cannot enter another team’s side of the field. You may only use your own territory and the neutral areas.
+1. You may pick up and adjust your robot IFF it is unable to move (flipped, sideways, etc.)
 1. Your team’s robot and robotics kit must be stored in the RAS office.
-1. If you choose to, you may purchase other parts using your own money (up to $25), but we stress that this is not necessary, and your kit should have all the materials needed to adequately complete the challenges. If you do decide to purchase parts, please let the organizers know so we can determine whether said part is acceptable for the competition.
-    * Wood, filament, or acrylic from the TIW are not included in the $25.
+1. If you choose to, you may purchase other parts using your own money (up to $15). However, each purchase must be approved by the Steering Committee Heads. 
+    * Wood, filament, or acrylic from TIW is not included in your budget.
+    * Screws, Nails, or Glue-type materials are also not included in your bugdet.
 
 # Scoring
 
@@ -26,26 +28,17 @@ While placement on competition day will mainly depend on the points earned durin
 Take a look at the [checkpoints section](https://ut-ras.github.io/RobotathonESP32/checkpoints) for specific requirements of each checkpoint!
 
 
-### Section 1: Breaking into the lab
-* +2 points for autonomous completion
-* 0 points for manually driving to the correct color tile  
+### Section 1: Walk Out
+* +5 points for autonomous completion (going through line and color sensor challenges autonomously)
+* 0 points for manually driving through this section
 
-### Section 2: Navigate the lab
-* +5 points for autonomous completion
-* 0 points for manually driving through the lab   
+### Section 2: Sumo Section
+* +3 points for staying in the ring for 30-seconds, regardless of how many other competitors there are on the ring at the same time.
+    * +4 points for staying in the ring an **additional** 30-seconds after the first three points are awarded (aka, one full minute elapsed)
+* +2 points for pushing an opponent out of the ring
 
-### Section 3: Dodge the Lasers  
-* +5 points for autonomous completion
-* 0 points for manually driving along the line  
-
-### Section 4: Destroying the Aggienator!
-The Aggienator has three tiers to launch/push your ping pong ball into:
-* +3 points for pushing ping pong ball into the first tier
-    * Ground level, no launching required
-* +5 points for launching ping pong ball into the second tier
-    * Elevated above the first tier
-* +10 points for launching ping pong ball into the third tier
-    * Elevated above second tier
+### Section 3: Tap-Out
+* +0 points for returning back to the start point using controller
 
 
-Final winner will be chosen by averaging individual team scores across the 6 rounds and choosing the top 3.
+Final winner will be chosen by averaging individual team scores across the rounds and choosing the top 3.
