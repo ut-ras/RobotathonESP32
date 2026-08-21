@@ -33,20 +33,21 @@ The following information is an adapted version of [this guide.](https://lastmin
 # How to Use Motor and Motor Controller?
 
 ## Portable Battery Pack Power
-First we will go over using an external power source for the ESP32. For this competition, you will be able to control your robot with a wireless game controller to navigate around the field (sensor challenges should be completed autonomously). It would be impractical to power your ESP32 through the on-board USB on the field, so you will use a portable battery pack. This battery pack will be connected using a USB-C 5V breakout board, which ensures the pack provides a steady 5V supply for your ESP32 and motor controller.
+First we will go over using an external power source for the ESP32. For this competition, you will be able to control your robot with a wireless game controller to navigate around the field (sensor challenges should be completed autonomously). It would be impractical to power your ESP32 through the on-board USB on the field, so you will use a portable battery pack. This battery pack will be connected to your breadboard by the power and ground rails, and will supply reliable power to your robot.
 
-To safely power your ESP32 from the battery pack and still have the option to connect it to your laptop to use the serial monitor for debugging, add a diode between the breadboard's power line and the ESP32’s 5V pin. The diode works like a one-way valve, so it prevents current from accidentally flowing back into your computer or battery pack. Without the diode, you could risk frying your equipment!
+{: .highlight}
+You will need to charge your battery pack occasionally!!!
+Your parts kit comes with a USB-A to battery adapter, which has a red LED to indicate charge status. ***UPDATE WITH LED BEHAVIOR***
+{: .callout-red}
 
 Here is a diagram of how your circuit should look:
 
-<img src="{{ '/_assets/images/DRV8833BatteryPack.png' | prepend: site.baseurl }}" alt="external_ESP32_power.png">
-
-With this wiring, you can safely use both the battery pack and the USB connection!
+wiring diagram with battery leads connected to breadboard power rails and power rail to esp 5v
 
 {: .highlight}
-ALWAYS use a diode on the ESP32’s 5V line when powering it from a battery pack.  
-This prevents current from flowing back into your computer or battery pack if USB is also connected.
-{: .callout-blue}
+MAKE SURE YOU FULLY DISCONNECT YOUR BATTERY PACK IF YOU ARE CONNECTING YOUR ESP32 TO USB POWER!!! 
+Connecting your power rail to ESP32 5V and the battery pack at the same time could fry your circuit (bad)
+{: .callout-red}
 
 To control a DC motor using the ESP32, a motor controller, and battery pack (**WITH or WITHOUT USB CONNECTION**), you can connect them together as shown below:
 
