@@ -16,7 +16,7 @@ nav_order: 3
 
 This guide aims to provide you with helpful information and direction throughout your robot building process. While this guide is broad, it stays mostly within the realm of setup and basic tips since we encourage you to discover your own solutions.
 
-If you have any technical questions or don’t understand a topic, ask the mentors in the Discord Robotathon chat or during [Office Hours!]({{ site.baseurl }}/office-hours/) We can help to resolve your problems, or point you to the right person who can.
+If you have any technical questions or don’t understand a topic, ask the mentors in the Discord Robotathon chat or during [Office Hours!]({{ site.baseurl }}/office-hours) We can help to resolve your problems, or point you to the right person who can.
 
 ## Overview
 
