@@ -9,11 +9,11 @@ nav_order: 6
 # Mechanical Challenge Checkpoint
 To pass this checkpoint, your robot should meet the following requirement:
 
-* Launch a ping pong ball some distance (at least 2 feet)
+* Successfully incorporate a defense or offense mechanism
 
 **OR**
 
-* Push the ball manually or autonomously (this will earn minimal points during the mech challenge)
+* Traverse the incline to the ring in a unique manner
 
 Some questions we might ask about this checkpoint are:
 

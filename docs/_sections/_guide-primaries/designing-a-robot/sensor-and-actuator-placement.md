@@ -10,13 +10,6 @@ nav_order: 1
 
 You will need to carefully plan your sensor and actuator placement as it will drastically shape your robot! This section will give a brief overview of some things to consider during this part of the design process.
 
-## Infrared (IR) Distance Sensor
-The distance sensor will be used during the wall following portion of the competition. The location of the distance sensors *will* affect your chassis design and code, so it is important to decide on a good location! Also remember that you will have multiple IR sensors in your design.
-
-{: .highlight}
-Remember that the GP2Y0A21YK0F IR sensors have a specific range [(link to datasheet)](https://www.pololu.com/file/0J85/gp2y0a21yk0f.pdf) that produces good output, so make sure your placement does not break your wall following! One way to avoid the sensor getting too close to the wall could be to move them closer to the middle of the chassis.
-{: .callout-blue}
-
 Below are some different ideas of placement:
 <img src="{{ '/_assets/images/IR_sensors.png' | prepend: site.baseurl }}" alt="IR_sensors.png :(">
 

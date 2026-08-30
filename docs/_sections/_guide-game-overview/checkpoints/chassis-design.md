@@ -22,7 +22,6 @@ Components to include:
 * 1 Caster Wheel
 * 1 Line Sensor
 * 1 Color Sensor
-* __>__ 2 IR Distance Sensors
 * 1 White LED near the color sensor ([why?](https://ut-ras.github.io/RobotathonESP32/sensors-and-actuators/color-sensors))
 
 Questions:
