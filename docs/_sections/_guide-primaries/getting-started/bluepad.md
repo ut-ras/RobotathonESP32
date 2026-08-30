@@ -8,11 +8,14 @@ nav_order: 6
 
 # Bluetooth Controller
 
-You will be connecting a wireless game controller to your ESP32 for controlling your robot (i.e. triggering autonomous modes, moving between challenges, and triggering your launch mechanism)
+You will be connecting a wireless game controller to your ESP32 for controlling your robot (i.e. triggering autonomous modes, moving between challenges)
+
+When competing within the ring you are permitted to use your controller to operate your robot.
 
 That being said, you will not earn points for manually driving your robot through the challenges, as that defeats the purpose of having the sensors.
 
-It is highly recommended that you map autonomous sensors modes (line, color, distance) to specific buttons on the remote controller so that you have more control over your robot's behavior (i.e. press A -> autonomous color mode, press B -> exit to normal drive mode).
+
+It is highly recommended that you map autonomous sensors modes (line and color) to specific buttons on the remote controller so that you have more control over your robot's behavior (i.e. press A -> autonomous color mode, press B -> exit to normal drive mode).
 
 See [BluePad32's official docs](https://bluepad32.readthedocs.io/en/latest/FAQ/#:~:text=true%3B%0A%7D-,Using%20allowlist%20commands%20from%20the%20USB%20console,%C2%B6,-Note) if you'd like to see other features.
 

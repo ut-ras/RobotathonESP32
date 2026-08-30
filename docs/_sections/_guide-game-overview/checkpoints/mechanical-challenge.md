@@ -9,7 +9,7 @@ nav_order: 6
 # Mechanical Challenge Checkpoint
 To pass this checkpoint, your robot should meet the following requirement:
 
-* Successfully incorporate a defense or offense mechanism
+* Successfully incorporate a defense or offense mechanism (Consult the Rules section on what is permitted)
 
 **OR**
 

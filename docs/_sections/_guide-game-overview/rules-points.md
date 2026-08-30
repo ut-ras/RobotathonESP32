@@ -10,13 +10,13 @@ nav_order: 2
 1. Robots are not permitted to include “smashing” mechanisms. You are only allowed to push opponents outside of the sumo ring.
 1. You must add padding to the outside edges of your robot so as to minimize damage to opposing robots, and increase your chances of a safer fall.
 1. Your robot cannot (intentionally) damage the field.
-1. No flashing code during rounds! You're welcome to do it in between rounds.
+1. No flashing code during rounds! You're welcome to do it in between rounds when you are not actively competing.
 1. You cannot enter another team’s side of the field. You may only use your own territory and the neutral areas.
 1. You may pick up and adjust your robot IFF it is unable to move (flipped, sideways, etc.)
 1. Your team’s robot and robotics kit must be stored in the RAS office.
 1. If you choose to, you may purchase other parts using your own money (up to $15). However, each purchase must be approved by the Steering Committee Heads. 
     * Wood, filament, or acrylic from TIW is not included in your budget.
-    * Screws, Nails, or Glue-type materials are also not included in your bugdet.
+    * Screws, Nails, or Glue-type materials are also not included in your budget.
 
 # Scoring
 

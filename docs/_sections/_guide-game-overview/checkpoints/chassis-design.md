@@ -15,7 +15,8 @@ To pass this checkpoint, your design should meet the following requirements:
 Components to include:
 * 1 ESP32 on breadboard
 * 1 USBC breakout PD circuit
-* 1 Portable Battery mount
+* 1 Ni-CD Rechargable Battery Pack 
+* Battery Charger
 * 1 Dual Motor Driver
 * 2 DC Motors
 * 1 Servo
