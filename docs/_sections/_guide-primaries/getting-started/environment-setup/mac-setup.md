@@ -1,11 +1,13 @@
----
+<!-- ---
 layout: default
 title: macOS Setup
 nav_include: true
 parent: Environment Setup
 grand_parent: Getting Started
 nav_order: 1
----
+--- -->
+
+<!-- alt + shift + a for block comment>
 
 # macOS Setup
 https://docs.espressif.com/projects/vscode-esp-idf-extension/en/latest/installation.html

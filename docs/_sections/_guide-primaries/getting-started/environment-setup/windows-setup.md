@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Windows Setup
+title: Environment Setup
 nav_include: true
 parent: Environment Setup
 grand_parent: Getting Started
