@@ -10,7 +10,7 @@ nav_order: 3
 
 Make sure most of your team and the team member planning to steer your robot in the ring can attend!
 
-## Here is a basic timeline that subject to change: 
+### Here is a basic timeline that subject to change: 
 
 * 9:00pm:
 Dinner in EER before All-Nighter
