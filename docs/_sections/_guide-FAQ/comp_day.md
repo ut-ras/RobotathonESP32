@@ -12,23 +12,23 @@ Make sure most of your team and the team member planning to steer your robot in 
 
 ## Here is a basic timeline that subject to change: 
 
-9:00pm:
+* 9:00pm:
 Dinner in EER before All-Nighter
-7:00 am:
+* 7:00 am:
 Sunrise
-8:00am:
+* 8:00am:
 Breakfast in EER before Competition
-10:00am:
+* 10:00am:
 Robotathon Competition begins! (hoping for EER 0th pit)
-10:00am: 
+* 10:00am: 
 Leadership/Judge Introduction
-10:10am: 
+* 10:10am: 
 Tournament Bracket Reveal
-10:15am: 
+* 10:15am: 
 First round begins
-~12:30pm:
+* ~12:30pm:
 Awards ceremony, Robotathon Competition Ends
-12:45pm: 
+* 12:45pm: 
 Lunch!
 
 
