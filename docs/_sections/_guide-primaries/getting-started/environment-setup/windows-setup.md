@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Windows Setup
+title: Environment Setup
 nav_include: true
 parent: Environment Setup
 grand_parent: Getting Started
 nav_order: 1
 ---
 
-# Windows Setup
+# Environment Setup
 
 {: .highlight}
 It is highly recommended to follow everything in order!
@@ -47,7 +47,7 @@ See the [official GitHub tutorial](https://docs.github.com/en/enterprise-cloud@l
 #### Generate SSH key
 
 {: .highlight}
-Git Bash is finicky and doesn't support Ctrl + V for paste. Use `Shift + Insert` or `Right Click > Paste` to paste text.
+Git Bash is finicky and doesn't support Ctrl + V (⌘ + V on Mac) for paste. Use `Shift + Insert` or `Right Click > Paste` to paste text.
 {: .callout-blue}
 
 1. Open Git Bash
@@ -98,8 +98,8 @@ Cloning is the process of copying a Git repository onto your local computer stor
 This allows your computer to recognize and program your ESP32 when you plug it in.
 
 1. Go to [SiLabs installer webpage](https://www.silabs.com/developer-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads)
-2. Download the file named `CP210x Windows Drivers`
-3. Extract the downloaded zip file and run the appropriate installer application inside (likely x64)
+2. Download the file named `CP210x Windows Drivers` for Windows, or `CP210x VCP Mac OSX Driver` for MacOS
+3. Extract the downloaded zip file and run the appropriate installer application inside
 4. Agree and use default configuration
 
 ### __Install VS Code and ESP-IDF Extension__
