@@ -8,9 +8,9 @@ nav_order: 3
 
 # Robotathon Guide - 2026 wRAStling
 
-<div style="text-align: center;">
-<img src="{{ '/_assets/images/robotathon_2025_logo.png' | prepend: site.baseurl }}" alt="robotathon_2025_logo.png :(" width="250" height="250">
-</div>
+<div style="text-align: center;"> <img src="{{ '/docs/_assets/images/robotathon26.png' | prepend: site.baseurl }}" alt="robotathon_2026_logo.png" width="250" height="250"> </div>
+
+
 
 ## Welcome!
 
