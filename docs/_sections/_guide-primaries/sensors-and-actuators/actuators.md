@@ -32,12 +32,12 @@ The following information is an adapted version of [this guide.](https://lastmin
 
 # How to Use Motor and Motor Controller?
 
-## Portable Battery Pack Power
-First we will go over using an external power source for the ESP32. For this competition, you will be able to control your robot with a wireless game controller to navigate around the field (sensor challenges should be completed autonomously). It would be impractical to power your ESP32 through the on-board USB on the field, so you will use a portable battery pack. This battery pack will be connected to your breadboard by the power and ground rails, and will supply reliable power to your robot.
+## Rechargeable Battery Pack Power
+First we will go over using an external power source for the ESP32. For this competition, you will be able to control your robot with a wireless game controller to navigate around the field (sensor challenges should be completed autonomously). It would be impractical to power your ESP32 through the on-board USB on the field, so you will use a rechargeable battery pack. This battery pack will be connected to your breadboard by the power and ground rails, and will supply reliable power to your robot.
 
 {: .highlight}
 You will need to charge your battery pack occasionally!!!
-Your parts kit comes with a USB-A to battery adapter, which has a red LED to indicate charge status. ***UPDATE WITH LED BEHAVIOR***
+Your parts kit comes with a USB wire.
 {: .callout-red}
 
 Here is a diagram of how your circuit should look:
@@ -51,7 +51,7 @@ Connecting your power rail to ESP32 5V and the battery pack at the same time cou
 
 To control a DC motor using the ESP32, a motor controller, and battery pack (**WITH or WITHOUT USB CONNECTION**), you can connect them together as shown below:
 
-<img src="{{ '/_assets/images/DRV8833withDCMotor.png' | prepend: site.baseurl }}" alt="motor_with_external_power.png">
+<img src="{{ '/_assets/images/motor_wiring.png' | prepend: site.baseurl }}" alt="motor_with_external_power.png">
 
 * Note that the wire polarity on the motor does not matter because DC motors' spin direction is based on the direction of current flowing through them. This direction is controlled by the H-bridge motor driver.
 
@@ -111,7 +111,7 @@ Servos are motors that are designed for precise position control. Instead of fre
 
 For the servos in our competition, you can use it to precisely control your mechanism for the Mechanical Challenge. To interface it with your ESP32, you will connect the wires as follows:
 
-<img src="{{ '/_assets/images/DRV8833withServo.png' | prepend: site.baseurl }}" alt="servo_wiring.png">
+<img src="{{ '/_assets/images/servo_wiring.png' | prepend: site.baseurl }}" alt="servo_wiring.png">
 
 
 | Servo Wire        | Connection         |
