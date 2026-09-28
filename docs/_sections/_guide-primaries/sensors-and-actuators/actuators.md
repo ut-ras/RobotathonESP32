@@ -138,9 +138,9 @@ void setup() {
 }
 
 void loop() {
-  myServo.write(0); // Rotate to 0 degrees
+  myServo.write(0); /
   delay(1000); // Delay 1000 ms
-  myServo.write(180); // Rotate to 180 degrees
+  myServo.write(180); 
   delay(1000);
 
   vTaskDelay(1); // Yield CPU to not starve other ESP32 processes and cause WDT reset
