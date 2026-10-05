@@ -42,7 +42,7 @@ Your parts kit comes with a USB wire.
 
 Here is a diagram of how your circuit should look:
 
-wiring diagram with battery leads connected to breadboard power rails and power rail to esp 5v
+<img src="{{ '/_assets/images/NiCd_Power_Config.png' | prepend: site.baseurl }}" alt="motor_with_external_power.png">
 
 {: .highlight}
 MAKE SURE YOU FULLY DISCONNECT YOUR BATTERY PACK IF YOU ARE CONNECTING YOUR ESP32 TO USB POWER!!! 
@@ -51,7 +51,7 @@ Connecting your power rail to ESP32 5V and the battery pack at the same time cou
 
 To control a DC motor using the ESP32, a motor controller, and battery pack (**WITH or WITHOUT USB CONNECTION**), you can connect them together as shown below:
 
-<img src="{{ '/_assets/images/motor_wiring.png' | prepend: site.baseurl }}" alt="motor_with_external_power.png">
+<img src="{{ '/_assets/images/NiCd_Power_Config_wMotor.png' | prepend: site.baseurl }}" alt="motor_with_external_power.png">
 
 * Note that the wire polarity on the motor does not matter because DC motors' spin direction is based on the direction of current flowing through them. This direction is controlled by the H-bridge motor driver.
 
@@ -111,7 +111,7 @@ Servos are motors that are designed for precise position control. Instead of fre
 
 For the servos in our competition, you can use it to precisely control your mechanism for the Mechanical Challenge. To interface it with your ESP32, you will connect the wires as follows:
 
-<img src="{{ '/_assets/images/servo_wiring.png' | prepend: site.baseurl }}" alt="servo_wiring.png">
+<img src="{{ '/_assets/images/NiCd_Servo_Config.png' | prepend: site.baseurl }}" alt="servo_wiring.png">
 
 
 | Servo Wire        | Connection         |
